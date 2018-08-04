@@ -1,0 +1,117 @@
+
+.navbar-right>li {
+	padding: 5px 8px;
+}
+.dropdown-alerts {
+	width: 310px;
+    min-width: 0;
+    max-height: 400px;
+    padding-top: 0;
+    overflow-y:auto; 
+}
+.dropdown-alerts .headR {
+	padding: 8px;
+	background: #f1f1f1;
+	margin-bottom: 5px;
+}
+.nav > li > a i.fa-bell {
+    margin-right: 6px;
+}
+.count-info .label {
+    line-height: 12px;
+    padding: 2px 5px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+.label-primary, .badge-primary {
+    background-color: #1ab394;
+    color: #FFFFFF;
+}
+.dropdown-alerts>li>div {
+	padding: 0 8px;
+}
+.dropdown-alerts>li {
+	position: relative;
+	padding: 4px 15px;
+	
+}
+.dropdown-alerts>li:first-child {
+	margin-top: 5px;
+}
+.dropdown-alerts>li>div .text-muted {
+	position: absolute;
+	    top: 9px;
+    right: 9px;
+}
+.lbl_hd {
+	background: #3acaad;
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.dropdown-alerts li:nth-child(2) .notiBox .headR {
+	background: #7cdcb9;
+}
+.dropdown-alerts li:nth-child(3) .notiBox .headR {
+	background: #d6de97;
+}
+.dropdown-alerts li:nth-child(4) .notiBox .headR {
+	background: #eab571;
+}
+.dropdown-alerts li:nth-child(5) .notiBox .headR {
+	background: #71c9de;
+}
+.dropdown-alerts li:nth-child(6) .notiBox .headR {
+	background: #efa7fb;
+}
+
+.notiBox  {
+	padding: 0 !important;
+    border: 1px solid #e6e4e4;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    position: relative;
+    border-top: none;
+}
+.notiBox .cntWrap {
+	padding:3px 15px;
+} 
+
+/******* Snack Bar ***/
+
+
+#snackbar {
+    /*
+    visibility: hidden;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    font-size: 17px;*/
+    
+    min-width: 250px;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+    position: fixed;
+    z-index: 1;
+    left: 69.8%;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+#snackbar:hover{
+    background-color: #2e6da4;
+}
+
+#snackbar.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+
