@@ -319,6 +319,9 @@
                     </li>
                 </ul>
             </li> -->
+            <li>
+                <a href="<?php echo base_url('admin/auth/logout');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->
