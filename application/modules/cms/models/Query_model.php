@@ -1,65 +1,32 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User_model extends CI_Model {
+class Query_model extends CI_Model {
 
-	var $table = 'web_user_master';
-    var $column_order = array(null, 'full_name','email','mobile_no','user_status','user_category'); //set column field database for datatable orderable
-    var $column_search = array('full_name','email','mobile_no','user_status','user_category'); //set column field database for datatable searchable 
-    var $order = array('user_id' => 'asc'); // default order 
+	var $table = 'admin_query_content';
+    var $column_order = array(null, 'name','query_content','status','email','aum_id'); //set column field database for datatable orderable
+    var $column_search = array('name','query_content','status','email','aum_id'); //set column field database for datatable searchable 
+    var $order = array('aqc_id' => 'asc'); // default order 
  
 
 	function __construct() {
 		parent::__construct();
-		log_message('INFO', 'User_model enter');
+		log_message('INFO', 'Query_model enter');
 	}
 	
 	
 	public function user_details(){
 		$this->db->select('*');
-		$this->db->from('web_user_master');
+		$this->db->from('admin_query_content');
 		$query = $this->db->get();
 		return $query->result();
 	}
 
-    public function category(){
-        $row = $this->db->query("SHOW COLUMNS FROM web_user_master LIKE 'user_category'")->row()->Type;
-        $regex = "/'(.*?)'/";
-        preg_match_all( $regex , $row, $enum_array );
-        $enum_fields = $enum_array[1];
-        foreach ($enum_fields as $key=>$value)
-        {
-            $enums[$value] = $value;
-        }
-        return $enums;
-    }
-
-    public function details($id){
-        $this->db->from('web_user_master');
-        $this->db->where('user_id', $id);
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-	public function role_details(){
-		$this->db->select('*');
-		$this->db->from('admin_role_master');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-    function edit_user($data,$user_id){
-        $this->db->where('user_id', $user_id);
-        $this->db->update('web_user_master', $data);
-        return true;
-    }
-
+    
 	private function _get_datatables_query()
     {
          
         $this->db->from($this->table);
-        /*$this->db->select('*');
-        $this->db->from('web_user_master');
-        $this->db->join('admin_role_master', 'admin_role_master.arm_id = web_user_master.role_id');*/
+        
         
         $i = 0;
      
@@ -117,19 +84,18 @@ class User_model extends CI_Model {
         return $this->db->count_all_results();
     }
 
-    function add_user($data){
-    	$this->db->insert('web_user_master', $data); 
-    }
-
-    function user_delete($id){
-        $this->db->where('user_id', $id);
-        $this->db->delete('web_user_master'); 
-    }
-
-    function check_email($email){
-        $this->db->where('email', $email);
-        $this->db->from('web_user_master');
+    public function Modal_details($aqc_id){
+        $this->db->from('admin_query_content');
+        $this->db->where('aqc_id', $aqc_id);
         $query = $this->db->get();
-        return $query->num_rows();
+        return $query->result();
     }
+
+    public function Modal_read($session_id,$aqc_id,$data){
+        $this->db->where('aqc_id',$aqc_id); 
+        $this->db->update('admin_query_content',$data);
+        return true;
+    }
+
+	
 }

@@ -53,6 +53,8 @@ $route['default_controller'] = 'cms/home/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['cms'] = 'cms/home/index';
+
 
 $route[ADMIN_NAME] = 'admin/auth';
 $route[ADMIN_NAME] = 'admin/auth';

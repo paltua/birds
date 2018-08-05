@@ -28,8 +28,8 @@ class Template{
     }
     
     private function _setInitVal(){
-        $this->themeName = 'themev1/';
-        $this->resourceName = 'resources/v1/';
+        $this->themeName = 'theme1/';
+        $this->resourceName = 'public/theme1/';
         $this->masterTemplateFolderPath = $this->themeName.'templates/';
 
         $this->themeNameAdmin = 'admin/';
@@ -48,7 +48,7 @@ class Template{
         $this->module = self::$_CI->router->fetch_module();
         $this->controller = self::$_CI->router->fetch_class();
         $this->method = self::$_CI->router->fetch_method();
-
+        
         $this->title = 'Home';
         $this->data = $this->_setData();
     }
@@ -78,12 +78,13 @@ class Template{
     
     private function _getHomeRegion(){
         $rg = array();
+        
         $rg['head'] = $this->_getHead();
         $rg['header'] = $this->_getHeader();
-        $rg['slider'] = $this->_getSlider();
-        $rg['headerLogin'] = $this->_getHeaderLogin();
-        $rg['footer'] = $this->_getFooter();
-        $rg['footerLogin'] = $this->_getFooterLogin();
+        // $rg['slider'] = $this->_getSlider();
+        // $rg['headerLogin'] = $this->_getHeaderLogin();
+        // $rg['footer'] = $this->_getFooter();
+        // $rg['footerLogin'] = $this->_getFooterLogin();
         $rg['hide_content_area'] = 'no';
         return $rg;
     }
@@ -196,12 +197,12 @@ class Template{
     
     private function _getHeader(){
         $this->data['title'] = $this->title; 
-        $this->data['menu'] = $this->_menuArray();  
-        if($this->isLoggedIn=='Y'){
-            $this->data['afterLogInMenu'] = $this->_getAfterLoginMenu();
-        }else{
-            $this->data['afterLogInMenu'] = '';
-        }
+        $this->data['menu'] = '';//$this->_menuArray();  
+        // if($this->isLoggedIn=='Y'){
+        //     $this->data['afterLogInMenu'] = $this->_getAfterLoginMenu();
+        // }else{
+        //     $this->data['afterLogInMenu'] = '';
+        // }
         
         return self::$_CI->load->view($this->themeName.'common/header',$this->data,true);        
     }
