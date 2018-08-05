@@ -245,13 +245,13 @@
                 </ul>
             </li> -->
             <li>
-                <a href="<?php echo base_url('admin/birds');?>"><i class="fa fa-table fa-list"></i> Birds</a>
+                <a href="<?php echo base_url('admin/animal');?>"><i class="fa fa-table fa-list"></i> Animal</a>
             </li>
             <li>
-                <a href="<?php echo base_url('admin/birds_category');?>"><i class="fa fa-table fa-fw"></i> Birds Category</a>
+                <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Animal Category</a>
             </li>
             <li>
-                <a href="<?php echo base_url('admin/birds_location');?>"><i class="fa fa-table fa-fw"></i> Birds Location</a>
+                <a href="<?php echo base_url('admin/animal_location');?>"><i class="fa fa-table fa-fw"></i> Animal Location</a>
             </li>
             <!-- <li>
                 <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
