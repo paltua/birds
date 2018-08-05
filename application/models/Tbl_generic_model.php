@@ -70,8 +70,8 @@ class Tbl_generic_model extends CI_Model {
 	   
         $this->db->set($data);
         $this->db->update($table, $data, $where);
-        //echo $this->db->last_query();
-         //exit();
+        // echo $this->db->last_query();
+        // exit();
         if ($this->db->affected_rows() >= 0) return TRUE;
 			
 		return FALSE;       

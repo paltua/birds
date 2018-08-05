@@ -27,6 +27,11 @@
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">
+    <?php if($msg != ''):?>
+    <div class="col-lg-12">
+    <?php echo $msg ;?>
+    </div>
+    <?php endif;?>
     <div class="col-lg-12">
         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>

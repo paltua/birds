@@ -5,6 +5,11 @@
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">
+    <?php if($msg != ''):?>
+    <div class="col-lg-12">
+    <?php echo $msg ;?>
+    </div>
+    <?php endif;?>
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
