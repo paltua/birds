@@ -10,7 +10,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#exampleTable').DataTable({
+        $('#dataTables-example').DataTable({
             responsive: true,
             order: [[ 3 , "desc" ]]
         });
@@ -20,7 +20,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Animal Category<a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
+        <h1 class="page-header">Animal <a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
         <i class="fa fa-plus-circle"></i> Add</a></h1>
         
     </div>
@@ -33,7 +33,7 @@
     </div>
     <?php endif;?>
     <div class="col-lg-12">
-        <table width="100%" class="table table-striped table-bordered table-hover" id="exampleTable">
+        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>
                     <th>Category Name</th>
@@ -63,7 +63,6 @@
                     </td>
                 </tr>
                 <?php } } ?>
-                
             </tbody>
         </table>
     </div>

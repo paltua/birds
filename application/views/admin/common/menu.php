@@ -244,9 +244,9 @@
                     </li>
                 </ul>
             </li> -->
-            <!-- <li>
-                <a href="<?php echo base_url('admin/animal');?>"><i class="fa fa-table fa-list"></i> Animal</a>
-            </li> -->
+            <li>
+                <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Animal</a>
+            </li>
             <li>
                 <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Animal Category</a>
             </li>
