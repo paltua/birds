@@ -37,7 +37,8 @@ function addPageDetails(){
 
 
 function getLanguageArr(){
-  $retArr = array('en' => 'English', 'ben' => 'Bengali', 'hi' => 'Hindi');
+  //$retArr = array('en' => 'English', 'ben' => 'Bengali', 'hi' => 'Hindi');
+  $retArr = array('en' => 'English');
   return $retArr;
 }
 

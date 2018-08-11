@@ -7,15 +7,15 @@
 <!-- /.row -->
 <div class="row">
 	<div class="col-lg-3 col-md-6">
-		<div class="panel panel-primary">
+		<div class="panel panel-green">
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
-						<i class="fa fa-comments fa-5x"></i>
+						<i class="fa fa-tasks fa-5x"></i>
 					</div>
 					<div class="col-xs-9 text-right">
-						<div class="huge">26</div>
-						<div>New Comments!</div>
+						<div class="huge">12</div>
+						<div>Total Animal!</div>
 					</div>
 				</div>
 			</div>
@@ -29,15 +29,15 @@
 		</div>
 	</div>
 	<div class="col-lg-3 col-md-6">
-		<div class="panel panel-green">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
-						<i class="fa fa-tasks fa-5x"></i>
+						<i class="fa fa-comments fa-5x"></i>
 					</div>
 					<div class="col-xs-9 text-right">
-						<div class="huge">12</div>
-						<div>New Tasks!</div>
+						<div class="huge">26</div>
+						<div>Total Comments!</div>
 					</div>
 				</div>
 			</div>
@@ -50,6 +50,7 @@
 			</a>
 		</div>
 	</div>
+	
 	<div class="col-lg-3 col-md-6">
 		<div class="panel panel-yellow">
 			<div class="panel-heading">
@@ -59,7 +60,7 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">124</div>
-						<div>New Orders!</div>
+						<div>Total Orders!</div>
 					</div>
 				</div>
 			</div>
@@ -81,7 +82,7 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">13</div>
-						<div>Support Tickets!</div>
+						<div>Support Received!</div>
 					</div>
 				</div>
 			</div>
@@ -96,7 +97,7 @@
 	</div>
 </div>
 <!-- /.row -->
-<div class="row">
+<!-- <div class="row">
 	<div class="col-lg-8">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -121,13 +122,10 @@
 					</div>
 				</div>
 			</div>
-			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<div id="morris-area-chart"></div>
 			</div>
-			<!-- /.panel-body -->
 		</div>
-		<!-- /.panel -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
@@ -151,7 +149,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-lg-4">
@@ -217,24 +214,24 @@
 								</tbody>
 							</table>
 						</div>
-						<!-- /.table-responsive -->
+						
 					</div>
-					<!-- /.col-lg-4 (nested) -->
+					
 					<div class="col-lg-8">
 						<div id="morris-bar-chart"></div>
 					</div>
-					<!-- /.col-lg-8 (nested) -->
+					
 				</div>
-				<!-- /.row -->
+				
 			</div>
-			<!-- /.panel-body -->
+			
 		</div>
-		<!-- /.panel -->
+		
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
 			</div>
-			<!-- /.panel-heading -->
+			
 			<div class="panel-body">
 				<ul class="timeline">
 					<li>
@@ -339,17 +336,17 @@
 					</li>
 				</ul>
 			</div>
-			<!-- /.panel-body -->
+			
 		</div>
-		<!-- /.panel -->
+		
 	</div>
-	<!-- /.col-lg-8 -->
+	
 	<div class="col-lg-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-bell fa-fw"></i> Notifications Panel
 			</div>
-			<!-- /.panel-heading -->
+			
 			<div class="panel-body">
 				<div class="list-group">
 					<a href="#" class="list-group-item">
@@ -398,12 +395,12 @@
 						</span>
 					</a>
 				</div>
-				<!-- /.list-group -->
+				
 				<a href="#" class="btn btn-default btn-block">View All Alerts</a>
 			</div>
-			<!-- /.panel-body -->
+			
 		</div>
-		<!-- /.panel -->
+		
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
@@ -412,9 +409,9 @@
 				<div id="morris-donut-chart"></div>
 				<a href="#" class="btn btn-default btn-block">View Details</a>
 			</div>
-			<!-- /.panel-body -->
+			
 		</div>
-		<!-- /.panel -->
+		
 		<div class="chat-panel panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-comments fa-fw"></i> Chat
@@ -452,7 +449,7 @@
 					</ul>
 				</div>
 			</div>
-			<!-- /.panel-heading -->
+			
 			<div class="panel-body">
 				<ul class="chat">
 					<li class="left clearfix">
@@ -518,7 +515,7 @@
 					</li>
 				</ul>
 			</div>
-			<!-- /.panel-body -->
+			
 			<div class="panel-footer">
 				<div class="input-group">
 					<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
@@ -529,10 +526,9 @@
 					</span>
 				</div>
 			</div>
-			<!-- /.panel-footer -->
+			
 		</div>
-		<!-- /.panel .chat-panel -->
+		
 	</div>
-	<!-- /.col-lg-4 -->
-</div>
-<!-- /.row -->
+	
+</div> -->

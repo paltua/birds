@@ -1,3 +1,18 @@
+<link rel="stylesheet" href="<?php echo base_url();?>public/admin/vendor/chosen/chosen.min.css">
+<script src="<?php echo base_url();?>public/admin/vendor/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript"> 
+
+    $(document).ready(function(){
+        // $('#allDataId').on('click','.showChart', function() { 
+        //     $('.myMeterModal').find(".modal-content").html('');
+        //     $('.myMeterModal').modal('show');
+        //     var meter_link = $(this).attr("meter-link");
+        //     $('.myMeterModal').find(".modal-content").load(meter_link);
+        // });
+        $("#animal_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
+    });
+
+</script>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Animal </h1>
@@ -40,17 +55,40 @@
                             <div class="tab-pane fade in <?php if($key == 'en'):?>active<?php endif;?>" id="<?php echo $key;?>">
                                 <h4><?php echo $value;?></h4>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control" type="text" name="acmd_name[<?php echo $key;?>]" value="<?php echo set_value('acmd_name['.$key.']'); ?>">
+                                            <input class="form-control" type="text" name="amd_name[<?php echo $key;?>]" value="<?php echo set_value('acmd_name['.$key.']'); ?>">
                                             <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label>Short Description</label>
-                                            <textarea class="form-control" rows="3" name="acmd_short_desc[<?php echo $key;?>]"><?php echo set_value('acmd_short_desc['.$key.']'); ?></textarea>
+                                            <textarea class="form-control" rows="3" name="amd_short_desc[<?php echo $key;?>]"><?php echo set_value('acmd_short_desc['.$key.']'); ?></textarea>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input class="form-control" type="text" name="amd_price[<?php echo $key;?>]" value="<?php echo set_value('acmd_name['.$key.']'); ?>">
+                                            <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
+                                                <option value="">Select
+                                                <?php if(count($animal_cat) > 0){
+                                                    foreach ($animal_cat as $key => $value) {
+                                                        ?>
+                                                        <option value="<?php echo $value->acm_id;?>"><?php echo $value->acmd_name;?></option>
+                                                    <?php }} ?>
+                                            </select>
+                                        </div>
+                                    </div>    
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
                                 </div>

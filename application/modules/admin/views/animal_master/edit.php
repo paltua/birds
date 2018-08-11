@@ -1,3 +1,18 @@
+<link rel="stylesheet" href="<?php echo base_url();?>public/admin/vendor/chosen/chosen.min.css">
+<script src="<?php echo base_url();?>public/admin/vendor/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript"> 
+
+    $(document).ready(function(){
+        // $('#allDataId').on('click','.showChart', function() { 
+        //     $('.myMeterModal').find(".modal-content").html('');
+        //     $('.myMeterModal').modal('show');
+        //     var meter_link = $(this).attr("meter-link");
+        //     $('.myMeterModal').find(".modal-content").load(meter_link);
+        // });
+        $("#animal_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
+    });
+
+</script>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Animal </h1>
@@ -37,24 +52,55 @@
                             <?php if(count($editData) > 0){
                                     foreach ($editData as $key => $value) {
                             ?>
-                            <input type="hidden" name="data[<?php echo $value->acmd_id;?>][language]" value="<?php echo $value->language;?>">
+                            <input type="hidden" name="data[<?php echo $value->amd_id;?>][language]" value="<?php echo $value->language;?>">
                             <?php if($value->language == 'en'):?>
-                            <input type="hidden" name="eng_lang_id" value="<?php echo $value->acmd_id;?>">
+                            <input type="hidden" name="eng_lang_id" value="<?php echo $value->amd_id;?>">
                             <?php endif;?>
                             <div class="tab-pane fade in <?php if($value->language == 'en'):?>active<?php endif;?>" id="<?php echo $value->language;?>">
                                 <h4><?php echo $value->lang_name;?></h4>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control" type="text" name="data[<?php echo $value->acmd_id;?>][acmd_name]" value="<?php echo $value->acmd_name;?>">
-                                            <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
+                                            <input class="form-control" type="text" name="data[<?php echo $value->amd_id;?>][amd_name]" value="<?php echo $value->amd_name; ?>">
+                                            <?php echo form_error('data['.$value->amd_id.'][amd_name]', '<p class="text-danger">', '</p>'); ?>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label>Short Description</label>
-                                            <textarea class="form-control" rows="3" name="data[<?php echo $value->acmd_id;?>][acmd_short_desc]"><?php echo $value->acmd_short_desc;?></textarea>
+                                            <textarea class="form-control" rows="3" name="data[<?php echo $value->amd_id;?>][amd_short_desc]"><?php echo $value->amd_short_desc; ?></textarea>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input class="form-control" type="text" name="data[<?php echo $value->amd_id;?>][amd_price]" value="<?php echo $value->amd_price; ?>">
+                                            <?php echo form_error('acmd_name['.$value->amd_id.'][amd_price]', '<p class="text-danger">', '</p>'); ?>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
+                                                <option value="">Select
+                                                <?php if(count($animal_cat) > 0){
+                                                    $catsArr = array();
+                                                    if($value->all_cat != ''){
+                                                        $catsArr = explode(',', $value->all_cat);
+                                                    }
+                                                    foreach ($animal_cat as $key => $values) {
+                                                        $selected = '';
+                                                        if(in_array($values->acm_id, $catsArr)){
+                                                            $selected = 'selected';
+                                                        }
+                                                        ?>
+                                                        <option value="<?php echo $values->acm_id;?>" <?php echo $selected;?>><?php echo $values->acmd_name;?></option>
+                                                    <?php }} ?>
+                                            </select>
+                                        </div>
+                                    </div>    
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
                                 </div>

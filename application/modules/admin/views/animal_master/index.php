@@ -36,8 +36,10 @@
         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>
-                    <th>Category Name</th>
-                    <th>Short Description</th>
+                    <th>Animal Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>View Count</th>
                     <th>Status</th>
                     <th>Created Date</th>
                     <th>Action</th>
@@ -53,13 +55,16 @@
                         }
                 ?>
                 <tr class="<?php echo $listClass;?> ">
-                    <td><?php echo $value->acmd_name;?></td>
-                    <td><?php echo $value->acmd_short_desc;?></td>
-                    <td><?php echo ucfirst($value->acm_status);?></td>
-                    <td><?php echo date("F j, Y, g:i a", strtotime($value->acmd_created_date));?></td>
+                    <td><?php echo $value->amd_name;?></td>
+                    <td><?php echo $value->amd_price;?></td>
+                    <td><?php echo $value->all_cat;?></td>
+                    <td><?php echo $value->am_viewed_count;?></td>
+                    <td><?php echo ucfirst($value->am_status);?></td>
+                    <td><?php echo date("F j, Y, g:i a", strtotime($value->am_created_date));?></td>
                     <td class="center">
-                    <a href="<?php echo base_url();?>admin/animal_category/edit/<?php echo $value->acm_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="<?php echo base_url();?>admin/animal_category/delete/<?php echo $value->acm_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-picture-o"></i> Image</a>
+                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/edit/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                     </td>
                 </tr>
                 <?php } } ?>
