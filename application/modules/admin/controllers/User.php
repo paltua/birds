@@ -2,17 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class User extends MX_Controller 
 {
-     private $_user_id;
-     public $adminName;
+    public $controller;
     
     public function __construct(){
         parent::__construct();
-        
         $this->ion_user_auth_admin->isLoggedIn();
-        $this->adminName = ADMIN_NAME;
         $this->load->library('Template');
-        $this->_user_id = trim($this->session->userdata('user_id'));
-        $this->load->model('user_model');
+        $this->_user_id = trim($this->session->userdata('aum_id'));
+        $this->controller = $this->router->fetch_class();
+        $this->load->model($this->controller.'_model');
     }
     
 
@@ -23,11 +21,12 @@ class User extends MX_Controller
         $data['status'] = 0;
         $msg = '';
         $data['msg'] = $this->template->getMessage($data['status'],$msg);
-        $data['list'] = $this->user_model->category();
-        //print_r($data['list']);
-        $this->template->setTitle('User');
-        $this->template->setLayout('home');    
-        $this->template->loginAdminRender('user/user',$data);
+        $data['list'] = $this->user_model->list();
+        $data['controller'] = $this->controller;
+
+        $this->template->setTitle('Admin : User');
+        $this->template->setLayout('dashboard');    
+        $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);
     }
 
     public function adduser() 

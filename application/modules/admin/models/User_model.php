@@ -1,12 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User_model extends CI_Model {
-
-	var $table = 'web_user_master';
-    var $column_order = array(null, 'full_name','email','mobile_no','user_status','user_category'); //set column field database for datatable orderable
-    var $column_search = array('full_name','email','mobile_no','user_status','user_category'); //set column field database for datatable searchable 
-    var $order = array('user_id' => 'asc'); // default order 
- 
+class User_model extends CI_Model { 
 
 	function __construct() {
 		parent::__construct();
@@ -21,16 +15,11 @@ class User_model extends CI_Model {
 		return $query->result();
 	}
 
-    public function category(){
-        $row = $this->db->query("SHOW COLUMNS FROM web_user_master LIKE 'user_category'")->row()->Type;
-        $regex = "/'(.*?)'/";
-        preg_match_all( $regex , $row, $enum_array );
-        $enum_fields = $enum_array[1];
-        foreach ($enum_fields as $key=>$value)
-        {
-            $enums[$value] = $value;
-        }
-        return $enums;
+    public function list(){
+        $this->db->select('*');
+        $this->db->from('user_master');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function details($id){
