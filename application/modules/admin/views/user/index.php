@@ -20,8 +20,8 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <!-- <h1 class="page-header">Animal <a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
-        <i class="fa fa-plus-circle"></i> Add</a></h1> -->
+        <h1 class="page-header">Animal <!-- <a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
+        <i class="fa fa-plus-circle"></i> Add</a> --></h1>
         
     </div>
     <!-- /.col-lg-12 -->
