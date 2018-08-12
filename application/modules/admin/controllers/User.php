@@ -21,7 +21,7 @@ class User extends MX_Controller
         $data['status'] = 0;
         $msg = '';
         $data['msg'] = $this->template->getMessage($data['status'],$msg);
-        $data['list'] = $this->user_model->list();
+        $data['list'] = $this->user_model->listing();
         $data['controller'] = $this->controller;
 
         $this->template->setTitle('Admin : User');
