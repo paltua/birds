@@ -140,6 +140,12 @@ ALTER TABLE `animal_master_details` CHANGE `language` `language` VARCHAR(20) NOT
 ALTER TABLE `animal_master_details` CHANGE `amd_short_desc` `amd_short_desc` TEXT NOT NULL, CHANGE `amd_name` `amd_name` VARCHAR(255) NOT NULL, CHANGE `amd_desc` `amd_desc` LONGTEXT NOT NULL;
 ALTER TABLE `animal_master` CHANGE `am_viewd_count` `am_viewed_count` INT(11) NOT NULL;
 
+ALTER TABLE `animal_master` ADD `am_user_type` ENUM('admin','user') NOT NULL DEFAULT 'admin' AFTER `am_created_date`, ADD `user_id` INT NOT NULL AFTER `am_user_type`;
+
+CREATE TABLE `user_master` ( `user_id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `password` VARCHAR(255) NOT NULL , `um_status` ENUM('active','inactive') NOT NULL DEFAULT 'active' , `mobile` VARCHAR(15) NOT NULL , `um_deleted` TINYINT(1) NOT NULL DEFAULT '0' , `um_created_date` INT NOT NULL , PRIMARY KEY (`user_id`), UNIQUE (`email`)) ENGINE = InnoDB;
+
+ALTER TABLE `animal_master_images` CHANGE `ami_created_date` `ami_created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

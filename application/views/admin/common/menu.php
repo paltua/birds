@@ -251,7 +251,10 @@
                 <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Animal Category</a>
             </li>
             <li>
-                <a href="<?php echo base_url('admin/animal_book');?>"><i class="fa fa-android"></i> Animal Book</a>
+                <a href="<?php echo base_url('admin/animal_book');?>"><i class="fa fa-book"></i> Animal Book</a>
+            </li>
+            <li>
+                <a href="<?php echo base_url('admin/user');?>"><i class="fa fa-users"></i> Users</a>
             </li>
             <!-- <li>
                 <a href="<?php echo base_url('admin/animal_location');?>"><i class="fa fa-table fa-fw"></i> Animal Location</a>

@@ -59,6 +59,16 @@ class Animal_master_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function getImageList($am_id = 0){
+        $this->db->select('*');
+        $this->db->from('animal_master_images AMI');
+        If($am_id > 0){
+            $this->db->where('AMI.am_id', $am_id);
+        }
+        $this->db->order_by('AMI.ami_id', 'DESC');
+        return $this->db->get()->result();
+    }
+
     
    
 }

@@ -78,11 +78,11 @@
 			<div class="panel-heading">
 				<div class="row">
 					<div class="col-xs-3">
-						<i class="fa fa-support fa-5x"></i>
+						<i class="fa fa-users fa-5x"></i>
 					</div>
 					<div class="col-xs-9 text-right">
 						<div class="huge">13</div>
-						<div>Support Received!</div>
+						<div>Total Users!</div>
 					</div>
 				</div>
 			</div>

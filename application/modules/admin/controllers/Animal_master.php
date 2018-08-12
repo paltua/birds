@@ -149,11 +149,11 @@ class Animal_master extends MY_Controller
     }
 
     public function delete($id = 0) {
-        $where['acm_id'] = $id;
-        $data['acm_is_deleted'] = '1';
+        $where['am_id'] = $id;
+        $data['am_deleted'] = '1';
         $status = 'success';
         $msg = 'Successfully Deleted';
-        $this->tbl_generic_model->edit('animal_category_master', $data, $where);
+        $this->tbl_generic_model->edit('animal_master', $data, $where);
         $this->session->set_flashdata('status', $status);
         $this->session->set_flashdata('msg', $msg);
         redirect(base_url().'admin/'.$this->controller);
@@ -169,6 +169,69 @@ class Animal_master extends MY_Controller
             return TRUE;
         }
     }
+
+
+    public function image($am_id = 0){
+        $data = array();
+        $data['controller'] = $this->controller;
+        $data['page_title'] = 'Dashboard';
+        $status = $this->session->flashdata('status');
+        $msg = $this->session->flashdata('msg'); 
+        $data['editData'] = $this->animal_master_model->getSingle($am_id);
+        /*$this->load->library('form_validation');
+        $this->form_validation->set_rules('filename', 'File Name', 'required|trim');*/
+        $this->_upload($am_id);
+
+        $data['list'] = $this->animal_master_model->getImageList($am_id);
+        $data['msg'] = $this->template->getMessage($status, $msg);
+        $this->template->setTitle('Admin : Animal Image');
+        $this->template->setLayout('dashboard');    
+        $this->template->homeAdminRender('admin/'.$this->controller.'/image',$data);
+    }
+
+    private function _upload($am_id = 0){
+        $config['upload_path']          = 'uploads/animal/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        /*$config['max_size']             = 100;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;*/
+        $config['file_name']            = date('YmdHis').$am_id;
+        $this->load->library('upload', $config);
+        if($_FILES){
+            if ( ! $this->upload->do_upload('myFile')){
+                $this->session->set_flashdata('status', 'danger');
+                $this->session->set_flashdata('msg', $this->upload->display_errors());
+            }else{
+                $this->session->set_flashdata('status', 'success');
+                $this->session->set_flashdata('msg', 'Successfully Uploaded');
+                $inData['ami_path'] = $this->upload->data('file_name');
+                $inData['am_id'] = $am_id;
+                $this->tbl_generic_model->add('animal_master_images', $inData);
+                redirect(base_url().'admin/'.$this->controller.'/image/'.$am_id);
+            }
+        }
+    }
+
+
+    public function image_delete($ami_id = 0){
+        $where['ami_id'] = $ami_id;
+        $data = $this->tbl_generic_model->get('animal_master_images','*', $where);
+        if(!empty($data)){
+            $this->session->set_flashdata('status', 'success');
+            $this->session->set_flashdata('msg', 'Successfully Deleted');
+            $this->tbl_generic_model->delete('animal_master_images', $where);
+            @unlink('uploads/animal/'.$data[0]->ami_path);
+            $am_id = $data[0]->am_id;
+            redirect(base_url().'admin/'.$this->controller.'/image/'.$am_id);
+        }else{
+            $this->session->set_flashdata('status', 'danger');
+            $this->session->set_flashdata('msg', 'Wrong Parameter');
+            redirect(base_url().'admin/'.$this->controller.'/index');
+        }
+        
+        
+    }
+    
 
     
     
