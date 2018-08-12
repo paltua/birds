@@ -15,7 +15,7 @@ class User_model extends CI_Model {
 		return $query->result();
 	}
 
-    public function list(){
+    public function listing(){
         $this->db->select('*');
         $this->db->from('user_master');
         $query = $this->db->get();
