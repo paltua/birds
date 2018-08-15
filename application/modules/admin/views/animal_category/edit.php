@@ -52,6 +52,21 @@
                                             <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                         <div class="form-group">
+                                            <label>Parent Category</label>
+                                            <select class="form-control" id="parent_id_<?php echo $value->language;?>" name="parent_id_<?php echo $value->language;?>">
+                                                <option value="0">Select One</option>
+                                                <?php if(count($parentCat) > 0){
+                                                    foreach ($parentCat as $key => $values) {
+                                                        $selected = '';
+                                                        if($values->acm_id == $value->parent_id){
+                                                            $selected = 'selected';
+                                                        }
+                                                        ?>
+                                                        <option value="<?php echo $values->acm_id;?>" <?php echo $selected;?>><?php echo $values->acmd_name;?></option>
+                                                    <?php }} ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Short Description</label>
                                             <textarea class="form-control" rows="3" name="data[<?php echo $value->acmd_id;?>][acmd_short_desc]"><?php echo $value->acmd_short_desc;?></textarea>
                                         </div>

@@ -37,6 +37,7 @@
             <thead>
                 <tr>
                     <th>Category Name</th>
+                    <th>Parent Category</th>
                     <th>Short Description</th>
                     <th>Status</th>
                     <th>Created Date</th>
@@ -54,6 +55,7 @@
                 ?>
                 <tr class="<?php echo $listClass;?> ">
                     <td><?php echo $value->acmd_name;?></td>
+                    <td><?php echo $value->parent_name;?></td>
                     <td><?php echo $value->acmd_short_desc;?></td>
                     <td><?php echo ucfirst($value->acm_status);?></td>
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->acmd_created_date));?></td>

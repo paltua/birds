@@ -202,6 +202,7 @@ class User_model extends CI_Model {
         $this->db->select('UM.*');
         $this->db->from('user_master UM');
         $this->db->where('UM.email',strtolower($where['email']));
+        $this->db->where('UM.um_deleted','0');
         $query = $this->db->get();
         return $query->result();
     }

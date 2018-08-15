@@ -46,21 +46,40 @@ class Auth extends MX_Controller
             }
         }
         $data['msg'] = $this->template->getMessage($status,$msg);
-        /*$this->template->setTitle('Login');
+        $this->template->setTitle('Login');
         $this->template->setLayout('login');
-        $this->template->loginRender('auth/login', $data);*/
-        $this->load->view('auth/login', $data);
+        $this->template->loginRender('auth/login', $data);
+        //$this->load->view('auth/login', $data);
+    }
+
+    public function registration(){
+        
+        $this->ion_user_auth->isLogIn();
+        $data = array();
+        $status = '';
+        $msg = '';
+        $this->load->library('form_validation');
+        if($this->input->post()){
+            $this->form_validation->set_rules('user_master[email]','Email','trim|required');
+            $this->form_validation->set_rules('user_master[password]','Password','trim|required');
+            if($this->form_validation->run() === TRUE){
+                
+            }else{
+                $status = 'danger';
+                $msg = validation_errors();
+            }
+        }
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $this->template->setTitle('Login');
+        $this->template->setLayout('login');
+        $this->template->loginRender('auth/registration', $data);
+        //$this->load->view('auth/login', $data);
     }
 
     private function _setRedirectRule(){
         $user_id = $this->session->userdata('user_id');
         if($user_id){
-            if($user_id == 9){
-                redirect(base_url('weaving/dashboard'));
-            }else{
-                redirect(base_url('account/dashboard'));
-            }
-            
+            redirect(base_url('account/dashboard'));
         }else{  
             redirect(base_url('account/auth/login'),'refresh');
         }

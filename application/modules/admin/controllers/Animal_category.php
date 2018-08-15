@@ -29,6 +29,7 @@ class Animal_category extends MY_Controller
     }
 
     public function add() {
+        $acm_id = 0;
         $data = array();
         $data['page_title'] = 'Dashboard';
         $status = '';
@@ -40,11 +41,12 @@ class Animal_category extends MY_Controller
         }
         if ($this->form_validation->run() == TRUE){
             $nameArr = $this->input->post('acmd_name');
-            $nameCheck = $this->name_check($nameArr['en']);
+            $nameCheck = $this->name_check($nameArr['en'], $acm_id);
             if($nameCheck){
                 $shortDescArr = $this->input->post('acmd_short_desc');
                 $maData['acm_status'] = 'active';
                 $maData['acm_url_name'] = url_title($nameArr['en']);
+                $maData['parent_id'] = $this->input->post('parent_id_en');
                 $insertId = $this->tbl_generic_model->add('animal_category_master', $maData);
                 $inData = array();
                 if(count($nameArr)){
@@ -68,6 +70,7 @@ class Animal_category extends MY_Controller
                 $msg = 'This name is already used in English';
             }
         }
+        $data['parentCat'] = $this->animal_category_model->getParent(0);
         $data['msg'] = $this->template->getMessage($status, $msg);
         $this->template->setTitle('Admin : Animal Category');
         $this->template->setLayout('dashboard');    
@@ -88,9 +91,13 @@ class Animal_category extends MY_Controller
         if ($this->form_validation->run() == TRUE){
             $nameArr = $this->input->post('data');
             $eng_lang_id = $this->input->post('eng_lang_id');
-            // $nameCheck = $this->name_check($nameArr[$eng_lang_id]['acmd_name']);
-            // if($nameCheck){
+            $nameCheck = $this->name_check($nameArr[$eng_lang_id]['acmd_name'], $id);
+            if($nameCheck){
                 if(count($nameArr)){
+                    $maWhere['acm_id'] = $id;
+                    $maData['acm_url_name'] = url_title($nameArr['en']);
+                    $maData['parent_id'] = $this->input->post('parent_id_en');
+                    $this->tbl_generic_model->edit('animal_category_master', $maData, $maWhere);
                     foreach ($nameArr as $key => $value) {
                         $where = $upData = array();
                         $where['acmd_id'] = $key;
@@ -104,12 +111,13 @@ class Animal_category extends MY_Controller
                 $this->session->set_flashdata('status', $status);
                 $this->session->set_flashdata('msg', $msg);
                 redirect(base_url().'admin/'.$this->controller);
-            // }else{
-            //     $status = 'danger';
-            //     $msg = 'This name is already used in English';
-            // }
+            }else{
+                $status = 'danger';
+                $msg = 'This name is already used in English';
+            }
         }
         $data['msg'] = $this->template->getMessage($status, $msg);
+        $data['parentCat'] = $this->animal_category_model->getParent(0);
         $this->template->setTitle('Admin : Animal Category');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/edit',$data);
@@ -127,9 +135,9 @@ class Animal_category extends MY_Controller
     }
 
 
-    public function name_check($str){
+    public function name_check($str ='', $acm_id = 0){
         $data = url_title($str);
-        $ret = $this->animal_category_model->check_name_url($data);
+        $ret = $this->animal_category_model->check_name_url($data, $acm_id);
         if ($ret > 0){
             return FALSE;
         }else{

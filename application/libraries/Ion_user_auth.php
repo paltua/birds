@@ -15,7 +15,7 @@ class Ion_user_auth{
         self::$CI = &get_instance();
         //self::$CI->load->model('account/user_model');
         $this->_user_id = self::$CI->session->userdata('user_id');
-        $this->_full_name = self::$CI->session->userdata('full_name');
+        $this->_full_name = self::$CI->session->userdata('name');
         $this->_user_category = self::$CI->session->userdata('user_category');
         $this->_user_status = self::$CI->session->userdata('user_status');
 		$this->module = self::$CI->router->fetch_module();
@@ -74,9 +74,9 @@ class Ion_user_auth{
     private function _setSession($userData = array()){
         self::$CI->session->set_userdata('user_id', $userData[0]->user_id);
         self::$CI->session->set_userdata('email', $userData[0]->email);
-        self::$CI->session->set_userdata('full_name', $userData[0]->full_name);
-        self::$CI->session->set_userdata('user_category', $userData[0]->user_category);
-        self::$CI->session->set_userdata('user_status', $userData[0]->user_status);
+        self::$CI->session->set_userdata('full_name', $userData[0]->name);
+        self::$CI->session->set_userdata('user_category', '');
+        self::$CI->session->set_userdata('user_status', $userData[0]->um_status);
         
     }
 	/*

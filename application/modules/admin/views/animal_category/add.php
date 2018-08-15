@@ -47,6 +47,18 @@
                                             <input class="form-control" type="text" name="acmd_name[<?php echo $key;?>]" value="<?php echo set_value('acmd_name['.$key.']'); ?>">
                                             <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>Parent Category</label>
+                                            <select class="form-control" id="parent_id_<?php echo $key;?>" name="parent_id_<?php echo $key;?>">
+                                                <option value="0">Select one</option>
+                                                <?php if(count($parentCat) > 0){
+                                                    foreach ($parentCat as $key => $value) {
+                                                        ?>
+                                                        <option value="<?php echo $value->acm_id;?>"><?php echo $value->acmd_name;?></option>
+                                                    <?php }} ?>
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <label>Short Description</label>
                                             <textarea class="form-control" rows="3" name="acmd_short_desc[<?php echo $key;?>]"><?php echo set_value('acmd_short_desc['.$key.']'); ?></textarea>
