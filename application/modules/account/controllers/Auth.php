@@ -29,7 +29,7 @@ class Auth extends MX_Controller
         $msg = '';
         $this->load->library('form_validation');
         if($this->input->post()){
-            $this->form_validation->set_rules('user_master[email]','Email','trim|required');
+            $this->form_validation->set_rules('user_master[email]','Email','trim|required|valid_email');
             $this->form_validation->set_rules('user_master[password]','Password','trim|required');
             if($this->form_validation->run() === TRUE){
                 $user_master = $this->input->post('user_master');
@@ -60,13 +60,29 @@ class Auth extends MX_Controller
         $msg = '';
         $this->load->library('form_validation');
         if($this->input->post()){
-            $this->form_validation->set_rules('user_master[email]','Email','trim|required');
-            $this->form_validation->set_rules('user_master[password]','Password','trim|required');
+            $this->form_validation->set_rules('user_master[name]','Email','trim|required');
+            $this->form_validation->set_rules('user_master[mobile]','Email','trim|required|is_natural_no_zero');
+            $this->form_validation->set_rules('user_master[email]','Email','trim|required|valid_email');
+            $this->form_validation->set_rules('password','Password','trim|required');
+            $this->form_validation->set_rules('cnfPassword', 'Password Confirmation', 'trim|required|matches[password]');
             if($this->form_validation->run() === TRUE){
-                
+                $user_master = $this->input->post('user_master');
+                $pwd = $this->input->post('password');
+                $user_master['password'] = $this->getPassword($pwd);
+                $user_master['um_status'] = 'inactive';
+                $user_master['random_unique_id'] = 'p'.date('Ymdhis').'d';
+                $user_id = $this->tbl_generic_model->add('user_master', $user_master);
+                if($user_id > 0){
+                    $this->_sendActivateEmail($user_id, $user_master);
+                    $status = 'success';
+                    $msg = 'Please check your email. A account creation link has been sent to your email.';
+                }else{
+                    $status = 'danger';
+                    $msg = "Something went wrong. Please try again later!";
+                }
             }else{
                 $status = 'danger';
-                $msg = validation_errors();
+                $msg = "Please check the error(s) as below.";
             }
         }
         $data['msg'] = $this->template->getMessage($status,$msg);
@@ -74,6 +90,26 @@ class Auth extends MX_Controller
         $this->template->setLayout('login');
         $this->template->loginRender('auth/registration', $data);
         //$this->load->view('auth/login', $data);
+    }
+
+    private function _sendActivateEmail($user_id = 0, $user_master = array()){
+        $generatetime = urlencode(base64_encode($user_master['random_unique_id'])) ;
+        $url = base_url() . "account/auth/activate/".$generatetime ;
+        $viewData['url'] = $url;
+        $viewData['full_name'] = $user_master['name'];
+        $msgbody = $this->load->view('auth/activateEmail', $viewData,TRUE);
+            
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+        // More headers
+        $headers .= 'From: '.SITENAME.' Notifications <'.SUPPORTEMAIL.'>';        
+        
+        if( @mail( $mailid, 'Password Reset Mail ', $msgbody, $headers ) ){            
+            return true;            
+        }else{            
+            return false;            
+        }
     }
 
     private function _setRedirectRule(){
@@ -85,7 +121,7 @@ class Auth extends MX_Controller
         }
     }
     
- public function forgotPassword(){
+    public function forgotPassword(){
         $this->ion_user_auth->isLogIn();
         $data = array();
         $status = '';
@@ -226,9 +262,8 @@ class Auth extends MX_Controller
     public function getPassword($pwd = ''){
         $newPwd = '';
         if($pwd != ''){
-            $salt = $this->config->item('encryption_key');
             $cost = $this->config->item('cost');
-            $newPwd = password_hash($pwd,PASSWORD_BCRYPT, array('cost'=>$cost,'salt'=>$salt));
+            $newPwd = password_hash($pwd,PASSWORD_BCRYPT, array('cost'=>$cost));
         }
         return $newPwd;
     }

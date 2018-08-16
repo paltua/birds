@@ -30,12 +30,7 @@ $(document).ready(function(){
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">Enterprise Grade EDA Solutions by EnergyTech Ventures | Welspun, Anjar</a>
-            </div>
-        <ul class="nav navbar-nav">
-            <?php $this->load->view('header');?>
-        </ul>
+           
         </div>
     </nav>
     <section class="pad">
@@ -44,21 +39,37 @@ $(document).ready(function(){
               <div class="row">
                 <div class="col-xs-4"></div>
                 <div class="col-xs-4">
-                    <img src="<?php echo base_url();?>resource/logo/ETV_Logo.png" width="180" style="float: left;">
-                    <img src="<?php echo base_url();?>resource/logo/welspun-group.jpg" width="180" style="float: left;">
-                    <h4><b>User Login</b></h4>
+                    
+                    
                       <div class="login-box-body">
                         <p class="login-box-msg">Sign up</p>
                         <form class="form account-form" accept-charset="utf-8" method="post" action="">
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <?php echo $msg;?>
                             <div class="form-group">
+                              <label for="username">Name</label>
+                              <input type="text"  class="form-control" id="login-username" name="user_master[name]" placeholder="Please enter Name" tabindex="1">
+                              <?php echo form_error('user_master[name]', '<p class="text-danger">', '</p>'); ?>
+                            </div>
+                            <div class="form-group">
+                              <label for="username">Mobile</label>
+                              <input type="text"  class="form-control" id="login-username" name="user_master[mobile]" placeholder="Please enter Mobile" tabindex="2">
+                              <?php echo form_error('user_master[mobile]', '<p class="text-danger">', '</p>'); ?>
+                            </div>
+                            <div class="form-group">
                               <label for="username">Email</label>
-                              <input type="text"  class="form-control" id="login-username" name="user_master[email]" placeholder="Username" tabindex="1">
+                              <input type="email"  class="form-control" id="login-username" name="user_master[email]" placeholder="Please enter Email" tabindex="3">
+                              <?php echo form_error('user_master[email]', '<p class="text-danger">', '</p>'); ?>
                             </div>
                             <div class="form-group">
                               <label for="username">Password</label>
-                              <input type="password" class="form-control" id="login-password" value="" name="user_master[password]" placeholder="Password" tabindex="2">
+                              <input type="password" class="form-control" id="login-password" value="" name="password" placeholder="Please enter Password" tabindex="4">
+                              <?php echo form_error('password', '<p class="text-danger">', '</p>'); ?>
+                            </div>
+                            <div class="form-group">
+                              <label for="username">Confirm Password</label>
+                              <input type="password" class="form-control" id="login-password" value="" name="cnfPassword" placeholder="Please enter Confirm Password" tabindex="5">
+                              <?php echo form_error('cnfPassword', '<p class="text-danger">', '</p>'); ?>
                             </div>
                             <div class="row">
                               

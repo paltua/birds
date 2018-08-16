@@ -30,12 +30,7 @@ $(document).ready(function(){
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">Enterprise Grade EDA Solutions by EnergyTech Ventures | Welspun, Anjar</a>
-            </div>
-        <ul class="nav navbar-nav">
-            <?php $this->load->view('header');?>
-        </ul>
+            
         </div>
     </nav>
     <section class="pad">
@@ -44,11 +39,8 @@ $(document).ready(function(){
               <div class="row">
                 <div class="col-xs-4"></div>
                 <div class="col-xs-4">
-                    <img src="<?php echo base_url();?>resource/logo/ETV_Logo.png" width="180" style="float: left;">
-                    <img src="<?php echo base_url();?>resource/logo/welspun-group.jpg" width="180" style="float: left;">
-                    <h4><b>User Login</b></h4>
                       <div class="login-box-body">
-                        <p class="login-box-msg">Sign in to start your session</p>
+                        <p class="login-box-msg">Login</p>
                         <form class="form account-form" accept-charset="utf-8" method="post" action="">
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <?php echo $msg;?>
