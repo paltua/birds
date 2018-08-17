@@ -28,7 +28,7 @@
                                     <p style="font-size:13px;font-family:Arial,sans-serif;line-height:18px;color:rgb(85,85,85);margin:0px 0px 10px">
                                         You recently created your account.
                                         <br>
-                                        <h2 style="font-size:17px;font-weight:bold;font-family:Arial,sans-serif;line-height:23px;margin:0px 0px 10px;color:rgb(227,69,0)"><a href="<?php echo $url;?>"> Please click  here to activate your account</a></h2>
+                                        <h2 style="font-size:17px;font-weight:bold;font-family:Arial,sans-serif;line-height:23px;margin:0px 0px 10px;color:rgb(227,69,0)"><a target="_blank" href="<?php echo $url;?>"> Please click  here to activate your account</a></h2>
                                         <br>
                                         If you did not request to create a account, someone may have been trying to create a account without your permission. 
                                         As long as you do not click the link contained in the email, no action will be taken and your account will remain same.<br/><br/>

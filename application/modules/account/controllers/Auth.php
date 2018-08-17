@@ -70,7 +70,8 @@ class Auth extends MX_Controller
                 $pwd = $this->input->post('password');
                 $user_master['password'] = $this->getPassword($pwd);
                 $user_master['um_status'] = 'inactive';
-                $user_master['random_unique_id'] = 'p'.date('Ymdhis').'d';
+                $user_master['um_deleted'] = '1';
+                $user_master['random_unique_id'] = date('Ymdhis').rand(100,999);
                 $user_id = $this->tbl_generic_model->add('user_master', $user_master);
                 if($user_id > 0){
                     $this->_sendActivateEmail($user_id, $user_master);
@@ -98,7 +99,8 @@ class Auth extends MX_Controller
         $viewData['url'] = $url;
         $viewData['full_name'] = $user_master['name'];
         $msgbody = $this->load->view('auth/activateEmail', $viewData,TRUE);
-            
+        echo $msgbody;
+        exit;    
         // Always set content-type when sending HTML email
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
@@ -110,6 +112,18 @@ class Auth extends MX_Controller
         }else{            
             return false;            
         }
+    }
+
+    public function activate($unique_link_no = 0){
+        $where['random_unique_id'] = base64_decode(urldecode($unique_link_no));
+        $where['um_status'] = 'inactive';
+        $where['um_deleted'] = 1;
+        $user_master['um_status'] = 'active';
+        $user_master['email_validate_date'] = date('Y-m-d H:i:s');
+        $user_master['um_deleted'] = '0';
+        $user_master['random_unique_id'] = '';
+        $this->tbl_generic_model->edit('user_master', $user_master, $where);
+        redirect(base_url('account/auth/login'),'refresh');
     }
 
     private function _setRedirectRule(){

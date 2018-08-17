@@ -86,4 +86,6 @@ defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREA
 defined('ADMIN_NAME')      OR define('ADMIN_NAME', 'admin'); // highest automatically-assigned error code
 defined('SUPPORTEMAIL')        OR define('SUPPORTEMAIL', 'info@parrotdipankar.com');
 defined('THEME') OR define('THEME', 'theme1');
+defined('SITENAME') OR define('SITENAME', 'parrotdipankar.com');
+
 
