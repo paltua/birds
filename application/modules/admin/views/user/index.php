@@ -57,7 +57,7 @@
                     <td><?php echo $value->name;?></td>
                     <td><?php echo $value->email;?></td>
                     <td><?php echo $value->mobile;?></td>
-                    <td><?php echo ucfirst($value->um_status);?></td>
+                    <td><span class="badge badge-pill badge-<?php echo $value->um_status == 'active'?'success':'secondary';?>"><?php echo ucfirst($value->um_status);?></span></td>
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->um_created_date));?></td>
                     <td class="center">
                         <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/edit/<?php echo $value->user_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>

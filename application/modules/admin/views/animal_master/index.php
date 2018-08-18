@@ -61,7 +61,7 @@
                     <td><?php echo $value->all_cat;?></td>
                     <td><?php echo $value->am_user_type;?></td>
                     <td><?php echo $value->am_viewed_count;?></td>
-                    <td><?php echo ucfirst($value->am_status);?></td>
+                    <td><span class="badge badge-pill badge-<?php echo $value->am_status == 'active'?'success':'secondary';?>"><?php echo ucfirst($value->am_status);?></span></td>
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->am_created_date));?></td>
                     <td class="center">
                         <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/image/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-picture-o"></i> Image</a>

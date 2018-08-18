@@ -10,7 +10,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#exampleTable').DataTable({
+        $('#dataTables-example').DataTable({
             responsive: true,
             order: [[ 3 , "desc" ]]
         });
@@ -20,8 +20,8 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Animal Category<a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
-        <i class="fa fa-plus-circle"></i> Add</a></h1>
+        <h1 class="page-header">Comments <!-- <a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
+        <i class="fa fa-plus-circle"></i> Add</a> --></h1>
         
     </div>
     <!-- /.col-lg-12 -->
@@ -33,12 +33,11 @@
     </div>
     <?php endif;?>
     <div class="col-lg-12">
-        <table width="100%" class="table table-striped table-bordered table-hover" id="exampleTable">
+        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>
-                    <th>Category Name</th>
-                    <th>Parent Category</th>
-                    <th>Short Description</th>
+                    <th>Name</th>
+                    <th>Comment</th>
                     <th>Status</th>
                     <th>Created Date</th>
                     <th>Action</th>
@@ -54,18 +53,16 @@
                         }
                 ?>
                 <tr class="<?php echo $listClass;?> ">
-                    <td><?php echo $value->acmd_name;?></td>
-                    <td><?php echo $value->parent_name;?></td>
-                    <td><?php echo $value->acmd_short_desc;?></td>
-                    <td><span class="badge badge-pill badge-<?php echo $value->acm_status == 'active'?'success':'secondary';?>"><?php echo ucfirst($value->acm_status);?></span></td>
-                    <td><?php echo date("F j, Y, g:i a", strtotime($value->acmd_created_date));?></td>
+                    <td><?php echo $value->name;?></td>
+                    <td><?php echo $value->comments;?></td>
+                    <td><span class="badge badge-pill badge-<?php echo $value->com_status == 'active'?'success':'secondary';?>"><?php echo ucfirst($value->com_status);?></span></td>
+                    <td><?php echo date("F j, Y, g:i a", strtotime($value->created_date));?></td>
                     <td class="center">
-                    <a href="<?php echo base_url();?>admin/animal_category/edit/<?php echo $value->acm_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="<?php echo base_url();?>admin/animal_category/delete/<?php echo $value->acm_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/edit/<?php echo $value->com_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->com_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                     </td>
                 </tr>
                 <?php } } ?>
-                
             </tbody>
         </table>
     </div>

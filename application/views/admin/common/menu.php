@@ -245,16 +245,19 @@
                 </ul>
             </li> -->
             <li>
-                <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Animal</a>
+                <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Animals</a>
             </li>
             <li>
                 <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Animal Category</a>
             </li>
             <li>
-                <a href="<?php echo base_url('admin/animal_book');?>"><i class="fa fa-book"></i> Animal Book</a>
+                <a href="<?php echo base_url('admin/animal_book');?>"><i class="fa fa-book"></i> Animal Books</a>
             </li>
             <li>
                 <a href="<?php echo base_url('admin/user');?>"><i class="fa fa-users"></i> Users</a>
+            </li>
+            <li>
+                <a href="<?php echo base_url('admin/comment');?>"><i class="fa fa-comments"></i> Comments</a>
             </li>
             <!-- <li>
                 <a href="<?php echo base_url('admin/animal_location');?>"><i class="fa fa-table fa-fw"></i> Animal Location</a>
