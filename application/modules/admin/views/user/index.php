@@ -41,7 +41,7 @@
                     <th>Mobile</th>
                     <th>Status</th>
                     <th>Created Date</th>
-                    <!-- <th>Action</th> -->
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>

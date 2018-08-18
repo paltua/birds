@@ -3,6 +3,13 @@
 <script type="text/javascript"> 
 
     $(document).ready(function(){
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        $.ajaxSetup({
+          data: csfrData
+        });
         // $('#allDataId').on('click','.showChart', function() { 
         //     $('.myMeterModal').find(".modal-content").html('');
         //     $('.myMeterModal').modal('show');
@@ -10,6 +17,16 @@
         //     $('.myMeterModal').find(".modal-content").load(meter_link);
         // });
         $("#animal_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
+        $("#animal_p_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
+
+        $("#animal_p_cat_id").change(function(){
+            var parent_id = parseInt($(this).val());
+            var url = '<?php echo base_url();?>admin/animal_master/getChildCategory'
+            $.post( url, { parent_id: parent_id, selectedChild : ''}, function( data ) {
+                $("#animal_cat_id").html(data.data);
+                $('#animal_cat_id').trigger("chosen:updated");
+            },'json');
+        });
     });
 
 </script>
@@ -66,24 +83,19 @@
                                             <input class="form-control" type="text" name="data[<?php echo $value->amd_id;?>][amd_name]" value="<?php echo $value->amd_name; ?>">
                                             <?php echo form_error('data['.$value->amd_id.'][amd_name]', '<p class="text-danger">', '</p>'); ?>
                                         </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Short Description</label>
-                                            <textarea class="form-control" rows="3" name="data[<?php echo $value->amd_id;?>][amd_short_desc]"><?php echo $value->amd_short_desc; ?></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
+
                                         <div class="form-group">
                                             <label>Price</label>
                                             <input class="form-control" type="text" name="data[<?php echo $value->amd_id;?>][amd_price]" value="<?php echo $value->amd_price; ?>">
                                             <?php echo form_error('acmd_name['.$value->amd_id.'][amd_price]', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                         
+                                        
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Category</label>
-                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
+                                            <label>Parent Category</label>
+                                            <select class="form-control" id="animal_p_cat_id" name="p_acr">
                                                 <option value="">Select
                                                 <?php if(count($animal_cat) > 0){
                                                     $catsArr = array();
@@ -91,6 +103,31 @@
                                                         $catsArr = explode(',', $value->all_cat);
                                                     }
                                                     foreach ($animal_cat as $key => $values) {
+                                                        $selected = '';
+                                                        if(in_array($values->acm_id, $catsArr)){
+                                                            $selected = 'selected';
+                                                        }
+                                                        ?>
+                                                        <option value="<?php echo $values->acm_id;?>" <?php echo $selected;?>><?php echo $values->acmd_name;?></option>
+                                                    <?php }} ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Short Description</label>
+                                            <textarea class="form-control" rows="3" name="data[<?php echo $value->amd_id;?>][amd_short_desc]"><?php echo $value->amd_short_desc; ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
+                                                <option value="">Select
+                                                <?php if(count($animal_child_cat) > 0){
+                                                    $catsArr = array();
+                                                    if($value->all_cat != ''){
+                                                        $catsArr = explode(',', $value->all_cat);
+                                                    }
+                                                    foreach ($animal_child_cat as $key => $values) {
                                                         $selected = '';
                                                         if(in_array($values->acm_id, $catsArr)){
                                                             $selected = 'selected';

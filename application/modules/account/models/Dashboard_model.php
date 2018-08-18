@@ -1,17 +1,11 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Dashboard_model extends CI_Model {
-    private $fm_db;
-    private $air_db;
-    private $ems_cpp;
-    private $welspun_datalog;
+    
     function __construct() {
         parent::__construct();
 		log_message('INFO', 'account/models/Dashboard_model enter');
-        $this->fm_db = $this->load->database('welspun_fm', TRUE);
-        $this->air_db = $this->load->database('welspun_air', TRUE);
-        $this->ems_cpp = $this->load->database('welspun_ems_cpp', TRUE);
-        $this->welspun_datalog = $this->load->database('welspun_datalog', TRUE);
+        
     }
 
     public function getEmsLast15DataTypeWise(){

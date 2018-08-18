@@ -59,9 +59,9 @@ $(document).ready(function(){
                               <div class="col-xs-12">
                                 
                                 <button type="submit" class="btn btn-primary" tabindex="4">Sign In</button>
-                                <!-- <div class="pull-right links">
+                                <div class="pull-right links">
                                     <a href="<?php echo base_url() ?>account/auth/forgotPassword">Forgot Password</a>
-                                </div> -->
+                                </div>
                               </div>
                             </div>
                             <div></div>

@@ -14,16 +14,21 @@ class Dashboard extends MX_Controller
         $this->data = array();
         $this->startDateTime = date('Y-m-d H:i:s');
         $this->dataTimeInterval = 'PT00H15M00S';
-        addPageDetails();
     }
     
     public function index(){
-    	$this->data['emsHtml'] = $this->_getEmsHtml();
-    	$this->data['steamHtml'] = $this->_getSteamHtml();
-    	$this->data['airHtml'] = $this->_getAirHtml();
-        $this->data['transHtml'] = $this->_getTransHtml();
-        $this->data['connectivityStatus'] = $this->_getDataFetchingStatus();
-        $this->load->view('dashboard/index', $this->data);
+        $status = '';
+        $msg = '';
+    	$this->data['emsHtml'] = '';//$this->_getEmsHtml();
+    	$this->data['steamHtml'] = '';//$this->_getSteamHtml();
+    	$this->data['airHtml'] = '';//$this->_getAirHtml();
+        $this->data['transHtml'] = '';//$this->_getTransHtml();
+        $this->data['connectivityStatus'] = '';//$this->_getDataFetchingStatus();
+        //$this->load->view('dashboard/index', $this->data);
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $this->template->setTitle('Login');
+        $this->template->setLayout('login');
+        $this->template->loginRender('dashboard/index', $this->data);
     }
 
     private function _getEmsHtml(){

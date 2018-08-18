@@ -1,3 +1,20 @@
+<link rel="stylesheet" href="<?php echo base_url();?>public/admin/vendor/chosen/chosen.min.css">
+<script src="<?php echo base_url();?>public/admin/vendor/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript"> 
+
+    $(document).ready(function(){
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        $.ajaxSetup({
+          data: csfrData
+        });
+        $("#parent_id_en").chosen({no_results_text: "Oops, No Transformer found!"});
+    });
+</script> 
+
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Animal Category</h1>
@@ -53,7 +70,7 @@
                                             <select class="form-control" id="parent_id_<?php echo $key;?>" name="parent_id_<?php echo $key;?>">
                                                 <option value="0">Select one</option>
                                                 <?php if(count($parentCat) > 0){
-                                                    foreach ($parentCat as $key => $value) {
+                                                    foreach ($parentCat as $value) {
                                                         ?>
                                                         <option value="<?php echo $value->acm_id;?>"><?php echo $value->acmd_name;?></option>
                                                     <?php }} ?>

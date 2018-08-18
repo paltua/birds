@@ -59,6 +59,39 @@ class Animal_master_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function getAllAnimalParentCategory($parent_id = 0){
+        $this->db->select('*');
+        $this->db->from('animal_category_master ACM');
+        $this->db->join('animal_category_master_details ACMD','ACMD.acm_id=ACM.acm_id','INNER');
+        $this->db->where('ACM.acm_is_deleted','0');
+        $this->db->where('ACM.acm_status','active');
+        $this->db->where('ACMD.language','en');
+        $this->db->where('ACM.parent_id', $parent_id);
+        $this->db->order_by('ACMD.acmd_name', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    public function getAllAnimalChildCategory($am_id = 0){
+        $sql = "SELECT ACM1.*,ACMD.* 
+                    FROM   (SELECT ACR.acm_id 
+                            FROM   `animal_category_relation` ACR 
+                                   JOIN animal_category_master ACM 
+                                     ON ACM.acm_id = ACR.`acm_id` 
+                            WHERE  1 
+                                   AND ACR.`am_id` = ".$am_id." 
+                                   AND ACM.parent_id = 0 
+                                   AND ACM.acm_is_deleted = '0' 
+                                   AND ACM.acm_status = 'active') NewTbl 
+                            LEFT JOIN animal_category_master ACM1 
+                                  ON ACM1.parent_id = NewTbl.`acm_id` 
+                            JOIN animal_category_master_details ACMD ON ACMD.acm_id = ACM1.acm_id      
+                    WHERE  1 
+                           AND ACM1.acm_is_deleted = '0' 
+                           AND ACM1.acm_status = 'active'
+                           AND ACMD.language = 'en' ";
+        return $this->db->query($sql)->result();                   
+    }
+
     public function getImageList($am_id = 0){
         $this->db->select('*');
         $this->db->from('animal_master_images AMI');

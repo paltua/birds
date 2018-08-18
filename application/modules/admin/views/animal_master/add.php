@@ -3,6 +3,13 @@
 <script type="text/javascript"> 
 
     $(document).ready(function(){
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        $.ajaxSetup({
+          data: csfrData
+        });
         // $('#allDataId').on('click','.showChart', function() { 
         //     $('.myMeterModal').find(".modal-content").html('');
         //     $('.myMeterModal').modal('show');
@@ -10,6 +17,16 @@
         //     $('.myMeterModal').find(".modal-content").load(meter_link);
         // });
         $("#animal_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
+        $("#animal_p_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
+
+        $("#animal_p_cat_id").change(function(){
+            var parent_id = parseInt($(this).val());
+            var url = '<?php echo base_url();?>admin/animal_master/getChildCategory'
+            $.post( url, { parent_id: parent_id, selectedChild : ''}, function( data ) {
+                $("#animal_cat_id").html(data.data);
+                $('#animal_cat_id').trigger("chosen:updated");
+            },'json');
+        });
     });
 
 </script>
@@ -59,33 +76,43 @@
                                         
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control" type="text" name="amd_name[<?php echo $key;?>]" value="<?php echo set_value('acmd_name['.$key.']'); ?>">
-                                            <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
+                                            <input class="form-control" type="text" name="amd_name[<?php echo $key;?>]" value="<?php echo set_value('amd_name['.$key.']'); ?>">
+                                            <?php echo form_error('amd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Short Description</label>
-                                            <textarea class="form-control" rows="3" name="amd_short_desc[<?php echo $key;?>]"><?php echo set_value('acmd_short_desc['.$key.']'); ?></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input class="form-control" type="text" name="amd_price[<?php echo $key;?>]" value="<?php echo set_value('acmd_name['.$key.']'); ?>">
-                                            <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
+                                            <input class="form-control" type="text" name="amd_price[<?php echo $key;?>]" value="<?php echo set_value('amd_price['.$key.']'); ?>">
+                                            <?php echo form_error('amd_price['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                         
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Category</label>
-                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
-                                                <option value="">Select
+                                            <label>Parent Category</label>
+                                            <select class="form-control" id="animal_p_cat_id" name="p_acr">
+                                                <option value="">Select One</option>
                                                 <?php if(count($animal_cat) > 0){
-                                                    foreach ($animal_cat as $key => $value) {
+                                                    foreach ($animal_cat as $value) {
                                                         ?>
                                                         <option value="<?php echo $value->acm_id;?>"><?php echo $value->acmd_name;?></option>
                                                     <?php }} ?>
+                                            </select>
+                                            <?php echo form_error('p_acr', '<p class="text-danger">', '</p>'); ?>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Short Description</label>
+                                            <textarea class="form-control" rows="3" name="amd_short_desc[<?php echo $key;?>]"><?php echo set_value('amd_short_desc['.$key.']'); ?></textarea>
+                                            <?php echo form_error('amd_short_desc['.$key.']', '<p class="text-danger">', '</p>'); ?>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-4">
+                                        
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
+                                                <option value="">Select</option>
+                                                
                                             </select>
                                         </div>
                                     </div>    

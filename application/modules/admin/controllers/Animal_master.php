@@ -25,7 +25,7 @@ class Animal_master extends MY_Controller
         $data['list'] = $this->animal_master_model->getAllData();
         //pr($data['list']);
         $data['controller'] = $this->controller;
-        $this->template->setTitle('Admin : Animal');
+        $this->template->setTitle('Admin : Animal Listing');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);
     }
@@ -40,6 +40,10 @@ class Animal_master extends MY_Controller
         $this->load->library('form_validation');
         foreach($data['lang'] as $key => $value){
             $this->form_validation->set_rules('amd_name['.$key.']', 'Name in '.$value, 'required|trim');
+            $this->form_validation->set_rules('amd_price['.$key.']', 'Price in '.$value, 'required|trim');
+            $this->form_validation->set_rules('p_acr', 'Parent category', 'required|trim');
+            $this->form_validation->set_rules('amd_short_desc['.$key.']', 'Short Description in '.$value, 'required|trim');
+            
         }
         if ($this->form_validation->run() == TRUE){
             $nameArr = $this->input->post('amd_name');
@@ -75,9 +79,9 @@ class Animal_master extends MY_Controller
                 $msg = 'This name is already used in English';
             }
         }
-        $data['animal_cat'] = $this->animal_master_model->getAllAnimalCategory();
+        $data['animal_cat'] = $this->animal_master_model->getAllAnimalParentCategory(0);
         $data['msg'] = $this->template->getMessage($status, $msg);
-        $this->template->setTitle('Admin : Animal ');
+        $this->template->setTitle('Admin : Animal Add');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/add',$data);
     }
@@ -122,7 +126,8 @@ class Animal_master extends MY_Controller
                 $msg = 'This name is already used in English';
             }
         }
-        $data['animal_cat'] = $this->animal_master_model->getAllAnimalCategory();
+        $data['animal_cat'] = $this->animal_master_model->getAllAnimalParentCategory(0);
+        $data['animal_child_cat'] = $this->animal_master_model->getAllAnimalChildCategory($am_id);
         $data['msg'] = $this->template->getMessage($status, $msg);
         $this->template->setTitle('Admin : Animal Category');
         $this->template->setLayout('dashboard');    
@@ -133,17 +138,24 @@ class Animal_master extends MY_Controller
         $where['am_id'] = $am_id;
         $this->tbl_generic_model->delete('animal_category_relation', $where);
         $data = $this->input->post('acr');
+        $inData = array();
+        $p_acr = $this->input->post('p_acr');
+        if($p_acr > 0){
+            $inData[] = array(
+                'am_id' => $am_id,
+                'acm_id' => $p_acr
+            );
+        }
         if(count($data) > 0){
-            $inData = array();
             foreach ($data as $key => $value) {
                 $inData[] = array(
                     'am_id' => $am_id,
                     'acm_id' => $value
                 );
             }
-            if(count($inData) > 0){
-                $this->tbl_generic_model->add_batch('animal_category_relation', $inData);
-            }
+        }
+        if(count($inData) > 0){
+            $this->tbl_generic_model->add_batch('animal_category_relation', $inData);
         }
         return true;
     }
@@ -228,8 +240,25 @@ class Animal_master extends MY_Controller
             $this->session->set_flashdata('msg', 'Wrong Parameter');
             redirect(base_url().'admin/'.$this->controller.'/index');
         }
-        
-        
+    }
+
+    public function getChildCategory(){
+        $parent_id = $this->input->post('parent_id');
+        $childs = $this->input->post('selectedChild');
+        $childArr = explode(',', $childs);
+        $data = $this->animal_master_model->getAllAnimalParentCategory($parent_id);
+        $html = '<option value="">Select</option>';
+        if(count($data) > 0){
+            foreach ($data as $value) {
+                $selected = '';
+                if(in_array($value->acm_id, $childArr)){
+                    $selected = 'selected';
+                }
+                $html .= '<option value="'.$value->acm_id.'" '.$selected.'>'.$value->acmd_name.'</option>';
+            }
+        }
+        $data['data'] = $html;
+        echo json_encode($data);
     }
     
 

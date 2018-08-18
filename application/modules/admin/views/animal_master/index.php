@@ -39,6 +39,7 @@
                     <th>Animal Name</th>
                     <th>Price</th>
                     <th>Category</th>
+                    <th>User Type</th>
                     <th>View Count</th>
                     <th>Status</th>
                     <th>Created Date</th>
@@ -58,6 +59,7 @@
                     <td><?php echo $value->amd_name;?></td>
                     <td><?php echo $value->amd_price;?></td>
                     <td><?php echo $value->all_cat;?></td>
+                    <td><?php echo $value->am_user_type;?></td>
                     <td><?php echo $value->am_viewed_count;?></td>
                     <td><?php echo ucfirst($value->am_status);?></td>
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->am_created_date));?></td>

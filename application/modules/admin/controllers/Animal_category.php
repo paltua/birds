@@ -95,7 +95,7 @@ class Animal_category extends MY_Controller
             if($nameCheck){
                 if(count($nameArr)){
                     $maWhere['acm_id'] = $id;
-                    $maData['acm_url_name'] = url_title($nameArr['en']);
+                    $maData['acm_url_name'] = url_title($nameArr[$eng_lang_id]['acmd_name']);
                     $maData['parent_id'] = $this->input->post('parent_id_en');
                     $this->tbl_generic_model->edit('animal_category_master', $maData, $maWhere);
                     foreach ($nameArr as $key => $value) {
