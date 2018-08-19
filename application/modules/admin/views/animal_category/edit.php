@@ -47,7 +47,7 @@
                     </ul>
 
                     <!-- Tab panes -->
-                    <form role="form" method="post">
+                    <form role="form" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                         <div class="tab-content">
                         
@@ -82,6 +82,13 @@
                                                         <option value="<?php echo $values->acm_id;?>" <?php echo $selected;?>><?php echo $values->acmd_name;?></option>
                                                     <?php }} ?>
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Category image</label>
+                                            <input type="file" name="image_name" class="form-control-file" id="exampleFormControlFile1">
+                                            <?php if($value->image_name != ''){?>
+                                                <img src="<?php echo base_url('uploads/category/'.$value->image_name);?>" height="100" width="150">
+                                            <?php } ?>
                                         </div>
                                         <div class="form-group">
                                             <label>Short Description</label>

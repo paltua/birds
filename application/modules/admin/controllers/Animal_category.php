@@ -60,6 +60,7 @@ class Animal_category extends MY_Controller
                     }
                     $this->tbl_generic_model->add_batch('animal_category_master_details', $inData);
                 }
+                $this->_upload($insertId);
                 $status = 'success';
                 $msg = 'Successfully Added';
                 $this->session->set_flashdata('status', $status);
@@ -106,6 +107,7 @@ class Animal_category extends MY_Controller
                         $this->tbl_generic_model->edit('animal_category_master_details', $upData, $where);
                     }
                 }
+                $this->_upload($id);
                 $status = 'success';
                 $msg = 'Successfully Updated';
                 $this->session->set_flashdata('status', $status);
@@ -132,6 +134,33 @@ class Animal_category extends MY_Controller
         $this->session->set_flashdata('status', $status);
         $this->session->set_flashdata('msg', $msg);
         redirect(base_url().'admin/'.$this->controller);
+    }
+
+    private function _upload($acm_id = 0){
+        $config['upload_path']          = 'uploads/category/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        /*$config['max_size']             = 100;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;*/
+        $config['file_name']            = date('YmdHis').$acm_id;
+        $this->load->library('upload', $config);
+        if($_FILES){
+            if ( ! $this->upload->do_upload('image_name')){
+                $this->session->set_flashdata('status', 'danger');
+                $this->session->set_flashdata('msg', $this->upload->display_errors());
+            }else{
+                $this->session->set_flashdata('status', 'success');
+                $this->session->set_flashdata('msg', 'Successfully Uploaded');
+                $inData['image_name'] = $this->upload->data('file_name');
+
+                $where['acm_id'] = $acm_id;
+                $data = $this->tbl_generic_model->get('animal_category_master','*', $where);
+                if($data[0]->image_name != ''){
+                    @unlink('uploads/category/'.$data[0]->image_name);
+                }
+                $this->tbl_generic_model->edit('animal_category_master', $inData, $where);
+            }
+        }
     }
 
 

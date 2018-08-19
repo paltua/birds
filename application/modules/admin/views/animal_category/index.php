@@ -36,7 +36,8 @@
         <table width="100%" class="table table-striped table-bordered table-hover" id="exampleTable">
             <thead>
                 <tr>
-                    <th>Category Name</th>
+                    <th> Image</th>
+                    <th> Name</th>
                     <th>Parent Category</th>
                     <th>Short Description</th>
                     <th>Status</th>
@@ -54,6 +55,9 @@
                         }
                 ?>
                 <tr class="<?php echo $listClass;?> ">
+                    <td><?php if($value->image_name != ''){?>
+                        <img height="75" width="150" src="<?php echo base_url('uploads/category/'.$value->image_name);?>">
+                    <?php } ?></td>
                     <td><?php echo $value->acmd_name;?></td>
                     <td><?php echo $value->parent_name;?></td>
                     <td><?php echo $value->acmd_short_desc;?></td>
