@@ -119,7 +119,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Category</label>
+                                            <label>Sub Category</label>
                                             <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
                                                 <option value="">Select
                                                 <?php if(count($animal_child_cat) > 0){
