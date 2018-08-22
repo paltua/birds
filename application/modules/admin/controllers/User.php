@@ -159,5 +159,9 @@ class User extends MX_Controller
         ));
         }
     }
+
+    public function sends(){
+        $this->tbl_generic_model->sendEmail('paltua@gmail.com','Test','OK');
+    }
      
 }
