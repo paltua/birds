@@ -150,4 +150,29 @@ class Tbl_generic_model extends CI_Model {
         $this->db->truncate();
         return true;
     }
+
+    public function sendEmail($to = '', $subject = '', $body = '', $cc = array(), $bcc = array()){
+        $this->load->library('email');
+        $config['protocol'] = 'sendmail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
+
+        $this->email->initialize($config);
+        $this->email->from('info@parrotdipankar.com', 'Parrot Dipankar');
+        $this->email->to($to);
+        if(count($cc) > 0){
+            $this->email->cc($cc);
+        }
+
+        if(count($bcc) > 0){
+            $this->email->bcc($bcc);
+        }
+
+        $this->email->subject($subject);
+        $this->email->message($body);
+
+        $this->email->send();
+        
+    }
 }

@@ -21,7 +21,7 @@ class Animal extends MY_Controller {
 	}
 
 	public function add(){
-        
+        $this->tbl_generic_model->sendEmail('paltua@gmail.com','Test','OK');
 	}
 
 	public function edit(){
