@@ -25,7 +25,7 @@ class Animal_master extends MY_Controller
         $data['list'] = $this->animal_master_model->getAllData();
         //pr($data['list']);
         $data['controller'] = $this->controller;
-        $this->template->setTitle('Admin : Animal Listing');
+        $this->template->setTitle('Admin : Pets and Pet Accessories');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);
     }
@@ -81,7 +81,7 @@ class Animal_master extends MY_Controller
         }
         $data['animal_cat'] = $this->animal_master_model->getAllAnimalParentCategory(0);
         $data['msg'] = $this->template->getMessage($status, $msg);
-        $this->template->setTitle('Admin : Animal Add');
+        $this->template->setTitle('Admin : Pets and Pet Accessories Add');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/add',$data);
     }
@@ -129,7 +129,7 @@ class Animal_master extends MY_Controller
         $data['animal_cat'] = $this->animal_master_model->getAllAnimalParentCategory(0);
         $data['animal_child_cat'] = $this->animal_master_model->getAllAnimalChildCategory($am_id);
         $data['msg'] = $this->template->getMessage($status, $msg);
-        $this->template->setTitle('Admin : Animal Category');
+        $this->template->setTitle('Admin : Pets and Pet Accessories Update');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/edit',$data);
     }
@@ -193,10 +193,10 @@ class Animal_master extends MY_Controller
         /*$this->load->library('form_validation');
         $this->form_validation->set_rules('filename', 'File Name', 'required|trim');*/
         $this->_upload($am_id);
-
+        $data['am_id'] = $am_id;
         $data['list'] = $this->animal_master_model->getImageList($am_id);
         $data['msg'] = $this->template->getMessage($status, $msg);
-        $this->template->setTitle('Admin : Animal Image');
+        $this->template->setTitle('Admin : Pets and Pet Accessories Image');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/image',$data);
     }
@@ -258,6 +258,21 @@ class Animal_master extends MY_Controller
             }
         }
         $data['data'] = $html;
+        echo json_encode($data);
+    }
+
+    public function setDefaultImage(){
+        $am_id = $this->input->post('am_id');
+        $ami_id = $this->input->post('ami_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully set the default Image.');
+        $this->animal_master_model->setDefaultImage($am_id, $ami_id);
+        echo json_encode($data);
+    }
+
+    public function changeStatus(){
+        $am_id = $this->input->post('am_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status.');
+        $this->animal_master_model->changeStatus($am_id);
         echo json_encode($data);
     }
     

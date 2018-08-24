@@ -17,7 +17,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Animal Category</h1>
+        <h1 class="page-header">Product Types</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -76,10 +76,12 @@
                                                     <?php }} ?>
                                             </select>
                                         </div>
+                                        <?php if($key == 'en'):?>
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Category image</label>
                                             <input type="file" name="image_name" class="form-control-file" id="exampleFormControlFile1">
                                         </div>
+                                    <?php endif;?>
                                         <div class="form-group">
                                             <label>Short Description</label>
                                             <textarea class="form-control" rows="3" name="acmd_short_desc[<?php echo $key;?>]"><?php echo set_value('acmd_short_desc['.$key.']'); ?></textarea>

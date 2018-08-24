@@ -15,14 +15,34 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    $(document).ready(function(){
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        $.ajaxSetup({
+          data: csfrData
+        });
+        $(".amiDefault").click(function(){
+            var url = '<?php echo base_url('admin/animal_master/setDefaultImage');?>'
+            $.post( url, { ami_id: $(this).val(), am_id : <?php echo $am_id;?>}, function( data ) {
+                //alert(data.msg);
+                $("#msgShow").html(data.msg);
+            }, "json");
+
+            //window.location.href = '<?php echo base_url();?>animal_master/setMainImage/<?php echo $am_id;?>/'+$(this).val();
+        });
+    });
 </script>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Animal Image</h1>
+        <h1 class="page-header">Pets and Pet Accessories Image</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <div class="row">
+    <div id="msgShow"></div>
     <?php if($msg != ''):?>
     <div class="col-lg-12">
     <?php echo $msg ;?>
@@ -72,7 +92,7 @@
                     <thead>
                         <tr>
                             <th>Image </th>
-                            <!-- <th>Image Title</th> -->
+                            <th>Default</th>
                             <th>Created Date</th>
                             <th>Action</th>
                         </tr>
@@ -89,7 +109,12 @@
                         <tr class="<?php echo $listClass;?> ">
                             <td><div class="col-sm-3" >
                                 <img width="150" height="100" src="<?php echo base_url();?>uploads/animal/<?php echo $value->ami_path;?>" alt="" /></div></td>
-                            <!-- <td><?php echo $value->ami_title;?></td> -->
+                            <td>
+                                <div class="radio">
+                                    <label><input type="radio" class="amiDefault"  name="ami_default" value="<?php echo $value->ami_id;?>" <?php if($value->ami_default == 1){ echo 'checked';}?>>
+                                    </label>
+                                </div>
+                            </td>
                             <td><?php echo date("F j, Y, g:i a", strtotime($value->ami_created_date));?></td>
                             <td class="center">
                                 <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/image_delete/<?php echo $value->ami_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>

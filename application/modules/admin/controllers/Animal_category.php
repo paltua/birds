@@ -23,7 +23,7 @@ class Animal_category extends MY_Controller
         $data['lang'] = getLanguageArr();
         $data['msg'] = $this->template->getMessage($status, $msg);
         $data['list'] = $this->animal_category_model->getAllData();
-        $this->template->setTitle('Admin : Birds Category');
+        $this->template->setTitle('Admin : Product Types');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);
     }
@@ -73,7 +73,7 @@ class Animal_category extends MY_Controller
         }
         $data['parentCat'] = $this->animal_category_model->getParent(0);
         $data['msg'] = $this->template->getMessage($status, $msg);
-        $this->template->setTitle('Admin : Animal Category');
+        $this->template->setTitle('Admin : Product Types Add');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/add',$data);
     }
@@ -120,7 +120,7 @@ class Animal_category extends MY_Controller
         }
         $data['msg'] = $this->template->getMessage($status, $msg);
         $data['parentCat'] = $this->animal_category_model->getParent(0);
-        $this->template->setTitle('Admin : Animal Category');
+        $this->template->setTitle('Admin : Product Types Edit');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/edit',$data);
     }

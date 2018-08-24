@@ -20,8 +20,9 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Animal Category<a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
-        <i class="fa fa-plus-circle"></i> Add</a></h1>
+        <h1 class="page-header">Product Types
+            <div class="pull-right"><a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
+        <i class="fa fa-plus-circle"></i> Add</a></div></h1>
         
     </div>
     <!-- /.col-lg-12 -->
@@ -42,7 +43,7 @@
                     <th>Short Description</th>
                     <th>Status</th>
                     <th>Created Date</th>
-                    <th>Action</th>
+                    <th class="no-sort">Action</th>
                 </tr>
             </thead>
             <tbody>

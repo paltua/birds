@@ -17,7 +17,7 @@
     
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Animal Category</h1>
+        <h1 class="page-header">Product Types</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -83,6 +83,7 @@
                                                     <?php }} ?>
                                             </select>
                                         </div>
+                                    <?php if($value->language == 'en'):?>
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Category image</label>
                                             <input type="file" name="image_name" class="form-control-file" id="exampleFormControlFile1">
@@ -90,6 +91,7 @@
                                                 <img src="<?php echo base_url('uploads/category/'.$value->image_name);?>" height="100" width="150">
                                             <?php } ?>
                                         </div>
+                                    <?php endif;?>
                                         <div class="form-group">
                                             <label>Short Description</label>
                                             <textarea class="form-control" rows="3" name="data[<?php echo $value->acmd_id;?>][acmd_short_desc]"><?php echo $value->acmd_short_desc;?></textarea>
