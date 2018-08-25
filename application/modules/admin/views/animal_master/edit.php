@@ -99,7 +99,7 @@
                                         <div class="form-group">
                                             <label>Parent Category</label>
                                             <select class="form-control" id="animal_p_cat_id" name="p_acr">
-                                                <option value="">Select</option>
+                                                <option value="">Select One</option>
                                                 <?php if(count($animal_cat) > 0){
                                                     $catsArr = array();
                                                     if($value->all_cat != ''){
@@ -122,7 +122,7 @@
                                         <div class="form-group">
                                             <label>Sub Category</label>
                                             <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
-                                                <option value="">Select
+                                                <option value="">Select</option>
                                                 <?php if(count($animal_child_cat) > 0){
                                                     $catsArr = array();
                                                     if($value->all_cat != ''){

@@ -68,7 +68,7 @@
                                         <div class="form-group">
                                             <label>Parent Category</label>
                                             <select class="form-control" id="parent_id_<?php echo $key;?>" name="parent_id_<?php echo $key;?>">
-                                                <option value="0">Select one</option>
+                                                <option value="0">Select One</option>
                                                 <?php if(count($parentCat) > 0){
                                                     foreach ($parentCat as $value) {
                                                         ?>
