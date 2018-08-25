@@ -41,14 +41,16 @@
 	<div class="menulayout">
 		<nav>
 			<ul>
-				<li><a href="javascript:void(0)">Home</a></li>
-				<li><a href="javascript:void(0)">About US</a></li>
-				<li><a href="javascript:void(0)">Our Services</a></li>
+				<li><a href="<?php echo base_url();?>">Home</a></li>
+				<li><a href="<?php echo base_url('cms/about_us');?>">About US</a></li>
+				<!-- <li><a href="javascript:void(0)">Our Services</a></li>
 				<li><a href="javascript:void(0)">Our Projects</a></li>
-				<li><a href="javascript:void(0)">Offres & Events</a></li>
+				<li><a href="javascript:void(0)">Offres & Events</a></li> 
 				<li><a href="javascript:void(0)">Our Location</a></li>
-				<li><a href="javascript:void(0)">Blog</a></li>
-				<li><a href="javascript:void(0)">Contact Us</a></li>
+				<li><a href="javascript:void(0)">Blog</a></li> -->
+				<li><a href="javascript:void(0)">Disclaimer</a></li>
+				<li><a href="javascript:void(0)">Privacy Policy</a></li>
+				<li><a href="<?php echo base_url('cms/contact_us');?>">Contact Us</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -74,7 +76,7 @@
 </header>
 <footer id="footer">
 	<div class="outer-container clearfix">
-		<div class="pull-left"><p>© 2018 Al Hamra Real Estate Development</p></div>
+		<div class="pull-left"><p>Copyright © 2018 ParrotDipankar</p></div>
 		<div class="pull-right">
 			<ul>
 				<li class="fb"><a href="javascript:void(0)">Facebook</a></li>
@@ -119,6 +121,60 @@
 			<div class="content-sec clearfix">
 				<h2 class="title text-center">Browse Categories</h2>
 				<div class="category-circle carousel-4 owl-carousel owl-theme">
+					<?php if(count($category) > 0){
+						foreach ($category as $key => $value) {
+							
+					?>
+				    <div class="item">
+				    	<figure>
+				    		<div class="circle-layout">
+				    			<?php 
+				    			$imagePath = base_url('public/'.THEME.'/images/buddies_01_img.jpg');
+				    			if($value->image_name != ''){
+				    				$imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
+				    			}?>
+					    		<img src="<?php echo $imagePath;?>" alt="<?php echo $value->acmd_name;?>">
+					    		<figcaption>
+					    			<button><i class="lnr lnr-plus-circle"></i></button>
+					    		</figcaption>
+				    		</div>					    		
+				    	</figure>
+				    	<h3><a href="javascript:void(0)"><?php echo $value->acmd_name;?></a></h3>
+				    </div>
+				<?php } } ?>
+				    <!-- <div class="item">
+				    	<figure>
+				    		<div class="circle-layout">
+					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/lovebird_01_img.jpg" alt="Lovebird">
+					    		<figcaption>
+					    			<button><i class="lnr lnr-plus-circle"></i></button>
+					    		</figcaption>
+				    		</div>					    		
+				    	</figure>
+				    	<h3><a href="javascript:void(0)">Lovebird</a></h3>
+				    </div>
+				    <div class="item">
+				    	<figure>
+				    		<div class="circle-layout">
+					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/cockatiel_01_img.jpg" alt="Cockatiel">
+					    		<figcaption>
+					    			<button><i class="lnr lnr-plus-circle"></i></button>
+					    		</figcaption>
+				    		</div>					    		
+				    	</figure>
+				    	<h3><a href="javascript:void(0)">Cockatiel</a></h3>
+				    </div>
+				    <div class="item">
+				    	<figure>
+				    		<div class="circle-layout">
+					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/ringneck_01_img.jpg" alt="Ring neck and RFaw">
+					    		<figcaption>
+					    			<button><i class="lnr lnr-plus-circle"></i></button>
+					    		</figcaption>
+				    		</div>					    		
+				    	</figure>
+				    	<h3><a href="javascript:void(0)">Ring neck and Raw</a></h3>
+				    </div>
 				    <div class="item">
 				    	<figure>
 				    		<div class="circle-layout">
@@ -162,51 +218,7 @@
 				    		</div>					    		
 				    	</figure>
 				    	<h3><a href="javascript:void(0)">Ring neck and Raw</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/buddies_01_img.jpg" alt="Buddies">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Buddies</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/lovebird_01_img.jpg" alt="Lovebird">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Lovebird</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/cockatiel_01_img.jpg" alt="Cockatiel">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Cockatiel</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/ringneck_01_img.jpg" alt="Ring neck and RFaw">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Ring neck and Raw</a></h3>
-				    </div>
+				    </div> -->
 				</div>
 			</div>
 		</div>

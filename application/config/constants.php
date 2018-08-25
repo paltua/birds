@@ -87,5 +87,6 @@ defined('ADMIN_NAME')      OR define('ADMIN_NAME', 'admin'); // highest automati
 defined('SUPPORTEMAIL')        OR define('SUPPORTEMAIL', 'info@parrotdipankar.com');
 defined('THEME') OR define('THEME', 'theme1');
 defined('SITENAME') OR define('SITENAME', 'parrotdipankar.com');
+defined('UPLOAD_CAT_PATH') OR define('UPLOAD_CAT_PATH', 'uploads/category/');
 
 

@@ -20,7 +20,7 @@ class Animal_master extends MY_Controller
         $data['page_title'] = 'Dashboard';
         $status = $this->session->flashdata('status');
         $msg = $this->session->flashdata('msg');
-        $data['lang'] = getLanguageArr();
+        $data['lang'] = getLanguageArrAnimalMaster();
         $data['msg'] = $this->template->getMessage($status, $msg);
         $data['list'] = $this->animal_master_model->getAllData();
         //pr($data['list']);
@@ -36,7 +36,7 @@ class Animal_master extends MY_Controller
         $data['page_title'] = 'Dashboard';
         $status = '';
         $msg = '';
-        $data['lang'] = getLanguageArr();
+        $data['lang'] = getLanguageArrAnimalMaster();
         $this->load->library('form_validation');
         foreach($data['lang'] as $key => $value){
             $this->form_validation->set_rules('amd_name['.$key.']', 'Name in '.$value, 'required|trim');

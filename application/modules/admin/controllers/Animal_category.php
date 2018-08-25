@@ -71,7 +71,8 @@ class Animal_category extends MY_Controller
                 $msg = 'This name is already used in English';
             }
         }
-        $data['parentCat'] = $this->animal_category_model->getParent(0);
+        //$data['parentCat'] = $this->animal_category_model->getParent(0);
+        $data['parentCat'] = $this->_getParentCatArr();
         $data['msg'] = $this->template->getMessage($status, $msg);
         $this->template->setTitle('Admin : Product Types Add');
         $this->template->setLayout('dashboard');    
@@ -119,10 +120,22 @@ class Animal_category extends MY_Controller
             }
         }
         $data['msg'] = $this->template->getMessage($status, $msg);
-        $data['parentCat'] = $this->animal_category_model->getParent(0);
+        //$data['parentCat'] = $this->animal_category_model->getParent(0);
+        $data['parentCat'] = $this->_getParentCatArr();
         $this->template->setTitle('Admin : Product Types Edit');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/edit',$data);
+    }
+
+    private function _getParentCatArr(){
+        $data = $this->animal_category_model->getParent(0);
+        $retData = array();
+        if(count($data) > 0){
+            foreach ($data as $key => $value) {
+                $retData[$value->parent_id][$value->acm_id] = $value->acmd_name;
+            }
+        }
+        return $retData;
     }
 
     public function delete($id = 0) {

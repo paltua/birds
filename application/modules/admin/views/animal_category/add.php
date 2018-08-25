@@ -70,10 +70,18 @@
                                             <select class="form-control" id="parent_id_<?php echo $key;?>" name="parent_id_<?php echo $key;?>">
                                                 <option value="0">Select One</option>
                                                 <?php if(count($parentCat) > 0){
-                                                    foreach ($parentCat as $value) {
+                                                    foreach ($parentCat as $key => $value) {
+                                                        if(count($value) > 0 && $key == 0){
+                                                            foreach ($value as $key1 => $value1) {
+                                                                
                                                         ?>
-                                                        <option value="<?php echo $value->acm_id;?>"><?php echo $value->acmd_name;?></option>
-                                                    <?php }} ?>
+                                                        <option value="<?php echo $key1;?>"><?php echo $value1;?></option>
+                                                        <?php if(isset($parentCat[$key1])){
+                                                            foreach ($parentCat[$key1] as $key2 => $value2) {
+                                                        ?>
+                                                        <option value="<?php echo $key2;?>">---<?php echo $value2;?></option>
+                                                        <?php }} ?>
+                                                    <?php }}}} ?>
                                             </select>
                                         </div>
                                         

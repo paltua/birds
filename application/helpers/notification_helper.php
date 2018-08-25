@@ -42,6 +42,12 @@ function getLanguageArr(){
   return $retArr;
 }
 
+function getLanguageArrAnimalMaster(){
+  //$retArr = array('en' => 'English', 'ben' => 'Bengali', 'hi' => 'Hindi');
+  $retArr = array('en' => 'English');
+  return $retArr;
+}
+
 
 
 

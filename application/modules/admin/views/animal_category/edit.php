@@ -72,7 +72,7 @@
                                         <div class="form-group">
                                             <label>Parent Category</label>
                                             <select class="form-control" id="parent_id_<?php echo $value->language;?>" name="parent_id_<?php echo $value->language;?>">
-                                                <option value="0">Select One</option>
+                                                <!-- <option value="0">Select One</option>
                                                 <?php if(count($parentCat) > 0){
                                                     foreach ($parentCat as $key => $values) {
                                                         $selected = '';
@@ -81,7 +81,28 @@
                                                         }
                                                         ?>
                                                         <option value="<?php echo $values->acm_id;?>" <?php echo $selected;?>><?php echo $values->acmd_name;?></option>
-                                                    <?php }} ?>
+                                                    <?php }} ?> -->
+                                                    <option value="0">Select One</option>
+                                                    <?php if(count($parentCat) > 0){
+                                                        foreach ($parentCat as $keys => $values) {
+                                                            if(count($values) > 0 && $keys == 0){
+                                                                foreach ($values as $key1 => $value1) {
+                                                                    $selected = '';
+                                                                    if($key1 == $value->parent_id){
+                                                                        $selected = 'selected';
+                                                                    }
+                                                            ?>
+                                                            <option value="<?php echo $key1;?>" <?php echo $selected;?>><?php echo $value1;?></option>
+                                                            <?php if(isset($parentCat[$key1])){
+                                                                foreach ($parentCat[$key1] as $key2 => $value2) {
+                                                                $selected = '';
+                                                                if($key2 == $value->parent_id){
+                                                                    $selected = 'selected';
+                                                                }
+                                                            ?>
+                                                            <option value="<?php echo $key2;?>" <?php echo $selected;?>>---<?php echo $value2;?></option>
+                                                            <?php }} ?>
+                                                        <?php }}}} ?>
                                             </select>
                                         </div>
                                     

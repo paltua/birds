@@ -44,12 +44,13 @@ class Animal_category_model extends CI_Model {
     }
 
     public function getParent($parent_id = 0){
-        $this->db->select('ACMD.*,LANG.lang_name ');
+        $this->db->select('ACM.parent_id, ACMD.*,LANG.lang_name ');
         $this->db->from('animal_category_master ACM');
+        $this->db->join('animal_category_master ACM1','ACM1.acm_id=ACM.parent_id','LEFT');
         $this->db->join('animal_category_master_details ACMD','ACMD.acm_id=ACM.acm_id','INNER');
         $this->db->join('language LANG','LANG.language = ACMD.language');
         $this->db->where('ACM.acm_is_deleted','0');
-        $this->db->where('ACM.parent_id', $parent_id);
+        //$this->db->where('ACM.parent_id', $parent_id);
         $this->db->where('ACMD.language', 'en');
         // $this->db->get();
         // echo $this->db->last_query();
