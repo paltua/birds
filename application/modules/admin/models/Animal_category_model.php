@@ -57,6 +57,12 @@ class Animal_category_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function changeStatus($acm_id = 0){
+        $sql = "UPDATE `animal_category_master` SET `acm_status`=IF(acm_status ='active','inactive','active') WHERE 1 AND acm_id=".$acm_id;
+        $this->db->query($sql);
+        return true;
+    }
+
     
    
 }

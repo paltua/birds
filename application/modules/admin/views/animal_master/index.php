@@ -12,27 +12,35 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true,
-            order: [[ 3 , "desc" ]]
+            order: [[ 8 , "desc" ]]
         });
+
+        
 
         var csfrData = {};
         csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
                          = '<?php echo $this->security->get_csrf_hash(); ?>';
-        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        
         $.ajaxSetup({
           data: csfrData
         });
 
         $(".statusChange").click(function(){
-            alert("ok");
-            var url = '<?php echo base_url('admin/animal_master/changeStatus');?>'
-            $.post( url, { am_id : $(this).attr('id'), function( data ) {
-                //alert(data.msg);
+            var url = '<?php echo base_url('admin/animal_master/changeStatus');?>';
+            var am_id = $(this).attr('name');
+            var am_status = $(this).attr('value');
+            $.post( url, { am_id : am_id}, function( data ) {
+                if(am_status == 'lock'){
+                    $("#status_"+am_id).attr('value', 'unlock');
+                    $("#i_status_"+am_id).removeClass('fa-lock').addClass('fa-unlock');
+                }else{
+                    $("#status_"+am_id).attr('value', 'lock');
+                    $("#i_status_"+am_id).removeClass('fa-unlock').addClass('fa-lock');
+                }
                 $("#msgShow").html(data.msg);
             }, "json");
-
-            //window.location.href = '<?php echo base_url();?>animal_master/setMainImage/<?php echo $am_id;?>/'+$(this).val();
         });
+
     });
 </script>
 
@@ -58,7 +66,7 @@
             <thead>
                 <tr>
                     <th>SKU Code</th>
-                    <th>Image</th>
+                    <th class="no-sort">Image</th>
                     <th>Pets Name</th>
                     <th>Price</th>
                     <th>Category</th>
@@ -89,7 +97,9 @@
                     <td><?php echo $value->all_cat;?></td>
                     <td><?php echo $value->am_user_type;?></td>
                     <td><?php echo $value->am_viewed_count;?></td>
-                    <td> <a class="statusChange" href="javascript:void(0);" value="<?php echo $value->am_status;?>" id="<?php echo $value->am_id;?>"><i class="fa fa-<?php echo $value->am_status == 'active'?'unlock':'lock';?>"></i></a></td>
+                    <td> 
+                        <a class="statusChange" href="javascript:void(0);" title="Click to change Status" value="<?php echo $value->am_status == 'active'?'unlock':'lock';?>" id="status_<?php echo $value->am_id;?>" name="<?php echo $value->am_id;?>"><i id="i_status_<?php echo $value->am_id;?>" class="fa fa-<?php echo $value->am_status == 'active'?'unlock':'lock';?>"></i></a>
+                    </td>
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->am_created_date));?></td>
                     <td class="center">
                         <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/image/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-picture-o"></i> Image</a>

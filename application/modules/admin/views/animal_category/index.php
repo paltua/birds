@@ -14,6 +14,30 @@
             responsive: true,
             order: [[ 3 , "desc" ]]
         });
+
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        
+        $.ajaxSetup({
+          data: csfrData
+        });
+
+        $(".statusChange").click(function(){
+            var url = '<?php echo base_url('admin/animal_category/changeStatus');?>';
+            var am_id = $(this).attr('name');
+            var am_status = $(this).attr('value');
+            $.post( url, { am_id : am_id}, function( data ) {
+                if(am_status == 'lock'){
+                    $("#status_"+am_id).attr('value', 'unlock');
+                    $("#i_status_"+am_id).removeClass('fa-lock').addClass('fa-unlock');
+                }else{
+                    $("#status_"+am_id).attr('value', 'lock');
+                    $("#i_status_"+am_id).removeClass('fa-unlock').addClass('fa-lock');
+                }
+                $("#msgShow").html(data.msg);
+            }, "json");
+        });
     });
 </script>
 
@@ -33,6 +57,7 @@
     <?php echo $msg ;?>
     </div>
     <?php endif;?>
+    <div id="msgShow"></div>
     <div class="col-lg-12">
         <table width="100%" class="table table-striped table-bordered table-hover" id="exampleTable">
             <thead>
@@ -62,7 +87,9 @@
                     <td><?php echo $value->acmd_name;?></td>
                     <td><?php echo $value->parent_name;?></td>
                     <td><?php echo $value->acmd_short_desc;?></td>
-                    <td><span class="badge badge-pill badge-<?php echo $value->acm_status == 'active'?'success':'secondary';?>"><?php echo ucfirst($value->acm_status);?></span></td>
+                    <td>
+                        <a class="statusChange" href="javascript:void(0);" title="Click to change Status" value="<?php echo $value->acm_status == 'active'?'unlock':'lock';?>" id="status_<?php echo $value->acm_id;?>" name="<?php echo $value->acm_id;?>"><i id="i_status_<?php echo $value->acm_id;?>" class="fa fa-<?php echo $value->acm_status == 'active'?'unlock':'lock';?>"></i></a>
+                    </td>
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->acmd_created_date));?></td>
                     <td class="center">
                     <a href="<?php echo base_url();?>admin/animal_category/edit/<?php echo $value->acm_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>

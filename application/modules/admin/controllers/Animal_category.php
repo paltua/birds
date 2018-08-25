@@ -174,6 +174,13 @@ class Animal_category extends MY_Controller
         }
     }
 
+    public function changeStatus(){
+        $am_id = $this->input->post('am_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status.');
+        $this->animal_category_model->changeStatus($am_id);
+        echo json_encode($data);
+    }
+
     
     
 }
