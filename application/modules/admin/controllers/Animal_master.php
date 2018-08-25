@@ -55,6 +55,7 @@ class Animal_master extends MY_Controller
                 $maData['am_title'] = url_title($nameArr['en']);
                 $maData['am_viewed_count'] = 0;
                 $insertId = $this->tbl_generic_model->add('animal_master', $maData);
+                $this->_updateProductCode($insertId);
                 $inData = array();
                 if(count($nameArr)){
                     foreach ($nameArr as $key => $value) {
@@ -126,6 +127,7 @@ class Animal_master extends MY_Controller
                 $msg = 'This name is already used in English';
             }
         }
+        //$data['editData'] = $this->animal_master_model->getSingle($am_id);
         $data['animal_cat'] = $this->animal_master_model->getAllAnimalParentCategory(0);
         $data['animal_child_cat'] = $this->animal_master_model->getAllAnimalChildCategory($am_id);
         $data['msg'] = $this->template->getMessage($status, $msg);
@@ -274,6 +276,17 @@ class Animal_master extends MY_Controller
         $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status.');
         $this->animal_master_model->changeStatus($am_id);
         echo json_encode($data);
+    }
+
+    private function _updateProductCode($am_id = 0){
+        $lentgh = strlen($am_id);
+        $code = "P";
+        for ($i=0; $i < 8-$lentgh; $i++) { 
+            $code .= '0';
+        }
+        $inData['am_code'] = $code.$am_id;
+        $where['am_id'] = $am_id;
+        $this->tbl_generic_model->edit('animal_master', $inData, $where);
     }
     
 

@@ -73,19 +73,24 @@
                                 <h4><?php echo $value;?></h4>
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        
                                         <div class="form-group">
                                             <label>Name</label>
                                             <input class="form-control" type="text" name="amd_name[<?php echo $key;?>]" value="<?php echo set_value('amd_name['.$key.']'); ?>">
                                             <?php echo form_error('amd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
+                                    </div>
+                                </div>   
+                                <div class="row">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Price</label>
                                             <input class="form-control" type="text" name="amd_price[<?php echo $key;?>]" value="<?php echo set_value('amd_price['.$key.']'); ?>">
                                             <?php echo form_error('amd_price['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
-                                        
                                     </div>
+                                </div> 
+                                <?php if($key == 'en'):?>
+                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Parent Category</label>
@@ -99,26 +104,30 @@
                                             </select>
                                             <?php echo form_error('p_acr', '<p class="text-danger">', '</p>'); ?>
                                         </div>
+                                    </div>
+                                </div>    
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Sub Category</label>
+                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                    </div> 
+                                </div>    
+                                <?php endif;?> 
+                                <div class="row">    
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Short Description</label>
                                             <textarea class="form-control" rows="3" name="amd_short_desc[<?php echo $key;?>]"><?php echo set_value('amd_short_desc['.$key.']'); ?></textarea>
                                             <?php echo form_error('amd_short_desc['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-4">
-                                        
-                                        <div class="form-group">
-                                            <label>Sub Category</label>
-                                            <select class="form-control" id="animal_cat_id" name="acr[]" multiple>
-                                                <option value="">Select</option>
-                                                
-                                            </select>
-                                        </div>
-                                    </div>    
-                                    </div>
+                                    </div> 
+                                </div>  
+                                    
                                     <!-- /.col-lg-6 (nested) -->
-                                </div>
                             </div>
                             <?php }} ?>
                             <button type="submit" class="btn btn-default btn-success">Save</button>

@@ -15,7 +15,7 @@ class Animal_master_model extends CI_Model {
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','INNER');
         $this->db->join('animal_category_relation ACR','ACR.am_id=AM.am_id','LEFT');
         $this->db->join('animal_category_master_details ACMD',"ACMD.acm_id=ACR.acm_id AND ACMD.language='en'",'LEFT');
-        $this->db->join('animal_master_images AMI','AMI.am_id=AM.am_id AND ami_default = 1');
+        $this->db->join('animal_master_images AMI','AMI.am_id=AM.am_id AND ami_default = 1','LEFT');
         $this->db->where('AM.am_deleted','0');
         $this->db->where('AMD.language','en');
         $this->db->group_by('AM.am_id');
@@ -32,15 +32,14 @@ class Animal_master_model extends CI_Model {
     }
 
     public function getSingle($am_id = 0){
-        $this->db->select('AM.*, AMD.*, LANG.lang_name, GROUP_CONCAT(ACR.acm_id SEPARATOR ",") all_cat');
+        $this->db->select('AM.*, AMD.*, LANG.lang_name, GROUP_CONCAT( DISTINCT ACR.acm_id SEPARATOR ",") all_cat');
         $this->db->from('animal_master AM');
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','INNER');
-        $this->db->join('language LANG','LANG.language = AMD.language');
+        $this->db->join('language LANG','LANG.language = AMD.language','INNER');
         $this->db->join('animal_category_relation ACR','ACR.am_id=AM.am_id','LEFT');
         $this->db->where('AM.am_deleted','0');
         $this->db->where('AM.am_id', $am_id);
-        $this->db->where('AMD.language','en');
-        $this->db->group_by('AM.am_id');
+        $this->db->group_by('AMD.amd_id');
         // $this->db->get();
         // echo $this->db->last_query();
         // exit();

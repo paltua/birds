@@ -77,26 +77,29 @@
                                 <h4><?php echo $value->lang_name;?></h4>
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        
                                         <div class="form-group">
                                             <label>Name</label>
                                             <input class="form-control" type="text" name="data[<?php echo $value->amd_id;?>][amd_name]" value="<?php echo $value->amd_name; ?>">
                                             <?php echo form_error('data['.$value->amd_id.'][amd_name]', '<p class="text-danger">', '</p>'); ?>
                                         </div>
-
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Price</label>
                                             <input class="form-control" type="text" name="data[<?php echo $value->amd_id;?>][amd_price]" value="<?php echo $value->amd_price; ?>">
                                             <?php echo form_error('acmd_name['.$value->amd_id.'][amd_price]', '<p class="text-danger">', '</p>'); ?>
                                         </div>
-                                        
-                                        
                                     </div>
+                                </div> 
+                                <?php if($value->language == 'en'):?>
+                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Parent Category</label>
                                             <select class="form-control" id="animal_p_cat_id" name="p_acr">
-                                                <option value="">Select
+                                                <option value="">Select</option>
                                                 <?php if(count($animal_cat) > 0){
                                                     $catsArr = array();
                                                     if($value->all_cat != ''){
@@ -112,11 +115,9 @@
                                                     <?php }} ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Short Description</label>
-                                            <textarea class="form-control" rows="3" name="data[<?php echo $value->amd_id;?>][amd_short_desc]"><?php echo $value->amd_short_desc; ?></textarea>
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Sub Category</label>
@@ -137,10 +138,19 @@
                                                     <?php }} ?>
                                             </select>
                                         </div>
-                                    </div>    
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
                                 </div>
+                                <?php endif;?> 
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Short Description</label>
+                                            <textarea class="form-control" rows="3" name="data[<?php echo $value->amd_id;?>][amd_short_desc]"><?php echo $value->amd_short_desc; ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
                             <?php }} ?>
                             <button type="submit" class="btn btn-default btn-success">Save</button>

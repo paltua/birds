@@ -57,7 +57,7 @@
         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>
-                    <th>Seq Number</th>
+                    <th>SKU Code</th>
                     <th>Image</th>
                     <th>Pets Name</th>
                     <th>Price</th>
@@ -79,7 +79,7 @@
                         }
                 ?>
                 <tr class="<?php echo $listClass;?> ">
-                    <td><?php echo $value->seq_number;?></td>
+                    <td><?php echo $value->am_code;?></td>
                     <td><?php if($value->default_image != ''){?> 
                         <img height="75" width="150" src="<?php echo base_url('uploads/animal/'.$value->default_image);?>">
                     <?php }?>
