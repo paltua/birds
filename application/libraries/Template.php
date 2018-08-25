@@ -28,8 +28,8 @@ class Template{
     }
     
     private function _setInitVal(){
-        $this->themeName = 'theme1/';
-        $this->resourceName = 'public/theme1/';
+        $this->themeName = THEME.'/';
+        $this->resourceName = 'public/'.$this->themeName;
         $this->masterTemplateFolderPath = $this->themeName.'templates/';
 
         $this->themeNameAdmin = 'admin/';

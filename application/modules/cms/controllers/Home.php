@@ -19,10 +19,22 @@ class Home extends MY_Controller
         //$data['dash'] = $this->_getDashboardArray();
         $data['msg'] = $this->template->getMessage($data['status'], $msg);
         $this->template->setTitle('Home');
-        $this->template->setLayout('dashboard');    
+        $this->template->setLayout('home');    
         $this->template->homeRender('cms/'.$this->controller.'/index', $data);
     }
 
+    public function indexOld() 
+    {
+        $data = array();
+        $data['page_title'] = 'Home';
+        $data['status'] = 0;
+        $msg = '';
+        //$data['dash'] = $this->_getDashboardArray();
+        $data['msg'] = $this->template->getMessage($data['status'], $msg);
+        $this->template->setTitle('Home');
+        $this->template->setLayout('home');    
+        $this->template->homeRender('cms/'.$this->controller.'/index', $data);
+    }
     
     
 }

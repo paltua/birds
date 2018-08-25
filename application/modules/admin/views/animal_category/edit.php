@@ -68,6 +68,7 @@
                                             <input class="form-control" type="text" name="data[<?php echo $value->acmd_id;?>][acmd_name]" value="<?php echo $value->acmd_name;?>">
                                             <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
+                                        <?php if($value->language == 'en'):?>
                                         <div class="form-group">
                                             <label>Parent Category</label>
                                             <select class="form-control" id="parent_id_<?php echo $value->language;?>" name="parent_id_<?php echo $value->language;?>">
@@ -83,7 +84,7 @@
                                                     <?php }} ?>
                                             </select>
                                         </div>
-                                    <?php if($value->language == 'en'):?>
+                                    
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Category image</label>
                                             <input type="file" name="image_name" class="form-control-file" id="exampleFormControlFile1">

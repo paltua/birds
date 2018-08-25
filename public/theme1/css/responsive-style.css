@@ -1,0 +1,94 @@
+@media only screen and (orientation:landscape) {
+	body { -webkit-text-size-adjust:none; }
+}
+
+@media only screen and (orientation:portrait) {
+	body { -webkit-text-size-adjust:none; }
+}
+@media screen and (max-width:1024px) {
+	#header .logo { max-width: 69px; background-size: 69px;height: 82px;}
+	#fullpage { overflow-x: hidden; }
+	#footer { display: none; }
+	.section { height: 100% !important }
+	.section.homeBanner { height: 350px !important }
+	.homeBanner h2 {font-size: 32px;line-height: 42px;}
+	.homeBanner h3 {font-size: 28px;line-height: 36px;}
+	.homeBanner .bannertxt { padding-top: 160px;}
+	.homeBanner .fp-slidesNav.fp-bottom {bottom: 20px;}
+	.homeBanner .fp-slidesNav ul li {width: 33px;}
+	.botmlayoutsec { position: relative;}
+	.botmlayoutwrap {bottom: 0;}
+	.homeAbout .content-sec,.homeWhatWeDo .content-sec,.homeDevelopment .content-sec,.homeEvents .content-sec,.homeBlog .content-sec {padding-bottom: 59px;}
+	.section .title { font-size: 25px; line-height: 32px; margin-bottom: 22px;}
+	.redbox { width: 370px; height: auto; padding: 26px 18px; border-width: 7px;}
+	.blognews-grid article figure .rightpart figcaption {padding: 16px;}
+	.blognews-grid article figure h5 {font-size: 15px; line-height: 20px;}
+	.blognews-grid article figure h6 { font-size: 12px; margin-bottom: 6px;}
+	.botmlayout .box figure h3 {font-size: 12px;}
+	.botmlayout .box figure h5 { font-size: 11px }
+	.homeGetTouch .gridwrap { display: block;}
+	.homeGetTouch .gridwrap .two-grid {display: block; width: 100%;}
+	.homeGetTouch .secright .content-sec { padding:27px 0 15px; }
+	.homeGetTouch .secright .botm-copyright { position: relative; padding: 12px 0;}
+	.homeLocation { padding:39px 0; }
+	.homeWhatWeDo .box figure figcaption h3, .homeWhatWeDo .box figure h4 {font-size: 22px;}
+	.homeWhatWeDo .box figure .hoverlayout {border-width: 5px;}
+	.botmlayout .box figure .xs-icon {width: 40px;height: 40px;}
+	.botmlayout .box figure .sm-icon {width: 62px;height: 62px;}
+	.botmlayout .box figure { min-height: 141px;}
+	.homeLocation .botmlayoutsec { min-height: 100% !important }
+	.botmlayoutwrap { position: relative;}
+	.left-static { display: none; }
+	.homeGetTouch .secleft .img-grid ul li { width: 12.5%;}
+	.jssora051 {padding: 20px 14px;}
+	#jssor_1 {height:662px;}
+	.slideswrap {height:662px;}
+	.blognews-grid article figure figcaption::before, .blognews-grid article figure figcaption::after {top: 10px;right: 8px;bottom: 10px;left: 8px;}
+}
+@media screen and (max-width:900px) {
+	.botmlayout .box {width: 100%;display: block; margin-top: 15px;}
+	.botmlayout .box:first-child {margin-top: 0;}
+	.botmlayout .box figure { min-height: 50px;}
+}
+@media screen and (max-width:767px) {
+	.homeBlog .content-sec,.homeEvents .content-sec,.homeDevelopment .content-sec,.homeWhatWeDo .content-sec,.homeAbout .content-sec { padding-top: 25px;}
+	.redbox.toleft,.redbox.toright { float: none; }
+	#header {padding: 10px 0;background-color: rgba(0,0,0,0.7);}
+	#header .logo { max-width: 59px;background-size: 59px;height: 68px;}
+	.homeBanner h2 {font-size: 28px;line-height: 38px;}
+	.homeBanner h2 {font-size: 24px;line-height: 34px;}
+	.redbox { width: 100%;  padding: 12px; border-width: 5px;}
+	.section .title { margin-bottom: 15px;}
+	.homeWhatWeDo .box { width: 50%;  margin-top: 15px}
+	.homeWhatWeDo .box:nth-child(-n+2) { margin-top: 0 }
+	.homeAbout .content-sec,.homeWhatWeDo .content-sec,.homeDevelopment .content-sec,.homeEvents .content-sec,.homeBlog .content-sec {padding-bottom: 25px;}
+	.homeWhatWeDo .box figure { margin: 0 auto;}
+	.blognews-grid article,.blognews-grid article figure .leftpart img {width: 100%;}
+	.blognews-grid article { margin-top: 20px; }
+	.blognews-grid article:first-child { margin-top: 0; }
+	#header .headerright { padding-top: 25px }
+	.homeGetTouch .secright .botm-logo { width: 46px;}
+	.homeGetTouch .secright .botm-social ul li a { width: 24px;height: 24px;background-size: 24px;}
+	.homeGetTouch .secright .botm-social ul li.fb:hover a,.homeGetTouch .secright .botm-social ul li.twt:hover a,.homeGetTouch .secright .botm-social ul li.inst:hover a,.homeGetTouch .secright .botm-social ul li.linkd:hover a,.homeGetTouch .secright .botm-social ul li.utube:hover a { background-position: 0 -24px;}
+	.homeGetTouch .secleft .img-grid ul li { width: 25%;}
+}
+@media screen and (max-width:640px) {
+	.homeWhatWeDo .box,.blognews-grid article,.blognews-grid article figure .leftpart,.blognews-grid article figure .rightpart { width: 100%;}
+	.homeWhatWeDo .box:first-child { margin-top: 0 }
+	.homeWhatWeDo .box:nth-child(2) { margin-top: 15px;}
+	.botmlayout .box figure { min-height: 100px; }
+	.botmlayout .box figure ul li {padding: 8px 0;}
+	.botmlayout .box figure ul li:first-child {padding-top: 0px;}
+	.blognews-grid article figure .rightpart { display: block;}
+	.blognews-grid article figure .leftpart::after { right: auto; top: auto; margin-top: 0; border-right: 17px solid transparent; border-bottom: 17px solid #fff; border-left: 17px solid transparent; bottom: 0;left: 50%; margin-left: -17px;}
+	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}
+	#header .headerright .inline-elmnt .navbtn em:nth-child(2) { margin: 4px 0;}
+	#header .headerright .inline-elmnt .navbtn em {height: 2px;}
+	#header .headerright .inline-elmnt .language { margin-left: 15px;}
+	#header .headerright .inline-elmnt .language span { font-size: 13px; margin-right: 15px;}
+	#header .logo { max-width: 46px;background-size: 46px;height: 53px;}
+	#header .headerright { padding-top: 17px }
+	#header .headerright .inline-elmnt .searchbtn { width: 15px; height: 15px; background-size: 15px }
+	.homeGetTouch .secright .botm-links ul { margin-bottom: 6px;}
+	.homeGetTouch .secright .botm-copyright h4,.homeGetTouch .secright .botm-copyright h5 {font-size: 12px;}
+}

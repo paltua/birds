@@ -64,7 +64,7 @@
                                             <input class="form-control" type="text" name="acmd_name[<?php echo $key;?>]" value="<?php echo set_value('acmd_name['.$key.']'); ?>">
                                             <?php echo form_error('acmd_name['.$key.']', '<p class="text-danger">', '</p>'); ?>
                                         </div>
-
+                                        <?php if($key == 'en'):?>
                                         <div class="form-group">
                                             <label>Parent Category</label>
                                             <select class="form-control" id="parent_id_<?php echo $key;?>" name="parent_id_<?php echo $key;?>">
@@ -76,7 +76,7 @@
                                                     <?php }} ?>
                                             </select>
                                         </div>
-                                        <?php if($key == 'en'):?>
+                                        
                                         <div class="form-group">
                                             <label for="exampleFormControlFile1">Category image</label>
                                             <input type="file" name="image_name" class="form-control-file" id="exampleFormControlFile1">
