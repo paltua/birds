@@ -6,6 +6,7 @@ class Contact_us extends MY_Controller
     public function __construct(){
         parent::__construct();
         $this->load->library('Template');
+        $this->load->model('cms_model');
         $this->controller = $this->router->fetch_class();
     }
     
@@ -13,14 +14,40 @@ class Contact_us extends MY_Controller
     public function index() 
     {
         $data = array();
-        $data['page_title'] = 'Home';
-        $data['status'] = 0;
+        $status = '';
         $msg = '';
+        $this->load->library('form_validation');
+        if($this->input->post()){
+            $this->form_validation->set_rules('contact_us[name]','Name','trim|required');
+            $this->form_validation->set_rules('contact_us[mobile]','Mobile','trim|required|is_natural_no_zero');
+            $this->form_validation->set_rules('contact_us[email]','Email','trim|required|valid_email');
+            $this->form_validation->set_rules('contact_us[desccription]','Messages','trim|required');
+            if($this->form_validation->run() === TRUE){
+                $contact_us = $this->input->post('contact_us');
+                $this->tbl_generic_model->add('contact_us', $contact_us);
+                $status = 'success';
+                $msg = 'Thank you to contact us.One of our executive will contact you.';
+                $this->_sendEmailToAdmin();
+            }
+        }
         //$data['dash'] = $this->_getDashboardArray();
-        $data['msg'] = $this->template->getMessage($data['status'], $msg);
-        $this->template->setTitle('Home');
-        $this->template->setLayout('cms');    
-        $this->template->homeRender('cms/'.$this->controller.'/index', $data);
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $this->template->setTitle('Contact Us');
+        $this->template->setLayout('login');
+        $this->template->loginRender('cms/'.$this->controller.'/index', $data);
+
+        // $data['msg'] = $this->template->getMessage($data['status'], $msg);
+        // $this->template->setTitle('Home');
+        // $this->template->setLayout('cms');    
+        // $this->template->homeRender('cms/'.$this->controller.'/index', $data);
+    }
+
+    private function _sendEmailToAdmin(){
+        $to = ADMIN_EMAIL;
+        $data['to_name'] = ADMIN_NAME;
+        $subject = "New Contact Us Request || Parrot Dipankar";
+        $body =
+        $this->tbl_generic_model->sendEmail($to, $subject, $body);
     }
 
     

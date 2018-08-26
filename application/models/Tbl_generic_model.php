@@ -159,7 +159,7 @@ class Tbl_generic_model extends CI_Model {
         $config['wordwrap'] = TRUE;
 
         $this->email->initialize($config);
-        $this->email->from('info@parrotdipankar.com', 'Parrot Dipankar');
+        $this->email->from(SUPPORTEMAIL, SITENAME);
         $this->email->to($to);
         if(count($cc) > 0){
             $this->email->cc($cc);

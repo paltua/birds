@@ -60,8 +60,8 @@ class Auth extends MX_Controller
         $msg = '';
         $this->load->library('form_validation');
         if($this->input->post()){
-            $this->form_validation->set_rules('user_master[name]','Email','trim|required');
-            $this->form_validation->set_rules('user_master[mobile]','Email','trim|required|is_natural_no_zero');
+            $this->form_validation->set_rules('user_master[name]','Name','trim|required');
+            $this->form_validation->set_rules('user_master[mobile]','Mobile','trim|required|is_natural_no_zero');
             $this->form_validation->set_rules('user_master[email]','Email','trim|required|valid_email');
             $this->form_validation->set_rules('password','Password','trim|required');
             $this->form_validation->set_rules('cnfPassword', 'Password Confirmation', 'trim|required|matches[password]');

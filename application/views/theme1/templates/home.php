@@ -25,73 +25,12 @@
 </head>
 	
 <body>
-<div class="topsearch">
-	<button  class="scrchclsbtn clsbtn"><em></em><em></em></button>
-	<div class="topsearchlayout">
-		<form>
-			<div class="search-group">
-				<input type="text" value="" placeholder="Search">
-				<input type="submit" value="Search">
-			</div>
-		</form>
-	</div>
-</div>
-<div class="menusection">
-	<button  class="menuclsbtn clsbtn"><em></em><em></em></button>
-	<div class="menulayout">
-		<nav>
-			<ul>
-				<li><a href="<?php echo base_url();?>">Home</a></li>
-				<li><a href="<?php echo base_url('cms/about_us');?>">About US</a></li>
-				<!-- <li><a href="javascript:void(0)">Our Services</a></li>
-				<li><a href="javascript:void(0)">Our Projects</a></li>
-				<li><a href="javascript:void(0)">Offres & Events</a></li> 
-				<li><a href="javascript:void(0)">Our Location</a></li>
-				<li><a href="javascript:void(0)">Blog</a></li> -->
-				<li><a href="javascript:void(0)">Disclaimer</a></li>
-				<li><a href="javascript:void(0)">Privacy Policy</a></li>
-				<li><a href="<?php echo base_url('cms/contact_us');?>">Contact Us</a></li>
-			</ul>
-		</nav>
-	</div>
-</div>
-<header id="header">
-	<div class="outer-container">
-		<div class="headerleft"><a href="javascript:void(0)" class="logo"><img src="<?php echo base_url('public/'.THEME.'/');?>images/site-logo.png" alt="ParrotDipankar"/></a></div>
-		<div class="headerright">
-			<div class="inline-elmnt">
-				<button class="searchbtn">Search</button>
-			</div>
-			<div class="inline-elmnt">
-				<a href="javascript:void(0)" class="locationbtn">Location</a>
-			</div>
-			<div class="inline-elmnt">
-				<a href="javascript:void(0)" class="logbtn">Login</a>
-			</div>
-			<div class="inline-elmnt">
-				<button class="navbtn"><em></em><em></em><em></em></button>
-			</div>
-		</div>
-	</div>
-</header>
-<footer id="footer">
-	<div class="outer-container clearfix">
-		<div class="pull-left"><p>Copyright © 2018 ParrotDipankar</p></div>
-		<div class="pull-right">
-			<ul>
-				<li class="fb"><a href="javascript:void(0)">Facebook</a></li>
-				<li class="twt"><a href="javascript:void(0)">Twitter</a></li>
-				<li class="inst"><a href="javascript:void(0)">Instagram</a></li>
-				<li class="linkd"><a href="javascript:void(0)">Linkdin</a></li>
-				<li class="utube"><a href="javascript:void(0)">YouTube</a></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+<?php echo $this->load->view(THEME.'/common/search');?>
+<?php echo $this->load->view(THEME.'/common/menu');?>
+<?php echo $this->load->view(THEME.'/common/header');?>
+<?php echo $this->load->view(THEME.'/common/footer');?>
 
-<div class="left-static">
-	<h5><a href="javascript:void(0)">Publish Listing</a></h5>
-</div>
+<?php echo $this->load->view(THEME.'/common/publish');?>
 
 <section id="fullpage">	
 	<div class="section homeBanner" id="section0">	
@@ -414,6 +353,7 @@
 <script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/fullpage.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/easy-responsive-tabs.js"></script>
+<script src="<?php echo base_url('public/'.THEME.'/');?>js/custom.js"></script>
 
 <script type="text/javascript">
 	function initialization() {
@@ -437,69 +377,9 @@
 
 
 <script type="text/javascript">
-    jQuery(document).ready(function ($) { 
+    $(document).ready(function($) { 
 
-    	$('.carousel-4').owlCarousel({
-		    loop:true,
-		    margin:30,
-		    responsiveClass:true,
-		    dots: false,
-		    responsive:{
-		        0:{
-		            items:1,
-		            nav:true
-		        },
-		        600:{
-		            items:3,
-		            nav:false
-		        },
-		        1000:{
-		            items:4,
-		            nav:true,
-		            loop:false
-		        }
-		    }
-		})
-
-    	$('#horizontalTab').easyResponsiveTabs({
-			type: 'default', //Types: default, vertical, accordion           
-			width: 'auto', //auto or any width like 600px
-			fit: true,   // 100% fit in a container
-			closed: 'accordion', // Start closed if in accordion view
-			activate: function(event) { // Callback function if tab is switched
-				var $tab = $(this);
-				var $info = $('#tabInfo');
-				var $name = $('span', $info);
-				$name.text($tab.text());
-				$info.show();
-			}		
-		});
     	
-		$('.searchbtn').click(function() {
-		    $('.topsearch').addClass('scrchboxopen')
-		    $(this).hide();
-		});
-		$('.scrchclsbtn').click(function() {
-		    $('.topsearch').removeClass('scrchboxopen');
-		    $('.searchbtn').show();
-		});
-		$('.navbtn').click(function() {
-		    $('.menusection').addClass('menuopen')
-		    $(this).hide();
-		});
-		$('.menuclsbtn').click(function() {
-		    $('.menusection').removeClass('menuopen');
-		    $('.navbtn').show();
-		});
-
-		function i() {
-        windowHeight = $(window).innerHeight(), $(".botmlayoutsec").css("min-height", windowHeight)
-	    }
-	    i(), $(window).resize(function() {
-	        i()
-	    })
-
-        
     });
 </script>
 </body>
