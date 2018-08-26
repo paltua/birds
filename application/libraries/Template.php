@@ -204,7 +204,7 @@ class Template{
 
     private function _getSearch(){
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeName.'common/SEARCH',$this->data,true);        
+        return self::$_CI->load->view($this->themeName.'common/search',$this->data,true);        
     }
 
     private function _getHeader(){
