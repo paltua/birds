@@ -157,6 +157,7 @@ class Tbl_generic_model extends CI_Model {
         $config['mailpath'] = '/usr/sbin/sendmail';
         $config['charset'] = 'iso-8859-1';
         $config['wordwrap'] = TRUE;
+        $config['mailtype'] = 'html';
 
         $this->email->initialize($config);
         $this->email->from(SUPPORTEMAIL, SITENAME);

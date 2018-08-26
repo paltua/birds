@@ -46,9 +46,9 @@ class Contact_us extends MY_Controller
         $data = $contact_us;
         $to = ADMIN_EMAIL;
         $data['to_name'] = ADMIN_NAME;
-        $subject = "New Contact Us Request || Parrot Dipankar";
+        $subject = "New Contact Us Request | Parrot Dipankar";
         $body = $this->load->view('cms/'.$this->controller.'/email', $data, TRUE);
-        $this->tbl_generic_model->sendEmail($to, $subject, $body);
+        $this->tbl_generic_model->sendEmail($to, $subject, $body, array(), array());
     }
 
     
