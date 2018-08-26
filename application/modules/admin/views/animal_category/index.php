@@ -12,7 +12,7 @@
     $(document).ready(function() {
         $('#exampleTable').DataTable({
             responsive: true,
-            order: [[ 3 , "desc" ]]
+            order: [[ 4 , "desc" ]]
         });
 
         var csfrData = {};
