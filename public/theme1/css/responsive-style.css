@@ -49,10 +49,8 @@
 	.homeGetTouch .secright .botm-social ul li a { width: 24px;height: 24px;background-size: 24px;}
 	.homeGetTouch .secright .botm-social ul li.fb:hover a,.homeGetTouch .secright .botm-social ul li.twt:hover a,.homeGetTouch .secright .botm-social ul li.inst:hover a,.homeGetTouch .secright .botm-social ul li.linkd:hover a,.homeGetTouch .secright .botm-social ul li.utube:hover a { background-position: 0 -24px;}
 	.homeGetTouch .secleft .img-grid ul li { width: 25%;}
-	.homediscover .content-sec .search-layout { width: 95%;}
+	.search-layout { width: 95%;}
 	.banner-container { padding-left: 20px; padding-right: 20px }
-	.category-circle figure { width: 239px; height: 239px;}
-	.category-circle figure .circle-layout {width: 223px; height: 223px;}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}
@@ -68,6 +66,8 @@
 	.innerbanner .banner-cont {top: 114px;}
 	.innerbanner .banner-cont h1 {font-size: 25px;}
 	.breadcramb ul li {font-size: 13px;}
-	.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {left:60px;}
-	.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {right:60px;}
+	.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {left:0px;}
+	.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {right:0px;}
+	.homeBanner h2 { font-size: 19px; line-height: 25px; margin-bottom: 10px}
+	.homeBanner h3 { font-size: 16px; line-height: 22px;}
 }

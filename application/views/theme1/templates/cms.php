@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <?php if(isset($head)): echo $head; endif;?>
+<?php if($head != ''): echo $head; endif;?>
 </head>
+	
 <body>
-    <div id="wrapper">
-        <div class="intro-header">
-        <?php if(isset($content)): echo $content; endif;?>
-        </div>
-    </div>
+<section class="inner-page-wrap">
+	<?php if($search != ''): echo $search; endif;?>
+	<div class="menusection">
+	<?php if($menu != ''): echo $menu; endif;?>
+	</div>
+	<?php if($publish != ''): echo $publish; endif;?>
+	<header id="header">
+		<?php if($header != ''): echo $header; endif;?>
+	</header>
+
+
+<?php if($content != ''): echo $content; endif;?>
+
+<footer id="footer">
+	<?php if($footer != ''): echo $footer; endif;?>
+</footer>
+</section>
+
+<script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/jquery-2.1.1.min.js"></script>
+<script src="<?php echo base_url('public/'.THEME.'/');?>js/owl.carousel.min.js"></script>
+<script src="<?php echo base_url('public/'.THEME.'/');?>js/easy-responsive-tabs.js"></script>
+<script src="<?php echo base_url('public/'.THEME.'/');?>js/custom.js"></script>
 </body>
 </html>

@@ -32,3 +32,16 @@
     <script src="<?php echo base_url().$resourceNameAdmin;?>vendor/metisMenu/metisMenu.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url().$resourceNameAdmin;?>dist/js/sb-admin-2.js"></script>
+    <script>
+    var baseUrl = '<?php echo base_url();?>';
+    $(document).ready(function(){
+        // this bit needs to be loaded on every page where an ajax POST may happen
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        $.ajaxSetup({
+          data: csfrData
+        });
+    });
+    </script>

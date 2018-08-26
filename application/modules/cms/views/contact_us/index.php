@@ -1,98 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php $this->load->view('head');?>
-    <link rel="stylesheet" href="<?php echo base_url();?>resource/bootstrap/bootstrap.min.css">
-    <script src="<?php echo base_url();?>resource/js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>resource/bootstrap/bootstrap.min.js"></script>
-
-    
-    
-
-    <script src="<?php echo base_url();?>resource/date-time/bootstrap-datetimepicker.css"></script>
-    <script src="<?php echo base_url();?>resource/date-time/moment.js"></script>
-    <script src="<?php echo base_url();?>resource/date-time/bootstrap-datetimepicker.js"></script>
-
-<script>
-
-$(document).ready(function(){
-    // this bit needs to be loaded on every page where an ajax POST may happen
-    var csfrData = {};
-    csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
-                     = '<?php echo $this->security->get_csrf_hash(); ?>';
-    //alert('<?php echo $this->security->get_csrf_hash(); ?>');
-    $.ajaxSetup({
-      data: csfrData
-    });
-});
-</script>
-</head>
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-           
+<section class="innerbanner">
+  <div class="banner-cont">
+    <h1 class="title">Contact Us</h1>
+    <div class="breadcramb">
+      <ul>
+        <li><a href="javascript:void(0)"><i class="lnr lnr-home"></i></a></li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="inner-top-cat">
+  <div class="container">
+    <div class="category-circle carousel-7 owl-carousel owl-theme">
+      <?php if(count($category) > 0){
+            foreach ($category as $key => $value) {
+          ?>
+        <div class="item">
+          <figure>
+            <div class="circle-layout">
+              <?php 
+              $imagePath = base_url('public/'.THEME.'/images/buddies_01_img.jpg');
+              if($value->image_name != ''){
+                $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
+              }?>
+              <img src="<?php echo $imagePath;?>" alt="<?php echo $value->acmd_name;?>">
+              <figcaption>
+                <button><i class="lnr lnr-plus-circle"></i></button>
+              </figcaption>
+            </div>                  
+          </figure>
+          <h3><a href="javascript:void(0)"><?php echo $value->acmd_name;?></a></h3>
         </div>
-    </nav>
-    <section class="pad">
-        <div class="container">
+        <?php } } ?>
+    </div>
+  </div>
+</section>
 
+<section class="inner-layout">
+  <div class="container">   
+    <div class="inner-content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="bottom-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3703.892490434317!2d88.227446!3d21.8230844!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a03ab0cb48f3bbb%3A0xbb4dccab9ea0ea52!2sukilerhat!5e0!3m2!1sen!2sin!4v1535229139068" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+          <div class="contact-info">
+            <h4>Contact Info</h4>
+            <p>Official Time : 11 AM to 9 PM</p>
+            <p>Mobile : + 91-9903638848</p>
+            <p>E mail : parrotdipankar@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="addrs-block">           
+            <h4>OFFICE ADDRESS</h4>
+
+            <h5>PARROT DIPANKAR</h5>
+            <p>School Road, Ukiler Hat, South 24 Paraganas</p>
+            <p>West Bengal, India - 743347</p>
+          </div>
+          <div class="contact-form-block">
+            <h6>If you have any problem or need some additional info about our site, do not hesitate to contact us. We will reply soon.</h6>
+            <?php if($msg != ''): echo $msg; endif;?>
+            <form class="block" action="" method="post">
+              <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
               <div class="row">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4">
-                    
-                    
-                      <div class="login-box-body">
-                        <p class="login-box-msg">Sign up</p>
-                        <form class="form account-form" accept-charset="utf-8" method="post" action="">
-                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                            <?php echo $msg;?>
-                            <div class="form-group">
-                              <label for="username">Name</label>
-                              <input type="text"  class="form-control" id="login-username" name="contact_us[name]" placeholder="Please enter Name" tabindex="1">
-                              <?php echo form_error('contact_us[name]', '<p class="text-danger">', '</p>'); ?>
-                            </div>
-                            <div class="form-group">
-                              <label for="username">Mobile</label>
-                              <input type="text"  class="form-control" id="login-username" name="contact_us[mobile]" placeholder="Please enter Mobile" tabindex="2">
-                              <?php echo form_error('contact_us[mobile]', '<p class="text-danger">', '</p>'); ?>
-                            </div>
-                            <div class="form-group">
-                              <label for="username">Email</label>
-                              <input type="email"  class="form-control" id="login-username" name="contact_us[email]" placeholder="Please enter Email" tabindex="3">
-                              <?php echo form_error('contact_us[email]', '<p class="text-danger">', '</p>'); ?>
-                            </div>
-                            <div class="form-group">
-                              <label for="username">Message</label>
-                              <textarea class="form-control" rows="3" name="contact_us[desccription]"><?php echo set_value('contact_us[desccription]'); ?></textarea>
-                              <?php echo form_error('contact_us[desccription]', '<p class="text-danger">', '</p>'); ?>
-                            </div>
-                            
-                            <div class="row">
-                              
-
-                              <div class="col-xs-12">
-                                
-                                <button type="submit" class="btn btn-primary" tabindex="4">Sign In</button>
-                                <!-- <div class="pull-right links">
-                                    <a href="<?php echo base_url() ?>account/auth/forgotPassword">Forgot Password</a>
-                                </div> -->
-                              </div>
-                            </div>
-                            <div></div>
-                        </form>
-                      </div>
-                </div>    
-                <div class="col-xs-4">
-
-                </div>              
+                <div class="col-md-6 multi-horizontal" data-for="name">
+                  <div class="form-group">
+                    <label class="form-control-label ">Name</label>
+                        <input class="form-control input" name="contact_us[name]" data-form-field="Name" placeholder="Your Name" required="" id="name-form4-4v" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-6 multi-horizontal" data-for="phone">
+                    <div class="form-group">
+                      <label class="form-control-label ">Phone No</label>
+                        <input class="form-control input" name="contact_us[mobile]" data-form-field="Phone" placeholder="Phone" required="" id="phone-form4-4v" type="number">
+                    </div>
+                  </div>
+                  <div class="col-md-12" data-for="email">
+                    <div class="form-group">
+                      <label class="form-control-label ">Email</label>
+                        <input class="form-control input" name="contact_us[email]" data-form-field="Email" placeholder="Email" required="" id="email-form4-4v" type="email">
+                    </div>
+                  </div>
+                  <div class="col-md-12" data-for="message">
+                    <div class="form-group">
+                      <label class="form-control-label ">Message</label>
+                        <textarea class="form-control input" name="contact_us[desccription]" rows="3" required="" data-form-field="Message" placeholder="Message" style="resize:none" id="message-form4-4v"></textarea>
+                    </div>
+                  </div>
+                  <div class="input-group-btn col-md-12">
+                      <button href="" type="submit" class="btn btn-primary btn-form display-4">SEND MESSAGE</button>
+                  </div>
               </div>
-              
-
-</div>
-<!-- <p class="links"><a href="<?php echo base_url(); ?>msme_unit/registration">Register as MSME</a> | <a href="<?php echo base_url(); ?>bank_unit/registration">Register as Bank/FI</a> | <a href="<?php echo base_url(); ?>tech_unit/registration">Register as Technical Expert</a></p> -->
-</div>
-</div>
-    </section>
-</body>
-</html> 
-
+            </form>
+          </div>
+        </div>        
+      </div>  
+    </div>
+  </div>
+  
+</section>

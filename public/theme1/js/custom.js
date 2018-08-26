@@ -5,19 +5,40 @@ jQuery(document).ready(function ($) {
 	    margin:30,
 	    responsiveClass:true,
 	    dots: false,
+	    nav:true,
 	    responsive:{
 	        0:{
 	            items:1,
-	            nav:true
+	        },
+	        600:{
+	            items:2,
+	        },
+	        1000:{
+	            items:3,
+	        },
+	        1200:{
+	            items:4,
+	        }
+	    }
+	})
+	$('.category-circle').owlCarousel({
+	    loop:true,
+	    margin:30,
+	    responsiveClass:true,
+	    dots: false,
+	    nav:true,
+	    responsive:{
+	        0:{
+	            items:1,
 	        },
 	        600:{
 	            items:3,
-	            nav:false
 	        },
 	        1000:{
-	            items:4,
-	            nav:true,
-	            loop:false
+	            items:5,
+	        },
+	        1200:{
+	            items:5,
 	        }
 	    }
 	})
@@ -26,19 +47,16 @@ jQuery(document).ready(function ($) {
 	    margin:30,
 	    responsiveClass:true,
 	    dots: false,
+	    nav:true,
 	    responsive:{
 	        0:{
 	            items:1,
-	            nav:true
 	        },
 	        600:{
 	            items:3,
-	            nav:false
 	        },
 	        1000:{
 	            items:7,
-	            nav:true,
-	            loop:false
 	        }
 	    }
 	})

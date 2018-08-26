@@ -1,4 +1,4 @@
-<footer id="footer">
+
 	<div class="outer-container clearfix">
 		<div class="pull-left"><p>Copyright © 2018 ParrotDipankar</p></div>
 		<div class="pull-right">
@@ -11,4 +11,3 @@
 			</ul>
 		</div>
 	</div>
-</footer>

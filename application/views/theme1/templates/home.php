@@ -25,12 +25,18 @@
 </head>
 	
 <body>
-<?php echo $this->load->view(THEME.'/common/search');?>
-<?php echo $this->load->view(THEME.'/common/menu');?>
-<?php echo $this->load->view(THEME.'/common/header');?>
-<?php echo $this->load->view(THEME.'/common/footer');?>
+<?php  $this->load->view(THEME.'/common/search');?>
+<div class="menusection">
+<?php  $this->load->view(THEME.'/common/menu');?>
+</div>
+<header id="header">
+<?php  $this->load->view(THEME.'/common/header');?>
+</header>
+<footer id="footer">
+	<?php  $this->load->view(THEME.'/common/footer');?>
+</footer>
 
-<?php echo $this->load->view(THEME.'/common/publish');?>
+<?php  $this->load->view(THEME.'/common/publish');?>
 
 <section id="fullpage">	
 	<div class="section homeBanner" id="section0">	
@@ -55,14 +61,23 @@
 	</div>
 	<!-- BANNER SECTION -->
 
+	 
 	<div class="section homecategory" id="section1">
 		<div class="container">
 			<div class="content-sec clearfix">
 				<h2 class="title text-center">Browse Categories</h2>
-				<div class="category-circle carousel-4 owl-carousel owl-theme">
-					<?php if(count($category) > 0){
+				<!-- <h3 class="title text-center">Discover new products</h3>-->
+				<h5 class="subtitle text-center">Browse our classifieds and find best deal for you - buy, sell or exchange items</h5>  
+				<div class="search-layout">
+					<div class="search-group">
+						<input type="text" name="" placeholder="What are you looking for?">
+						<input type="submit" name="" name="" value="Search">
+					</div>
+				</div>
+
+				<div class="category-circle owl-carousel owl-theme">
+				    <?php if(count($category) > 0){
 						foreach ($category as $key => $value) {
-							
 					?>
 				    <div class="item">
 				    	<figure>
@@ -81,103 +96,15 @@
 				    	<h3><a href="javascript:void(0)"><?php echo $value->acmd_name;?></a></h3>
 				    </div>
 				<?php } } ?>
-				    <!-- <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/lovebird_01_img.jpg" alt="Lovebird">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Lovebird</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/cockatiel_01_img.jpg" alt="Cockatiel">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Cockatiel</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/ringneck_01_img.jpg" alt="Ring neck and RFaw">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Ring neck and Raw</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/buddies_01_img.jpg" alt="Buddies">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Buddies</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/lovebird_01_img.jpg" alt="Lovebird">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Lovebird</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/cockatiel_01_img.jpg" alt="Cockatiel">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Cockatiel</a></h3>
-				    </div>
-				    <div class="item">
-				    	<figure>
-				    		<div class="circle-layout">
-					    		<img src="<?php echo base_url('public/'.THEME.'/');?>images/ringneck_01_img.jpg" alt="Ring neck and RFaw">
-					    		<figcaption>
-					    			<button><i class="lnr lnr-plus-circle"></i></button>
-					    		</figcaption>
-				    		</div>					    		
-				    	</figure>
-				    	<h3><a href="javascript:void(0)">Ring neck and Raw</a></h3>
-				    </div> -->
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 	<!-- CATEGORY SECTION -->
 
-	<div class="section homediscover" id="section2">		
-		<div class="container">
-			<div class="content-sec">
-				<h2 class="title text-center">Discover new products</h2>
-				<h5 class="subtitle text-center">Browse our classifieds and find best deal for you - buy, sell or exchange items</h5>
-				<div class="search-layout">
-					<div class="search-group">
-						<input type="text" name="" placeholder="What are you looking for?">
-						<input type="submit" name="" name="" value="Search">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<!-- WAHT WE DO SECTION -->
 
 	<div class="section homepdlist" id="section3">
@@ -373,14 +300,6 @@
 	//fullPage.js initialization
 	initialization();
 
-</script>
-
-
-<script type="text/javascript">
-    $(document).ready(function($) { 
-
-    	
-    });
 </script>
 </body>
 </html>

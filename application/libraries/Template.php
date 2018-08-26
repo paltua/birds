@@ -78,14 +78,12 @@ class Template{
     
     private function _getHomeRegion(){
         $rg = array();
-        
         $rg['head'] = $this->_getHead();
         $rg['header'] = $this->_getHeader();
-        // $rg['slider'] = $this->_getSlider();
-        // $rg['headerLogin'] = $this->_getHeaderLogin();
-        // $rg['footer'] = $this->_getFooter();
-        // $rg['footerLogin'] = $this->_getFooterLogin();
-        $rg['hide_content_area'] = 'no';
+        $rg['menu'] = $this->_getMenu();
+        $rg['publish'] = $this->_getPublish();
+        $rg['search'] = $this->_getSearch();
+        $rg['footer'] = $this->_getFooter();
         return $rg;
     }
 
@@ -194,7 +192,21 @@ class Template{
         return self::$_CI->load->view($this->themeName.'common/head',$this->data,true);        
     }
 
-    
+    private function _getMenu(){
+        $this->data['title'] = $this->title;
+        return self::$_CI->load->view($this->themeName.'common/menu',$this->data,true);        
+    }
+
+    private function _getPublish(){
+        $this->data['title'] = $this->title;
+        return self::$_CI->load->view($this->themeName.'common/publish',$this->data,true);        
+    }
+
+    private function _getSearch(){
+        $this->data['title'] = $this->title;
+        return self::$_CI->load->view($this->themeName.'common/SEARCH',$this->data,true);        
+    }
+
     private function _getHeader(){
         $this->data['title'] = $this->title; 
         $this->data['menu'] = '';//$this->_menuArray();  

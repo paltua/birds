@@ -1,4 +1,4 @@
-<header id="header">
+
 	<div class="outer-container">
 		<div class="headerleft"><a href="javascript:void(0)" class="logo"><img src="<?php echo base_url('public/'.THEME.'/');?>images/site-logo.png" alt="ParrotDipankar"/></a></div>
 		<div class="headerright">
@@ -16,4 +16,3 @@
 			</div>
 		</div>
 	</div>
-</header>

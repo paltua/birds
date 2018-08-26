@@ -26,15 +26,15 @@ class Contact_us extends MY_Controller
                 $contact_us = $this->input->post('contact_us');
                 $this->tbl_generic_model->add('contact_us', $contact_us);
                 $status = 'success';
-                $msg = 'Thank you to contact us.One of our executive will contact you.';
-                $this->_sendEmailToAdmin();
+                $msg = 'Thank you to contact us.One of our executive will contact you as soon as possible.';
+                $this->_sendEmailToAdmin($contact_us);
             }
         }
-        //$data['dash'] = $this->_getDashboardArray();
+        $data['category'] = $this->cms_model->getLevelOneCategory();
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Contact Us');
-        $this->template->setLayout('login');
-        $this->template->loginRender('cms/'.$this->controller.'/index', $data);
+        $this->template->setLayout('cms');
+        $this->template->homeRender('cms/'.$this->controller.'/index', $data);
 
         // $data['msg'] = $this->template->getMessage($data['status'], $msg);
         // $this->template->setTitle('Home');
@@ -42,11 +42,12 @@ class Contact_us extends MY_Controller
         // $this->template->homeRender('cms/'.$this->controller.'/index', $data);
     }
 
-    private function _sendEmailToAdmin(){
+    private function _sendEmailToAdmin($contact_us = array()){
+        $data = $contact_us;
         $to = ADMIN_EMAIL;
         $data['to_name'] = ADMIN_NAME;
         $subject = "New Contact Us Request || Parrot Dipankar";
-        $body =
+        $body = $this->load->view('cms/'.$this->controller.'/email', $data, TRUE);
         $this->tbl_generic_model->sendEmail($to, $subject, $body);
     }
 
