@@ -17,6 +17,7 @@ class Animal_category_model extends CI_Model {
         $this->db->join('animal_category_master_details ACMD1',"ACMD1.acm_id=ACM1.acm_id AND ACMD1.language='en'",'LEFT');
         $this->db->where('ACM.acm_is_deleted','0');
         $this->db->where('ACMD.language','en');
+        $this->db->order_by('ACM.acm_id', 'DESC');
         return $this->db->get()->result();
     }
 
