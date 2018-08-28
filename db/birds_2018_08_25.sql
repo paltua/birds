@@ -6,3 +6,5 @@ ALTER TABLE `contact_us` CHANGE `desc` `desccription` TEXT CHARACTER SET latin1 
 ALTER TABLE `comments` CHANGE `com_id` `com_id` BIGINT NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `animal_master_images` ADD `ami_default` TINYINT NOT NULL DEFAULT '0' AFTER `ami_created_date`;
+
+ALTER TABLE `animal_master_details` CHANGE `amd_price` `amd_price` BIGINT(11) NOT NULL;

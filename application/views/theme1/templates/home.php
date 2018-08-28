@@ -113,104 +113,58 @@
 
 				<div id="horizontalTab" class="homepdlist-tab">
 					<ul class="resp-tabs-list">
-						<li>Premium listings</li>
 						<li>Latest listings</li>
+						<li>Premium listings</li>
 					</ul>
 					<div class="resp-tabs-container">
 						<div>
 							<div class="homelist-box carousel-4 owl-carousel owl-theme">
+								<?php if(count($latestProduct) > 0):
+									foreach ($latestProduct as $key => $value) :
+										$image = 'list-img_01.jpg';
+										if($value->ami_path != ''){
+											$image = $value->ami_path;
+										}
+										$imagePath = base_url('public/'.THEME.'/images/'.$image);
+								?>
 							    <div class="item">
 							    	<figure>
 							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_01.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
+								    		<span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
 								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
+								    			<h3><a href="javascript:void(0)"><?php echo $value->amd_name;?></a></h3>
+								    			<h5>RS <?php echo $value->amd_price;?></h5>
 								    		</figcaption>
 							    		</div>					    		
 							    	</figure>
 							    </div>
-							    <div class="item">
-							    	<figure>
-							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_02.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
-								    		</figcaption>
-							    		</div>					    		
-							    	</figure>
-							    </div>
-							    <div class="item">
-							    	<figure>
-							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_03.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
-								    		</figcaption>
-							    		</div>					    		
-							    	</figure>
-							    </div>
-							    <div class="item">
-							    	<figure>
-							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_04.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
-								    		</figcaption>
-							    		</div>					    		
-							    	</figure>
-							    </div>
-							    <div class="item">
-							    	<figure>
-							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_01.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
-								    		</figcaption>
-							    		</div>					    		
-							    	</figure>
-							    </div>
-							    <div class="item">
-							    	<figure>
-							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_02.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
-								    		</figcaption>
-							    		</div>					    		
-							    	</figure>
-							    </div>
-							    <div class="item">
-							    	<figure>
-							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_03.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
-								    		</figcaption>
-							    		</div>					    		
-							    	</figure>
-							    </div>
-							    <div class="item">
-							    	<figure>
-							    		<div class="box-layout">
-								    		<span class="pdimg"><img src="<?php echo base_url('public/'.THEME.'/');?>images/list-img_04.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-								    		<figcaption>
-								    			<h3><a href="javascript:void(0)">Red eye male</a></h3>
-								    			<h5>RS 300.00</h5>
-								    		</figcaption>
-							    		</div>					    		
-							    	</figure>
-							    </div>
+							<?php endforeach; endif;  ?>
+							    
 							</div>
 						</div>
 						<div>
-						
+							<div class="homelist-box carousel-4 owl-carousel owl-theme">
+							    <?php if(count($premiumProduct) > 0):
+									foreach ($premiumProduct as $key => $value) :
+										$image = 'list-img_01.jpg';
+										if($value->ami_path != ''){
+											$image = $value->ami_path;
+										}
+										$imagePath = base_url('public/'.THEME.'/images/'.$image);
+								?>
+							    <div class="item">
+							    	<figure>
+							    		<div class="box-layout">
+								    		<span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
+								    		<figcaption>
+								    			<h3><a href="javascript:void(0)"><?php echo $value->amd_name;?></a></h3>
+								    			<h5>RS <?php echo $value->amd_price;?></h5>
+								    		</figcaption>
+							    		</div>					    		
+							    	</figure>
+							    </div>
+							<?php endforeach; endif;  ?>
+							</div>						
 						</div>
 					</div>
 				</div>

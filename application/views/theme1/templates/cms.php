@@ -22,8 +22,6 @@
 	<?php if($footer != ''): echo $footer; endif;?>
 </footer>
 </section>
-
-<script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/jquery-2.1.1.min.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/easy-responsive-tabs.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/custom.js"></script>

@@ -17,3 +17,5 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
 <!-- Custom JS for this template -->
+
+<script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/jquery-2.1.1.min.js"></script>

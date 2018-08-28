@@ -23,7 +23,6 @@ class Contact_us extends MX_Controller
         $data['msg'] = $this->template->getMessage($data['status'],$msg);
         $data['list'] = $this->contact_us_model->listing();
         $data['controller'] = $this->controller;
-
         $this->template->setTitle('Admin : Contact Us');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);

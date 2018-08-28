@@ -17,9 +17,9 @@ class Home extends MY_Controller
         $data['page_title'] = 'Home';
         $data['status'] = 0;
         $msg = '';
-        //$data['dash'] = $this->_getDashboardArray();
-
         $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['latestProduct'] = $this->cms_model->getLetestProduct();
+        $data['premiumProduct'] = $this->cms_model->getPremiumProduct();
         $data['msg'] = $this->template->getMessage($data['status'], $msg);
         $this->template->setTitle('Home');
         $this->template->setLayout('home');    

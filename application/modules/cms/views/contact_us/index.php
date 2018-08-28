@@ -3,7 +3,7 @@
     <h1 class="title">Contact Us</h1>
     <div class="breadcramb">
       <ul>
-        <li><a href="javascript:void(0)"><i class="lnr lnr-home"></i></a></li>
+        <li><a href="<?php echo base_url();?>"><i class="lnr lnr-home"></i></a></li>
         <li>Contact Us</li>
       </ul>
     </div>
