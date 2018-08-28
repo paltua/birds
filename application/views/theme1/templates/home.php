@@ -121,11 +121,10 @@
 							<div class="homelist-box carousel-4 owl-carousel owl-theme">
 								<?php if(count($latestProduct) > 0):
 									foreach ($latestProduct as $key => $value) :
-										$image = 'list-img_01.jpg';
+										$imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
 										if($value->ami_path != ''){
-											$image = $value->ami_path;
+											$imagePath = base_url('uploads/animal/'.$value->ami_path);
 										}
-										$imagePath = base_url('public/'.THEME.'/images/'.$image);
 								?>
 							    <div class="item">
 							    	<figure>
@@ -146,11 +145,10 @@
 							<div class="homelist-box carousel-4 owl-carousel owl-theme">
 							    <?php if(count($premiumProduct) > 0):
 									foreach ($premiumProduct as $key => $value) :
-										$image = 'list-img_01.jpg';
+										$imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
 										if($value->ami_path != ''){
-											$image = $value->ami_path;
+											$imagePath = base_url('uploads/animal/'.$value->ami_path);
 										}
-										$imagePath = base_url('public/'.THEME.'/images/'.$image);
 								?>
 							    <div class="item">
 							    	<figure>
