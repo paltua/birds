@@ -331,13 +331,50 @@ video::-webkit-media-controls { display:none !important; }
 .form-group label {font-weight: 600}
 .form-group input, .form-group textarea {font-size: 13px}
 .contact-form-block .input-group-btn { margin-top: 15px }
-
+.pd-search-filter-layout {border-bottom: 1px solid rgba(0,0,0,.06); background-color: rgba(0,0,0,.04);margin-bottom: 10px}
+.product-item .pd-list-tab .resp-tab-content {border:none;padding: 0;}
+.pd-item-box {border:1px solid rgba(0,0,0,0.1);margin-top:15px;}
+.pd-item-box figure {margin-bottom: 0; }
+.inner-layout .inner-content .pd-item-box figure .img-box {position: relative;width: 160px;height:160px;display: table;}
+.inner-layout .inner-content .pd-item-box figure .img-box .img-inner {display: table-cell; vertical-align: middle;width:100%; height: 100%}
+.inner-layout .inner-content .pd-item-box figure .img-box .img-inner img {max-width: 160px;max-height: 150px;margin: auto;}
+.inner-layout .inner-content .pd-item-box figure figcaption {text-align: left; padding: 10px;}
+.inner-layout .inner-content .pd-item-box figure figcaption h2 {font-size: 22px;color:#ff1212;}
+.inner-layout .inner-content .pd-item-box figure figcaption h3 {font-size: 18px; color:#094a00;}
+.inner-layout .inner-content .pd-item-box figure figcaption h4  {font-size: 14px}
+.inner-layout .inner-content .pd-item-box figure figcaption h5  {font-size: 12px; color: rgba(0,0,0,0.4)}
+.inner-layout .inner-content .pd-item-box figure figcaption h5 span {display: block; margin: 5px 0}
+.inner-layout .inner-content .pd-item-box figure figcaption h6  {font-size: 12px;font-weight:600;}
+.inner-layout .inner-content .pd-item-box figure figcaption .publsh-date,.inner-layout .inner-content .pd-item-box figure figcaption .viewed {font-size: 11px}
+.inner-layout .inner-content .pd-item-box figure figcaption span span {font-weight:600;}
+.inner-layout .inner-content .pd-item-box figure figcaption .btn {padding: 9px 52px 7px 15px; text-transform: uppercase; font-weight: 600; margin-bottom: 10px}
+.inner-layout .inner-content .pd-item-box figure figcaption .btn::after {top: 12px;}
+.location::before {content: '\e833';font-family: 'Linearicons-Free';}
+.publshby::before {content: '\e802';font-family: 'Linearicons-Free';}
+.pd-list-tab .resp-tabs-list {background-color: rgba(0,0,0,0.1); padding: 5px 6px 0 5px;}
+.pd-list-tab .resp-tabs-list li {text-transform: uppercase;}
+.pd-list-tab .resp-tabs-list li.resp-tab-active,.aside-layout .resp-vtabs li.resp-tab-active {color: #ff1212;}
+.pd-search-filter-layout form .form-group label {display: block;}
+.pd-search-filter-layout form .form-group input,.pd-search-filter-layout form .form-group select {width:100%; padding:6px;}
+.pd-search-filter-layout form .form-group .asRange {width: 100%}
+.pd-search-filter-layout form .form-group .asRange .asRange-pointer .asRange-tip {bottom: -33px; top: auto}
+.pd-search-filter-layout form .form-group .asRange .asRange-pointer .asRange-tip::before {top: -3px; bottom: auto}
+.aside-layout .resp-vtabs .resp-tabs-list li {text-transform: uppercase; font-size: 14px}
+.aside-layout .resp-vtabs .resp-tabs-container {border-top: 0;border-right: 0;border-bottom: 0;border-radius: 0;}
+.aside-layout .resp-vtabs ul.resp-tabs-list { padding-top: 20px;}
+.aside-layout .resp-vtabs .resp-tab-content { padding-top: 36px;}
+.cont-part {border-left: 1px solid rgba(0,0,0,0.1)}
 
 
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }
   #header .logo img {-webkit-transform: skew(0,-8deg); transform: skew(0,-8deg);}
+  .pd-item-box figure {display: -webkit-flex; display: -ms-flexbox; display: flex; align-content: flex-start; align-content: -webkit-flex-start; }
+  .inner-layout .inner-content .pd-item-box figure figcaption {flex: 1;-webkit-flex: 1; display: -webkit-flex; display: -ms-flexbox; display: flex; flex-wrap: wrap; -webkit-flex-wrap: wrap;}
+  .inner-layout .inner-content .pd-item-box figure figcaption .content-item {display: -webkit-flex; display: -ms-flexbox; display: flex;}
+  .inner-layout .inner-content .pd-item-box figure figcaption .item-left {width:70%; padding-right: 5px;}
+  .inner-layout .inner-content .pd-item-box figure figcaption .item-right {width:30%; border-left: 1px solid rgba(0,0,0,0.1); padding-left: 5px;}
 }
 @media (min-width:1025px) {
 	#header .logo { width: 120px;}

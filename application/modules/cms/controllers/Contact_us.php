@@ -5,7 +5,6 @@ class Contact_us extends MY_Controller
     public $controller;
     public function __construct(){
         parent::__construct();
-        $this->load->library('Template');
         $this->load->model('cms_model');
         $this->controller = $this->router->fetch_class();
     }

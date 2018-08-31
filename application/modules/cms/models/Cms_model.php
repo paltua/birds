@@ -57,6 +57,27 @@ class Cms_model extends CI_Model {
         return $this->db->query($sql)->result();
     }
 
+    public function getSelectedCategory($cat_id = 0){
+        $sql = "SELECT
+                    `ACM`.`parent_id`,
+                    `ACM`.`image_name`,
+                    `ACMD`.*,
+                    `LANG`.`lang_name`
+                FROM
+                    `animal_category_master` `ACM`
+                LEFT JOIN `animal_category_master_details` `ACMD` ON
+                    `ACMD`.`acm_id` = `ACM`.`acm_id`
+                LEFT JOIN `language` `LANG` ON
+                    `LANG`.`language` = `ACMD`.`language`
+                WHERE 1
+                    AND `ACM`.`acm_is_deleted` = '0' 
+                    AND `ACM`.`acm_status` = 'active' 
+                    AND `ACM`.`acm_id` = ".$cat_id."
+                    AND ACM.parent_id IN (SELECT acm_id FROM animal_category_master WHERE 1 AND parent_id = 0 AND `acm_is_deleted` = '0' AND `acm_status` = 'active') 
+                ORDER BY `LANG`.`lang_name` ASC ";        
+        return $this->db->query($sql)->result();
+    }
+
     
 
     

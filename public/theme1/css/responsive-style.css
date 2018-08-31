@@ -51,6 +51,9 @@
 	.homeGetTouch .secleft .img-grid ul li { width: 25%;}
 	.search-layout { width: 95%;}
 	.banner-container { padding-left: 20px; padding-right: 20px }
+	.inner-layout .inner-content .pd-item-box figure .img-box {margin: 0 auto;}
+	.product-item {margin-top: 30px}
+	.product-listing-layout .aside-layout {margin-bottom: 20px}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}

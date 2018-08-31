@@ -75,7 +75,7 @@
 					</div>
 				</div>
 
-				<div class="category-circle owl-carousel owl-theme">
+				<div class="category-circle carousel-5 owl-carousel owl-theme">
 				    <?php if(count($category) > 0){
 						foreach ($category as $key => $value) {
 					?>
@@ -93,7 +93,7 @@
 					    		</figcaption>
 				    		</div>					    		
 				    	</figure>
-				    	<h3><a href="javascript:void(0)"><?php echo $value->acmd_name;?></a></h3>
+				    	<h3><a href="<?php echo base_url('user/search/category/'.$value->acm_id);?>"><?php echo $value->acmd_name;?></a></h3>
 				    </div>
 				<?php } } ?>
 				</div>

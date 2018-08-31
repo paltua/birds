@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
 	        }
 	    }
 	})
-	$('.category-circle').owlCarousel({
+	$('.carousel-5').owlCarousel({
 	    loop:true,
 	    margin:30,
 	    responsiveClass:true,
@@ -74,6 +74,12 @@ jQuery(document).ready(function ($) {
 	$info.show();
 	}		
 	});
+
+	$('#verticalTab').easyResponsiveTabs({
+	type: 'vertical',
+	width: 'auto',
+	fit: true
+	});
 	
 	$('.searchbtn').click(function() {
 	    $('.topsearch').addClass('scrchboxopen')
@@ -91,5 +97,8 @@ jQuery(document).ready(function ($) {
 	    $('.menusection').removeClass('menuopen');
 	    $('.navbtn').show();
 	});
-    
+    $(".range-example-input-2").asRange({
+	    range: true,
+	    limit: false
+	});
 });
