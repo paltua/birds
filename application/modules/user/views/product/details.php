@@ -70,7 +70,7 @@
 									<li><label>Price</label><span>Rs. <?php echo $prodDet[0]->amd_price;?></span></li>
 									<li><label>Listing ID</label><span>#<?php echo $prodDet[0]->am_code;?></span></li>
 									<li><label>Viewed</label><span><?php echo $prodDet[0]->am_viewed_count;?>+</span></li>
-									<li><label>Publish date</label><span><?php echo date("F j, Y", strtotime($prodDet[0]->am_created_date));?></span></li>
+									<li><label>Publish date</label><span><?php echo getViewDate($prodDet[0]->am_created_date);?></span></li>
 								</ul>
 							</div>
 							<div class="details-item">

@@ -48,6 +48,33 @@ function getLanguageArrAnimalMaster(){
   return $retArr;
 }
 
+function getViewDate($date = "now"){
+    $showDate = date("F j, Y", strtotime($date));
+    $today = 'now';
+    $datetime1 = new DateTime($today);
+    $datetime2 = new DateTime($date);
+    /*echo "<pre>";
+    print_r($datetime1->diff($datetime2));*/
+    if($datetime1->diff($datetime2)->format('%d') == 0){
+      if($datetime1->diff($datetime2)->format('%h') != 0){
+        if($datetime1->diff($datetime2)->format('%h') == 1){
+          $showDate = $datetime1->diff($datetime2)->format('%h').' hour ago';
+        }else{
+          $showDate = $datetime1->diff($datetime2)->format('%h').' hours ago';
+        }
+      }elseif($datetime1->diff($datetime2)->format('%i') != 0){
+        if($datetime1->diff($datetime2)->format('%i') == 1){
+          $showDate = $datetime1->diff($datetime2)->format('%i').' minute ago';
+        }else{
+          $showDate = $datetime1->diff($datetime2)->format('%i').' minutes ago';
+        }
+      }else{
+        $showDate = $datetime1->diff($datetime2)->format('%s').' seconds ago';
+      }
+    }
+    return $showDate;
+}
+
 
 
 

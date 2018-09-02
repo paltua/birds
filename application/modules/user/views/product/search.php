@@ -160,8 +160,12 @@
 																	<h2>Rs. <?php echo $value->amd_price;?></h2>
 																	<a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="btn btn-danger">View</a>
 																	<h6><?php echo $value->acmd_name;?></h6>
-																	<span class="publsh-date">published <span>yesterday</span></span>
-																	<span class="viewed">viewed <span><?php echo $value->am_viewed_count;?>+</span></span>
+																	<span class="publsh-date">published 
+																		<span><?php echo getViewDate($value->am_created_date);?></span>
+																	</span>
+																	<span class="viewed">viewed 
+																		<span><?php echo $value->am_viewed_count;?>+</span>
+																	</span>
 																</div>
 															</div>
 														</figcaption>

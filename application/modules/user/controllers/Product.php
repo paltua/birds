@@ -47,17 +47,7 @@ class Product extends MY_Controller {
         $this->template->homeRender('user/'.$this->controller.'/details', $data);
 	}
 
-	public function getDateTime($date = '2018-08-01 00:23:65'){
-		$retData = '';
-		if($date != ''){
-			$datetime1 = new DateTime(date('Y-m-d H:i:s', strtotime($date)));
-			$datetime2 = new DateTime("now");
-			
-			$interval = $datetime1->diff($datetime2);
-			echo $interval->format('%a days');
-		}
-		return $retData;
-	}
+	
 
 
 
