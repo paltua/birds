@@ -140,18 +140,19 @@
 														<figcaption>
 															<div class="content-item item-left">
 																<div>
-																	<h3>Bajri mix 20 piece</h3>
-																	<h4>20 piece bajri for sel in me red eye aur fellow bhi hain.</h4>
-																	<h5><span class="location">Karachi in Sindh (Pakistan)</span><span class="publshby">Published by Ali </span></h5>
+																	<h3><?php echo $value->amd_name;?></h3>
+																	<h4><?php echo $value->acmd_short_desc;?></h4>
+																	<h5><span class="location">coming soon</span>
+																		<span class="publshby"><?php echo ($value->am_user_type == 'admin')?'Admin': $value->name;?>Published by Ali </span></h5>
 																</div>
 															</div>
 															<div class="content-item item-right">
 																<div>
-																	<h2>Rs. 500.00</h2>
-																	<a href="javascript:void(0)" class="btn btn-danger">View</a>
+																	<h2>Rs. <?php echo $value->amd_price;?></h2>
+																	<a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="btn btn-danger">View</a>
 																	<h6>Budgies</h6>
 																	<span class="publsh-date">published <span>yesterday</span></span>
-																	<span class="viewed">viewed <span>32x</span></span>
+																	<span class="viewed">viewed <span><?php echo $value->am_viewed_count;?>+</span></span>
 																</div>
 															</div>
 														</figcaption>
