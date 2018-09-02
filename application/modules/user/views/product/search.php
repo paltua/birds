@@ -136,12 +136,21 @@
 											<div class="col-md-12 col-sm-6 col-xs-12">
 												<div class="pd-item-box">
 													<figure>
-														<span class="img-box"><span class="img-inner"><img src="images/cockatiel_01_img.jpg"/></span></span>
+														<span class="img-box">
+															<span class="img-inner">
+																<?php 
+													              $imagePath = base_url('public/'.THEME.'/images/cockatiel_01_img.jpg');
+													              if($value->ami_path != ''){
+													                $imagePath = base_url(UPLOAD_PROD_PATH.$value->ami_path);
+													              }?>
+																<img src="<?php echo $imagePath;?>"/>
+															</span>
+														</span>
 														<figcaption>
 															<div class="content-item item-left">
 																<div>
 																	<h3><?php echo $value->amd_name;?></h3>
-																	<h4><?php echo $value->acmd_short_desc;?></h4>
+																	<h4><?php echo $value->amd_short_desc;?></h4>
 																	<h5><span class="location">coming soon</span>
 																		<span class="publshby"><?php echo ($value->am_user_type == 'admin')?'Admin': $value->name;?>Published by Ali </span></h5>
 																</div>
