@@ -89,5 +89,5 @@ defined('SUPPORTEMAIL')    OR define('SUPPORTEMAIL', 'info@parrotdipankar.com');
 defined('THEME') OR define('THEME', 'theme1');
 defined('SITENAME') OR define('SITENAME', 'parrotdipankar.com');
 defined('UPLOAD_CAT_PATH') OR define('UPLOAD_CAT_PATH', 'uploads/category/');
-defined('UPLOAD_CAT_PATH') OR define('UPLOAD_PROD_PATH', 'uploads/animal/');
+defined('UPLOAD_PROD_PATH') OR define('UPLOAD_PROD_PATH', 'uploads/animal/');
 
