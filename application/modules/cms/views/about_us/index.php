@@ -29,7 +29,7 @@
               </figcaption>
             </div>                  
           </figure>
-          <h3><a href="<?php echo base_url('user/search/category/'.$value->acm_id);?>"><?php echo $value->acmd_name;?></a></h3>
+          <h3><a href="<?php echo base_url('user/product/category/'.$value->acm_id);?>"><?php echo $value->acmd_name;?></a></h3>
         </div>
         <?php } } ?>
     </div>
