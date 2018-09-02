@@ -101,4 +101,25 @@ jQuery(document).ready(function ($) {
 	    range: true,
 	    limit: false
 	});
+
+	// Product Gallery
+    $('#view').setZoomPicture({
+		thumbsContainer: '#pics-thumbs',
+		prevContainer: '#nav-left-thumbs',
+		nextContainer: '#nav-right-thumbs',
+		zoomContainer: '#zoom',
+		zoomLevel: 2,
+    });
+});
+
+$(window).scroll(function() {
+  var sticky = $('.inner-page-wrap #header'),
+    scroll = $(window).scrollTop();
+   
+  if (scroll >= 250) { 
+    sticky.addClass('innerchange'); 
+	}
+  else { 
+   sticky.removeClass('innerchange');
+	}
 });

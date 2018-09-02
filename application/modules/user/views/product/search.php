@@ -29,7 +29,7 @@
               </figcaption>
             </div>                  
           </figure>
-          <h3><a href="javascript:void(0)"><?php echo $value->acmd_name;?></a></h3>
+          <h3><a href="<?php echo base_url('user/product/search/'.$value->acm_id);?>"><?php echo $value->acmd_name;?></a></h3>
         </div>
         <?php } } ?>
     </div>
@@ -160,8 +160,15 @@
 												</div>
 											</div>
 										<?php }} ?>
-											
 										</div>
+									</div>
+									
+									<div>
+										Personal comming soon
+									</div>
+
+									<div>
+										Company comming soon
 									</div>
 								</div>
 							</div>

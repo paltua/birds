@@ -139,6 +139,12 @@ a:hover {text-decoration:none;}
 #header .headerright .inline-elmnt .navbtn:hover em:nth-child(2) { width:60%; background-color: #b5313c }
 #header .headerright .inline-elmnt .navbtn:hover em:nth-child(3) { width:80%; }
 .btngroup .btn { display: inline-block; margin-right: 6px }
+@media all and (min-width: 768px) {
+  #header.innerchange .headerright .inline-elmnt .searchbtn {background: url(../images/search-icon-black.png) no-repeat center center;}
+  #header.innerchange .headerright .inline-elmnt .locationbtn {background: url(../images/icon-map-black.png) no-repeat center center;}
+  #header.innerchange .headerright .inline-elmnt .logbtn {background: url(../images/icon-login-black.png) no-repeat center center;}
+  #header.innerchange .headerright .inline-elmnt .navbtn em {background: #1c1c1c}
+}
 
 .homeBanner h2 {color: #fff; text-transform: uppercase;font-weight: 700;line-height: 60px; margin-bottom: 20px; -webkit-text-shadow: 5px 5px 5px rgba(0,0,0,0.8); text-shadow: 5px 5px 5px rgba(0,0,0,0.8) }
 .homeBanner h3 {color: #fff; text-transform: uppercase;font-weight: 500;line-height: 55px; -webkit-text-shadow: 5px 0 5px rgba(0,0,0,0.8); text-shadow: 5px 0 5px rgba(0,0,0,0.8) }
@@ -321,7 +327,7 @@ video::-webkit-media-controls { display:none !important; }
 .inner-top-cat .category-circle figure figcaption button {width: 30px;height: 30px;}
 .inner-top-cat .category-circle figure:hover figcaption button i { font-size: 27px;}
 .inner-layout .inner-content {padding: 60px 0; min-height: 450px}
-.inner-layout .inner-content h3 {font-size: 22px; margin-bottom: 10px}
+.inner-layout .inner-content h3 {font-size: 22px; margin: 10px 0 15px}
 .inner-layout .inner-content p {font-size: 18px; line-height: 1.7}
 .inner-layout .inner-content .addrs-block {border-bottom:1px solid #ddd; margin-bottom: 20px; padding-bottom: 15px}
 .inner-layout .inner-content .addrs-block p {font-size: 14px}
@@ -365,6 +371,50 @@ video::-webkit-media-controls { display:none !important; }
 .aside-layout .resp-vtabs .resp-tab-content { padding-top: 36px;}
 .cont-part {border-left: 1px solid rgba(0,0,0,0.1)}
 
+#view { margin: 0 0 20px;height: auto !important;}
+#thumbs {position: relative;margin: 20px 0;}
+#nav-left-thumbs { left: -3px; }
+#nav-right-thumbs { right: -3px; }
+#nav-left-thumbs, #nav-right-thumbs {position: absolute;top: 30px;width: 25px;height: 25px;line-height: 25px;background: rgba(0,0,0,.02);border:1px solid rgba(0,0,0,.04);font-size: 1em;font-weight: bold;color: #999;cursor: pointer;transition-duration: .5s;text-align: center;}
+#nav-left-thumbs:hover, #nav-right-thumbs:hover { background: lightgrey; }
+#pics-thumbs {position: relative;padding: 5px 0;margin: 0 28px;white-space: nowrap;overflow: hidden;transition-duration: .8s;}
+#pics-thumbs img {padding: 5px;margin: 0 2px;border-radius: 0px;box-shadow: 0 0 3px rgba(0,0,0,.0.4);cursor: pointer;height: 75px;transition-duration: .5s;display: inline-block;}
+.product-details-layout h2 {font-size: 26px; margin-bottom: 15px}
+.comment-layout .comment-item figure {display: -wevkit-flex; display: -ms-flexbox; display: flex; -webkit-align-items: flex-start; align-items: flex-start; padding: 10px 0}
+.comment-layout .comment-item figure .pic {width:80px;height: 80px; border-radius: 50%; overflow: hidden; display: block; margin-right: 8px}
+.comment-layout .comment-item figure .pic img {max-width: 90px; max-height: 90px}
+.comment-layout .comment-item figure figcaption {-webkit-flex:1;flex:1;}
+.comment-layout .comment-item figure figcaption p {font-size: 14px;}
+.comment-layout .comment-item figure figcaption h3 {font-size: 12px; font-weight: 600; color: #f95615}
+.comment-layout .comment-item figure figcaption h3::before {content: '\e82a'; font-family: 'Linearicons-Free'; margin-right: 4px}
+.comment-layout .comment-item figure figcaption h4 {font-size: 12px; font-weight: 600; color: #f95615}
+.comment-layout .comment-item figure figcaption h4::before {content: '\e836'; font-family: 'Linearicons-Free'; margin-right: 4px}
+.comment-layout .comment-item figure figcaption h3,.comment-layout .comment-item figure figcaption h4 {display: inline-block; vertical-align: top;margin-right: 10px; margin-top: 3px}
+.comments-sec .form-control {border: 1px solid rgba(0,0,0,0.1); padding: 10px;}
+.comments-sec .form-control:focus {box-shadow: none; border-color: #f95615}
+.comments-sec .form-submit input {background-color: #f95615; padding: 7px 20px; color: #fff; border:none; cursor: pointer} 
+.details-pd .details-item {margin-bottom: 20px;}
+.details-pd .details-item p {font-size: 16px}
+.seller-info-layout {Width:100%; background-color: rgba(0,0,0,.05); padding: 15px}
+.inner-layout .inner-content .seller-info-layout h3 {text-align: center; background-color: #fff; padding: 10px; text-transform: uppercase; font-size: 16px; font-weight: 600}
+.seller-info-layout .seller-info-item {text-align: center;}
+.seller-info-layout .seller-info-item h4 {color:#b5313c;}
+.seller-info-layout .seller-info-item h6 {color:#8f8f8f; font-size: 14px}
+.seller-info-layout .seller-info-item h6::before {content: '\e82a'; font-family: 'Linearicons-Free'; margin-right: 4px}
+.seller-info-layout .seller-info-item h5 {color:#6c6c6c; font-size: 15px}
+.inner-layout .inner-content .seller-info-layout span {display: inline-block; position: relative;}
+.inner-layout .inner-content .seller-info-layout span i {display: block; cursor: pointer; padding: 0 5px; background-color: #de3f00; color: #fff; width: 45px; height: 45px; border-radius: 3px; font-size: 18px; text-align: center; line-height: 45px}
+.inner-layout .inner-content .seller-info-layout span ul {position: absolute; z-index: 5; right: 0; opacity: 0; visibility: hidden; background-color: #fff; border: 1px solid rgba(0,0,0,.03); -webkit-transition: all linear 0.5s; transition: all linear 0.5s}
+.inner-layout .inner-content .seller-info-layout span ul li a {display: block; padding: 4px 8px; border-bottom: 1px solid rgba(0,0,0,.03); font-size: 12px; text-align: left;}
+.inner-layout .inner-content .seller-info-layout span:hover > ul {opacity: 1; visibility: visible;}
+.contact-info a {position:relative; display: block; padding: 10px; text-align: center; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;}
+.contact-info a.cont-no {background-color: #f95615; color: #fff; margin-bottom: 10px}
+.contact-info a.cont-no::before {content: '\e830'; font-family: 'Linearicons-Free'; font-size: 22px; position: absolute; left: 10px; top: 4px}
+.contact-info a.cont-mail {background-color: #074500; color: #fff}
+.contact-info a.cont-mail::before {content: '\e818'; font-family: 'Linearicons-Free'; font-size: 22px; position: absolute; left: 10px; top: 4px}
+.details-pd .details-item ul li { padding: 5px 0 }
+.details-pd .details-item ul li label {font-weight: 600; min-width: 140px}
+.comment-add-layout h4 {font-size: 19px}
 
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
