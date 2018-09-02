@@ -71,7 +71,7 @@
 							<div class="col-md-12">
 								<h3>Search</h3>
 								<div class="pd-search-filter-layout">									
-									<form class="row">
+									<form class="row" method="post">
 										<div class="col-md-3">
 											<div class="form-group">
 												<label>Keyword</label>
@@ -90,7 +90,7 @@
 												</select>
 											</div>
 										</div>
-										<div class="col-md-3">
+										<!-- <div class="col-md-3">
 											<div class="form-group">
 												<label>City</label>
 												<select>
@@ -101,13 +101,13 @@
 													<option>Punjab</option>
 												</select>
 											</div>
-										</div>
-										<div class="col-md-3">
+										</div> -->
+										<div class="col-md-6">
 											<div class="form-group">
 												<label>Price</label>
 												<div class="example">
 										          <form method="post">
-										            <input class="range-example-input-2" type="text" min="0" max="10" value="2,6" name="points" step="1" />
+										            <input class="range-example-input-2" type="text" min="<?php echo $minMaxPrice[0]->min_price;?>" max="<?php echo $minMaxPrice[0]->max_price;?>" value="" name="points" step="10" />
 										          </form>
 										        </div>
 											</div>
@@ -130,6 +130,9 @@
 								<div class="resp-tabs-container">
 									<div>
 										<div class="row">
+											<?php if(count($prodList) > 0){
+												foreach ($prodList as $key => $value) {
+											?>
 											<div class="col-md-12 col-sm-6 col-xs-12">
 												<div class="pd-item-box">
 													<figure>
@@ -155,131 +158,8 @@
 													</figure>	
 												</div>
 											</div>
-											<div class="col-md-12 col-sm-6 col-xs-12">
-												<div class="pd-item-box">
-													<figure>
-														<span class="img-box"><span class="img-inner"><img src="images/cockatiel_01_img.jpg"/></span></span>
-														<figcaption>
-															<div class="content-item item-left">
-																<div>
-																	<h3>Bajri mix 20 piece</h3>
-																	<h4>20 piece bajri for sel in me red eye aur fellow bhi hain.</h4>
-																	<h5><span class="location">Karachi in Sindh (Pakistan)</span><span class="publshby">Published by Ali </span></h5>
-																</div>
-															</div>
-															<div class="content-item item-right">
-																<div>
-																	<h2>Rs. 500.00</h2>
-																	<a href="javascript:void(0)" class="btn btn-danger">View</a>
-																	<h6>Budgies</h6>
-																	<span class="publsh-date">published <span>yesterday</span></span>
-																	<span class="viewed">viewed <span>32x</span></span>
-																</div>
-															</div>
-														</figcaption>
-													</figure>	
-												</div>
-											</div>
-											<div class="col-md-12 col-sm-6 col-xs-12">
-												<div class="pd-item-box">
-													<figure>
-														<span class="img-box"><span class="img-inner"><img src="images/cockatiel_01_img.jpg"/></span></span>
-														<figcaption>
-															<div class="content-item item-left">
-																<div>
-																	<h3>Bajri mix 20 piece</h3>
-																	<h4>20 piece bajri for sel in me red eye aur fellow bhi hain.</h4>
-																	<h5><span class="location">Karachi in Sindh (Pakistan)</span><span class="publshby">Published by Ali </span></h5>
-																</div>
-															</div>
-															<div class="content-item item-right">
-																<div>
-																	<h2>Rs. 500.00</h2>
-																	<a href="javascript:void(0)" class="btn btn-danger">View</a>
-																	<h6>Budgies</h6>
-																	<span class="publsh-date">published <span>yesterday</span></span>
-																	<span class="viewed">viewed <span>32x</span></span>
-																</div>
-															</div>
-														</figcaption>
-													</figure>	
-												</div>
-											</div>
-											<div class="col-md-12 col-sm-6 col-xs-12">
-												<div class="pd-item-box">
-													<figure>
-														<span class="img-box"><span class="img-inner"><img src="images/cockatiel_01_img.jpg"/></span></span>
-														<figcaption>
-															<div class="content-item item-left">
-																<div>
-																	<h3>Bajri mix 20 piece</h3>
-																	<h4>20 piece bajri for sel in me red eye aur fellow bhi hain.</h4>
-																	<h5><span class="location">Karachi in Sindh (Pakistan)</span><span class="publshby">Published by Ali </span></h5>
-																</div>
-															</div>
-															<div class="content-item item-right">
-																<div>
-																	<h2>Rs. 500.00</h2>
-																	<a href="javascript:void(0)" class="btn btn-danger">View</a>
-																	<h6>Budgies</h6>
-																	<span class="publsh-date">published <span>yesterday</span></span>
-																	<span class="viewed">viewed <span>32x</span></span>
-																</div>
-															</div>
-														</figcaption>
-													</figure>	
-												</div>
-											</div>
-											<div class="col-md-12 col-sm-6 col-xs-12">
-												<div class="pd-item-box">
-													<figure>
-														<span class="img-box"><span class="img-inner"><img src="images/cockatiel_01_img.jpg"/></span></span>
-														<figcaption>
-															<div class="content-item item-left">
-																<div>
-																	<h3>Bajri mix 20 piece</h3>
-																	<h4>20 piece bajri for sel in me red eye aur fellow bhi hain.</h4>
-																	<h5><span class="location">Karachi in Sindh (Pakistan)</span><span class="publshby">Published by Ali </span></h5>
-																</div>
-															</div>
-															<div class="content-item item-right">
-																<div>
-																	<h2>Rs. 500.00</h2>
-																	<a href="javascript:void(0)" class="btn btn-danger">View</a>
-																	<h6>Budgies</h6>
-																	<span class="publsh-date">published <span>yesterday</span></span>
-																	<span class="viewed">viewed <span>32x</span></span>
-																</div>
-															</div>
-														</figcaption>
-													</figure>	
-												</div>
-											</div>
-											<div class="col-md-12 col-sm-6 col-xs-12">
-												<div class="pd-item-box">
-													<figure>
-														<span class="img-box"><span class="img-inner"><img src="images/cockatiel_01_img.jpg"/></span></span>
-														<figcaption>
-															<div class="content-item item-left">
-																<div>
-																	<h3>Bajri mix 20 piece</h3>
-																	<h4>20 piece bajri for sel in me red eye aur fellow bhi hain.</h4>
-																	<h5><span class="location">Karachi in Sindh (Pakistan)</span><span class="publshby">Published by Ali </span></h5>
-																</div>
-															</div>
-															<div class="content-item item-right">
-																<div>
-																	<h2>Rs. 500.00</h2>
-																	<a href="javascript:void(0)" class="btn btn-danger">View</a>
-																	<h6>Budgies</h6>
-																	<span class="publsh-date">published <span>yesterday</span></span>
-																	<span class="viewed">viewed <span>32x</span></span>
-																</div>
-															</div>
-														</figcaption>
-													</figure>	
-												</div>
-											</div>
+										<?php }} ?>
+											
 										</div>
 									</div>
 								</div>

@@ -78,6 +78,27 @@ class Cms_model extends CI_Model {
         return $this->db->query($sql)->result();
     }
 
+    public function getProductList($cat_id = 0){
+        $this->db->select('AMD.*, AMI.*');
+        $this->db->from('animal_category_relation ACR');
+        $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND am_status = 'active' AND am_deleted = '0'");
+        $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
+        $this->db->join('animal_master_images AMI','AMD.am_id=ACR.am_id AND AMI.ami_default = 1','LEFT');
+        if($cat_id > 0){
+            $this->db->where('ACR.acm_id', $cat_id);
+        }
+        return $this->db->get()->result();
+    }
+
+    public function getMinMaxPrice(){
+        $this->db->select('MAX(AMD.amd_price) max_price, MIN(AMD.amd_price) min_price');
+        $this->db->from('animal_master AM');
+        $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
+        $this->db->where('AM.am_status','active');
+        $this->db->where('AM.am_deleted','0');
+        return $this->db->get()->result();
+    }
+
     
 
     

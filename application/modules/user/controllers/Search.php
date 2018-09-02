@@ -23,10 +23,13 @@ class Search extends MY_Controller {
         $status = '';
         $msg = '';
         $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
-        //pr($data['selectedCatDet']);
+        $data['prodList'] = $this->cms_model->getProductList($category_id);
+        $data['prodList'] = $this->cms_model->getProductList($category_id);
+        $data['minMaxPrice'] = $this->cms_model->getMinMaxPrice();
+        //pr($data);
 		$data['category'] = $this->cms_model->getLevelOneCategory();
         $data['msg'] = $this->template->getMessage($status,$msg);
-        $this->template->setTitle('Contact Us');
+        $this->template->setTitle('Product Search');
         $this->template->setLayout('cms');
         $this->template->homeRender('user/'.$this->controller.'/category', $data);
 	}
