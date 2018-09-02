@@ -84,9 +84,7 @@ class Cms_model extends CI_Model {
         $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND am_status = 'active' AND am_deleted = '0'");
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
         $this->db->join('animal_master_images AMI','AMD.am_id=ACR.am_id AND AMI.ami_default = 1','LEFT');
-        $this->db->join('user_master UM', 'UM.user_id=AM.user_id', 'LEFT');
-        $this->db->where('UM.um_status','active');
-        $this->db->where('UM.um_deleted','0');
+        $this->db->join('user_master UM', "UM.user_id=AM.user_id AND UM.um_status = 'active' AND UM.um_deleted = '0'", 'LEFT');
         if($cat_id > 0){
             $this->db->where('ACR.acm_id', $cat_id);
         }
