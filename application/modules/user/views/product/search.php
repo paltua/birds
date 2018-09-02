@@ -152,14 +152,14 @@
 																	<h3><?php echo $value->amd_name;?></h3>
 																	<h4><?php echo $value->amd_short_desc;?></h4>
 																	<h5><span class="location">coming soon</span>
-																		<span class="publshby"><?php echo ($value->am_user_type == 'admin')?'Admin': $value->name;?>Published by Ali </span></h5>
+																		<span class="publshby">Published by <?php echo ($value->am_user_type == 'admin')?'Company': $value->name;?></span></h5>
 																</div>
 															</div>
 															<div class="content-item item-right">
 																<div>
 																	<h2>Rs. <?php echo $value->amd_price;?></h2>
 																	<a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="btn btn-danger">View</a>
-																	<h6>Budgies</h6>
+																	<h6><?php echo $value->acmd_name;?></h6>
 																	<span class="publsh-date">published <span>yesterday</span></span>
 																	<span class="viewed">viewed <span><?php echo $value->am_viewed_count;?>+</span></span>
 																</div>

@@ -38,8 +38,8 @@ class Product extends MY_Controller {
         $status = '';
         $msg = '';
         
-        //$data['prodDet'] = $this->cms_model->getProductDetails($am_id);
-        //$data['prodImg'] = $this->cms_model->getProductImages($am_id);
+        $data['prodDet'] = $this->cms_model->getProductDetails($am_id);
+        $data['prodImg'] = $this->cms_model->getProductImages($am_id);
 		$data['category'] = $this->cms_model->getLevelOneCategory();
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Product Search');

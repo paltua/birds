@@ -44,38 +44,38 @@
 				<div class="row">
 					<div class="col-lg-8 col-md-8 col-sm-12">
 						<div id="view">
-						  <img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_01.jpg');?>" alt="" />
+						  <img src="<?php echo base_url(UPLOAD_PROD_PATH.$prodImg[0]->ami_path);?>" alt="" />
 						</div>
 						<div id="thumbs">
 							<div id="nav-left-thumbs"><i class="lnr lnr-chevron-left"></i></div>
 							<div id="pics-thumbs">
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_02.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_03.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_02.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_03.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_02.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_03.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_02.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_03.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_02.jpg');?>" alt="" />
-								<img src="<?php echo base_url('public/'.THEME.'/images/sectionbanner01_03.jpg');?>" alt="" />
+								<?php if(count($prodImg)> 0){
+									foreach ($prodImg as $key => $value) {
+										$imagePath = base_url('public/'.THEME.'/images/sectionbanner01_02.jpg');
+										if($value->ami_path != ''){
+											$imagePath = base_url(UPLOAD_PROD_PATH.$value->ami_path);
+										}
+								?>
+								<img src="<?php echo $imagePath;?>" alt="" />
+							<?php }} ?>
+								
 							</div>
 							<div id="nav-right-thumbs"><i class="lnr lnr-chevron-right"></i></div>
 						</div>
 						<div class="details-pd">
 							<div class="details-item">
-								<h2>Budgiers pair</h2>
+								<h2><?php echo $prodDet[0]->amd_name;?></h2>
 								<ul>
-									<li><label>Category</label><span>Budgies</span></li>
-									<li><label>Price</label><span>Rs. 500.00</span></li>
-									<li><label>Listing ID</label><span>#3617</span></li>
-									<li><label>Viewed</label><span>0x</span></li>
-									<li><label>Publish date</label><span>September 2, 2018</span></li>
+									<li><label>Category</label><span><?php echo $prodDet[0]->acmd_name;?></span></li>
+									<li><label>Price</label><span>Rs. <?php echo $prodDet[0]->amd_price;?></span></li>
+									<li><label>Listing ID</label><span>#<?php echo $prodDet[0]->am_code;?></span></li>
+									<li><label>Viewed</label><span><?php echo $prodDet[0]->am_viewed_count;?>+</span></li>
+									<li><label>Publish date</label><span><?php echo date("F j, Y", strtotime($prodDet[0]->am_created_date));?></span></li>
 								</ul>
 							</div>
 							<div class="details-item">
 								<h2>Description</h2>
-								<p>Beautiful different colors male female mix per pice price 250 </p>
+								<p><?php echo $prodDet[0]->amd_short_desc;?></p>
 							</div>
 						</div>
 						<div class="comments-sec">
