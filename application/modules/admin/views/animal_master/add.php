@@ -16,8 +16,8 @@
         //     var meter_link = $(this).attr("meter-link");
         //     $('.myMeterModal').find(".modal-content").load(meter_link);
         // });
-        $("#animal_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
-        $("#animal_p_cat_id").chosen({no_results_text: "Oops, No Transformer found!"});
+        $("#animal_cat_id").chosen({no_results_text: "Oops, No Parent Category found!"});
+        $("#animal_p_cat_id").chosen({no_results_text: "Oops, No Sub Category found!"});
 
         $("#animal_p_cat_id").change(function(){
             var parent_id = parseInt($(this).val());
@@ -25,6 +25,30 @@
             $.post( url, { parent_id: parent_id, selectedChild : ''}, function( data ) {
                 $("#animal_cat_id").html(data.data);
                 $('#animal_cat_id').trigger("chosen:updated");
+            },'json');
+        });
+
+        $("#animal_country_id").chosen({no_results_text: "Oops, No Country found!"});
+        $("#animal_state_id").chosen({no_results_text: "Oops, No State found!"});
+        $("#animal_city_id").chosen({no_results_text: "Oops, No City found!"});
+
+        $("#animal_country_id").change(function(){
+            var country_id = parseInt($(this).val());
+            var url = '<?php echo base_url();?>admin/animal_master/getStateList'
+            $.post( url, { country_id: country_id, selectedCountry : ''}, function( data ) {
+                $("#animal_state_id").html(data.data);
+                $('#animal_state_id').trigger("chosen:updated");
+                $("#animal_city_id").html('');
+                $('#animal_city_id').trigger("chosen:updated");
+            },'json');
+        });
+
+        $("#animal_state_id").change(function(){
+            var state_id = parseInt($(this).val());
+            var url = '<?php echo base_url();?>admin/animal_master/getCityList'
+            $.post( url, { state_id: state_id, selectedCountry : ''}, function( data ) {
+                $("#animal_city_id").html(data.data);
+                $('#animal_city_id').trigger("chosen:updated");
             },'json');
         });
     });
@@ -105,8 +129,6 @@
                                             <?php echo form_error('p_acr', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                     </div>
-                                </div>    
-                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Sub Category</label>
@@ -115,7 +137,39 @@
                                             </select>
                                         </div>
                                     </div> 
-                                </div>    
+                                </div>  
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Country *</label>
+                                            <select class="form-control" id="animal_country_id" name="country_id">
+                                                <option value="">Select One</option>
+                                                <?php if(count($country) > 0){
+                                                    foreach ($country as $value) {
+                                                        ?>
+                                                        <option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
+                                                    <?php }} ?>
+                                            </select>
+                                            <?php echo form_error('country_id', '<p class="text-danger">', '</p>'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>State</label>
+                                            <select class="form-control" id="animal_state_id" name="state_id">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                    </div> 
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <select class="form-control" id="animal_city_id" name="city_id">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>  
                                 <?php endif;?> 
                                 <div class="row">    
                                     <div class="col-lg-4">

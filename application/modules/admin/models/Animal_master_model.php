@@ -32,11 +32,12 @@ class Animal_master_model extends CI_Model {
     }
 
     public function getSingle($am_id = 0){
-        $this->db->select('AM.*, AMD.*, LANG.lang_name, GROUP_CONCAT( DISTINCT ACR.acm_id SEPARATOR ",") all_cat');
+        $this->db->select('AM.*, AMD.*, LANG.lang_name, GROUP_CONCAT( DISTINCT ACR.acm_id SEPARATOR ",") all_cat, AL.*');
         $this->db->from('animal_master AM');
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','INNER');
         $this->db->join('language LANG','LANG.language = AMD.language','INNER');
         $this->db->join('animal_category_relation ACR','ACR.am_id=AM.am_id','LEFT');
+        $this->db->join('animal_location AL','AL.am_id=AM.am_id','LEFT');
         $this->db->where('AM.am_deleted','0');
         $this->db->where('AM.am_id', $am_id);
         $this->db->group_by('AMD.amd_id');
@@ -52,7 +53,7 @@ class Animal_master_model extends CI_Model {
         $this->db->join('animal_category_master_details ACMD','ACMD.acm_id=ACM.acm_id','INNER');
         $this->db->where('ACM.acm_is_deleted','0');
         $this->db->where('ACMD.language','en');
-        If($acm_id > 0){
+        if($acm_id > 0){
             $this->db->where('ACM.acm_id', $acm_id);
         }
         $this->db->order_by('ACMD.acmd_name', 'ASC');
@@ -95,7 +96,7 @@ class Animal_master_model extends CI_Model {
     public function getImageList($am_id = 0){
         $this->db->select('*');
         $this->db->from('animal_master_images AMI');
-        If($am_id > 0){
+        if($am_id > 0){
             $this->db->where('AMI.am_id', $am_id);
         }
         $this->db->order_by('AMI.ami_id', 'DESC');
@@ -113,6 +114,29 @@ class Animal_master_model extends CI_Model {
         $sql = "UPDATE `animal_master` SET `am_status`=IF(am_status ='active','inactive','active') WHERE 1 AND am_id=".$am_id;
         $this->db->query($sql);
         return true;
+    }
+
+    public function getCountryList(){
+        $this->db->select('*');
+        $this->db->from('countries');
+        $this->db->order_by('name', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    public function getStateList($country_id = 0){
+        $this->db->select('*');
+        $this->db->from('states');
+        $this->db->where('country_id', $country_id);
+        $this->db->order_by('name', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    public function getCityList($state_id = 0){
+        $this->db->select('*');
+        $this->db->from('cities');
+        $this->db->where('state_id', $state_id);
+        $this->db->order_by('name', 'ASC');
+        return $this->db->get()->result();
     }
 
     
