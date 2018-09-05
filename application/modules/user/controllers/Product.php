@@ -8,6 +8,7 @@ class Product extends MY_Controller {
 		parent::__construct();
 		$this->controller = $this->router->fetch_class();
 		$this->load->model('cms/cms_model');
+        $this->load->model('product_model');
 	}
 
 	public function index(){
@@ -23,8 +24,8 @@ class Product extends MY_Controller {
         $status = '';
         $msg = '';
         $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
-        $data['prodList'] = $this->cms_model->getProductList($category_id);
-        $data['minMaxPrice'] = $this->cms_model->getMinMaxPrice();
+        $data['prodList'] = $this->product_model->getProductList($category_id);
+        $data['minMaxPrice'] = $this->product_model->getMinMaxPrice();
         //pr($data);
 		$data['category'] = $this->cms_model->getLevelOneCategory();
         $data['msg'] = $this->template->getMessage($status,$msg);
@@ -38,8 +39,8 @@ class Product extends MY_Controller {
         $status = '';
         $msg = '';
         
-        $data['prodDet'] = $this->cms_model->getProductDetails($am_id);
-        $data['prodImg'] = $this->cms_model->getProductImages($am_id);
+        $data['prodDet'] = $this->product_model->getProductDetails($am_id);
+        $data['prodImg'] = $this->product_model->getProductImages($am_id);
 		$data['category'] = $this->cms_model->getLevelOneCategory();
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Product Search');

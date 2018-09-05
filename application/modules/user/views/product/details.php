@@ -135,10 +135,13 @@
 							<div class="seller-info-layout">
 								<h3>Seller's Info</h3>
 								<div class="seller-info-item">
-									<h4>John Deo</h4>
+									<h4><?php echo ($prodDet[0]->am_user_type == 'admin')?'Company':$prodDet[0]->user_name;?></h4>
+									<?php if($prodDet[0]->am_user_type != 'admin'){?>
 									<h6>Private Person</h6>
-									<h5>Registered on August 20, 1028</h5>
+									<h5>Registered on <?php echo date("F j, Y", strtotime($prodDet[0]->am_created_date));?></h5>
 									<h3>Dashboard</h3>
+									<?php }?>
+									
 									<span title="Send this listing to your friend"><a href="javascript:void(0)"><i class="lnr lnr-users"></i></a></span>
 									<span title="Report item"><i class="lnr lnr-flag"></i>
 										<ul>

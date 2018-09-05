@@ -100,6 +100,8 @@ class Animal_master extends MY_Controller
         foreach($data['editData'] as $key => $value){
             $this->form_validation->set_rules('data['.$value->amd_id.'][amd_name]', 'Name in '.$value->lang_name, 'required|trim');
         }
+        $this->form_validation->set_rules('p_acr', 'Parent category', 'required|trim');
+        $this->form_validation->set_rules('country_id', 'Country', 'required|trim');
         if ($this->form_validation->run() == TRUE){
             $nameArr = $this->input->post('data');
             $eng_lang_id = $this->input->post('eng_lang_id');

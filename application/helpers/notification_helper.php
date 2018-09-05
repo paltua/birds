@@ -75,6 +75,18 @@ function getViewDate($date = "now"){
     return $showDate;
 }
 
+function showLocation($country_name = '', $state_name = '', $city_name = ''){
+    $retString = $country_name;
+    if($state_name != ''){
+        $retString .= ', '.$state_name;
+    }
+
+    if($city_name != ''){
+        $retString .= ', '.$city_name;
+    }
+    return $retString;
+}
+
 
 
 

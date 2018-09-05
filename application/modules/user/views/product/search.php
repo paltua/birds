@@ -151,7 +151,7 @@
 																<div>
 																	<h3><?php echo $value->amd_name;?></h3>
 																	<h4><?php echo $value->amd_short_desc;?></h4>
-																	<h5><span class="location">coming soon</span>
+																	<h5><span class="location"><?php echo showLocation($value->country_name, $value->state_name, $value->city_name);?></span>
 																		<span class="publshby">Published by <?php echo ($value->am_user_type == 'admin')?'Company': $value->name;?></span></h5>
 																</div>
 															</div>

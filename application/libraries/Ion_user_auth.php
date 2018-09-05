@@ -101,14 +101,8 @@ class Ion_user_auth{
 	 * @return : Void
 	 */
     public function isLogIn(){
-
-    	$cc = $this->checkExpiry();
-		if($cc==1){
-			redirect(base_url('account/auth/expiry'));
-		}
-
         if($this->_user_id != '' && $this->_user_id > 0) {
-        	redirect(base_url('account/dashboard'));
+        	redirect(base_url('user/dashboard'));
         }
     }
     
@@ -119,15 +113,8 @@ class Ion_user_auth{
 	 * @return : Void
 	 */
     public function isLoggedIn(){
-
-    	$cc = $this->checkExpiry();
-		if($cc==1){
-			redirect(base_url('account/auth/expiry'));
-		}
-
-
         if($this->_user_id == '' || $this->_user_id <= 0){
-            redirect(base_url('account/auth/login'));
+            redirect(base_url('user/auth/login'));
         }
 
 
@@ -139,26 +126,5 @@ class Ion_user_auth{
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function checkExpiry(){
-        //$startDate = '2017-11-15';
-        $startDate = '2018-03-31';
-        $insertValMin = 'P180DT00H00M00S';
-        $endDate = $this->_dateAdd($startDate, $insertValMin);
-        $currentDate = date('Y-m-d');
-        if($currentDate > $endDate){
-            //die('Your subscription is expired. Please contact to Umesh Ji to renew your subscription.');
-            return 1;
-        }else{
-            return 2;
-        }
-
-    }
-
-    public function isExpired(){
-        $cc = $this->checkExpiry();
-        if($cc == 2){
-            redirect(base_url('account/auth/login'));
-        }
-    }
    
 }
