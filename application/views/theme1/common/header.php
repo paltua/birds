@@ -9,7 +9,7 @@
 				<a href="javascript:void(0)" class="locationbtn">Location</a>
 			</div>
 			<div class="inline-elmnt">
-				<a href="<?php echo base_url('account/auth/login');?>" class="logbtn">Login</a>
+				<a href="<?php echo base_url('user/auth/login');?>" class="logbtn">Login</a>
 			</div>
 			<div class="inline-elmnt">
 				<button class="navbtn"><em></em><em></em><em></em></button>
