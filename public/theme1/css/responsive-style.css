@@ -55,6 +55,8 @@
 	.product-item {margin-top: 30px}
 	.product-listing-layout .aside-layout {margin-bottom: 20px}
 	.comments-sec .comment-add-layout {margin-bottom: 20px}
+	.register-block {border-left: none; margin-top: 20px}
+	.login-block h2.title, .register-block h2.title { font-size: 1.5rem}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}

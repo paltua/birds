@@ -82,49 +82,37 @@
 							<div class="comment-layout">
 								<h2>Comments</h2>
 								<div class="comment-item">
+									<?php if(count($comments) > 0){
+										foreach ($comments as $keyCom => $valueCom) {
+									?>
 									<figure>
+										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/ft-img-gallery_04.jpg');?>" alt=""></span>
+										<figcaption>
+											<p><?php echo $valueCom->comments;?> </p>
+											<h3><?php echo $valueCom->name;?></h3>
+											<h4><?php echo getViewDate($valueCom->created_date);?></h4>
+										</figcaption>
+									</figure>
+								<?php }} ?>
+									
+									<!-- <figure>
 										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/ft-img-gallery_04.jpg');?>" alt=""></span>
 										<figcaption>
 											<p>AJAX-ZOOM is a jQuery responsive image zoom & pan software with 360° degree ... 360° product view, mouseover zoom extension and other gallery extensions. ... For embedding the player multiple times between a text and without hover effect.</p>
 											<h3>John Jeo</h3>
 											<h4>20 August 2018</h4>
 										</figcaption>
-									</figure>
-									<figure>
-										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/ft-img-gallery_04.jpg');?>" alt=""></span>
-										<figcaption>
-											<p>AJAX-ZOOM is a jQuery responsive image zoom & pan software with 360° degree ... 360° product view, mouseover zoom extension and other gallery extensions. ... For embedding the player multiple times between a text and without hover effect.</p>
-											<h3>John Jeo</h3>
-											<h4>20 August 2018</h4>
-										</figcaption>
-									</figure>
-									<figure>
-										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/ft-img-gallery_04.jpg');?>" alt=""></span>
-										<figcaption>
-											<p>AJAX-ZOOM is a jQuery responsive image zoom & pan software with 360° degree ... 360° product view, mouseover zoom extension and other gallery extensions. ... For embedding the player multiple times between a text and without hover effect.</p>
-											<h3>John Jeo</h3>
-											<h4>20 August 2018</h4>
-										</figcaption>
-									</figure>
+									</figure> -->
 								</div>
 							</div>
 							<div class="comment-add-layout">
 								<h4>Post a Comment</h4>
 								<form>
 									<div class="form-group">
-										<input class="form-control" type="text" name="" value="" placeholder="Enter Your Name" />
-									</div>
-									<div class="form-group">
-										<input class="form-control" type="email" name="" value="" placeholder="Enter Your Email" />
-									</div>
-									<div class="form-group">
-										<input class="form-control" type="ph" name="" value="" placeholder="Enter Your Phone No" />
-									</div>
-									<div class="form-group">
 										<textarea class="form-control" placeholder="Enter Your Comment"></textarea>
 									</div>
 									<div class="form-submit">
-										<input type="submit" name="" value="Submit"/>
+										<input type="submit" id="postButton" value="Post"/>
 									</div>
 								</form>
 							</div>
@@ -165,6 +153,14 @@
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#postButton").on('click', function(){
+
+		});
+	});
+	
+</script>
 <link rel="stylesheet" href="<?php echo base_url('public/'.THEME.'/');?>css/asRange.css" type="text/css">
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/jquery-asRange.js"></script>
 

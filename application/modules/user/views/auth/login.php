@@ -1,84 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php $this->load->view('head');?>
-    <link rel="stylesheet" href="<?php echo base_url();?>resource/bootstrap/bootstrap.min.css">
-    <script src="<?php echo base_url();?>resource/js/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>resource/bootstrap/bootstrap.min.js"></script>
 
-    
-    
+<div class="col-md-6 login-block">
+  <h2 class="title">Login</h2>
 
-    <script src="<?php echo base_url();?>resource/date-time/bootstrap-datetimepicker.css"></script>
-    <script src="<?php echo base_url();?>resource/date-time/moment.js"></script>
-    <script src="<?php echo base_url();?>resource/date-time/bootstrap-datetimepicker.js"></script>
-
-<script>
-
-$(document).ready(function(){
-    // this bit needs to be loaded on every page where an ajax POST may happen
-    var csfrData = {};
-    csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
-                     = '<?php echo $this->security->get_csrf_hash(); ?>';
-    //alert('<?php echo $this->security->get_csrf_hash(); ?>');
-    $.ajaxSetup({
-      data: csfrData
-    });
-});
-</script>
-</head>
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            
+  <form class="block" action="" method="post">
+    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" name="action" value="login">
+    <div class="row">
+      <?php if($action == 'login'):?>
+      <?php echo $msg;?>
+      <?php endif;?>
+      <div class="col-md-12 multi-horizontal" data-for="name">
+        <div class="form-group">
+          <label class="form-control-label ">Email</label>
+            <input class="form-control input" name="user_master[email]" placeholder="Email" tabindex="1" data-form-field="Email" required="" id="name-form4-4v" type="email">
         </div>
-    </nav>
-    <section class="pad">
-        <div class="container">
-
-              <div class="row">
-                <div class="col-xs-4"></div>
-                <div class="col-xs-4">
-                      <div class="login-box-body">
-                        <p class="login-box-msg">Login</p>
-                        <form class="form account-form" accept-charset="utf-8" method="post" action="">
-                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                            <?php echo $msg;?>
-                            <?php echo $this->session->flashdata('acc_activation_succ'); ?>
-                            <div class="form-group">
-                              <label for="username">Email</label>
-                              <input type="text"  class="form-control" id="login-username" name="user_master[email]" placeholder="Username" tabindex="1">
-                            </div>
-                            <div class="form-group">
-                              <label for="username">Password</label>
-                              <input type="password" class="form-control" id="login-password" value="" name="user_master[password]" placeholder="Password" tabindex="2">
-                            </div>
-                            <div class="row">
-                              
-
-                              <div class="col-xs-12">
-                                
-                                <button type="submit" class="btn btn-primary" tabindex="4">Sign In</button>
-                                <div class="pull-right links">
-                                    <a href="<?php echo base_url() ?>account/auth/forgotPassword">Forgot Password</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div></div>
-                        </form>
-                      </div>
-                </div>    
-                <div class="col-xs-4">
-
-                </div>              
-              </div>
-              
-
+      </div>
+      <div class="col-md-12 multi-horizontal" data-for="phone">
+        <div class="form-group">
+          <label class="form-control-label ">Password</label>
+            <input class="form-control input" id="login-password" value="" name="user_master[password]" placeholder="Password" tabindex="2" data-form-field="Password" placeholder="Password" required="" id="phone-form4-4v" type="password">
+        </div>
+      </div>      
+      <div class="input-group-btn col-md-6">
+          <button href="" type="submit" class="btn btn-primary btn-form display-4">Login</button>
+      </div>
+      <div class="col-md-6 forgot-pass">
+        <a href="<?php echo base_url('user/auth/forgotPassword');?>">Forgot Password</a>
+      </div>
+  </div>
+  </form>
 </div>
-<!-- <p class="links"><a href="<?php echo base_url(); ?>msme_unit/registration">Register as MSME</a> | <a href="<?php echo base_url(); ?>bank_unit/registration">Register as Bank/FI</a> | <a href="<?php echo base_url(); ?>tech_unit/registration">Register as Technical Expert</a></p> -->
-</div>
-</div>
-    </section>
-</body>
-</html> 
+
+
+
+
+
 

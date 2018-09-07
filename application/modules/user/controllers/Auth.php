@@ -3,25 +3,109 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends MX_Controller
 {
+    public $controller;
     public function __construct()
     {
         parent::__construct();
+        $this->controller = $this->router->fetch_class();
         $this->load->model('user_model');
+        $this->load->model('cms/cms_model');
     }
     
     public function index()
     {
-        $this->ion_user_auth->isLogIn();
-        
         $this->login();
     }
+
+    public function login(){
+        $this->ion_user_auth->isLogIn();
+        $data = array();
+        $status = '';
+        $msg = '';
+        $this->load->library('form_validation');
+        $data['action'] = $this->input->post('action','');
+        if($data['action'] == 'login'){
+            $res = $this->_submitLogin();
+            $status = $res['status'];$msg = $res['msg'];
+        }elseif($data['action'] == 'register'){
+            $res = $this->_submitRegistration();
+            $status = $res['status'];$msg = $res['msg'];
+        }
+        
+        $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $data['loginHtml'] = $this->load->view('user/auth/login', $data, TRUE);
+        $data['registrationHtml'] = $this->load->view('user/auth/registration', $data, TRUE);
+        $this->template->setTitle('Login');
+        $this->template->setLayout('cms');
+        $this->template->homeRender('user/'.$this->controller.'/index', $data);
+    }
+
+    private function _submitLogin(){
+        $status = '';
+        $msg = '';
+        $this->form_validation->set_rules('user_master[email]','Email','trim|required|valid_email');
+        $this->form_validation->set_rules('user_master[password]','Password','trim|required');
+        if($this->form_validation->run() === TRUE){
+            $user_master = $this->input->post('user_master');
+            $retData = $this->ion_user_auth->activation($user_master);
+            if($retData['status'] != 'danger'){
+             $this->_setRedirectRule();
+            }else{
+                $status = $retData['status'];
+                $msg = $retData['msg'];
+            }
+        }else{
+            $status = 'danger';
+            $msg = validation_errors();
+        }
+        return array('status' => $status, 'msg' => $msg);
+    }
+
+    private function _submitRegistration(){
+        $status = '';
+        $msg = '';
+        $this->form_validation->set_rules('user_master[name]','Name','trim|required');
+        $this->form_validation->set_rules('user_master[mobile]','Mobile','trim|required|is_natural_no_zero');
+        $this->form_validation->set_rules('user_master[email]','Email','trim|required|valid_email');
+        $this->form_validation->set_rules('password','Password','trim|required');
+        $this->form_validation->set_rules('cnfPassword', 'Password Confirmation', 'trim|required|matches[password]');
+        if($this->form_validation->run() === TRUE){
+            $user_master = $this->input->post('user_master');
+            if($this->user_model->checkUniqueEmail($user_master['email'], 0) == 0){
+                $pwd = $this->input->post('password');
+                $user_master['password'] = $this->getPassword($pwd);
+                $user_master['um_status'] = 'inactive';
+                $user_master['um_deleted'] = '1';
+                $user_master['random_unique_id'] = date('Ymdhis').rand(100,999);
+                $user_id = $this->tbl_generic_model->add('user_master', $user_master);
+                if($user_id > 0){
+                    $this->_sendActivateEmail($user_id, $user_master);
+                    $status = 'success';
+                    $msg = 'Please check your email. We have sent a email verification link to your email address.';
+                }else{
+                    $status = 'danger';
+                    $msg = "Something went wrong. Please try again later!";
+                }
+            }else{
+                $status = 'danger';
+                $msg = "This email is already used!";
+            }
+        }else{
+            $status = 'danger';
+            $msg = "Please check the error(s) as below.";
+        }
+        return array('status' => $status, 'msg' => $msg);
+    }
+
+
     
     public function login1(){        
         
         $this->load->view('auth/maintenance');
     }
 
-    public function login(){
+    public function login2(){
         
         $this->ion_user_auth->isLogIn();
         $data = array();
@@ -48,11 +132,11 @@ class Auth extends MX_Controller
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Login');
         $this->template->setLayout('login');
-        $this->template->loginRender('auth/login', $data);
+        $this->template->homeRender('user/auth/login2', $data);
         //$this->load->view('auth/login', $data);
     }
 
-    public function registration(){
+    public function registration2(){
         
         $this->ion_user_auth->isLogIn();
         $data = array();
@@ -89,7 +173,7 @@ class Auth extends MX_Controller
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Login');
         $this->template->setLayout('login');
-        $this->template->loginRender('auth/registration', $data);
+        $this->template->homeRender('user/auth/registration2', $data);
         //$this->load->view('auth/login', $data);
     }
 
@@ -137,10 +221,8 @@ class Auth extends MX_Controller
             if($this->form_validation->run() === TRUE){
 
                 $user_email = $this->input->post('email');
-
                 $user_where = array('email' => $user_email);
-
-                $user_data = $this->tbl_generic_model->get('web_user_master','*',$user_where);
+                $user_data = $this->tbl_generic_model->get('user_master','*', $user_where);
 
                 if($user_data){
 
@@ -149,9 +231,9 @@ class Auth extends MX_Controller
                     $user_id = urlencode(base64_encode($user_id)) ;
                     $time = strtotime("now");
                     $generatetime = urlencode(base64_encode($time)) ;
-                    $url = base_url() . "account/auth/resetPassword/".$user_id."/".$generatetime ;
+                    $url = base_url() . "user/auth/resetPassword/".$user_id."/".$generatetime ;
 
-                    $this->_forgotPasswordEmail($email,$url,$user_data[0]->full_name);
+                    $this->_forgotPasswordEmail($email, $url, $user_data[0]->full_name);
 
                     $status = 'success';
                     $msg = 'Please check your email. A password creation link has been sent to your email.';
@@ -170,7 +252,7 @@ class Auth extends MX_Controller
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Forgot Password');
         $this->template->setLayout('login');
-        $this->template->loginRender('auth/forgot_password', $data);
+        $this->template->homeRender('auth/forgot_password', $data);
 
     }
 
@@ -190,7 +272,7 @@ class Auth extends MX_Controller
 
             $user_fields = '*';
             $user_where = array('user_id' => $user_id);
-            $show_pre_data = $this->tbl_generic_model->get('web_user_master',$user_fields,$user_where);
+            $show_pre_data = $this->tbl_generic_model->get('user_master',$user_fields,$user_where);
             if(count($show_pre_data) > 0){
                 if($show_pre_data[0]->unique_link_no == $unique_link_no){  
                     $status = 'danger';
@@ -223,7 +305,7 @@ class Auth extends MX_Controller
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Reset Password');
         $this->template->setLayout('login');
-        $this->template->loginRender('auth/reset_password', $data);
+        $this->template->homeRender('auth/reset_password', $data);
     }
     
     /* 
@@ -255,6 +337,7 @@ class Auth extends MX_Controller
         $body = $msgbody;
         $this->tbl_generic_model->sendEmail($to, $subject, $body, array(), array());
     }
+
     public function getPassword($pwd = ''){
         $newPwd = '';
         if($pwd != ''){

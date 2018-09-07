@@ -416,6 +416,16 @@ video::-webkit-media-controls { display:none !important; }
 .details-pd .details-item ul li label {font-weight: 600; min-width: 140px}
 .comment-add-layout h4 {font-size: 19px}
 
+/* LOG REGISTER STYLE */
+.login-block h2.title, .register-block h2.title { margin-bottom: 20px  }
+.login-block h2.title::after, .register-block h2.title::after { content: ''; width: 80px; height: 2px; background-color: #f12227; display: block; margin-top: 20px }
+.register-block {border-left: 1px solid rgba(0,0,0,0.1)}
+.login-block .form-check { margin: 10px 0 15px;  }
+.login-block .forgot-pass { text-align: right; -webkit-align-self: center; align-self: center}
+.form-control:focus { color: #f12227; border-color: #f12227;box-shadow: none;}
+.btn-primary:hover {background-color: #f12227; border-color: #f12227;}
+.btn-primary.focus, .btn-primary:focus { box-shadow: none}
+
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }

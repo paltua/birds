@@ -42,6 +42,7 @@ class Product extends MY_Controller {
         $data['prodDet'] = $this->product_model->getProductDetails($am_id);
         $data['prodImg'] = $this->product_model->getProductImages($am_id);
 		$data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['comments'] = $this->product_model->getCommentList($am_id);
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Product Search');
         $this->template->setLayout('cms');
