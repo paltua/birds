@@ -13,6 +13,10 @@ $(document).ready(function(){
     $('.abc, .flexContaner').height($(window).height());
 });
 </script>
+<section class="inner-layout">
+  <div class="container">   
+    <div class="inner-content">
+      <div class="row">
 
 <div class="midbox" style="width:340px;margin-left: 447px;">
      <div class="box box-primary">
@@ -48,4 +52,8 @@ $(document).ready(function(){
           </div>      
       </div> 
  </div>
+ </div>  
+    </div>
+  </div>
+</section>
 
