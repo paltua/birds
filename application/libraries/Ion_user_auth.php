@@ -42,7 +42,7 @@ class Ion_user_auth{
             $retData['msg'] = "Invalid email id or password.";
         }
         if($retData['status'] != 'danger'){
-        	$retData['category'] = $userMasterData[0]->user_category;
+        	$retData['category'] = '';
             $this->_setSession($userMasterData);
         }
         return $retData;
@@ -59,7 +59,7 @@ class Ion_user_auth{
         if(!password_verify($userMasterForm['password'],$userMasterData[0]->password)){
         	$retData['status'] = 'danger';
         	$retData['msg'] = 'Invalid email id or password';
-        }elseif($userMasterData[0]->user_status == 'inactive'){
+        }elseif($userMasterData[0]->um_status == 'inactive'){
         	$retData['status'] = 'danger';
         	$retData['msg'] = 'Your account is Inactive';
         }
