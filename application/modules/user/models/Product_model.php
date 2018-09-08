@@ -7,7 +7,7 @@ class Product_model extends CI_Model {
 	}
 
 	public function getProductListAll($cat_id = 0, $search = array(), $limit = array(), $orderBy = array()){
-        $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,CONT.name country_name, ST.name state_name, CT.name city_name');
+        $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,UM.email, UM.mobile,CONT.name country_name, ST.name state_name, CT.name city_name');
         $this->db->from('animal_category_relation ACR');
         $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
@@ -57,7 +57,7 @@ class Product_model extends CI_Model {
     }
 
     public function getProductListComp($cat_id = 0){
-        $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,CONT.name country_name, ST.name state_name, CT.name city_name');
+        $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,UM.email, UM.mobile,CONT.name country_name, ST.name state_name, CT.name city_name');
         $this->db->from('animal_category_relation ACR');
         $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
@@ -81,7 +81,7 @@ class Product_model extends CI_Model {
     }
 
     public function getProductListUser($cat_id = 0){
-        $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,CONT.name country_name, ST.name state_name, CT.name city_name');
+        $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,UM.email, UM.mobile,CONT.name country_name, ST.name state_name, CT.name city_name');
         $this->db->from('animal_category_relation ACR');
         $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
@@ -114,7 +114,7 @@ class Product_model extends CI_Model {
     }
 
     public function getProductDetails($am_id = 0){
-        $this->db->select('AM.*, AMD.*,CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, ACMD.acmd_name');
+        $this->db->select('AM.*, AMD.*,CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price,UM.name user_name,UM.um_created_date,UM.email, UM.mobile, ACMD.acmd_name');
         $this->db->from('animal_master AM');
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
         $this->db->join('user_master UM', "UM.user_id=AM.user_id AND UM.um_status = 'active' AND UM.um_deleted = '0'", 'LEFT');

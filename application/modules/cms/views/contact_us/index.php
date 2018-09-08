@@ -45,7 +45,7 @@
           <div class="contact-info">
             <h4>Contact Info</h4>
             <p>Official Time : 11 AM to 9 PM</p>
-            <p>Mobile : + 91-9903638848</p>
+            <p>Mobile : + 91-<?php echo SITEMOBILE;?></p>
             <p>E mail : parrotdipankar@gmail.com</p>
           </div>
         </div>

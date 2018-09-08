@@ -86,6 +86,7 @@ defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREA
 defined('ADMIN_NAME')      OR define('ADMIN_NAME', 'admin'); // highest automatically-assigned error code
 defined('ADMIN_EMAIL')     OR define('ADMIN_EMAIL', 'srvbera@gmail.com');//parrotdipankar@gmail.com
 defined('SUPPORTEMAIL')    OR define('SUPPORTEMAIL', 'info@parrotdipankar.com');
+defined('SITEMOBILE')    OR define('SITEMOBILE', '9903638848');
 defined('THEME') OR define('THEME', 'theme1');
 defined('SITENAME') OR define('SITENAME', 'parrotdipankar.com');
 defined('UPLOAD_CAT_PATH') OR define('UPLOAD_CAT_PATH', 'uploads/category/');

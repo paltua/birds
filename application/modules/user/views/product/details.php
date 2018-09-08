@@ -121,9 +121,21 @@
 									<h5>Registered on <?php echo date("F j, Y", strtotime($prodDet[0]->am_created_date));?></h5>
 									<h3>Dashboard</h3>
 									<?php }?>
+
+									<!-- AddToAny BEGIN -->
+									<span>
+										<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+											<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+											<a class="a2a_button_facebook"></a>
+											<a class="a2a_button_twitter"></a>
+											<a class="a2a_button_google_plus"></a>	
+										</div>
+										<script async src="https://static.addtoany.com/menu/page.js"></script>
+									</span>
+<!-- AddToAny END -->
 									
-									<span title="Send this listing to your friend"><a href="javascript:void(0)"><i class="lnr lnr-users"></i></a></span>
-									<span title="Report item"><i class="lnr lnr-flag"></i>
+									<!-- <span title="Send this listing to your friend"><a href="javascript:void(0)"><i class="lnr lnr-users"></i></a></span> -->
+									<!-- <span title="Report item"><i class="lnr lnr-flag"></i>
 										<ul>
 											<li><a href="javascript:void(0)">Spam</a></li>
 											<li><a href="javascript:void(0)">Misclassified</a></li>											
@@ -131,11 +143,11 @@
 											<li><a href="javascript:void(0)">Expired</a></li>
 											<li><a href="javascript:void(0)">Offensive</a></li>
 										</ul>
-									</span>
+									</span> -->
 								</div>
 								<div class="contact-info">
-									<a class="cont-no" href="javascript:void(0)">033 2345 2635</a>
-									<a class="cont-mail" href="javascript:void(0)">Contact Seller</a>
+									<a class="cont-no" href="tel:<?php echo ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;?>"><?php echo ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;?></a>
+									<a class="cont-mail" href="mailto:<?php echo ($prodDet[0]->am_user_type == 'admin')? SUPPORTEMAIL :$prodDet[0]->email;?>" target="_top"><?php echo ($prodDet[0]->am_user_type == 'admin')? SUPPORTEMAIL :$prodDet[0]->email;?></a>
 								</div>
 							</div>
 						</aside>							
