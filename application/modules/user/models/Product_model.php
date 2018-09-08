@@ -48,7 +48,12 @@ class Product_model extends CI_Model {
         if(is_array($search['city_id'])){
             $this->db->where_in('CT.id', $search['city_id']);
         }
-        
+        if($search['price']['min_select'] > 0){
+            $this->db->where('AMD.amd_price >= ', $search['price']['min_select']);
+        }
+        if($search['price']['max_select'] > 0){
+            $this->db->where('AMD.amd_price <= ', $search['price']['max_select']);
+        }
     }
 
     public function getProductListComp($cat_id = 0){
