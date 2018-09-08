@@ -1,3 +1,50 @@
+<link rel="stylesheet" href="<?php echo base_url();?>public/admin/vendor/chosen/chosen.min.css">
+<script src="<?php echo base_url();?>public/admin/vendor/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript"> 
+
+    $(document).ready(function(){
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        $.ajaxSetup({
+          data: csfrData
+        });
+        // $('#allDataId').on('click','.showChart', function() { 
+        //     $('.myMeterModal').find(".modal-content").html('');
+        //     $('.myMeterModal').modal('show');
+        //     var meter_link = $(this).attr("meter-link");
+        //     $('.myMeterModal').find(".modal-content").load(meter_link);
+        // });
+
+
+        $("#animal_country_id").chosen({no_results_text: "Oops, No Country found!"});
+        $("#animal_state_id").chosen({no_results_text: "Oops, No State found!"});
+        $("#animal_city_id").chosen({no_results_text: "Oops, No City found!"});
+
+        $("#animal_country_id").change(function(){
+            var country_id = parseInt($(this).val());
+            var url = '<?php echo base_url();?>user/product/getStateList';
+            $.post( url, { country_id: country_id, selectedCountry : ''}, function( data ) {
+                $("#animal_state_id").html(data.data);
+                $('#animal_state_id').trigger("chosen:updated");
+                $("#animal_city_id").html('');
+                $('#animal_city_id').trigger("chosen:updated");
+            },'json');
+        });
+
+        $("#animal_state_id").change(function(){
+            var state_id = parseInt($(this).val());
+            var url = '<?php echo base_url();?>user/product/getCityList';
+            $.post( url, { state_id: state_id, selectedCountry : ''}, function( data ) {
+                $("#animal_city_id").html(data.data);
+                $('#animal_city_id').trigger("chosen:updated");
+            },'json');
+        });
+    });
+
+</script>
+
 <section class="innerbanner">
 	<div class="banner-cont">
 		<h1 class="title">Product List</h1>
@@ -72,46 +119,59 @@
 								<h3>Search</h3>
 								<div class="pd-search-filter-layout">									
 									<form class="row" method="post">
+										<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 										<div class="col-md-3">
 											<div class="form-group">
 												<label>Keyword</label>
-												<input type="text" placeholder="I'm Looking For">
+												<input type="text" name="keyWord" value="<?php echo $keyWord;?>" placeholder="I'm Looking For">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label>Region</label>
-												<select>
-													<option>Select a Region</option>
-													<option>Azad Cashmir</option>
-													<option>Balochistan</option>
-													<option>Islamabad</option>
-													<option>Punjab</option>
+												<label>Country</label>
+												<select id="animal_country_id" name="country_id">
+													<option>Select a Country</option>
+													<?php if(count($country) > 0){
+                                                    foreach ($country as $value) {
+                                                    	$selected = '';
+                                                    	if($value->id == $country_id){
+                                                    		$selected = 'selected';
+                                                    	}
+                                                        ?>
+                                                        <option value="<?php echo $value->id;?>" <?php echo $selected;?>><?php echo $value->name;?></option>
+                                                    <?php }} ?>
 												</select>
 											</div>
 										</div>
-										<!-- <div class="col-md-3">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label>City</label>
-												<select>
-													<option>Select City</option>
-													<option>Kolkata</option>
-													<option>Delhi</option>
-													<option>Bombay</option>
-													<option>Punjab</option>
+												<select id="animal_state_id" name="state_id">
+													
 												</select>
 											</div>
-										</div> -->
-										<div class="col-md-6">
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>City</label>
+												<select id="animal_city_id" name="city_id[]" multiple="">
+													
+												</select>
+											</div>
+										</div>
+										<div class="col-md-12">
 											<div class="form-group">
 												<label>Price</label>
 												<div class="example">
-										          <form method="post">
-										            <input class="range-example-input-2" type="text" min="<?php echo $minMaxPrice[0]->min_price;?>" max="<?php echo $minMaxPrice[0]->max_price;?>" value="" name="points" step="10" />
-										          </form>
+										            <input class="range-example-input-2" type="text" min="<?php echo $minMaxPrice[0]->min_price;?>" max="<?php echo $minMaxPrice[0]->max_price;?>" value="<?php echo $minMaxPrice[0]->max_price;?>" name="price" step="10" />
 										        </div>
 											</div>
 										</div>	
+										<div class="col-md-12">
+											<div class="example">
+									            <button type="submit" class="btn btn-info">Search</button>
+									        </div>
+										</div>
 									</form>
 								</div>
 							</div>
@@ -130,58 +190,29 @@
 								<div class="resp-tabs-container">
 									<div>
 										<div class="row">
-											<?php if(count($prodList) > 0){
-												foreach ($prodList as $key => $value) {
+											<?php 
+											$viewData['list'] = $prodListAll;
+											$this->load->view('user/product/single', $viewData);
 											?>
-											<div class="col-md-12 col-sm-6 col-xs-12">
-												<div class="pd-item-box">
-													<figure>
-														<span class="img-box">
-															<span class="img-inner">
-																<?php 
-													              $imagePath = base_url('public/'.THEME.'/images/cockatiel_01_img.jpg');
-													              if($value->ami_path != ''){
-													                $imagePath = base_url(UPLOAD_PROD_PATH.$value->ami_path);
-													              }?>
-																<img src="<?php echo $imagePath;?>"/>
-															</span>
-														</span>
-														<figcaption>
-															<div class="content-item item-left">
-																<div>
-																	<h3><?php echo $value->amd_name;?></h3>
-																	<h4><?php echo $value->amd_short_desc;?></h4>
-																	<h5><span class="location"><?php echo showLocation($value->country_name, $value->state_name, $value->city_name);?></span>
-																		<span class="publshby">Published by <?php echo ($value->am_user_type == 'admin')?'Company': $value->name;?></span></h5>
-																</div>
-															</div>
-															<div class="content-item item-right">
-																<div>
-																	<h2>Rs. <?php echo $value->amd_price;?></h2>
-																	<a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="btn btn-danger">View</a>
-																	<h6><?php echo $value->acmd_name;?></h6>
-																	<span class="publsh-date">published 
-																		<span><?php echo getViewDate($value->am_created_date);?></span>
-																	</span>
-																	<span class="viewed">viewed 
-																		<span><?php echo $value->am_viewed_count;?>+</span>
-																	</span>
-																</div>
-															</div>
-														</figcaption>
-													</figure>	
-												</div>
-											</div>
-										<?php }} ?>
 										</div>
 									</div>
 									
 									<div>
-										Personal comming soon
+										<div class="row">
+											<?php 
+											$viewData['list'] = $prodListUser;
+											$this->load->view('user/product/single', $viewData);
+											?>
+										</div>
 									</div>
 
 									<div>
-										Company comming soon
+										<div class="row">
+											<?php 
+											$viewData['list'] = $prodListComp;
+											$this->load->view('user/product/single', $viewData);
+											?>
+										</div>
 									</div>
 								</div>
 							</div>

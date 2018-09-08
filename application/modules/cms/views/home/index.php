@@ -162,9 +162,9 @@
                         <div class="botm-logo"><a href="javascript:void(0)"><img src="<?php echo base_url('public/'.THEME.'/');?>images/site-white-logo.png" alt="Logo"/></a></div>
                         <div class="botm-links">
                             <ul>
-                                <li><a href="javascript:void(0)">Disclaimer</a></li>
-                                <li><a href="javascript:void(0)">Privacy Policy</a></li>
-                                <li><a href="javascript:void(0)">Contact</a></li>
+                                <li><a href="<?php echo base_url('cms/disclaimer');?>">Disclaimer</a></li>
+                                <li><a href="<?php echo base_url('cms/google_privacy_policy');?>">Privacy Policy</a></li>
+                                <li><a href="<?php echo base_url('cms/contact_us');?>">Contact</a></li>
                             </ul>
                         </div>
                         <div class="botm-social">

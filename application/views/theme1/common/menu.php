@@ -11,7 +11,7 @@
 				<li><a href="javascript:void(0)">Our Location</a></li>
 				<li><a href="javascript:void(0)">Blog</a></li> -->
 				<li><a href="<?php echo base_url('cms/disclaimer');?>">Disclaimer</a></li>
-				<li><a href="<?php echo base_url('cms/contact_us');?>">Privacy Policy</a></li>
+				<li><a href="<?php echo base_url('cms/google_privacy_policy');?>">Google Adsense Privacy Policy</a></li>
 				<li><a href="<?php echo base_url('cms/contact_us');?>">Contact Us</a></li>
 			</ul>
 		</nav>

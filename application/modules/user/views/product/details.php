@@ -81,7 +81,7 @@
 						<div class="comments-sec">
 							<div class="comment-layout">
 								<h2>Comments</h2>
-								<div class="comment-item">
+								<div class="comment-item" id="commentList">
 									<?php if(count($comments) > 0){
 										foreach ($comments as $keyCom => $valueCom) {
 									?>
@@ -95,24 +95,16 @@
 									</figure>
 								<?php }} ?>
 									
-									<!-- <figure>
-										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/ft-img-gallery_04.jpg');?>" alt=""></span>
-										<figcaption>
-											<p>AJAX-ZOOM is a jQuery responsive image zoom & pan software with 360° degree ... 360° product view, mouseover zoom extension and other gallery extensions. ... For embedding the player multiple times between a text and without hover effect.</p>
-											<h3>John Jeo</h3>
-											<h4>20 August 2018</h4>
-										</figcaption>
-									</figure> -->
 								</div>
 							</div>
 							<div class="comment-add-layout">
 								<h4>Post a Comment</h4>
 								<form>
 									<div class="form-group">
-										<textarea class="form-control" placeholder="Enter Your Comment"></textarea>
+										<textarea class="form-control" name="comments" id="comments" placeholder="Enter Your Comment"></textarea>
 									</div>
 									<div class="form-submit">
-										<input type="submit" id="postButton" value="Post"/>
+										<input type="button" id="postButton" value="Post"/>
 									</div>
 								</form>
 							</div>
@@ -155,10 +147,36 @@
 </section>
 <script type="text/javascript">
 	$(document).ready(function(){
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        //alert('<?php echo $this->security->get_csrf_hash(); ?>');
+        $.ajaxSetup({
+          data: csfrData
+        });
 		$("#postButton").on('click', function(){
-
+			addComments();
+		});
+		$('#comments').keypress(function(e) {
+		    var key = e.which;
+		    if (key == 13) // the enter key code
+		    {
+		      $("#postButton").click();
+		      return true;
+		    }
 		});
 	});
+
+	function addComments(){
+		var comments = 	$("#comments").val();
+		var am_id = '<?php echo $am_id;?>';
+		var url = '<?php echo base_url();?>user/comment/add';
+		if(comments != ''){
+			$.post( url, { comments : comments, am_id : am_id}, function(data) {
+	            $('#commentList').append(data.html);
+	        },'json');
+		}
+	}
 	
 </script>
 <link rel="stylesheet" href="<?php echo base_url('public/'.THEME.'/');?>css/asRange.css" type="text/css">

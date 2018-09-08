@@ -176,4 +176,29 @@ class Tbl_generic_model extends CI_Model {
         $this->email->send();
         
     }
+
+    public function getCountryList(){
+        $this->db->select('*');
+        $this->db->from('countries');
+        $this->db->order_by('name', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    public function getStateList($country_id = 0){
+        $this->db->select('*');
+        $this->db->from('states');
+        $this->db->where('country_id', $country_id);
+        $this->db->order_by('name', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    public function getCityList($state_id = 0){
+        $this->db->select('*');
+        $this->db->from('cities');
+        $this->db->where('state_id', $state_id);
+        $this->db->order_by('name', 'ASC');
+        return $this->db->get()->result();
+    }
+
+    
 }
