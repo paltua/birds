@@ -32,12 +32,12 @@ $(document).ready(function(){
                 <input type="hidden" name="one_time_check" id="one_time_check" value="<?php echo $this->uri->segment(5) ?>">
                 <div class="form-group">
                     <label for="forgot-email" class="placeholder-hidden">New Password</label>
-                    <input type="text" name="password" class="form-control" placeholder="New Password" tabindex="1">
+                    <input type="password" name="password" class="form-control" placeholder="New Password" tabindex="1">
                   </div> 
 
                   <div class="form-group">
                     <label for="forgot-email" class="placeholder-hidden">Confirm Password</label>
-                    <input type="text" name="passconf" class="form-control" placeholder="Confirm Password" tabindex="1">
+                    <input type="password" name="passconf" class="form-control" placeholder="Confirm Password" tabindex="1">
                   </div>
 
                   <div class="form-group">
@@ -46,7 +46,7 @@ $(document).ready(function(){
                     </button>
                   </div> 
                   <div class="form-group">
-                    <a href="<?php echo base_url();?>account/auth/login"><i class="fa fa-angle-double-left"></i> &nbsp;Back to Login</a>
+                    <a href="<?php echo base_url();?>user/auth/login"><i class="fa fa-angle-double-left"></i> &nbsp;Back to Login</a>
                   </div> 
                 </form>
           </div>      

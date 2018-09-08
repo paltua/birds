@@ -17,3 +17,6 @@ ALTER TABLE `animal_location`
 ALTER TABLE `animal_location`
   MODIFY `al_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
+
+ALTER TABLE `user_master` ADD `pwd_reset_unique_link_no` VARCHAR(100) NOT NULL AFTER `email_validate_date`;
+
