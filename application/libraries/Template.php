@@ -44,7 +44,7 @@ class Template{
         }else{
             $this->isLoggedIn = 'N';
         }
-        $this->user_name = trim(self::$_CI->session->userdata('full_name'));
+        $this->user_name = trim(self::$_CI->session->userdata('name'));
         $this->module = self::$_CI->router->fetch_module();
         $this->controller = self::$_CI->router->fetch_class();
         $this->method = self::$_CI->router->fetch_method();

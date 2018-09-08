@@ -233,7 +233,7 @@ class Auth extends MX_Controller
                     $generatetime = urlencode(base64_encode($time)) ;
                     $url = base_url() . "user/auth/resetPassword/".$user_id."/".$generatetime ;
 
-                    $this->_forgotPasswordEmail($email, $url, $user_data[0]->full_name);
+                    $this->_forgotPasswordEmail($email, $url, $user_data[0]->name);
 
                     $status = 'success';
                     $msg = 'Please check your email. A password creation link has been sent to your email.';
@@ -251,7 +251,7 @@ class Auth extends MX_Controller
         
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Forgot Password');
-        $this->template->setLayout('login');
+        $this->template->setLayout('cms');
         $this->template->homeRender('auth/forgot_password', $data);
 
     }
@@ -274,7 +274,7 @@ class Auth extends MX_Controller
             $user_where = array('user_id' => $user_id);
             $show_pre_data = $this->tbl_generic_model->get('user_master',$user_fields,$user_where);
             if(count($show_pre_data) > 0){
-                if($show_pre_data[0]->unique_link_no == $unique_link_no){  
+                if($show_pre_data[0]->pwd_reset_unique_link_no == $unique_link_no){  
                     $status = 'danger';
                     $msg = 'Sorry!! Your reset password link has expired. Please try again.';
                 }else{
@@ -284,10 +284,11 @@ class Auth extends MX_Controller
                     $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]');
 
                     if($this->form_validation->run() === TRUE){
-                        $password = modules::load('account/auth/')->getPassword($password);
-                        $datasection =  array('password' => $password,'unique_link_no'=>$unique_link_no);
+                        //$password = modules::load('account/auth/')->getPassword($password);
+                        $password = $this->getPassword($password);
+                        $datasection =  array('password' => $password,'pwd_reset_unique_link_no'=>$unique_link_no);
                         $user_where = array('user_id' => $user_id);
-                        $deduction_master_add = $this->tbl_generic_model->edit('web_user_master',$datasection,$user_where);
+                        $deduction_master_add = $this->tbl_generic_model->edit('user_master',$datasection,$user_where);
                         
                         $status = 'success';
                         $msg = 'Password changed successfully. Click <a href="'.base_url('user/auth/login').'""> here </a> to login.';
@@ -304,7 +305,7 @@ class Auth extends MX_Controller
         
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Reset Password');
-        $this->template->setLayout('login');
+        $this->template->setLayout('cms');
         $this->template->homeRender('auth/reset_password', $data);
     }
     

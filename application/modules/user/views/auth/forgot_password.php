@@ -8,11 +8,16 @@ $(document).ready(function(){
     });
 });
 </script>
+<section class="inner-layout">
+  <div class="container">   
+    <div class="inner-content">
+      <div class="row">
+
   
  <div class="midbox" style="width:340px;margin-left: 447px;">
      <div class="box box-primary">
           <div class="box-header">
-            <h3 class="box-title">Password Reset</h3>
+            <h3 class="box-title">Forgot Password </h3>
             
           </div>
           <div class="box-body" style="padding-top:0;">
@@ -31,11 +36,15 @@ $(document).ready(function(){
                   </div> <!-- /.form-group -->
 
                   <div class="form-group">
-                    <a href="<?php echo base_url();?>account/auth/login"><i class="fa fa-angle-double-left"></i> &nbsp;Back to Login</a>
+                    <a href="<?php echo base_url();?>user/auth/login"><i class="fa fa-angle-double-left"></i> &nbsp;Back to Login</a>
                   </div> <!-- /.form-group -->
                 </form>
           </div>      
       </div> 
  </div>
+ </div>  
+    </div>
+  </div>
+</section>
 
 
