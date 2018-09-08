@@ -6,7 +6,7 @@ class Product_model extends CI_Model {
 		log_message('INFO', 'Product_model enter');
 	}
 
-	public function getProductListAll($cat_id = 0){
+	public function getProductListAll($cat_id = 0, $search = array(), $limit = array(), $orderBy = array()){
         $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,CONT.name country_name, ST.name state_name, CT.name city_name');
         $this->db->from('animal_category_relation ACR');
         $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
@@ -22,11 +22,33 @@ class Product_model extends CI_Model {
         if($cat_id > 0){
             $this->db->where('ACR.acm_id', $cat_id);
         }
+        $this->_search($search);
+        $this->db->order_by($orderBy['col'], $orderBy['act']);
+        $this->db->limit($limit['perPage'], $limit['start']);
         $this->db->where('AMD.language','en');
         /*$this->db->get();
         echo $this->db->last_query();
         exit;*/
         return $this->db->get()->result();
+    }
+
+    private function _search($search = array()){
+        if($search['keyWord'] != ''){
+            $keyWordSearch = "( AMD.amd_name LIKE '%".$search['keyWord']."%'
+                                OR AMD.amd_short_desc LIKE '%".$search['keyWord']."%'
+                        )";
+            $this->db->where($keyWordSearch);            
+        }
+        if($search['country_id'] > 0){
+            $this->db->where('CONT.id', $search['country_id']);
+        }
+        if($search['state_id'] > 0){
+            $this->db->where('ST.id', $search['state_id']);
+        }
+        if(is_array($search['city_id'])){
+            $this->db->where_in('CT.id', $search['city_id']);
+        }
+        
     }
 
     public function getProductListComp($cat_id = 0){

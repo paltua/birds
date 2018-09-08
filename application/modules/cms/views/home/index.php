@@ -28,12 +28,22 @@
                 <h2 class="title text-center">Browse Categories</h2>
                 <!-- <h3 class="title text-center">Discover new products</h3>-->
                 <h5 class="subtitle text-center">Browse our classifieds and find best deal for you - buy, sell or exchange items</h5>  
+                <form method="post" action="<?php echo base_url('user/product/search');?>">
                 <div class="search-layout">
+                    
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="country_id">
+                        <input type="hidden" name="state_id">
+                        <input type="hidden" name="city_id">
+                        <input type="hidden" name="price">
                     <div class="search-group">
-                        <input type="text" name="" placeholder="What are you looking for?">
-                        <input type="submit" name="" name="" value="Search">
+                        <input type="text" name="keyWord" placeholder="What are you looking for?">
+
+                        <input type="submit" name="" value="Search">
                     </div>
+                
                 </div>
+                </form>
 
                 <div class="category-circle carousel-5 owl-carousel owl-theme">
                     <?php if(count($category) > 0){
@@ -89,7 +99,7 @@
                                 <div class="item">
                                     <figure>
                                         <div class="box-layout">
-                                            <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
+                                            <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
                                             <figcaption>
                                                 <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?></a></h3>
                                                 <h5>RS <?php echo $value->amd_price;?></h5>
@@ -113,7 +123,7 @@
                                 <div class="item">
                                     <figure>
                                         <div class="box-layout">
-                                            <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
+                                            <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
                                             <figcaption>
                                                 <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?></a></h3>
                                                 <h5>RS <?php echo $value->amd_price;?></h5>
@@ -143,7 +153,7 @@
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_04.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_05.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_06.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_07.jpg" alt=""/></li>
+                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_11.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_08.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_09.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_10.jpg" alt=""/></li>
