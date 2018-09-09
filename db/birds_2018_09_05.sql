@@ -20,3 +20,7 @@ COMMIT;
 
 ALTER TABLE `user_master` ADD `pwd_reset_unique_link_no` VARCHAR(100) NOT NULL AFTER `email_validate_date`;
 
+ALTER TABLE `animal_master` CHANGE `am_status` `am_status` ENUM('active','inactive','sold') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'active';
+
+ALTER TABLE `animal_master` ADD `buy_or_sell` ENUM('buy','sell') NOT NULL DEFAULT 'sell' AFTER `am_code`;
+
