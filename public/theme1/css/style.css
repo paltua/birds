@@ -425,6 +425,7 @@ video::-webkit-media-controls { display:none !important; }
 .form-control:focus { color: #f12227; border-color: #f12227;box-shadow: none;}
 .btn-primary:hover {background-color: #f12227; border-color: #f12227;}
 .btn-primary.focus, .btn-primary:focus { box-shadow: none}
+.add-new-pd .btn {margin: 1.5rem auto 0;}
 
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }

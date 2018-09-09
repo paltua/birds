@@ -138,7 +138,7 @@
 						</div>
 					</div>
 				<?php } ?>	
-					<div class="col-lg-<?php if(count($selectedCatDet) > 0){ ?>8<?php }else{?>12<?php }?> col-md-12 col-sm-12 cont-part">
+					<div class="col-lg-<?php if(count($selectedCatDet) > 0){ ?>8<?php }else{?>12<?php }?> col-md-12 col-sm-12  <?php if(count($selectedCatDet) > 0){ ?>cont-part<?php }?>">
 						<div class="row">
 							<div class="col-md-12">
 								<h3>Search</h3>
@@ -155,7 +155,7 @@
 											<div class="form-group">
 												<label>Country</label>
 												<select id="animal_country_id" name="country_id">
-													<option value="">Select a Country</option>
+													<option value="">Select One</option>
 													<?php if(count($country) > 0){
                                                     foreach ($country as $value) {
                                                     	$selected = '';
