@@ -54,15 +54,14 @@
         },'json');
     }
 
-    function readURL(input) {
-    	//console.log(input);
+    function readURL(input, id) {
 	    if (input.files && input.files[0]) {
 	        var reader = new FileReader();
 	        reader.onload = function(e) {
 	            //$('#imagePreview_').css('background-image', 'url('+e.target.result +')');
-	            $('#imagePreview_'+input.attr('data-id'))attr('src', e.target.result);
-	            $('#imagePreview_'+input.attr('data-id')).hide();
-	            $('#imagePreview_'+input.attr('data-id')).fadeIn(650);
+	            $('#imagePreview_'+id).attr('src', e.target.result);
+	            $('#imagePreview_'+id).hide();
+	            $('#imagePreview_'+id).fadeIn(650);
 	        }
 	        reader.readAsDataURL(input.files[0]);
 	    }
@@ -107,45 +106,37 @@
 	                            <div class="col-md-12 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Title *</label>
-		                                <input class="form-control input" name="amd_name" data-form-field="Title" placeholder="Title" required="" id="Title-form4-4v" type="text">
+		                                <input class="form-control input" name="amd[amd_name]" data-form-field="Title" placeholder="Title" required="" id="Title-form4-4v" type="text">
 	                            	</div>
 	                            </div>
+	                            <div class="col-md-12">
+									<div class="form-check">
+									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios2" value="sell" checked>
+									  	<label class="form-check-label" for="exampleRadios2">
+									    	Sell
+									  	</label>
+									</div>
+								</div>
+	                            <div class="col-md-12">
+		                            <div class="form-check">
+										<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios1" value="buy">
+									  	<label class="form-check-label" for="exampleRadios1">
+									    	Buy
+									  	</label>
+									</div>
+								</div>
+								
 	                            <div class="col-md-12 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Price</label>
-		                                <input class="form-control input" name="phone" data-form-field="Price" placeholder="Price" required="" id="Price-form4-4v" type="text">
+		                                <input class="form-control input" name="amd[amd_price]" data-form-field="Price" placeholder="Price" required="" id="Price-form4-4v" type="text">
 	                            	</div>
 	                            </div>
-	                            <!-- <div class="col-md-12">
-		                            <div class="form-check">
-										<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-									  	<label class="form-check-label" for="exampleRadios1">
-									    	Enter price
-									  	</label>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-check">
-									  	<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-									  	<label class="form-check-label" for="exampleRadios2">
-									    	Free
-									  	</label>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-check">
-									  	<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-									  	<label class="form-check-label" for="exampleRadios2">
-									    	Check with seller
-									  	</label>
-									</div>
-								</div> -->
-								
-
+	                            
 	                            <div class="col-md-12" data-for="email">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Description *</label>
-		                                <textarea class="form-control textarea" name="amd_desc" data-form-field="Textarea" placeholder="Textarea" required="" id="textarea-form4-4v"></textarea>
+		                                <textarea class="form-control textarea" name="amd[amd_desc]" data-form-field="Textarea" placeholder="Textarea" required="" id="textarea-form4-4v"></textarea>
 	                            	</div>
 	                            </div>
 	                            
@@ -215,13 +206,14 @@
 							<h3 class="title">Pictures</h3>
 							<div class="row">
 								
-							<?php for ($i=1; $i < 2 ; $i++) { ?>
+							<?php for ($i=1; $i < 6 ; $i++) { ?>
 									
 								<div class="col-md-3">
-									<input type="file" onchange="readURL(this);" data-id="<?php echo $i;?>" name="ami_path[]" accept=".png, .jpg, .jpeg" />
+									<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path[]" accept=".png, .jpg, .jpeg" />
 									<div class="col-md-12">
 										<img id="imagePreview_<?php echo $i;?>" src="">
 									</div>
+									<input type="radio" name="default" value="<?php echo $i;?>">Default
 								</div>
 							<?php }?>
 								
