@@ -204,7 +204,7 @@ class Auth extends MX_Controller
     private function _setRedirectRule(){
         $user_id = $this->session->userdata('user_id');
         if($user_id){
-            redirect(base_url('user/dashboard'));
+            redirect(base_url('user/animal/listing'));
         }else{  
             redirect(base_url('user/auth/login'),'refresh');
         }

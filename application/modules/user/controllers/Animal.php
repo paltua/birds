@@ -9,6 +9,7 @@ class Animal extends MY_Controller {
 		$this->ion_user_auth->isLoggedIn();
 		$this->controller = $this->router->fetch_class();
 		$this->load->model('cms/cms_model');
+        $this->load->model('animal_model');
 	}
 
 	public function index(){
@@ -18,6 +19,9 @@ class Animal extends MY_Controller {
 	public function listing(){
 		$status = '';
 		$msg = '';
+        $data['list'] = $this->animal_model->getMyListing();
+        //print_r($data['listing']);
+        $data['controller'] = $this->controller;
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('My Listing');
         $this->template->setLayout('cms');
@@ -28,16 +32,16 @@ class Animal extends MY_Controller {
 		$status = '';
 		$msg = '';
 		$this->load->library('form_validation');
-        
         $this->form_validation->set_rules('cat_id', 'Category', 'required|trim');
         $this->form_validation->set_rules('amd_name', 'Title', 'required|trim');
         $this->form_validation->set_rules('buy_or_sell', 'Buy or Sell', 'required|trim');
         $this->form_validation->set_rules('amd_short_desc', 'Short Description', 'required|trim'); 
         $this->form_validation->set_rules('country_id', 'Country', 'required|trim'); 
+        //pr($this->input->post());
         if ($this->form_validation->run() == TRUE){
         	$am_id = 0;
             $nameArr = $this->input->post('amd_name');
-            $nameCheck = modules::load('admin/animal_master/')->name_check($nameArr, $am_id);
+            $nameCheck = $this->name_check($nameArr, $am_id);
             if($nameCheck){
                 $shortDescArr = $this->input->post('amd_short_desc');
                 $priceArr = $this->input->post('amd_price');
@@ -48,8 +52,7 @@ class Animal extends MY_Controller {
                 $maData['buy_or_sell'] = $this->input->post('buy_or_sell');
                 $maData['user_id'] = $this->session->userdata('user_id');
                 $insertId = $this->tbl_generic_model->add('animal_master', $maData);
-                $this->_updateProductCode($insertId);
-                
+                $this->_updateProductCode($insertId);                
                 $inData[] = array(
                     'language' => 'en',
                     'am_id' => $insertId,
@@ -61,29 +64,108 @@ class Animal extends MY_Controller {
                 $this->tbl_generic_model->add_batch('animal_master_details', $inData);
                 $this->_addCategory($insertId);
                 $this->_addUpdateLocation($insertId, 'add');
+                $this->_upload($insertId);
                 
                 $status = 'success';
-                $msg = 'Successfully Added';
+                $msg = 'Thank you to add this details.We will update you after Admin approval.';
                 $this->session->set_flashdata('status', $status);
                 $this->session->set_flashdata('msg', $msg);
-                redirect(base_url().'admin/'.$this->controller);
+                redirect(base_url().'user/'.$this->controller.'/listing');
             }else{
                 $status = 'danger';
-                $msg = 'This name is already used in English';
+                $msg = 'This name is already used.';
             }
         }
-        
+        $data['country_id'] = 0;
 		$data['country'] = $this->tbl_generic_model->getCountryList();
 		$data['category'] = $this->cms_model->getLevelOneCategory();
         $data['msg'] = $this->template->getMessage($status,$msg);
-        $this->template->setTitle('My Listing');
+        $this->template->setTitle('My Listing : Add');
         $this->template->setLayout('cms');
         $this->template->homeRender('user/'.$this->controller.'/add', $data);
 	}
 
-	public function edit(){
+    private function _upload($am_id = 0){
+        $config['upload_path']          = 'uploads/animal/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        /*$config['max_size']             = 100;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;*/
+        $config['file_name']            = date('YmdHis').$am_id;
+        $this->load->library('upload', $config);
+        $default = $this->input->post('default');
+        if($_FILES){
+            $inData = array();
+            for ($i=1; $i < 6 ; $i++) { 
+                if ($this->upload->do_upload('ami_path_'.$i)){
+                    $inData[$i]['ami_path'] = $this->upload->data('file_name');
+                    $inData[$i]['am_id'] = $am_id;
+                    if($i == $default){
+                        $inData[$i]['ami_default'] = 1;
+                    }else{
+                        $inData[$i]['ami_default'] = 0;
+                    } 
+                }
+            }
+            if(count($inData) > 0){
+                $this->tbl_generic_model->add_batch('animal_master_images', $inData);
+            }
+        }
+    }
+
+	public function edit($am_id = 0){
         $status = '';
 		$msg = '';
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('cat_id', 'Category', 'required|trim');
+        $this->form_validation->set_rules('amd_name', 'Title', 'required|trim');
+        $this->form_validation->set_rules('buy_or_sell', 'Buy or Sell', 'required|trim');
+        $this->form_validation->set_rules('amd_short_desc', 'Short Description', 'required|trim'); 
+        $this->form_validation->set_rules('country_id', 'Country', 'required|trim'); 
+        //pr($this->input->post());
+        if ($this->form_validation->run() == TRUE){
+            $am_id = 0;
+            $nameArr = $this->input->post('amd_name');
+            $nameCheck = $this->name_check($nameArr, $am_id);
+            if($nameCheck){
+                $shortDescArr = $this->input->post('amd_short_desc');
+                $priceArr = $this->input->post('amd_price');
+                $maData['am_status'] = 'inactive';
+                $maData['am_title'] = url_title($nameArr);
+                $maData['am_viewed_count'] = 0;
+                $maData['am_user_type'] = 'user';
+                $maData['buy_or_sell'] = $this->input->post('buy_or_sell');
+                $maData['user_id'] = $this->session->userdata('user_id');
+                $insertId = $this->tbl_generic_model->add('animal_master', $maData);
+                $this->_updateProductCode($insertId);                
+                $inData[] = array(
+                    'language' => 'en',
+                    'am_id' => $insertId,
+                    'amd_name' => $nameArr,
+                    'amd_price' => $priceArr,
+                    'amd_short_desc' => $shortDescArr,
+                );
+                
+                $this->tbl_generic_model->add_batch('animal_master_details', $inData);
+                $this->_addCategory($insertId);
+                $this->_addUpdateLocation($insertId, 'edit');
+                $this->_upload($insertId);
+                
+                $status = 'success';
+                $msg = 'Thank you to update this details.We will update you after Admin approval.';
+                $this->session->set_flashdata('status', $status);
+                $this->session->set_flashdata('msg', $msg);
+                redirect(base_url().'user/'.$this->controller.'/listing');
+            }else{
+                $status = 'danger';
+                $msg = 'This Title is already used.';
+            }
+        }
+        $data['country_id'] = 0;
+        $data['country'] = $this->tbl_generic_model->getCountryList();
+        $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['details'] = $this->animal_model->getEditData($am_id);
+        //print_r($data['details']);
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('My Listing');
         $this->template->setLayout('cms');
@@ -109,9 +191,9 @@ class Animal extends MY_Controller {
     }
 
     private function _addUpdateLocation($am_id = 0, $action = 'add'){
-        $location['country_id'] = $this->input->post('country_id');
-        $location['state_id'] = $this->input->post('state_id');
-        $location['city_id'] = $this->input->post('city_id');
+        $location['country_id'] = is_null($this->input->post('country_id'))?0:$this->input->post('country_id');
+        $location['state_id'] = is_null($this->input->post('state_id'))?0:$this->input->post('state_id');
+        $location['city_id'] = is_null($this->input->post('city_id'))?0:$this->input->post('city_id') ;
         if($action == 'add'){
             $location['am_id'] = $am_id;
             $this->tbl_generic_model->add('animal_location', $location);
@@ -121,13 +203,26 @@ class Animal extends MY_Controller {
         }
     }
 
-	public function imageListing(){
+    public function name_check($str, $am_id = 0){
+        $data = url_title($str);
+        $ret = $this->animal_model->check_name_url($data, $am_id);
+        if ($ret > 0){
+            return FALSE;
+        }else{
+            return TRUE;
+        }
+    }
 
-	}
-
-	public function imageAdd(){
-
-	}
+    private function _updateProductCode($am_id = 0){
+        $lentgh = strlen($am_id);
+        $code = "P";
+        for ($i=0; $i < 8-$lentgh; $i++) { 
+            $code .= '0';
+        }
+        $inData['am_code'] = $code.$am_id;
+        $where['am_id'] = $am_id;
+        $this->tbl_generic_model->edit('animal_master', $inData, $where);
+    }
 
 
 	

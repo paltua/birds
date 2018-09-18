@@ -3,16 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends MY_Controller {
 	public $data = array();
-	public $section ;
-	public $formHeader ;
+	public $controller;
 	
 	public function __construct(){
 		parent::__construct();
 		$this->ion_user_auth->isLoggedIn();
+		$this->controller = $this->router->fetch_class();
 	}
 
 	public function index(){
-		echo '<a href="'.base_url('user/auth/logout').'">logput</a>';
+		$status = '';
+		$msg = '';
+		$data['msg'] = $this->template->getMessage($status,$msg);
+        $this->template->setTitle('My Listing');
+        $this->template->setLayout('cms');
+        $this->template->homeRender('user/'.$this->controller.'/index', $data);
 	}
 
 	public function listing(){

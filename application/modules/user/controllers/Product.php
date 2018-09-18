@@ -67,7 +67,7 @@ class Product extends MY_Controller {
 		$data = array();
         $status = '';
         $msg = '';
-        
+        $this->_addViewedDetails($am_id);
         $data['prodDet'] = $this->product_model->getProductDetails($am_id);
         $data['prodImg'] = $this->product_model->getProductImages($am_id);
 		$data['category'] = $this->cms_model->getLevelOneCategory();
@@ -115,6 +115,15 @@ class Product extends MY_Controller {
         }
         $data['data'] = $html;
         echo json_encode($data);
+    }
+
+    private function _addViewedDetails($am_id = 0){
+        if($am_id > 0){
+            $data['am_id'] = $am_id;
+            $data['user_id'] = ($this->session->userdata('user_id') > 0)?$this->session->userdata('user_id'):0;
+            $this->tbl_generic_model->add('animal_master_viewed', $data);
+            $this->product_model->updateViewedCount($am_id);
+        }
     }
 
 	

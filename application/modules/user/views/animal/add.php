@@ -76,7 +76,8 @@
 		<div class="breadcramb">
 			<ul>
 				<li><a href="<?php echo base_url();?>"><i class="lnr lnr-home"></i></a></li>
-				<li>Publish Listing</li>
+				<li><a href="<?php echo base_url('user/animal/listing');?>">Publish Listing</a></li>
+				<li>Add</li>
 			</ul>
 		</div>
 	</div>
@@ -85,28 +86,36 @@
 	<div class="container">		
 		<div class="inner-content">
 			<div class="add-new-pd">
-				<form class="row block">					
+				<form class="row block" method="post" action="" enctype="multipart/form-data">
+				<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">					
 					<div class="row">
+						<?php if($msg != ''){?>
+							<div class="col-lg-12">
+						    <?php echo $msg ;?>
+						    </div>
+						<?php }?>
 						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-12"><h3 class="title">Add free listing</h3></div>
 								<div class="col-md-12 multi-horizontal" data-for="name">
 									<div class="form-group">
 										<label class="form-control-label ">Category *</label>
-		                                <select class="form-control" name="cat_id" id="animal_cat_id" required="">
-		                                	<option>Select One</option>
+		                                <select class="form-control form-check-input" name="cat_id" id="animal_cat_id" required="">
+		                                	<option value="">Select One</option>
 		                                	<?php if(count($category) > 0){
                                             foreach ($category as $value) {
                                                 ?>
                                                 <option value="<?php echo $value->acm_id;?>"><?php echo $value->acmd_name;?></option>
                                             <?php }} ?>
 		                                </select>
+		                                <?php echo form_error('cat_id', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
 	                            <div class="col-md-12 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Title *</label>
-		                                <input class="form-control input" name="amd[amd_name]" data-form-field="Title" placeholder="Title" required="" id="Title-form4-4v" type="text">
+		                                <input class="form-control input" name="amd_name" data-form-field="Title" placeholder="Title" required="" id="Title-form4-4v" type="text">
+		                                <?php echo form_error('amd_name', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
 	                            <div class="col-md-12">
@@ -116,27 +125,28 @@
 									    	Sell
 									  	</label>
 									</div>
-								</div>
-	                            <div class="col-md-12">
-		                            <div class="form-check">
-										<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios1" value="buy">
+									<div class="form-check">
+									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios1" value="buy">
 									  	<label class="form-check-label" for="exampleRadios1">
 									    	Buy
 									  	</label>
 									</div>
 								</div>
+	                            
 								
 	                            <div class="col-md-12 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Price</label>
-		                                <input class="form-control input" name="amd[amd_price]" data-form-field="Price" placeholder="Price" required="" id="Price-form4-4v" type="text">
+		                                <input class="form-control input" name="amd_price" data-form-field="Price" placeholder="Price" id="Price-form4-4v" type="text">
+		                                
 	                            	</div>
 	                            </div>
 	                            
 	                            <div class="col-md-12" data-for="email">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Description *</label>
-		                                <textarea class="form-control textarea" name="amd[amd_desc]" data-form-field="Textarea" placeholder="Textarea" required="" id="textarea-form4-4v"></textarea>
+		                                <textarea class="form-control textarea" name="amd_short_desc" data-form-field="Textarea" placeholder="Description" required="" id="textarea-form4-4v"></textarea>
+		                                <?php echo form_error('amd_short_desc', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
 	                            
@@ -161,6 +171,7 @@
                                                 <option value="<?php echo $value->id;?>" <?php echo $selected;?>><?php echo $value->name;?></option>
                                             <?php }} ?>
 		                                </select>
+		                                <?php echo form_error('country_id', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
 	                            <div class="col-md-12 multi-horizontal" data-for="price">
@@ -175,7 +186,7 @@
 								        <select class="form-control select" id="animal_city_id" name="city_id[]" multiple></select>
 	                            	</div>
 	                            </div>
-	                            <div class="col-md-12"><h3 class="title">Your's Information</h3></div>
+	                            <!-- <div class="col-md-12"><h3 class="title">Your's Information</h3></div> -->
 	                            <!-- <div class="col-md-12 multi-horizontal" data-for="name">
 									<div class="form-group">
 										<label class="form-control-label ">Name</label>
@@ -194,12 +205,12 @@
 		                                <input class="form-control input" name="email" data-form-field="Email" placeholder="Email" required="" id="email-form4-4v" type="text">
 	                            	</div>
 	                            </div> -->
-	                            <div class="col-md-12" data-for="phone">
+	                            <!-- <div class="col-md-12" data-for="phone">
 	                            	<div class="custom-control custom-checkbox my-1 mr-sm-2">
 									    <input type="checkbox" class="custom-control-input" id="customControlInline">
 									    <label class="custom-control-label" for="customControlInline">Show Mobile on listing page</label>
 									</div>
-	                            </div>
+	                            </div> -->
 	                    	</div>
 						</div>	
 						<div class="col-md-12">
@@ -209,11 +220,11 @@
 							<?php for ($i=1; $i < 6 ; $i++) { ?>
 									
 								<div class="col-md-3">
-									<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path[]" accept=".png, .jpg, .jpeg" />
+									<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
 									<div class="col-md-12">
 										<img id="imagePreview_<?php echo $i;?>" src="">
 									</div>
-									<input type="radio" name="default" value="<?php echo $i;?>">Default
+									<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
 								</div>
 							<?php }?>
 								
