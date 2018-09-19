@@ -14,6 +14,7 @@ class Product_model extends CI_Model {
         $this->db->join('animal_master_images AMI','AMI.am_id=ACR.am_id AND AMI.ami_default = 1','LEFT');
         //$this->db->join('user_master UM', "UM.user_id=AM.user_id AND UM.um_status = 'active' AND UM.um_deleted = '0'", 'LEFT');
         $this->db->join('user_master UM', "UM.user_id=AM.user_id", 'LEFT');
+        $this->db->join('animal_category_master ACM',"ACM.acm_id = ACR.acm_id AND ACM.parent_id > 0");
         $this->db->join('animal_category_master_details ACMD',"ACMD.acm_id = ACR.acm_id AND ACMD.language = 'en'");
         $this->db->join('animal_location AL','AL.am_id=AM.am_id','LEFT');
         $this->db->join('countries CONT','CONT.id=AL.country_id','LEFT');
@@ -23,9 +24,10 @@ class Product_model extends CI_Model {
             $this->db->where('ACR.acm_id', $cat_id);
         }
         $this->_search($search);
+        $this->db->group_by('AM.am_id');
         $this->db->order_by($orderBy['col'], $orderBy['act']);
         $this->db->limit($limit['perPage'], $limit['start']);
-        $this->db->where('AMD.language','en');
+        
         /*$this->db->get();
         echo $this->db->last_query();
         exit;*/
@@ -54,6 +56,7 @@ class Product_model extends CI_Model {
         if($search['price']['max_select'] > 0){
             $this->db->where('AMD.amd_price <= ', $search['price']['max_select']);
         }
+        $this->db->where('AMD.language','en');
     }
 
     public function getProductListComp($cat_id = 0){
@@ -64,6 +67,7 @@ class Product_model extends CI_Model {
         $this->db->join('animal_master_images AMI','AMI.am_id=ACR.am_id AND AMI.ami_default = 1','LEFT');
         //$this->db->join('user_master UM', "UM.user_id=AM.user_id AND UM.um_status = 'active' AND UM.um_deleted = '0'", 'LEFT');
         $this->db->join('user_master UM', "UM.user_id=AM.user_id", 'LEFT');
+        $this->db->join('animal_category_master ACM',"ACM.acm_id = ACR.acm_id AND ACM.parent_id > 0");
         $this->db->join('animal_category_master_details ACMD',"ACMD.acm_id = ACR.acm_id AND ACMD.language = 'en'");
         $this->db->join('animal_location AL','AL.am_id=AM.am_id','LEFT');
         $this->db->join('countries CONT','CONT.id=AL.country_id','LEFT');
@@ -73,7 +77,6 @@ class Product_model extends CI_Model {
             $this->db->where('ACR.acm_id', $cat_id);
         }
         $this->db->where('AM.am_user_type','admin');
-        $this->db->where('AMD.language','en');
         /*$this->db->get();
         echo $this->db->last_query();
         exit;*/
@@ -88,6 +91,7 @@ class Product_model extends CI_Model {
         $this->db->join('animal_master_images AMI','AMI.am_id=ACR.am_id AND AMI.ami_default = 1','LEFT');
         //$this->db->join('user_master UM', "UM.user_id=AM.user_id AND UM.um_status = 'active' AND UM.um_deleted = '0'", 'LEFT');
         $this->db->join('user_master UM', "UM.user_id=AM.user_id", 'LEFT');
+        $this->db->join('animal_category_master ACM',"ACM.acm_id = ACR.acm_id AND ACM.parent_id > 0");
         $this->db->join('animal_category_master_details ACMD',"ACMD.acm_id = ACR.acm_id AND ACMD.language = 'en'");
         $this->db->join('animal_location AL','AL.am_id=AM.am_id','LEFT');
         $this->db->join('countries CONT','CONT.id=AL.country_id','LEFT');
@@ -97,7 +101,6 @@ class Product_model extends CI_Model {
             $this->db->where('ACR.acm_id', $cat_id);
         }
         $this->db->where('AM.am_user_type','user');
-        $this->db->where('AMD.language','en');
         /*$this->db->get();
         echo $this->db->last_query();
         exit;*/

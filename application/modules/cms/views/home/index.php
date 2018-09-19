@@ -6,10 +6,10 @@
     function submitForm(){
         var form = $('#searchFormId');
         var cat_id = $("#searchCatId").val();
-        if(cat_id != ''){
-            
+        if(cat_id != '' && cat_id > 0){
+            cat_id = '/'+cat_id;
         }
-        form.attr('action',form.attr('action')+'/'+cat_id).trigger('submit');
+        form.attr('action',form.attr('action')+cat_id).trigger('submit');
         return false;
     }
     
