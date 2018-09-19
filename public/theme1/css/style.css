@@ -277,7 +277,9 @@ a:hover {text-decoration:none;}
     }
 }
 
-#footer { bottom: 0; background-color: rgba(0,0,0,0.5); padding:12px 0 6px; }
+#footer { bottom: 0; background-color: rgba(0,0,0,0.5); padding:7px 0 0; }
+#footer .ftop {background: rgba(255,18,18,0.7);padding: 4px 0; margin-top:3px}
+#footer .ftop p {margin-top: 0}
 #footer p {color: #fff; margin-top: 7px;}
 #footer .pull-left {float:left;}
 #footer .pull-right {float:right;}
@@ -448,6 +450,7 @@ video::-webkit-media-controls { display:none !important; }
 .btn-primary:hover {background-color: #f12227; border-color: #f12227;}
 .btn-primary.focus, .btn-primary:focus { box-shadow: none}
 .add-new-pd .btn {margin: 1.5rem auto 0;}
+
 
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }

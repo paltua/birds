@@ -105,6 +105,7 @@ class Animal extends MY_Controller {
                     }else{
                         $inData[$i]['ami_default'] = 0;
                     } 
+                    $this->_resizeImage($inData[$i]['ami_path']);
                 }
             }
             if(count($inData) > 0){
@@ -113,13 +114,14 @@ class Animal extends MY_Controller {
         }
     }
 
-    private function resizeImage(){
+    private function _resizeImage($imageName = ''){
         $config['image_library'] = 'gd2';
-        $config['source_image'] = '/path/to/image/mypic.jpg';
-        $config['create_thumb'] = TRUE;
+        $config['source_image'] = UPLOAD_PROD_PATH.$imageName;
+        $config['new_image'] = UPLOAD_PROD_PATH.'thumb';
+        $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = TRUE;
-        $config['width']         = 75;
-        $config['height']       = 50;
+        $config['width']         = 250;
+        $config['height']       = 250;
 
         $this->load->library('image_lib', $config);
 
