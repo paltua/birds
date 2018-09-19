@@ -20,7 +20,7 @@
           <figure>
             <div class="circle-layout">
               <?php 
-              $imagePath = base_url('public/'.THEME.'/images/buddies_01_img.jpg');
+              $imagePath = base_url('public/'.THEME.'/images/add-image.jpg');
               if($value->image_name != ''){
                 $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
               }?>
@@ -183,6 +183,9 @@
 		var comments = 	$("#comments").val();
 		var am_id = '<?php echo $am_id;?>';
 		var url = '<?php echo base_url();?>user/comment/add';
+		<?php if($this->session->userdata('user_id') <= 0){?>
+			window.location.href = '<?php echo base_url('user/auth/login');?>';
+		<?php }?>
 		if(comments != ''){
 			$.post( url, { comments : comments, am_id : am_id}, function(data) {
 	            $('#commentList').append(data.html);

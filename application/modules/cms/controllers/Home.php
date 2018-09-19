@@ -20,6 +20,8 @@ class Home extends MY_Controller
         $data['category'] = $this->cms_model->getLevelOneCategory();
         $data['latestProduct'] = $this->cms_model->getLetestProduct();
         $data['premiumProduct'] = $this->cms_model->getPremiumProduct();
+        $data['dipChoices'] = $this->cms_model->getPremiumProduct();
+        $data['bestCat'] = $this->cms_model->getLevelOneCategory();
         $data['msg'] = $this->template->getMessage($data['status'], $msg);
         $this->template->setTitle('Home');
         $this->template->setLayout('home');    

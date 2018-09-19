@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/linearicons.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url('public/'.THEME.'/');?>css/full-slider.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/fullpage.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/owl.carousel.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
@@ -25,48 +26,45 @@
 </head>
 	
 <body>
-<?php  $this->load->view(THEME.'/common/search');?>
-<div class="menusection">
-<?php  $this->load->view(THEME.'/common/menu');?>
-</div>
 <header id="header">
 <?php  $this->load->view(THEME.'/common/header');?>
 </header>
-<footer id="footer">
-	<?php  $this->load->view(THEME.'/common/footer');?>
-</footer>
 
 <?php  $this->load->view(THEME.'/common/publish');?>
 
 
 <?php if($content != ''): echo $content; endif;?>
 
-
+<footer id="footer">
+	<?php  $this->load->view(THEME.'/common/footer');?>
+</footer>
 
 <script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/fullpage.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/easy-responsive-tabs.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/custom.js"></script>
 
 <script type="text/javascript">
-	function initialization() {
-	    var myFullpage = new fullpage('#fullpage', {
-	    	verticalCentered: false,
-			navigation: true,
-	        navigationPosition: 'right',
-	        slidesNavigation:true,
-	        controlArrows: false,
-	        responsiveWidth: 1025,
-	        css3:false,
-	        afterResponsive: function (isResponsive) {
-	    	}
+function initialization() {
+    var myFullpage = new fullpage('#fullpage', {
+    	verticalCentered: false,
+		navigation: true,
+        navigationPosition: 'right',
+        //slidesNavigation:true,
+        controlArrows: false,
+        responsiveWidth: 1025,
+        css3:false,
+        afterResponsive: function (isResponsive) {
+    	}
 
-		});
-	}
-	//fullPage.js initialization
-	initialization();
+	});
+}
+//fullPage.js initialization
+initialization();
 
 </script>
+
 </body>
 </html>

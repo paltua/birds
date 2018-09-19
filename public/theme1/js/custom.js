@@ -1,6 +1,27 @@
 jQuery(document).ready(function ($) { 
 
-	$('.carousel-4').owlCarousel({
+	$('.carousel-2').owlCarousel({
+	    loop:true,
+	    margin:30,
+	    responsiveClass:true,
+	    dots: false,
+	    nav:true,
+	    responsive:{
+	        0:{
+	            items:1,
+	        },
+	        600:{
+	            items:1,
+	        },
+	        1000:{
+	            items:2,
+	        },
+	        1200:{
+	            items:2,
+	        }
+	    }
+	})
+	$('.carousel-3').owlCarousel({
 	    loop:true,
 	    margin:30,
 	    responsiveClass:true,
@@ -17,7 +38,7 @@ jQuery(document).ready(function ($) {
 	            items:3,
 	        },
 	        1200:{
-	            items:4,
+	            items:3,
 	        }
 	    }
 	})
@@ -90,8 +111,8 @@ jQuery(document).ready(function ($) {
 	    $('.searchbtn').show();
 	});
 	$('.navbtn').click(function() {
-	    $('.menusection').addClass('menuopen')
-	    $(this).hide();
+	    $('.headerright').toggleClass('menuopen')
+	    $(this).toggleClass('navtogl')
 	});
 	$('.menuclsbtn').click(function() {
 	    $('.menusection').removeClass('menuopen');

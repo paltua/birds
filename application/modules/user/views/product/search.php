@@ -90,7 +90,7 @@
           <figure>
             <div class="circle-layout">
               <?php 
-              $imagePath = base_url('public/'.THEME.'/images/buddies_01_img.jpg');
+              $imagePath = base_url('public/'.THEME.'/images/add-image.jpg');
               if($value->image_name != ''){
                 $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
               }?>

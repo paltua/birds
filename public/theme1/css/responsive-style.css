@@ -5,18 +5,25 @@
 @media only screen and (orientation:portrait) {
 	body { -webkit-text-size-adjust:none; }
 }
+@media screen and (max-width:1439px) {
+	.search-layout .search-group .dropdown .btn { padding: 12px 30px 11px 10px;}
+	.search-layout .search-group .dropdown-toggle::after { top: 17px;}
+}
+@media screen and (max-width:1200px) {
+	.search-layout .search-group .dropdown .btn { padding: 9px 30px 9px 10px;}
+	.search-layout .search-group .dropdown-toggle::after { top: 17px;}
+}
 @media screen and (max-width:1024px) {
 	#header .logo { max-width: 82px;padding: 17px 6px 11px 6px;}
 	#fullpage { overflow-x: hidden; }
-	#footer { display: none; }
+	#footer {position: relative;text-align: center;}
 	.section { height: 100% !important }
-	.section.homeBanner { height: 350px !important }
 	.homeBanner h2 {font-size: 32px;line-height: 42px;}
 	.homeBanner h3 {font-size: 28px;line-height: 36px;}
 	.homeBanner .bannertxt { padding-top: 160px;}
 	.homeBanner .fp-slidesNav.fp-bottom {bottom: 20px;}
 	.homeBanner .fp-slidesNav ul li {width: 33px;}
-	.section .title { font-size: 25px; line-height: 32px; margin-bottom: 22px;}
+	.section .title { font-size: 35px; line-height: 32px; margin-bottom: 9px;}
 	.botmlayout .box figure h3 {font-size: 12px;}
 	.botmlayout .box figure h5 { font-size: 11px }
 	.homeGetTouch .gridwrap { display: block;}
@@ -34,6 +41,11 @@
 	.homeGetTouch .secright .botm-social ul { margin-bottom: 0 }
 	.inner-page-wrap #footer { display: block }
 	.homeGetTouch .secright .botm-logo {width: 110px;}
+	.homeBanner .content-sec { padding-top: 100px;}
+	#header .headerright { margin-top: 0px;}
+	.carousel-inner,.carousel-item {height: 100%;}
+	#footer ul.ft-social {text-align: center;}
+	.homeBanner {padding-bottom: 12px;}
 }
 @media screen and (max-width:768px) {
 	h2.resp-accordion {font-size: 20px;padding: 17px 15px;background: #fff;font-weight: 500;}
@@ -44,7 +56,7 @@
 	.homeBanner h2 {font-size: 28px;line-height: 38px;}
 	.homeBanner h3 {font-size: 24px;line-height: 34px;}
 	.section .title { margin-bottom: 15px;}
-	#header .headerright { padding-top: 25px }
+	#header .headerright { padding-top: 55px; margin-top: 0px }
 	.homeGetTouch .secright .botm-logo { width: 76px;}
 	.homeGetTouch .secright .botm-social ul li a { width: 24px;height: 24px;background-size: 24px;}
 	.homeGetTouch .secright .botm-social ul li.fb:hover a,.homeGetTouch .secright .botm-social ul li.twt:hover a,.homeGetTouch .secright .botm-social ul li.inst:hover a,.homeGetTouch .secright .botm-social ul li.linkd:hover a,.homeGetTouch .secright .botm-social ul li.utube:hover a { background-position: 0 -24px;}
@@ -57,6 +69,38 @@
 	.comments-sec .comment-add-layout {margin-bottom: 20px}
 	.register-block {border-left: none; margin-top: 20px}
 	.login-block h2.title, .register-block h2.title { font-size: 1.5rem}
+	.headerright { position: fixed; width: 100%; height: 100%; left: 0; right: 0; top: 0; z-index: 999; border:15px solid #fff; background-color: rgba(181,49,60,0.9); overflow: auto; opacity: 0; visibility: hidden; -webkit-transition: all linear 0.5s; -moz-transition: all linear 0.5s; transition: all linear 0.5s; }
+	.headerright.menuopen {opacity: 1; visibility: visible;}
+	.topsearch .topsearchlayout,.menusection .menulayout { position: relative; width:100%; height: 100%; display: table; vertical-align: middle; text-align: center; background-color: rgba(181,49,60,0.9);}
+	.topsearch .topsearchlayout form, .menusection .menulayout nav { position: relative; display: table-cell;; vertical-align: middle; padding:0 3%; }
+	.clsbtn { display: block; background: none;border: none;width: 22px;height: 22px;position: fixed; top: 30px; right: 30px; padding: 0;z-index: 999; cursor: pointer;-webkit-animation-name: rotate; -webkit-animation-duration: 1.5s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: linear;}
+	@-webkit-keyframes rotate {
+	    from {
+	        -webkit-transform: rotate(0deg);
+	    }
+	    to { 
+	        -webkit-transform: rotate(360deg);
+	    }
+	}
+
+	.clsbtn:hover {transform: rotate(90deg)}
+	.clsbtn em { position: absolute; width: 100%;height: 2px;background-color: #fff;display: block;}
+	.clsbtn em:nth-child(1) {transform: rotate(45deg); transform-origin: top left; left: 4px;top: 3px;}
+	.clsbtn em:nth-child(2) {transform: rotate(-45deg); transform-origin: top left;left: 3px; bottom: 2px;}
+	.menusection nav ul li { padding:10px 0; }
+	.menusection nav ul li a { font-size: 17px; color: #fff; -webkit-transition: all linear 0.5s; -moz-transition: all linear 0.5s; transition: all linear 0.5s;}
+	.menusection nav ul li a:hover { color: #0a0a0a }
+	.navbtn {display: block; top: 29px; right: 20px; z-index: 9999}
+	.navbtn.navtogl em:nth-child(2) {width: 0}
+	.navbtn.navtogl em:first-child {transform:rotate(45deg); top: 13px; position: relative;}
+	.navbtn.navtogl em:last-child {transform:rotate(-45deg); bottom: 4px; position: relative;}
+	.navbtn.navtogl:hover em:first-child,.navbtn.navtogl:hover em:nth-child(3) {width:100%;}
+	#header nav ul li {float: none; margin-left: 0; width: 100%; padding: 8px 0}
+	#header .headerright .inline-elmnt { display: block;margin-left: 0; padding: 10px 15px;}
+	#header nav ul { text-align: center;}
+	.headerright .btn {width:100%; text-align: center}
+	#header .headerright .inline-elmnt .logbtn {text-align: center;}
+	.homeGetTouch h3.title {font-size: 1.5rem; margin-bottom: 1rem;}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}
@@ -68,12 +112,18 @@
 	#header .headerright .inline-elmnt .searchbtn { width: 15px; height: 15px; background-size: 15px }
 	.homeGetTouch .secright .botm-links ul { margin-bottom: 6px;}
 	.homeGetTouch .secright .botm-copyright h4,.homeGetTouch .secright .botm-copyright h5 {font-size: 12px;}
-	.innerbanner { height: 210px;}
+	.innerbanner { height: 210px; background-position: 0 0;}
 	.innerbanner .banner-cont {top: 114px;}
 	.innerbanner .banner-cont h1 {font-size: 25px;}
 	.breadcramb ul li {font-size: 13px;}
 	.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {left:0px;}
 	.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {right:0px;}
-	.homeBanner h2 { font-size: 19px; line-height: 25px; margin-bottom: 10px}
-	.homeBanner h3 { font-size: 16px; line-height: 22px;}
+	.homeBanner h2 { font-size: 22px; line-height: 25px; margin-bottom: 10px}
+	.homeBanner h3 { font-size: 18px; line-height: 22px;}
+	.homeBanner h4 { font-size: 21px;}
+	.search-layout {height: auto;border-radius: 0px;}
+	.search-layout .search-group {display:block;}
+	.search-layout .search-group input[type="text"] {width:100%; border-radius: 0px}
+	.search-layout .search-group input[type="submit"] {width:100%;height: 40px;border-radius: 0px}
+	.search-layout .search-group .dropdown select {background-position: 98% 50%}
 }

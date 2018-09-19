@@ -183,46 +183,22 @@
 								<div class="col-md-12 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">City</label>
-								        <select class="form-control select" id="animal_city_id" name="city_id[]" multiple></select>
+								        <select class="form-control select" id="animal_city_id" name="city_id"></select>
 	                            	</div>
 	                            </div>
-	                            <!-- <div class="col-md-12"><h3 class="title">Your's Information</h3></div> -->
-	                            <!-- <div class="col-md-12 multi-horizontal" data-for="name">
-									<div class="form-group">
-										<label class="form-control-label ">Name</label>
-		                                <input class="form-control input" name="name" data-form-field="Name" placeholder="Your Name" required="" id="name-form4-4v" type="text">
-	                            	</div>
-	                            </div>
-	                            <div class="col-md-12 multi-horizontal" data-for="phone">
-	                            	<div class="form-group">
-		                            	<label class="form-control-label ">Phone No</label>
-		                                <input class="form-control input" name="phone" data-form-field="Phone" placeholder="Phone" required="" id="phone-form4-4v" type="text">
-	                            	</div>
-	                            </div>
-	                            <div class="col-md-12" data-for="email">
-	                            	<div class="form-group">
-		                            	<label class="form-control-label ">Email</label>
-		                                <input class="form-control input" name="email" data-form-field="Email" placeholder="Email" required="" id="email-form4-4v" type="text">
-	                            	</div>
-	                            </div> -->
-	                            <!-- <div class="col-md-12" data-for="phone">
-	                            	<div class="custom-control custom-checkbox my-1 mr-sm-2">
-									    <input type="checkbox" class="custom-control-input" id="customControlInline">
-									    <label class="custom-control-label" for="customControlInline">Show Mobile on listing page</label>
-									</div>
-	                            </div> -->
+	                            
 	                    	</div>
 						</div>	
 						<div class="col-md-12">
 							<h3 class="title">Pictures</h3>
 							<div class="row">
 								
-							<?php for ($i=1; $i < 6 ; $i++) { ?>
+							<?php for ($i=1; $i < 7 ; $i++) { ?>
 									
-								<div class="col-md-3">
+								<div class="col-md-2">
 									<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
 									<div class="col-md-12">
-										<img id="imagePreview_<?php echo $i;?>" src="">
+										<img id="imagePreview_<?php echo $i;?>" src="<?php echo base_url('public/'.THEME.'/images/add-image.jpg');?>">
 									</div>
 									<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
 								</div>

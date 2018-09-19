@@ -33,8 +33,25 @@
             var city_ids = '';
             cityList(state_id, city_ids);
         });
+
+        <?php if($details[0]->state_id > 0){?>
+        	stateList(<?php echo $details[0]->country_id;?>, <?php echo $details[0]->state_id;?>);
+        	cityList(<?php echo $details[0]->state_id;?>, <?php echo $details[0]->city_id;?>);
+        <?php } ?>
         
     });
+
+    function deleteImage(ami_id, id){
+    	var conStatus = confirm('Are you sure to delete this Image.');
+    	if(conStatus){
+    		var url = '<?php echo base_url();?>user/animal/deleteImage';
+	        $.post( url, { ami_id: ami_id}, function( data ) {
+	        	$('#imagePreview_'+id).attr('src', '<?php echo base_url('public/'.THEME.'/images/add-image.jpg');?>');
+	        	$('#buttunId_'+ami_id).remove();
+	            $("#msgId").html(data.msg);
+	        },'json');
+    	}
+    }
 
     function stateList(country_id, state_id){
     	var url = '<?php echo base_url();?>user/product/getStateList';
@@ -90,7 +107,7 @@
 				<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">					
 					<div class="row">
 						<?php if($msg != ''){?>
-							<div class="col-lg-12">
+							<div class="col-lg-12" id="msgId">
 						    <?php echo $msg ;?>
 						    </div>
 						<?php }?>
@@ -190,46 +207,35 @@
 								<div class="col-md-12 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">City</label>
-								        <select class="form-control select" id="animal_city_id" name="city_id[]" multiple></select>
+								        <select class="form-control select" id="animal_city_id" name="city_id" ></select>
 	                            	</div>
 	                            </div>
-	                            <!-- <div class="col-md-12"><h3 class="title">Your's Information</h3></div> -->
-	                            <!-- <div class="col-md-12 multi-horizontal" data-for="name">
-									<div class="form-group">
-										<label class="form-control-label ">Name</label>
-		                                <input class="form-control input" name="name" data-form-field="Name" placeholder="Your Name" required="" id="name-form4-4v" type="text">
-	                            	</div>
-	                            </div>
-	                            <div class="col-md-12 multi-horizontal" data-for="phone">
-	                            	<div class="form-group">
-		                            	<label class="form-control-label ">Phone No</label>
-		                                <input class="form-control input" name="phone" data-form-field="Phone" placeholder="Phone" required="" id="phone-form4-4v" type="text">
-	                            	</div>
-	                            </div>
-	                            <div class="col-md-12" data-for="email">
-	                            	<div class="form-group">
-		                            	<label class="form-control-label ">Email</label>
-		                                <input class="form-control input" name="email" data-form-field="Email" placeholder="Email" required="" id="email-form4-4v" type="text">
-	                            	</div>
-	                            </div> -->
-	                            <!-- <div class="col-md-12" data-for="phone">
-	                            	<div class="custom-control custom-checkbox my-1 mr-sm-2">
-									    <input type="checkbox" class="custom-control-input" id="customControlInline">
-									    <label class="custom-control-label" for="customControlInline">Show Mobile on listing page</label>
-									</div>
-	                            </div> -->
+
 	                    	</div>
 						</div>	
 						<div class="col-md-12">
 							<h3 class="title">Pictures</h3>
 							<div class="row">
-								
-							<?php for ($i=1; $i < 6 ; $i++) { ?>
+							<?php if(count($images) > 0){?>
+								<?php foreach ($images as $keyIm => $valueIm) {?>
+									<div class="col-md-2">
+										<input type="file" onchange="readURL(this, '<?php echo $keyIm + 1;?>');" data-id="<?php echo $keyIm + 1;?>" name="ami_path_<?php echo $keyIm + 1;?>" />
+										<input type="hidden" name="addedImage[<?php echo $keyIm + 1;?>]" value="<?php echo $valueIm->ami_id;?>">
+										<div class="col-md-12">
+											<img id="imagePreview_<?php echo $keyIm + 1;?>" src="<?php echo base_url(UPLOAD_PROD_PATH.$valueIm->ami_path);?>">
+										</div>
+										<input type="radio" name="default" <?php if($valueIm->ami_default == 1){?>checked=""<?php }?> value="<?php echo $keyIm + 1;?>">Default
+										<input type="button" class="btn btn-danger deleteImg" id="buttunId_<?php echo $valueIm->ami_id;?>" value="Delete" onclick="return deleteImage(<?php echo $valueIm->ami_id;?>, <?php echo $keyIm + 1;?>)" name="" >
+									</div>
+								<?php } ?>
+							<?php } ?>	
+							<?php for ($i=count($images) + 1; $i < 7  ; $i++) { ?>
 									
-								<div class="col-md-3">
+								<div class="col-md-2">
 									<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
+									<input type="hidden" name="addedImage[<?php echo $i;?>]" value="0">
 									<div class="col-md-12">
-										<img id="imagePreview_<?php echo $i;?>" src="">
+										<img id="imagePreview_<?php echo $i;?>" src="<?php echo base_url('public/'.THEME.'/images/add-image.jpg');?>">
 									</div>
 									<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
 								</div>

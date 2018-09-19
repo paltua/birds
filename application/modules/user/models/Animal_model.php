@@ -124,11 +124,8 @@ class Animal_model extends CI_Model {
 
     public function getProductImages($am_id = 0){
         $this->db->select('AMI.*');
-        $this->db->from('animal_master AM');
-        $this->db->join('animal_master_images AMI','AMI.am_id=AM.am_id ','LEFT');
-        $this->db->where('AM.am_id', $am_id);
-        $this->db->where('AM.am_status', 'active');
-        $this->db->where('AM.am_deleted', '0');
+        $this->db->from('animal_master_images AMI');
+        $this->db->where('AMI.am_id', $am_id);
         $this->db->order_by('AMI.ami_default','DESC');
         return $this->db->get()->result();
     }
