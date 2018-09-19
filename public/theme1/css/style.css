@@ -609,3 +609,4 @@ video::-webkit-media-controls { display:none !important; }
 .logout ul li a:hover {background-color: #ff1212; color:#fff;}
 .logout ul li:last-child a {border-bottom:0}
 .logout:hover ul {opacity: 1; visibility: visible}
+.headerright .logout {position: relative;}
