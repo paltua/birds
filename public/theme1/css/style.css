@@ -129,8 +129,10 @@ a:hover {text-decoration:none;}
 #header .headerleft { float: left }
 #header .headerright { float: right; margin-top: 15px;}
 #header .headerright .inline-elmnt { display: inline-block; vertical-align: middle; margin-left: 6px }
-#header .headerright .inline-elmnt .logbtn { cursor: pointer; background:#ff1212 url(../images/icon-login.png) no-repeat 86% center; display: block; border:none; padding: 11px 41px 10px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: #fff; border-radius: 3px; background-size: 16px; -webkit-transition: all linear 0.5s;-moz-transition: all linear 0.5s;transition: all linear 0.5s}
+#header .headerright .inline-elmnt .logbtn { cursor: pointer; background-color:#ff1212; background-repeat: no-repeat; background-position: 86% center; display: block; border:none; padding: 11px 41px 10px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: #fff; border-radius: 3px; background-size: 16px; -webkit-transition: all linear 0.5s;-moz-transition: all linear 0.5s;transition: all linear 0.5s}
 #header .headerright .inline-elmnt .logbtn:hover {background-color: #094800}
+#header .headerright .login .logbtn {background-image: url(../images/icon-login.png)}
+#header .headerright .logout .logbtn {background-image: url(../images/icon-logout.png)}
 .navbtn { display: none; cursor: pointer; top: 3px; height:19px; width: 30px; position: fixed; border:none; background: none;}
 .navbtn em {width:100%; height: 3px; background: #fff; display: block;-webkit-transition: all linear 0.5s;-moz-transition: all linear 0.5s;transition: all linear 0.5s}
 .navbtn em:nth-child(2) { margin: 5px 0 }
@@ -143,9 +145,12 @@ a:hover {text-decoration:none;}
 #header nav ul li:first-child {margin-left: 0px}
 #header nav ul li a {color:#fff; text-transform: uppercase; font-size: 12px; letter-spacing: 1px}
 @media all and (min-width: 768px) {
-  #header.innerchange .headerright .inline-elmnt .searchbtn {background: url(../images/search-icon-black.png) no-repeat center center;}
   #header.innerchange .headerright .inline-elmnt .locationbtn {background: url(../images/icon-map-black.png) no-repeat center center;}
   #header.innerchange .headerright .inline-elmnt .logbtn {background: url(../images/icon-login-black.png) no-repeat center center;}
+  #header.innerchange  nav ul li a {color:#000;}
+  #header.innerchange {background: #fff;box-shadow: 0 2px 2px rgba(0,0,0,0.1);}
+  #header.innerchange .logo {background:none;}
+  #header.innerchange .headerright {margin-top: 4px;}
  .navbtn em {background: #1c1c1c}
 }
 
@@ -195,6 +200,12 @@ a:hover {text-decoration:none;}
 .search-layout .search-group input[type="submit"]:hover {background-color:#094a00}
 .search-layout .search-group .dropdown select { background:url(../images/dropdown-angel.png) no-repeat 94% 50%;  width:100%; padding: 10px 30px 10px 10px;color: #353535;background-color: #f1f1f1;border-color: #f1f1f1; border-radius: 0; border:none; -webkit-appearance: none; -moz-appearance: none; appearance:none;}
 .search-layout .search-group .dropdown select::-ms-expand {overflow: hidden; display: none}
+.headerright .logout {position: relative;}
+.logout ul {background-color: #fff; position: absolute; margin-bottom: 0; right:0; min-width: 180px; -webkit-transition: all linear 0.5s; transition: all linear 0.5s; opacity: 0; visibility: hidden}
+.logout ul li a {display: block; padding: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); -webkit-transition: all linear 0.5s; transition: all linear 0.5s; text-transform: uppercase; }
+.logout ul li a:hover {background-color: #ff1212; color:#fff;}
+.logout ul li:last-child a {border-bottom:0}
+.logout:hover ul {opacity: 1; visibility: visible}
 
 .homepdlist {background-image: url(../images/homelist-bg.jpg); background-repeat: no-repeat; background-position: center center; background-size:100% 100% !important; -webkit-transition:all linear 0.5s; -moz-transition:all linear 0.5s; transition:all linear 0.5s }
 .homepdlist .content-sec {padding-top:48px;}
@@ -604,9 +615,3 @@ video::-webkit-media-controls { display:none !important; }
 @media (min-width:1920px) {
   .homeVideo iframe {width: 1920px !important; height: 1080px !important}
 }
-.logout ul {background-color: #fff; position: absolute; margin-bottom: 0; right:0; min-width: 180px; -webkit-transition: all linear 0.5s; transition: all linear 0.5s; opacity: 0; visibility: hidden}
-.logout ul li a {display: block; padding: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); -webkit-transition: all linear 0.5s; transition: all linear 0.5s; text-transform: uppercase; }
-.logout ul li a:hover {background-color: #ff1212; color:#fff;}
-.logout ul li:last-child a {border-bottom:0}
-.logout:hover ul {opacity: 1; visibility: visible}
-.headerright .logout {position: relative;}
