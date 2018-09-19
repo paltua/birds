@@ -34,10 +34,10 @@
             cityList(state_id, city_ids);
         });
 
-        <?php if($details[0]->state_id > 0){?>
-        	stateList(<?php echo $details[0]->country_id;?>, <?php echo $details[0]->state_id;?>);
-        	cityList(<?php echo $details[0]->state_id;?>, <?php echo $details[0]->city_id;?>);
-        <?php } ?>
+    <?php if($details[0]->state_id > 0){?>
+    	stateList(<?php echo $details[0]->country_id;?>, <?php echo $details[0]->state_id;?>);
+    	cityList(<?php echo $details[0]->state_id;?>, <?php echo $details[0]->city_id;?>);
+    <?php } ?>
         
     });
 
@@ -66,6 +66,8 @@
     function cityList(state_id, city_ids){
     	var url = '<?php echo base_url();?>user/product/getCityList';
         $.post( url, { state_id: state_id, selectedChild : city_ids}, function( data ) {
+        	$("#animal_city_id").html('');
+            $('#animal_city_id').trigger("chosen:updated");
             $("#animal_city_id").html(data.data);
             $('#animal_city_id').trigger("chosen:updated");
         },'json');
@@ -243,8 +245,11 @@
 								
 							</div>					
 						</div>
-                        <div class="input-group-btn col-md-12">
-                            <button href="" type="submit" class="btn btn-primary btn-form display-4">Publish Item</button>
+                        <div class="input-group-btn col-md-4">
+                        	<div class="row">
+                            <button type="submit" class="btn btn-primary btn-form display-4">Publish Item</button>
+                            <a href="<?php echo base_url('user/animal/listing');?>" class="btn btn-primary btn-form">Back</a>
+                            </div>
                         </div>
 					</div>
 				</form>					

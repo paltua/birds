@@ -17,8 +17,8 @@ class Animal extends MY_Controller {
 	}
 
 	public function listing(){
-		$status = '';
-		$msg = '';
+		$status = $this->session->flashdata('status');
+		$msg = $this->session->flashdata('msg');
         $data['list'] = $this->animal_model->getMyListing();
         //print_r($data['listing']);
         $data['controller'] = $this->controller;
@@ -96,7 +96,7 @@ class Animal extends MY_Controller {
         $default = $this->input->post('default');
         if($_FILES){
             $inData = array();
-            for ($i=1; $i < 6 ; $i++) { 
+            for ($i=1; $i < 7 ; $i++) { 
                 if ($this->upload->do_upload('ami_path_'.$i)){
                     $inData[$i]['ami_path'] = $this->upload->data('file_name');
                     $inData[$i]['am_id'] = $am_id;
@@ -180,9 +180,10 @@ class Animal extends MY_Controller {
         $this->load->library('upload', $config);
         $default = $this->input->post('default');
         $existImage = $this->input->post('addedImage');
+        //pr($this->input->post());exit;
         if($_FILES){
             $inData = array();
-            for ($i=1; $i < 6 ; $i++) { 
+            for ($i=1; $i < 7 ; $i++) { 
                 if ($this->upload->do_upload('ami_path_'.$i)){
                     $inData[$i]['ami_path'] = $this->upload->data('file_name');
                     $inData[$i]['am_id'] = $am_id;
@@ -201,6 +202,19 @@ class Animal extends MY_Controller {
                 $this->tbl_generic_model->add_batch('animal_master_images', $inData);
             }
         }
+
+        if($default > 0){
+            for ($i=1; $i < 7 ; $i++) { 
+                if($existImage[$i] > 0 && $i == $default){
+                    $newWhere['am_id'] = $am_id;
+                    $newUpData['ami_default'] = 0;
+                    $this->tbl_generic_model->edit('animal_master_images', $newUpData, $newWhere);
+                    $upData['ami_default'] = 1;
+                    $where['ami_id'] = $existImage[$i];
+                    $this->tbl_generic_model->edit('animal_master_images', $upData, $where);
+                }
+            }
+        }
     }
 
 
@@ -210,10 +224,17 @@ class Animal extends MY_Controller {
         $inData = array();
         $p_acr = $this->input->post('cat_id');
         if($p_acr > 0){
-            $inData[] = array(
+            $inData[0] = array(
                 'am_id' => $am_id,
                 'acm_id' => $p_acr
             );
+            $parentDet = $this->tbl_generic_model->get('animal_category_master','*', array('acm_id' => $p_acr));
+            if(count($parentDet) > 0){
+                $inData[1] = array(
+                    'am_id' => $am_id,
+                    'acm_id' => $parentDet[0]->parent_id
+                );
+            }
         }
         
         if(count($inData) > 0){
@@ -225,7 +246,7 @@ class Animal extends MY_Controller {
     private function _addUpdateLocation($am_id = 0, $action = 'add'){
         $location['country_id'] = is_null($this->input->post('country_id'))?0:$this->input->post('country_id');
         $location['state_id'] = is_null($this->input->post('state_id'))?0:$this->input->post('state_id');
-        
+
         $location['city_id'] = is_null($this->input->post('city_id'))?0:$this->input->post('city_id') ;
         if($action == 'add'){
             $location['am_id'] = $am_id;
