@@ -108,17 +108,7 @@
                             <div class="resp-tabs-container">
                                 <div>
                                     <div class="homelist-box carousel-2 owl-carousel owl-theme">
-                                        <!-- <div class="item">
-                                            <figure>
-                                                <div class="box-layout">
-                                                    <span class="pdimg"><img src="images/list-img_01.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-                                                    <figcaption>
-                                                        <h3><a href="javascript:void(0)">Red eye male</a></h3>
-                                                        <h5>RS 300.00</h5>
-                                                    </figcaption>
-                                                </div>                              
-                                            </figure>
-                                        </div> -->
+                                        
                                         <?php if(count($premiumProduct) > 0):
                                                 foreach ($premiumProduct as $key => $value) :
                                                     $imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
@@ -142,17 +132,7 @@
                                 </div>
                                 <div>
                                     <div class="homelist-box carousel-2 owl-carousel owl-theme">
-                                        <!-- <div class="item">
-                                            <figure>
-                                                <div class="box-layout">
-                                                    <span class="pdimg"><img src="images/list-img_01.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-                                                    <figcaption>
-                                                        <h3><a href="javascript:void(0)">Red eye male</a></h3>
-                                                        <h5>RS 300.00</h5>
-                                                    </figcaption>
-                                                </div>                              
-                                            </figure>
-                                        </div> -->
+                                        
                                         <?php if(count($latestProduct) > 0):
                                             foreach ($latestProduct as $key => $value) :
                                                 $imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
@@ -176,17 +156,7 @@
                                 </div>
                                 <div>
                                     <div class="homelist-box carousel-2 owl-carousel owl-theme">
-                                        <!-- <div class="item">
-                                            <figure>
-                                                <div class="box-layout">
-                                                    <span class="pdimg"><img src="images/list-img_01.jpg" alt="Buddies"><a href="javascript:void(0)" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-                                                    <figcaption>
-                                                        <h3><a href="javascript:void(0)">Red eye male</a></h3>
-                                                        <h5>RS 300.00</h5>
-                                                    </figcaption>
-                                                </div>                              
-                                            </figure>
-                                        </div> -->
+                                        
                                         <?php if(count($dipChoices) > 0):
                                             foreach ($dipChoices as $key => $value) :
                                                 $imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
@@ -249,7 +219,7 @@
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_04.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_05.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_06.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_07.jpg" alt=""/></li>
+                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_01.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_08.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_09.jpg" alt=""/></li>
                         <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_10.jpg" alt=""/></li>
