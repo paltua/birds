@@ -304,6 +304,28 @@ class Animal extends MY_Controller {
         }
     }
 
+    public function changeBookedStatus(){
+        $am_id = $this->input->post('am_id');
+        $retData = array();
+        if($am_id > 0){
+            $where['am_id'] = $am_id;
+            $upData['am_is_booked'] = 'yes';
+            $this->tbl_generic_model->edit('animal_master', $upData, $where);
+            $inData['am_id'] = $am_id;
+            $inData['booked_by'] = $this->session->userdata('user_id');
+            $inData['booked_by_type'] = 'user';
+            $inData['booked_to'] = 0;
+            $inData['booked_price'] = 0;
+            $this->tbl_generic_model->add('animal_booked_details', $inData);
+            $retData['msg'] = $this->template->getMessage('success', 'Booked Successfully.');
+        }else{
+            $this->session->set_flashdata('status', 'danger');
+            $this->session->set_flashdata('msg', 'Wrong Parameter');
+            $retData['msg'] = $this->template->getMessage('danger', 'Wrong Parameter');
+        }
+        echo json_encode($retData);
+    }
+
 
 	
 }
