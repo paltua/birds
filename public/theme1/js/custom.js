@@ -137,7 +137,7 @@ $(window).scroll(function() {
   var sticky = $('.inner-page-wrap #header'),
     scroll = $(window).scrollTop();
    
-  if (scroll >= 250) { 
+  if (scroll >= 150) { 
     sticky.addClass('innerchange'); 
 	}
   else { 

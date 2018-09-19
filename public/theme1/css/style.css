@@ -616,3 +616,4 @@ video::-webkit-media-controls { display:none !important; }
 @media (min-width:1920px) {
   .homeVideo iframe {width: 1920px !important; height: 1080px !important}
 }
+.inner-page-wrap .logout ul {background-color: #ddd;}
