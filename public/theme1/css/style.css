@@ -145,8 +145,6 @@ a:hover {text-decoration:none;}
 #header nav ul li:first-child {margin-left: 0px}
 #header nav ul li a {color:#fff; text-transform: uppercase; font-size: 12px; letter-spacing: 1px}
 @media all and (min-width: 768px) {
-  #header.innerchange .headerright .inline-elmnt .locationbtn {background: url(../images/icon-map-black.png) no-repeat center center;}
-  #header.innerchange .headerright .inline-elmnt .logbtn {background: url(../images/icon-login-black.png) no-repeat center center;}
   #header.innerchange  nav ul li a {color:#000;}
   #header.innerchange {background: #fff;box-shadow: 0 2px 2px rgba(0,0,0,0.1);}
   #header.innerchange .logo {background:none;}
