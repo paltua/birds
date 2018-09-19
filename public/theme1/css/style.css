@@ -604,3 +604,8 @@ video::-webkit-media-controls { display:none !important; }
 @media (min-width:1920px) {
   .homeVideo iframe {width: 1920px !important; height: 1080px !important}
 }
+.logout ul {background-color: #fff; position: absolute; margin-bottom: 0; right:0; min-width: 180px; -webkit-transition: all linear 0.5s; transition: all linear 0.5s; opacity: 0; visibility: hidden}
+.logout ul li a {display: block; padding: 10px; border-bottom: 1px solid rgba(0,0,0,0.1); -webkit-transition: all linear 0.5s; transition: all linear 0.5s; text-transform: uppercase; }
+.logout ul li a:hover {background-color: #ff1212; color:#fff;}
+.logout ul li:last-child a {border-bottom:0}
+.logout:hover ul {opacity: 1; visibility: visible}
