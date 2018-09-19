@@ -105,7 +105,7 @@ class Animal extends MY_Controller {
                     }else{
                         $inData[$i]['ami_default'] = 0;
                     } 
-                    $this->_resizeImage($inData[$i]['ami_path']);
+                    //$this->_resizeImage($inData[$i]['ami_path']);
                 }
             }
             if(count($inData) > 0){
