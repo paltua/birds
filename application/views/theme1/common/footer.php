@@ -18,4 +18,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="ftop text-center"><p>We only deal with EXOTIC BIRDS and other pets species which are LEGAL IN INDIA, AS PER INDIAN WIELD LIFE ACT.</p></div>
+	<div class="ftop text-center"><p><!-- We only deal with EXOTIC BIRDS and other pets species which are LEGAL IN INDIA, AS PER INDIAN WIELD LIFE ACT. -->
+		ONLY for EXOTIC BIRDS and other pets species which are LEGAL IN INDIA, AS PER INDIAN WIELD LIFE ACT.
+	</p></div>
