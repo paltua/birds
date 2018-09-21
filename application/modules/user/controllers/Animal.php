@@ -91,21 +91,23 @@ class Animal extends MY_Controller {
         /*$config['max_size']             = 100;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;*/
-        $config['file_name']            = date('YmdHis').$am_id;
-        $this->load->library('upload', $config);
+        $this->load->library('upload');
         $default = $this->input->post('default');
         if($_FILES){
             $inData = array();
             for ($i=1; $i < 7 ; $i++) { 
+                $config['file_name'] = date('YmdHis').'_'.rand(1000,9999).'_'.$am_id;
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('ami_path_'.$i)){
-                    $inData[$i]['ami_path'] = $this->upload->data('file_name');
+                    $path = '';
+                    $inData[$i]['ami_path'] = $path = $this->upload->data('file_name');
                     $inData[$i]['am_id'] = $am_id;
                     if($i == $default){
                         $inData[$i]['ami_default'] = 1;
                     }else{
                         $inData[$i]['ami_default'] = 0;
                     } 
-                    //$this->_resizeImage($inData[$i]['ami_path']);
+                    $this->_resizeImage($path);
                 }
             }
             if(count($inData) > 0){
@@ -191,16 +193,18 @@ class Animal extends MY_Controller {
         /*$config['max_size']             = 100;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;*/
-        $config['file_name']            = date('YmdHis').$am_id;
-        $this->load->library('upload', $config);
+        $this->load->library('upload');
         $default = $this->input->post('default');
         $existImage = $this->input->post('addedImage');
         //pr($this->input->post());exit;
         if($_FILES){
             $inData = array();
             for ($i=1; $i < 7 ; $i++) { 
+                $config['file_name'] = date('YmdHis').'_'.rand(1000,9999).'_'.$am_id;
+                $this->upload->initialize($config);
                 if ($this->upload->do_upload('ami_path_'.$i)){
-                    $inData[$i]['ami_path'] = $this->upload->data('file_name');
+                    $path = '';
+                    $inData[$i]['ami_path'] = $path = $this->upload->data('file_name');
                     $inData[$i]['am_id'] = $am_id;
                     if($i == $default){
                         $inData[$i]['ami_default'] = 1;
@@ -211,6 +215,7 @@ class Animal extends MY_Controller {
                         $ami_id = $existImage[$i];
                         $this->_deleteUnlinkImage($ami_id);
                     }
+                    $this->_resizeImage($path);
                 }
             }
             if(count($inData) > 0){
@@ -315,6 +320,7 @@ class Animal extends MY_Controller {
             $ami_path = $data[0]->ami_path;
             if($ami_path != ''){
                 @unlink(UPLOAD_PROD_PATH.$ami_path);
+                @unlink(UPLOAD_PROD_PATH.'thumb/'.$ami_path);
             }
         }
     }

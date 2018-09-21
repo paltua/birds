@@ -212,24 +212,13 @@
         <div class="gridwrap">
             <div class="two-grid secleft">
                 <div class="img-grid clearfix">
+                    <?php if(count($gallery) > 0){?>
                     <ul>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_01.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_02.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_03.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_04.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_05.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_06.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_01.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_08.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_09.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_10.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_11.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_12.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_13.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_14.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_15.jpg" alt=""/></li>
-                        <li><img src="<?php echo base_url('public/'.THEME.'/');?>images/ft-img-gallery_16.jpg" alt=""/></li>
+                        <?php foreach ($gallery as $key => $value) {?>
+                        <li><img src="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>" alt=""/></li>
+                        <?php }?>
                     </ul>
+                    <?php } ?>
                 </div>
             </div>
             <div class="two-grid secright">

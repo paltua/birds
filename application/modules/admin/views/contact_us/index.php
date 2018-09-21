@@ -12,7 +12,8 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true,
-            order: [[ 4 , "desc" ]]
+            order: [[ 4 , "desc" ]],
+            columnDefs: [{ targets: 'no-sort', orderable: false }],
         });
     });
 </script>
@@ -41,7 +42,7 @@
                     <th>Mobile</th>
                     <th>Message</th>
                     <th>Created Date</th>
-                    <th>Action</th>
+                    <th class="no-sort">Action</th>
                 </tr>
             </thead>
             <tbody>

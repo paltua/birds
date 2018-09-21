@@ -259,6 +259,9 @@
                 <a href="<?php echo base_url('admin/comment');?>"><i class="fa fa-comments"></i> Comments</a>
             </li>
             <li>
+                <a href="<?php echo base_url('admin/gallery');?>"><i class="fa fa-comments"></i> Gallery</a>
+            </li>
+            <li>
                 <a href="<?php echo base_url('admin/contact_us');?>"><i class="fa fa-comments"></i> Contact Us</a>
             </li>
             <!-- <li>

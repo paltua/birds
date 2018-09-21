@@ -12,7 +12,8 @@
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true,
-            order: [[ 8 , "desc" ]]
+            order: [[ 8 , "desc" ]],
+            columnDefs: [{ targets: 'no-sort', orderable: false }],
         });
 
         

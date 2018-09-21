@@ -12,7 +12,8 @@
     $(document).ready(function() {
         $('#exampleTable').DataTable({
             responsive: true,
-            order: [[ 5 , "desc" ]]
+            order: [[ 5 , "desc" ]],
+            columnDefs: [{ targets: 'no-sort', orderable: false }],
         });
 
         var csfrData = {};
