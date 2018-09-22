@@ -8,6 +8,17 @@ $(document).ready(function(){
     });
 });
 </script>
+<section class="innerbanner">
+  <div class="banner-cont">
+    <h1 class="title">Forgot Password</h1>
+    <div class="breadcramb">
+      <ul>
+        <li><a href="<?php echo base_url();?>"><i class="lnr lnr-home"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="inner-layout">
   <div class="container">   
     <div class="inner-content">
@@ -18,7 +29,6 @@ $(document).ready(function(){
      <div class="box box-primary">
           <div class="box-header">
             <h3 class="box-title">Forgot Password </h3>
-            
           </div>
           <div class="box-body" style="padding-top:0;">
               <form class="form account-form" accept-charset="utf-8" method="post" action="">

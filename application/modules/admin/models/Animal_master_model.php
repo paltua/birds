@@ -10,12 +10,13 @@ class Animal_master_model extends CI_Model {
     }
 
     public function getAllData(){
-        $this->db->select('AM.*, AMD.*, GROUP_CONCAT(ACMD.acmd_name SEPARATOR ",") all_cat, AMI.ami_path default_image');
+        $this->db->select('AM.*, AMD.*, GROUP_CONCAT(ACMD.acmd_name SEPARATOR ",") all_cat, AMI.ami_path default_image, DATEDIFF(NOW(), AM.am_created_date) days, UM.name user_name, UM.email, UM.mobile ');
         $this->db->from('animal_master AM');
         $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','INNER');
         $this->db->join('animal_category_relation ACR','ACR.am_id=AM.am_id','LEFT');
         $this->db->join('animal_category_master_details ACMD',"ACMD.acm_id=ACR.acm_id AND ACMD.language='en'",'LEFT');
         $this->db->join('animal_master_images AMI','AMI.am_id=AM.am_id AND ami_default = 1','LEFT');
+        $this->db->join('user_master UM', "UM.user_id=AM.user_id", 'LEFT');
         $this->db->where('AM.am_deleted','0');
         $this->db->where('AMD.language','en');
         $this->db->group_by('AM.am_id');
