@@ -193,9 +193,10 @@ a:hover {text-decoration:none;}
 .homecategory .content-sec h5.subtitle {font-size: 16px; margin-bottom: 5px; line-height: 22px}
 .search-layout {width: 702px; height: 50px; background: rgba(255,255,255,.19); padding: 6px; border-radius: 50px; margin: 15px auto 0}
 .search-layout .search-group {display: -webkit-flex; display:-ms-flexbox; display: flex; height: 100%;}
-.search-layout .search-group input[type="text"] {-webkit-flex-grow:9;flex-grow:9; background: #fff; border-radius: 50px 0 0 50px; border: none; padding: 10px 15px; font-family: 'Raleway', sans-serif; font-size: 14px; color: #8e8e8e}
-.search-layout .search-group input[type="submit"] {-webkit-flex-grow:2;flex-grow:2; border-radius: 0 50px 50px 0; border: none; background-color: #ff1212; background-image: url("../images/search-icon.png"); background-repeat: no-repeat; background-position:center center; color: #fff;  font-size: 0px; font-weight: 500;-webkit-transition: all ease-in-out 0.5s; transition: all ease-in-out 0.5s; cursor: pointer;}
+.search-layout .search-group input[type="text"] {width:50%;-webkit-flex-grow:9;flex-grow:9; background: #fff; border-radius: 50px 0 0 50px; border: none; padding: 10px 15px; font-family: 'Raleway', sans-serif; font-size: 14px; color: #8e8e8e}
+.search-layout .search-group input[type="submit"] {width:10%;-webkit-flex-grow:2;flex-grow:2; border-radius: 0 50px 50px 0; border: none; background-color: #ff1212; background-image: url("../images/search-icon.png"); background-repeat: no-repeat; background-position:center center; color: #fff;  font-size: 0px; font-weight: 500;-webkit-transition: all ease-in-out 0.5s; transition: all ease-in-out 0.5s; cursor: pointer;}
 .search-layout .search-group input[type="submit"]:hover {background-color:#094a00}
+.search-layout .search-group .dropdown {width:40%;}
 .search-layout .search-group .dropdown select { background:url(../images/dropdown-angel.png) no-repeat 94% 50%;  width:100%; padding: 10px 30px 10px 10px;color: #353535;background-color: #f1f1f1;border-color: #f1f1f1; border-radius: 0; border:none; -webkit-appearance: none; -moz-appearance: none; appearance:none;}
 .search-layout .search-group .dropdown select::-ms-expand {overflow: hidden; display: none}
 .headerright .logout {position: relative;}
@@ -448,8 +449,10 @@ video::-webkit-media-controls { display:none !important; }
 .btn-primary:hover {background-color: #f12227; border-color: #f12227;}
 .btn-primary.focus, .btn-primary:focus { box-shadow: none}
 .add-new-pd .btn {margin: 1.5rem auto 0;}
-
-
+.inner-header {margin-bottom: 20px}
+.pull-left {float:left}
+.pull-right {float:right }
+div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content: flex-end;}
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }
@@ -554,7 +557,7 @@ video::-webkit-media-controls { display:none !important; }
   #fp-nav ul li:hover a.active span {width: 3px;border-radius: 0;height: 25px;margin: -8.5px 0 0 -1.5px;}
 	#fp-nav ul li { width: 17px; height: 17px; margin: 28px 7px;}
 	.outer-container,.banner-container,.homeBanner .fp-slidesNav { padding-left: 170px; padding-right: 170px }
-	.section .title { font-size: 68px; font-weight: 700; line-height: 60px; margin-bottom: 10px}
+	.section .title { font-size: 55px; font-weight: 700; line-height: 60px; margin-bottom: 10px}
 	.section .parainfo {font-size: 20px; line-height: 28px;}
 	.btn { padding: 15px 64px 12px 21px;}
 	.btn::after {right: 20px; top: 17px; width:17px; height: 12px; background-size: 17px}
@@ -604,7 +607,7 @@ video::-webkit-media-controls { display:none !important; }
   #header .headerright .inline-elmnt {margin-left: 15px;}
   .homepdlist-tab .resp-tabs-list li {font-size: 20px; padding: 13px 15px;}
   .homepdlist-tab .resp-tab-active { padding: 12px 14px 14px 14px !important;}
-  .homeBanner h3 { font-size: 48px;color: #fff;text-transform: uppercase;}
+  .homeBanner h3 { font-size: 40px;color: #fff;text-transform: uppercase;}
   .homeBanner h6 { font-size: 18px;}
   .homeBanner h4 {font-size: 31px; margin-bottom: 10px}
   .left-static { bottom: -473px; left: 64px;}

@@ -65,20 +65,20 @@
 <section class="inner-layout">
 	<div class="container">		
 		<div class="inner-content">
-			<h1 class="page-header">My Listing 
+			<div class="inner-header clearfix">
+				<div class="pull-left"><h1 class="page-header">My Listing</h1></div>				
     			<div class="pull-right">
     				<a href="<?php echo base_url('user/animal/add');?>" class="btn btn-info">
 						<i class="fa fa-plus-circle"></i> Add</a> 
 				</div>
-			</h1>
-			
+			</div>
 			<div class="col-lg-12" id="msgId">
 				<?php if($msg != ''){?>
 			    <?php echo $msg ;?>
 			    <?php }?>
 		    </div>
-			<div class="col-lg-12">
-				<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+			<div class="table-reponsive">
+				<table class="table table-striped table-bordered table-hover" id="dataTables-example" style="min-width:100%; width:100%">
 		            <thead>
 		                <tr>
 		                    <th>SKU Code</th>
@@ -150,3 +150,9 @@
 
 <script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/prefixfree.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/zoom-slideshow.js"></script>
+<style type="text/css">
+	table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {line-height: 18px;}
+	.dataTables_wrapper.form-inline {display: block}
+	.dataTables_length label {justify-content: left; -webkit-justify-content: left;}
+	.dataTables_length label select {margin:0 0.5rem;}
+</style>

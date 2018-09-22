@@ -92,6 +92,7 @@ class Animal extends MY_Controller {
         $config['max_width']            = 1024;
         $config['max_height']           = 768;*/
         $this->load->library('upload');
+        $this->load->library('image_lib');
         $default = $this->input->post('default');
         if($_FILES){
             $inData = array();
@@ -125,8 +126,8 @@ class Animal extends MY_Controller {
         $config['width']         = 250;
         $config['height']       = 250;
 
-        $this->load->library('image_lib', $config);
-
+        //$this->load->library('image_lib', $config);
+        $this->image_lib->initialize($config);  
         $this->image_lib->resize();
     }
 
@@ -194,6 +195,7 @@ class Animal extends MY_Controller {
         $config['max_width']            = 1024;
         $config['max_height']           = 768;*/
         $this->load->library('upload');
+        $this->load->library('image_lib');
         $default = $this->input->post('default');
         $existImage = $this->input->post('addedImage');
         //pr($this->input->post());exit;
@@ -215,6 +217,7 @@ class Animal extends MY_Controller {
                         $ami_id = $existImage[$i];
                         $this->_deleteUnlinkImage($ami_id);
                     }
+
                     $this->_resizeImage($path);
                 }
             }

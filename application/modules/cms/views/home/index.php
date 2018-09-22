@@ -22,7 +22,7 @@
                 <h2 class="title text-center">Chossing The Right Bird</h2>
                 <h3 class="sub-title text-center">For You And Your Family</h3>
 
-                <h4 class="text-center">Browse Categories <span>(Discover new products)</span></h4>
+                <!-- <h4 class="text-center">Browse Categories <span>(Discover new products)</span></h4> -->
                 <h6 class="text-center">Browse our classifieds and find best deal for you - buy, sell or exchange items</h5>
                 <div class="search-layout">
                     <form method="post" action="<?php echo base_url('user/product/search');?>" id="searchFormId">

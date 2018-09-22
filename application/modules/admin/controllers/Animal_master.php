@@ -226,13 +226,14 @@ class Animal_master extends MY_Controller
     }
 
     private function _upload($am_id = 0){
-        $config['upload_path']          = 'uploads/animal/';
+        $config['upload_path']          = UPLOAD_PROD_PATH;
         $config['allowed_types']        = 'gif|jpg|png';
         /*$config['max_size']             = 100;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;*/
         $config['file_name']            = date('YmdHis').$am_id;
         $this->load->library('upload', $config);
+        $this->load->library('image_lib');
         if($_FILES){
             if ( ! $this->upload->do_upload('myFile')){
                 $this->session->set_flashdata('status', 'danger');
@@ -240,12 +241,27 @@ class Animal_master extends MY_Controller
             }else{
                 $this->session->set_flashdata('status', 'success');
                 $this->session->set_flashdata('msg', 'Successfully Uploaded');
-                $inData['ami_path'] = $this->upload->data('file_name');
+                $inData['ami_path'] = $path = $this->upload->data('file_name');
                 $inData['am_id'] = $am_id;
+                $this->_resizeImage($path);
                 $this->tbl_generic_model->add('animal_master_images', $inData);
                 redirect(base_url().'admin/'.$this->controller.'/image/'.$am_id);
             }
         }
+    }
+
+    private function _resizeImage($imageName = ''){
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = UPLOAD_PROD_PATH.$imageName;
+        $config['new_image'] = UPLOAD_PROD_PATH.'thumb';
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 250;
+        $config['height']       = 250;
+
+        //$this->load->library('image_lib', $config);
+        $this->image_lib->initialize($config);  
+        $this->image_lib->resize();
     }
 
 
