@@ -1,0 +1,5 @@
+CREATE TABLE `gallery` ( `g_id` INT NOT NULL AUTO_INCREMENT , `g_path` VARCHAR(255) NOT NULL , `g_order` INT NOT NULL , `created_by` INT NOT NULL , `am_id` INT NOT NULL DEFAULT '0' , `created_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`g_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `gallery` ADD `g_alt` VARCHAR(255) NOT NULL AFTER `g_path`;
+
+ALTER TABLE `gallery` CHANGE `g_alt` `g_alt` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;

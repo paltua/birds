@@ -29,7 +29,7 @@
 				<a href="javascript:void(0)" class="logbtn after-log"><?php echo $this->session->userdata('name');?></a>
 				<ul>
 					<li><a href="<?php echo base_url('user/animal/listing');?>">My Listing</a></li>
-					<li><a href="javascript:void(0)">My Profile</a></li>
+					<li><a href="<?php echo base_url('user/profile/details');?>">My Profile</a></li>
 					<li><a href="<?php echo base_url('user/auth/logout');?>">Log Out</a></li>
 				</ul>
 			</div>
