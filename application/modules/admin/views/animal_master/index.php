@@ -32,7 +32,6 @@
             var am_status = $(this).attr('value');
             $.post( url, { am_id : am_id}, function( data ) {
                 if(am_status == 'lock'){
-                    
                     $("#status_"+am_id).attr('value', 'unlock').removeClass('btn-warning').addClass('btn-info');
                     $("#i_status_"+am_id).removeClass('fa-lock').addClass('fa-unlock');
                     $("#span_status_"+am_id).text('Active');
@@ -99,7 +98,7 @@
                         <span class="badge badge-pill badge-danger">Active for <?php echo $value->days;?> Days</span><br>
                     </td>
                     <td><?php if($value->default_image != ''){?> 
-                        <img height="75" width="150" src="<?php echo base_url('uploads/animal/'.$value->default_image);?>">
+                        <img height="125" width="125" src="<?php echo base_url('uploads/animal/thumb/'.$value->default_image);?>">
                     <?php }?>
                     </td>
                     <td><?php echo $value->amd_name;?></td>
@@ -118,7 +117,7 @@
                     </td>
                     <td><?php echo $value->am_viewed_count;?></td>
                     <td> 
-                        <a class="statusChange btn btn-<?php echo $value->am_status == 'active'?'info':'warning';?>" href="javascript:void(0);" title="Click to change Status" value="<?php echo $value->am_status == 'active'?'unlock':'lock';?>" id="status_<?php echo $value->am_id;?>" name="<?php echo $value->am_id;?>"><i id="i_status_<?php echo $value->am_id;?>" class="fa fa-<?php echo $value->am_status == 'active'?'unlock':'lock';?>"></i>
+                        <a class="statusChange btn btn-<?php echo $value->am_status == 'active'?'info':'warning';?> btn-xs" href="javascript:void(0);" title="Click to change Status" value="<?php echo $value->am_status == 'active'?'unlock':'lock';?>" id="status_<?php echo $value->am_id;?>" name="<?php echo $value->am_id;?>"><i id="i_status_<?php echo $value->am_id;?>" class="fa fa-<?php echo $value->am_status == 'active'?'unlock':'lock';?>"></i>
                             <span id="span_status_<?php echo $value->am_id;?>"><?php echo ucfirst($value->am_status);?></span>
                         </a>
                     </td>
@@ -126,7 +125,7 @@
                     <td class="center">
                         <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/image/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-picture-o"></i> Image</a>
                         <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/edit/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->am_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->am_id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                     </td>
                 </tr>
                 <?php } } ?>

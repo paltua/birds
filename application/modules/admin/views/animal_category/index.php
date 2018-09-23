@@ -30,11 +30,13 @@
             var am_status = $(this).attr('value');
             $.post( url, { am_id : am_id}, function( data ) {
                 if(am_status == 'lock'){
-                    $("#status_"+am_id).attr('value', 'unlock');
+                    $("#status_"+am_id).attr('value', 'unlock').removeClass('btn-warning').addClass('btn-info');
                     $("#i_status_"+am_id).removeClass('fa-lock').addClass('fa-unlock');
+                    $("#span_status_"+am_id).text('Active');
                 }else{
-                    $("#status_"+am_id).attr('value', 'lock');
+                    $("#status_"+am_id).attr('value', 'lock').removeClass('btn-info').addClass('btn-warning');
                     $("#i_status_"+am_id).removeClass('fa-unlock').addClass('fa-lock');
+                    $("#span_status_"+am_id).text('Inactive');
                 }
                 $("#msgShow").html(data.msg);
             }, "json");
@@ -89,12 +91,14 @@
                     <td><?php echo $value->parent_name;?></td>
                     <td><?php echo $value->acmd_short_desc;?></td>
                     <td>
-                        <a class="statusChange" href="javascript:void(0);" title="Click to change Status" value="<?php echo $value->acm_status == 'active'?'unlock':'lock';?>" id="status_<?php echo $value->acm_id;?>" name="<?php echo $value->acm_id;?>"><i id="i_status_<?php echo $value->acm_id;?>" class="fa fa-<?php echo $value->acm_status == 'active'?'unlock':'lock';?>"></i></a>
+                        <a class="statusChange btn btn-<?php echo $value->acm_status == 'active'?'info':'warning';?> btn-xs" href="javascript:void(0);" title="Click to change Status" value="<?php echo $value->acm_status == 'active'?'unlock':'lock';?>" id="status_<?php echo $value->acm_id;?>" name="<?php echo $value->acm_id;?>"><i id="i_status_<?php echo $value->acm_id;?>" class="fa fa-<?php echo $value->acm_status == 'active'?'unlock':'lock';?>"></i>
+                            <span id="span_status_<?php echo $value->acm_id;?>"><?php echo ucfirst($value->acm_status);?></span>
+                        </a>
                     </td>
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->acmd_created_date));?></td>
                     <td class="center">
                     <a href="<?php echo base_url();?>admin/animal_category/edit/<?php echo $value->acm_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="<?php echo base_url();?>admin/animal_category/delete/<?php echo $value->acm_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                    <a href="<?php echo base_url();?>admin/animal_category/delete/<?php echo $value->acm_id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                     </td>
                 </tr>
                 <?php } } ?>

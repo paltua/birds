@@ -10,7 +10,7 @@
 	<div class="menusection">
 	<?php if($menu != ''): echo $menu; endif;?>
 	</div>
-	<?php if($publish != ''): echo $publish; endif;?>
+	<?php //if($publish != ''): echo $publish; endif;?>
 	<header id="header">
 		<?php if($header != ''): echo $header; endif;?>
 	</header>

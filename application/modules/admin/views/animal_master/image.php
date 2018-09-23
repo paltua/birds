@@ -108,7 +108,7 @@
                         ?>
                         <tr class="<?php echo $listClass;?> ">
                             <td><div class="col-sm-3" >
-                                <img width="150" height="150" src="<?php echo base_url();?>uploads/animal/<?php echo $value->ami_path;?>" alt="" /></div></td>
+                                <img width="150" height="150" src="<?php echo base_url();?>uploads/animal/thumb/<?php echo $value->ami_path;?>" alt="" /></div></td>
                             <td>
                                 <div class="radio">
                                     <label><input type="radio" class="amiDefault"  name="ami_default" value="<?php echo $value->ami_id;?>" <?php if($value->ami_default == 1){ echo 'checked';}?>>

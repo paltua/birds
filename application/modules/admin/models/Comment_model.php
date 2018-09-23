@@ -16,5 +16,11 @@ class Comment_model extends CI_Model {
         return $query->result();
     }
 
+    public function changeStatus($com_id = 0){
+        $sql = "UPDATE `comments` SET `com_status`=IF(com_status ='active','inactive','active') WHERE 1 AND com_id=".$com_id;
+        $this->db->query($sql);
+        return true;
+    }
+
     
 }

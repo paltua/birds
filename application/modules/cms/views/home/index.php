@@ -103,7 +103,7 @@
                             <ul class="resp-tabs-list">
                                 <li>Premium listings</li>
                                 <li>Latest listings</li>
-                                <li>Dipankar Choice</li>
+                                <li>Dipankar's Choice</li>
                             </ul>
                             <div class="resp-tabs-container">
                                 <div>

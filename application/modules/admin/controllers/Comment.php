@@ -155,9 +155,16 @@ class Comment extends MX_Controller
         }   
         // Finally, return a JSON
         echo json_encode(array(
-        'valid' => $isAvailable,
+            'valid' => $isAvailable,
         ));
         }
+    }
+
+    public function changeStatus(){
+        $am_id = $this->input->post('am_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status.');
+        $this->comment_model->changeStatus($am_id);
+        echo json_encode($data);
     }
      
 }

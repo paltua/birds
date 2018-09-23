@@ -96,8 +96,8 @@ class User extends MX_Controller
         $this->load->model('user_model');
         $id = $this->uri->segment(4);
         $this->user_model->user_delete($id);
-        //$this->session->set_flashdata('msg', 'Successfully Added'); 
-        redirect(base_url().$this->adminName.'/user');
+        $this->session->set_flashdata('msg', 'Successfully Deleted'); 
+        redirect(base_url().'admin/user');
     }
 
     public function ajax_list()
@@ -162,6 +162,13 @@ class User extends MX_Controller
 
     public function sends(){
         $this->tbl_generic_model->sendEmail('paltua@gmail.com','Test','OK');
+    }
+
+    public function changeStatus(){
+        $am_id = $this->input->post('am_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status.');
+        $this->user_model->changeStatus($am_id);
+        echo json_encode($data);
     }
      
 }

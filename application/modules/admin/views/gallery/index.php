@@ -90,7 +90,7 @@
                     <td><?php echo date("F j, Y, g:i a", strtotime($value->created_date));?></td>
                     <td class="center">
                         <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/edit/<?php echo $value->g_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->g_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->g_id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                     </td>
                 </tr>
                 <?php } } ?>
