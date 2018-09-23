@@ -10,17 +10,16 @@
 	<div class="menusection">
 	<?php if($menu != ''): echo $menu; endif;?>
 	</div>
-	<?php //if($publish != ''): echo $publish; endif;?>
 	<header id="header">
 		<?php if($header != ''): echo $header; endif;?>
 	</header>
 
 
-<?php if($content != ''): echo $content; endif;?>
+	<?php if($content != ''): echo $content; endif;?>
 
-<footer id="footer">
-	<?php if($footer != ''): echo $footer; endif;?>
-</footer>
+	<footer id="footer">
+		<?php if($footer != ''): echo $footer; endif;?>
+	</footer>
 </section>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/easy-responsive-tabs.js"></script>
