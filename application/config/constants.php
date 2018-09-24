@@ -91,4 +91,5 @@ defined('THEME') OR define('THEME', 'theme1');
 defined('SITENAME') OR define('SITENAME', 'parrotdipankar.com');
 defined('UPLOAD_CAT_PATH') OR define('UPLOAD_CAT_PATH', 'uploads/category/');
 defined('UPLOAD_PROD_PATH') OR define('UPLOAD_PROD_PATH', 'uploads/animal/');
+defined('UPLOAD_ABOUT_US_USER') OR define('UPLOAD_ABOUT_US_USER', 'uploads/about_us_user/');
 

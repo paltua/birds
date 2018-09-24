@@ -32,20 +32,20 @@ class About_us_user extends MY_Controller
         $data = array();
         $data['controller'] = $this->controller;
         $data['page_title'] = 'About us User';
-        $status = '';
-        $msg = '';
+        $status = $this->session->flashdata('status');
+        $msg = $this->session->flashdata('msg');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('mobile', 'Mobile', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         
-        if ($this->form_validation->run() == TRUE){
-            $upData['name'] = $this->input->post('name');
-            $upData['mobile'] = $this->input->post('mobile');
-            $upData['email'] = $this->input->post('email');
-            $upData['position'] = $this->input->post('position');
+        if ($this->form_validation->run() === TRUE){
+            $upData['name'] = trim($this->input->post('name'));
+            $upData['mobile'] = trim($this->input->post('mobile'));
+            $upData['email'] = trim($this->input->post('email'));
+            $upData['position'] = trim($this->input->post('position'));
             $this->tbl_generic_model->edit('about_us_user', $upData, array('auu_id' => $id));
-            //$this->_upload($id);
+            $this->_upload($id);
             $status = 'success';
             $msg = 'Successfully Updated';
             $this->session->set_flashdata('status', $status);
@@ -59,72 +59,46 @@ class About_us_user extends MY_Controller
         $this->template->homeAdminRender($this->controller.'/edit', $data);
     }
 
-    private function _getParentCatArr(){
-        $data = $this->animal_category_model->getParent(0);
-        $retData = array();
-        if(count($data) > 0){
-            foreach ($data as $key => $value) {
-                $retData[$value->parent_id][$value->acm_id] = $value->acmd_name;
-            }
-        }
-        return $retData;
-    }
 
-    public function delete($id = 0) {
-        $where['acm_id'] = $id;
-        $data['acm_is_deleted'] = '1';
-        $status = 'success';
-        $msg = 'Successfully Deleted';
-        $this->tbl_generic_model->edit('animal_category_master', $data, $where);
-        $this->session->set_flashdata('status', $status);
-        $this->session->set_flashdata('msg', $msg);
-        redirect(base_url().'admin/'.$this->controller);
-    }
-
-    private function _upload($acm_id = 0){
-        $config['upload_path']          = 'uploads/category/';
+    private function _upload($auu_id = 0){
+        $config['upload_path']          = UPLOAD_ABOUT_US_USER;
         $config['allowed_types']        = 'gif|jpg|png';
         /*$config['max_size']             = 100;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;*/
-        $config['file_name']            = date('YmdHis').$acm_id;
+        $config['file_name']            = date('YmdHis').$auu_id;
         $this->load->library('upload', $config);
-        if($_FILES){
-            if ( ! $this->upload->do_upload('image_name')){
+        $this->load->library('image_lib');
+        if($_FILES && $_FILES['myFile']['name'] != ''){
+            if ( ! $this->upload->do_upload('myFile')){
                 $this->session->set_flashdata('status', 'danger');
                 $this->session->set_flashdata('msg', $this->upload->display_errors());
+                redirect(base_url().'admin/'.$this->controller.'/edit/'.$auu_id);
             }else{
-                $this->session->set_flashdata('status', 'success');
-                $this->session->set_flashdata('msg', 'Successfully Uploaded');
-                $inData['image_name'] = $this->upload->data('file_name');
-
-                $where['acm_id'] = $acm_id;
-                $data = $this->tbl_generic_model->get('animal_category_master','*', $where);
-                if($data[0]->image_name != ''){
-                    @unlink('uploads/category/'.$data[0]->image_name);
-                }
-                $this->tbl_generic_model->edit('animal_category_master', $inData, $where);
+                @unlink(UPLOAD_ABOUT_US_USER.trim($this->input->post('exist_file')));
+                @unlink(UPLOAD_ABOUT_US_USER.'thumb/'.trim($this->input->post('exist_file')));
+                $inData['img'] = $path = $this->upload->data('file_name');
+                $where['auu_id'] = $auu_id;
+                $this->_resizeImage($path);
+                $this->tbl_generic_model->edit('about_us_user', $inData, $where);
             }
         }
     }
 
+    private function _resizeImage($imageName = ''){
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = UPLOAD_ABOUT_US_USER.$imageName;
+        $config['new_image'] = UPLOAD_ABOUT_US_USER.'thumb';
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 250;
+        $config['height']       = 250;
 
-    public function name_check($str ='', $acm_id = 0){
-        $data = url_title($str);
-        $ret = $this->animal_category_model->check_name_url($data, $acm_id);
-        if ($ret > 0){
-            return FALSE;
-        }else{
-            return TRUE;
-        }
+        //$this->load->library('image_lib', $config);
+        $this->image_lib->initialize($config);  
+        $this->image_lib->resize();
     }
 
-    public function changeStatus(){
-        $am_id = $this->input->post('am_id');
-        $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status.');
-        $this->animal_category_model->changeStatus($am_id);
-        echo json_encode($data);
-    }
 
     
     

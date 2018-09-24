@@ -83,7 +83,7 @@
                 ?>
                 <tr class="<?php echo $listClass;?> ">
                     <td><?php if($value->img != ''){?>
-                        <img height="150" width="150" src="<?php echo base_url('uploads/about_us_user/thumb/'.$value->img);?>">
+                        <img height="150" width="150" src="<?php echo base_url(UPLOAD_ABOUT_US_USER.'thumb/'.$value->img);?>">
                     <?php } ?></td>
                     <td><?php echo $value->name;?></td>
                     <td><?php echo $value->mobile;?></td>

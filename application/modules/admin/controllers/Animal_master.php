@@ -272,7 +272,8 @@ class Animal_master extends MY_Controller
             $this->session->set_flashdata('status', 'success');
             $this->session->set_flashdata('msg', 'Successfully Deleted');
             $this->tbl_generic_model->delete('animal_master_images', $where);
-            @unlink('uploads/animal/'.$data[0]->ami_path);
+            @unlink(UPLOAD_PROD_PATH.$data[0]->ami_path);
+            @unlink(UPLOAD_PROD_PATH.'thumb/'.$data[0]->ami_path);
             $am_id = $data[0]->am_id;
             redirect(base_url().'admin/'.$this->controller.'/image/'.$am_id);
         }else{

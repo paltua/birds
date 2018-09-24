@@ -3,6 +3,11 @@
 <script type="text/javascript"> 
 
     $(document).ready(function(){
+        <?php if($editData[0]->img != ''){?>
+            $("#imageId").show();
+        <?php }else{ ?>
+            $("#imageId").hide();
+        <?php }?>
         var csfrData = {};
         csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
                          = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -12,6 +17,22 @@
         });
         $("#parent_id_en").chosen({no_results_text: "Oops, No Transformer found!"});
     });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $("#imageId").show();
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(150);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>  
 
     
@@ -43,29 +64,29 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control" type="text" name="data[name]" value="<?php echo $editData[0]->name;?>">
-                                            <?php echo form_error('data[name]', '<p class="text-danger">', '</p>'); ?>
+                                            <input class="form-control" type="text" name="name" value="<?php echo $editData[0]->name;?>">
+                                            <?php echo form_error('name', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label>Mobile</label>
-                                            <input class="form-control" type="text" name="data[mobile]" value="<?php echo $editData[0]->mobile;?>">
-                                            <?php echo form_error('data[mobile]', '<p class="text-danger">', '</p>'); ?>
+                                            <input class="form-control" type="text" name="mobile" value="<?php echo $editData[0]->mobile;?>">
+                                            <?php echo form_error('mobile', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" type="text" name="data[email]" value="<?php echo $editData[0]->email;?>">
-                                            <?php echo form_error('data[email]', '<p class="text-danger">', '</p>'); ?>
+                                            <input class="form-control" type="text" name="email" value="<?php echo $editData[0]->email;?>">
+                                            <?php echo form_error('email', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label>Position</label>
-                                            <input class="form-control" type="text" name="data[position]" value="<?php echo $editData[0]->position;?>">
-                                            <?php echo form_error('data[position]', '<p class="text-danger">', '</p>'); ?>
+                                            <input class="form-control" type="text" name="position" value="<?php echo $editData[0]->position;?>">
+                                            <?php echo form_error('position', '<p class="text-danger">', '</p>'); ?>
                                         </div>
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
@@ -74,8 +95,12 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label>Image</label>
-                                            <input class="form-control" type="text" name="data[name]" value="<?php echo $editData[0]->name;?>">
-                                            
+                                            <input type="file" name="myFile" onchange="readURL(this);" accept="image/gif, image/jpeg, image/png">
+                                            <div id="imageId" class=" alert alert-success alert-dismissable">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <img height="150" width="150" id="blah" src="<?php echo base_url(UPLOAD_ABOUT_US_USER.'thumb/'.$editData[0]->img);?>" alt="" />
+                                                <input type="hidden" name="exist_file" value="<?php echo $editData[0]->img;?>">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
