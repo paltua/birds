@@ -127,7 +127,7 @@ a:hover {text-decoration:none;}
 #header {top:0px; padding-top: 30px}
 #header .logo { display: block; background: rgba(255,255,255,0.9); padding: 25px 10px 18px 10px; }
 #header .headerleft { float: left }
-#header .headerright { float: right; margin-top: 15px;}
+#header .headerright { float: right; margin-top: 25px;}
 #header .headerright .inline-elmnt { display: inline-block; vertical-align: middle; margin-left: 6px }
 #header .headerright .inline-elmnt .logbtn { cursor: pointer; background-color:#ff1212; background-repeat: no-repeat; background-position: 86% center; display: block; border:none; padding: 11px 41px 10px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; color: #fff; border-radius: 3px; background-size: 16px; -webkit-transition: all linear 0.5s;-moz-transition: all linear 0.5s;transition: all linear 0.5s}
 #header .headerright .inline-elmnt .logbtn:hover {background-color: #094800}
@@ -453,6 +453,7 @@ video::-webkit-media-controls { display:none !important; }
 .pull-left {float:left}
 .pull-right {float:right }
 div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content: flex-end;}
+.htop  {background-color: #ff1212; position: fixed; top:0; width:100%; color:#fff; padding: 3px; font-size: 13px}
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }
@@ -468,12 +469,12 @@ div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content
 	.homeBanner .bannertxt { width: 75%;padding-top: 248px;}
 	.homeBanner .fp-slidesNav.fp-bottom { bottom: 135px;}
 	.homeBanner h2 { font-size: 46px }
-  .homeBanner h3 { font-size: 36px }
+  .homeBanner h3 { font-size: 28px }
 	#fp-nav ul li a span {height: 12px;width: 12px;margin: -6px 0 0 6px;}
   #fp-nav ul li a.active span,#fp-nav ul li:hover a.active span { width: 3px;border-radius: 0; height: 25px; margin: -8.5px 0 0 9.5px;}
 	#fp-nav ul li { width: 12px; height: 12px; margin: 22px 7px;}
 	#fp-nav.fp-right {right: 22px;}
-	.section .title {font-size: 28px; line-height: 33px;}
+	.section .title {font-size: 33px; line-height: 33px;}
 	.section .parainfo { font-size: 16px; line-height: 22px;}
 	.botm-links ul li a {font-size: 13px;}	
 	.homeGetTouch .secright .content-sec { padding-top: 120px; padding-bottom: 0px;}
@@ -493,7 +494,10 @@ div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content
   .homecategory .content-sec {padding-top: 80px;}
   .homecategory .content-sec .category-circle {margin-top:80px;}
   .homeVideo iframe {width: 100% !important; height: 664px !important}
-   .left-static { bottom: -130px; left: 23px;}
+  .left-static { bottom: -130px; left: 23px;}
+  .homeBanner .content-sec {padding-top: 170px;}
+  .search-layout {width: 512px;}
+  #footer ul.ft-social li {width:27px;height:27px;}
 }
 @media (min-width:1200px) {
 	#fp-nav.fp-right {right: 42px;}
@@ -532,16 +536,17 @@ div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content
   .homeGetTouch .secright .content-sec .box-wrap { padding-bottom: 25px;}
   .homeGetTouch .secright .content-sec { padding: 220px 124px 60px 61px;}
   #header .logo { margin-top: -29px;}
-  .search-layout {width: 702px; height: 55px; padding: 6px;}
+  .search-layout {width: 560px; height: 55px; padding: 6px;}
   .search-layout .search-group input[type="text"] {font-size: 16px;}
   .homelist-box figure .box-layout figcaption h3 {font-size: 15px;}
-  .homeBanner .content-sec {padding-top: 120px;}
+  .homeBanner .content-sec {padding-top: 160px;}
   .homeBanner .category-circle {margin-top: 20px}
   #header nav ul li {margin-left: 15px}
   .homepdlist-tab .resp-tabs-list li {font-size:15px; padding: 7px 15px;}
   .homepdlist-tab .resp-tab-active { padding: 4px 14px 10px 14px !important;}
   .left-static { bottom: -365px; left: 44px;}
   .search-layout .search-group .dropdown select {padding: 12px 30px 13px 10px;}
+  #footer ul.ft-social li {width:30px;height:30px;}
 }
 @media (min-width:1360px) {
 	.botmlayout .box figure h3,.botmlayout .box figure h5 { font-size: 15px;}

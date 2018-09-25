@@ -46,6 +46,8 @@
 	.carousel-inner,.carousel-item {height: 100%;}
 	#footer ul.ft-social {text-align: center;}
 	.homeBanner {padding-bottom: 12px;}
+	.search-layout {width: 518px;}
+	.homepdlist-tab .resp-tabs-list li {font-size:15px; padding: 6px !important}
 }
 @media screen and (max-width:768px) {
 	h2.resp-accordion {font-size: 20px;padding: 17px 15px;background: #fff;font-weight: 500;}
@@ -101,10 +103,12 @@
 	.headerright .btn {width:100%; text-align: center}
 	#header .headerright .inline-elmnt .logbtn {text-align: center;}
 	.homeGetTouch h3.title {font-size: 1.5rem; margin-bottom: 1rem;}
-	.left-static {width: auto; display: block;-webkit-transform: rotate(0deg); transform: rotate(0deg); right: 65px;top: 31px; z-index: 99;}
+	.left-static {width: auto; display: block;-webkit-transform: rotate(0deg); transform: rotate(0deg); right: 65px;top: 31px; z-index: 77;}
 	.left-static h5 { font-size: 10px;letter-spacing: 1px;}
 	.left-static h5 a { padding: 6px 4px;}
 	.left-static h5 a::before { width: 14px; height: 14px; background-size: 14px;}
+	.htop {top:auto;bottom:0;font-size: 11px}
+	#footer {padding-bottom: 40px; z-index: 2}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}
@@ -130,4 +134,8 @@
 	.search-layout .search-group input[type="text"] {width:100%; border-radius: 0px}
 	.search-layout .search-group input[type="submit"] {width:100%;height: 40px;border-radius: 0px}
 	.search-layout .search-group .dropdown select {background-position: 98% 50%}
+	.search-layout .search-group .dropdown { width: 100%;}
+	.left-static {left:0; right:0; top:79px;}
+	.homeBanner .content-sec {padding-top: 124px;}
+	.left-static h5 a {display: block}
 }
