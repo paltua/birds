@@ -17,6 +17,7 @@ class About_us extends MY_Controller
         $status = '';
         $msg = '';
         $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['about_us_user'] = $this->cms_model->getAboutUsUser();
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('About Us');
         $this->template->setLayout('cms');

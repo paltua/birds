@@ -78,6 +78,12 @@ class Cms_model extends CI_Model {
         return $this->db->query($sql)->result();
     }
 
+    public function getAboutUsUser(){
+        $this->db->select('*');
+        $this->db->from('about_us_user');
+        return $this->db->get()->result();
+    }
+
     
     
 
