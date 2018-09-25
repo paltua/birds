@@ -82,6 +82,7 @@
 		</div>
 	</div>
 </section>
+<?php $this->load->view('animal/disc');?>
 <section class="inner-layout">
 	<div class="container">		
 		<div class="inner-content">
