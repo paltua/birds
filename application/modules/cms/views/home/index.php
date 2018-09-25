@@ -68,7 +68,7 @@
                         <figure>
                             <div class="circle-layout">
                                 <?php 
-                                $imagePath = base_url('public/'.THEME.'/images/buddies_01_img.jpg');
+                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
                                 if($value->image_name != ''){
                                     $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
                                 }?>
@@ -111,7 +111,7 @@
                                         
                                         <?php if(count($premiumProduct) > 0):
                                                 foreach ($premiumProduct as $key => $value) :
-                                                    $imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
+                                                    $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
                                                     if($value->ami_path != ''){
                                                         $imagePath = base_url('uploads/animal/'.$value->ami_path);
                                                     }
@@ -135,7 +135,7 @@
                                         
                                         <?php if(count($latestProduct) > 0):
                                             foreach ($latestProduct as $key => $value) :
-                                                $imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
+                                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
                                                 if($value->ami_path != ''){
                                                     $imagePath = base_url('uploads/animal/'.$value->ami_path);
                                                 }
@@ -159,7 +159,7 @@
                                         
                                         <?php if(count($dipChoices) > 0):
                                             foreach ($dipChoices as $key => $value) :
-                                                $imagePath = base_url('public/'.THEME.'/images/list-img_01.jpg');
+                                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
                                                 if($value->ami_path != ''){
                                                     $imagePath = base_url('uploads/animal/'.$value->ami_path);
                                                 }
@@ -244,7 +244,7 @@
                                 <figure>
                                     <div class="circle-layout">
                                         <?php 
-                                        $imagePath = base_url('public/'.THEME.'/images/buddies_01_img.jpg');
+                                        $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
                                         if($value->image_name != ''){
                                             $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
                                         }?>
