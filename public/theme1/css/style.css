@@ -454,6 +454,7 @@ video::-webkit-media-controls { display:none !important; }
 .pull-right {float:right }
 div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content: flex-end;}
 .htop  {background-color: #ff1212; position: fixed; top:0; width:100%; color:#fff; padding: 3px; font-size: 13px}
+.modal {z-index: 9999}
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }
