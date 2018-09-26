@@ -13,6 +13,7 @@
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/owl.carousel.min.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<?php echo base_url('public/'.THEME.'/');?>css/easy-responsive-tabs.css">
+<link rel="stylesheet" href="<?php echo base_url('public/'.THEME.'/');?>css/jquery.fancybox.css"/>
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/style.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('public/'.THEME.'/');?>css/responsive-style.css" rel="stylesheet" type="text/css">
 
@@ -66,7 +67,7 @@
 <script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/fullpage.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/owl.carousel.min.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/easy-responsive-tabs.js"></script>
-<script src="https://cdnjs.com/libraries/ekko-lightbox."></script>
+<script src="<?php echo base_url('public/'.THEME.'/');?>js/jquery.fancybox.js"></script>
 <script src="<?php echo base_url('public/'.THEME.'/');?>js/custom.js"></script>
 
 <script type="text/javascript">
@@ -87,7 +88,16 @@ function initialization() {
 //fullPage.js initialization
 initialization();
 
-
+$('[data-fancybox="gallery"]').fancybox({
+  buttons : [
+    'share',
+    'fullScreen',
+    'close'
+  ],
+  thumbs : {
+    autoStart : true
+  }
+});
 
 </script>
 
