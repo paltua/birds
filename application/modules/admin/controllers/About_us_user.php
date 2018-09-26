@@ -36,8 +36,8 @@ class About_us_user extends MY_Controller
         $msg = $this->session->flashdata('msg');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
-        $this->form_validation->set_rules('mobile', 'Mobile', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        //$this->form_validation->set_rules('mobile', 'Mobile', 'required|trim');
+        //$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         
         if ($this->form_validation->run() === TRUE){
             $upData['name'] = trim($this->input->post('name'));
@@ -75,8 +75,10 @@ class About_us_user extends MY_Controller
                 $this->session->set_flashdata('msg', $this->upload->display_errors());
                 redirect(base_url().'admin/'.$this->controller.'/edit/'.$auu_id);
             }else{
-                @unlink(UPLOAD_ABOUT_US_USER.trim($this->input->post('exist_file')));
-                @unlink(UPLOAD_ABOUT_US_USER.'thumb/'.trim($this->input->post('exist_file')));
+                if($this->input->post('exist_file') != ''){
+                    @unlink(UPLOAD_ABOUT_US_USER.trim($this->input->post('exist_file')));
+                    @unlink(UPLOAD_ABOUT_US_USER.'thumb/'.trim($this->input->post('exist_file')));
+                }
                 $inData['img'] = $path = $this->upload->data('file_name');
                 $where['auu_id'] = $auu_id;
                 $this->_resizeImage($path);
