@@ -110,6 +110,9 @@
 		                     }else{
 		                     	$image = base_url('public/'.THEME.'/images/no-image.jpg');
 		                     }?>
+		                     <?php if($value->am_is_booked == 'yes'){?> 
+		                        <span class="booked"></span>
+		                    <?php }?>
 		                        <img height="75" width="150" src="<?php echo $image;?>">
 		                    
 		                    </td>
