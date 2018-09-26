@@ -97,7 +97,10 @@
                         <?php }?>
                         <span class="badge badge-pill badge-danger">Active for <?php echo $value->days;?> Days</span><br>
                     </td>
-                    <td><?php if($value->default_image != ''){?> 
+                    <td><?php if($value->default_image != ''){?>
+                    <?php if($value->am_is_booked == 'yes'){?> 
+                        <span class="booked"></span>
+                    <?php }?>
                         <img height="125" width="125" src="<?php echo base_url('uploads/animal/thumb/'.$value->default_image);?>">
                     <?php }?>
                     </td>
