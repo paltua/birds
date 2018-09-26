@@ -109,6 +109,15 @@
 	.left-static h5 a::before { width: 14px; height: 14px; background-size: 14px;}
 	.htop {top:auto;bottom:0;font-size: 11px}
 	#footer {padding-bottom: 40px; z-index: 2}
+	.btn.pub-list {
+		padding: 5px 28px 5px 22px;
+	    position: fixed;
+	    right: 57px;
+	    background-size: 15px;
+	    background-position: 4px center;
+	    top: 24px;
+	}
+	.btn.pub-list::after {top: 9px;right: 8px;}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}

@@ -137,10 +137,21 @@ $(window).scroll(function() {
   var sticky = $('.inner-page-wrap #header'),
     scroll = $(window).scrollTop();
    
-  if (scroll >= 150) { 
+  if (scroll >= 40) { 
     sticky.addClass('innerchange'); 
 	}
   else { 
    sticky.removeClass('innerchange');
+	}
+});
+
+$(window).bind("load resize", function() {
+	var width = $(window).width();
+	if (width <= 767) {
+		
+		$('.btn.pub-list').detach().insertAfter('#header .navbtn');
+	}
+	else {
+		$('.btn.pub-list').detach().appendTo('#header .headerright > div:nth-child(2)');
 	}
 });
