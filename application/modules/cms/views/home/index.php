@@ -215,7 +215,7 @@
                     <?php if(count($gallery) > 0){?>
                     <ul>
                         <?php foreach ($gallery as $key => $value) {?>
-                        <li><a href="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>" data-fancybox="gallery"><img src="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>" alt=""/></a></li>
+                        <li><a href="<?php echo base_url('uploads/gallery/'.$value->g_path);?>" data-fancybox="gallery"><img src="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>" alt=""/></a></li>
                         <?php }?>
                     </ul>
                     <?php } ?>
