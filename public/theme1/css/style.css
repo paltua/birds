@@ -487,6 +487,9 @@ div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content
   font-size: 23px;
   text-align: center;
 }
+.midbox {
+  margin: 0 auto !important;
+}
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }
