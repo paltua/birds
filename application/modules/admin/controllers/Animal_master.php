@@ -22,12 +22,79 @@ class Animal_master extends MY_Controller
         $msg = $this->session->flashdata('msg');
         $data['lang'] = getLanguageArrAnimalMaster();
         $data['msg'] = $this->template->getMessage($status, $msg);
-        $data['list'] = $this->animal_master_model->getAllData();
+        $data['list'] = array();//$this->animal_master_model->getAllData();
+        $data['dataTableUrl'] = base_url('admin/'.$this->controller.'/viewListDataTable');
         //pr($data['list']);
         $data['controller'] = $this->controller;
         $this->template->setTitle('Admin : Pets and Pet Accessories');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);
+    }
+
+    public function viewListDataTable(){
+        $requestData = $this->input->post();
+        $columns = array(
+            0 => 'AM.am_code',
+            2 => 'AMD.amd_name',
+            3 => 'AMD.amd_price',
+            5 => 'AM.am_viewed_count',
+            6 => 'AM.am_status',
+            7 => 'AM.am_created_date'
+        );
+        if (!isset($requestData['order'][0]['column'])) {
+            $orderBy['col'] = 'CM.created_date';
+            $orderBy['val'] = 'DESC';
+        } else {
+            $orderBy['col'] = $columns[$requestData['order'][0]['column']];
+            $orderBy['val'] = $requestData['order'][0]['dir'];
+        }
+
+        $limit['start'] = $requestData['start'];
+        $limit['perpage'] = $requestData['length'];
+        $searchData = trim($requestData['search']['value']);
+        $where['AM.am_deleted'] = '0';
+        $where['AMD.language'] = 'en';
+        $recordsTotal = $this->animal_master_model->getDataTableTotalCount($where);
+        $recordsFiltered = $this->animal_master_model->getDataTableFilteredCount($searchData, $where);
+        $rowsData = $this->animal_master_model->getDataTableData($searchData, $where, $orderBy, $limit);
+
+        $rows = $this->_getArrayData($rowsData);
+        //print_r($rows);
+        $json_data = array(
+            "draw" => intval($requestData['draw']), // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+            "recordsTotal" => intval($recordsTotal), // total number of records
+            "recordsFiltered" => intval($recordsFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
+            "data" => $rows  // total data array
+        );
+        echo json_encode($json_data);
+        exit;
+    }
+
+    /*
+     * function _getArrayData()
+     * This function is used to make array for client listing page
+     */
+
+    private function _getArrayData($data = array()) {
+        $rows = array();
+        if (count($data) > 0) {
+            /*pr($data);*/
+            foreach ($data as $val) {
+
+                $actionStr = '<a href="'.base_url().'admin/'.$this->controller.'/delete/'.$val->com_id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
+                
+                $statusStr = '<a class="statusChange btn btn-'.($val->com_status == "active"?"info":"warning").' btn-xs" href="javascript:void(0);" title="Click to change Status" value="'.($val->com_status == 'active'?'unlock':'lock').'" id="status_'.$val->com_id.'" name="'.$val->com_id.'"><i id="i_status_'.$val->com_id.'" class="fa fa-'.($val->com_status == 'active'?'unlock':'lock').'"></i><span id="span_status_'.$val->com_id.'">'.ucfirst($val->com_status).'</span></a>'; 
+                $nestedData[] = $val->name;
+                $nestedData[] = $val->comments; 
+                $nestedData[] = '<a href="'.base_url('user/product/details/'.$val->am_id).'" target="_blank">#'.$val->am_code.'</a>';
+                $nestedData[] = $statusStr;
+                $nestedData[] = date("F j, Y, g:i a", strtotime($val->created_date));
+                $nestedData[] = $actionStr;
+                $rows[] = $nestedData;
+                unset($actionStr);unset($statusStr);unset($nestedData);
+            }
+        }
+        return $rows;
     }
 
     public function add() {

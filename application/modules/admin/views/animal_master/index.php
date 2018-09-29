@@ -8,16 +8,8 @@
 <script src="<?php echo base_url().$resourceNameAdmin;?>vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url().$resourceNameAdmin;?>vendor/datatables-responsive/dataTables.responsive.js"></script>
 
-<script type="text/javascript">
+<script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true,
-            order: [[ 7 , "desc" ]],
-            columnDefs: [{ targets: 'no-sort', orderable: false }],
-        });
-
-        
-
         var csfrData = {};
         csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
                          = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -26,7 +18,35 @@
           data: csfrData
         });
 
-        $(".statusChange").click(function(){
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            serverSide: true,
+            ajax:{
+                url : "<?php echo $dataTableUrl;?>", // json datasource
+                type: "post",  // method  , by default get
+                dataType: "json",
+                error: function(){  // error handling
+                    //$(".employee-grid-error").html("");
+                    $("#dataTableId").append('<tbody class="employee-grid-error"><tr><th colspan="13">No record found.</th></tr></tbody>');
+                    $("#data-table_processing").css("display","none");
+                }
+            },
+            
+            deferRender: true,
+            bProcessing: true,
+            iDisplayLength: 10,
+            bPaginate: true,
+            scroller: {
+                loadingIndicator: true,
+            },
+            columnDefs: [ {
+                "targets": 'no-sort',
+                "orderable": false,
+            }],
+            aaSorting: [],
+        });
+
+        $('#dataTables-example').on('click', '.statusChange', function(){    
             var url = '<?php echo base_url('admin/animal_master/changeStatus');?>';
             var am_id = $(this).attr('name');
             var am_status = $(this).attr('value');
@@ -74,7 +94,7 @@
                     <th>Price</th>
                     <!-- <th>Category</th>
                     <th>User Type</th> -->
-                    <th>User Details</th>
+                    <th class="no-sort">User Details</th>
                     <th>View Count</th>
                     <th>Status</th>
                     <th>Created Date</th>

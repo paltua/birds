@@ -10,6 +10,14 @@
 
 <script>
     $(document).ready(function() {
+        var csfrData = {};
+        csfrData['<?php echo $this->security->get_csrf_token_name(); ?>']
+                         = '<?php echo $this->security->get_csrf_hash(); ?>';
+        
+        $.ajaxSetup({
+          data: csfrData
+        });
+        
         $('#dataTables-example').DataTable({
             /*responsive: true,
             order: [[ 3 , "desc" ]],

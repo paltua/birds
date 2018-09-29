@@ -31,7 +31,6 @@ class Comment extends MX_Controller
 
     public function viewListDataTable(){
         $requestData = $this->input->post();
-
         $columns = array(
             0 => 'UM.name',
             1 => 'CM.comments',
