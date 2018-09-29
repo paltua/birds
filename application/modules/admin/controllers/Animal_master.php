@@ -39,10 +39,11 @@ class Animal_master extends MY_Controller
             3 => 'AMD.amd_price',
             5 => 'AM.am_viewed_count',
             6 => 'AM.am_status',
-            7 => 'AM.am_created_date'
+            7 => 'AM.am_status',
+            8 => 'AM.am_created_date'
         );
         if (!isset($requestData['order'][0]['column'])) {
-            $orderBy['col'] = 'CM.created_date';
+            $orderBy['col'] = 'AM.am_created_date';
             $orderBy['val'] = 'DESC';
         } else {
             $orderBy['col'] = $columns[$requestData['order'][0]['column']];
@@ -79,16 +80,43 @@ class Animal_master extends MY_Controller
         $rows = array();
         if (count($data) > 0) {
             /*pr($data);*/
-            foreach ($data as $val) {
-
-                $actionStr = '<a href="'.base_url().'admin/'.$this->controller.'/delete/'.$val->com_id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
+            foreach ($data as $value) {
+                $actionStr = '';
+                $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/image/'.$value->am_id.'" class="btn btn-primary btn-xs"><i class="fa fa-picture-o"></i> Image</a>';
+                $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/edit/'.$value->am_id.'" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>';
+                $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/delete/'.$value->am_id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
                 
-                $statusStr = '<a class="statusChange btn btn-'.($val->com_status == "active"?"info":"warning").' btn-xs" href="javascript:void(0);" title="Click to change Status" value="'.($val->com_status == 'active'?'unlock':'lock').'" id="status_'.$val->com_id.'" name="'.$val->com_id.'"><i id="i_status_'.$val->com_id.'" class="fa fa-'.($val->com_status == 'active'?'unlock':'lock').'"></i><span id="span_status_'.$val->com_id.'">'.ucfirst($val->com_status).'</span></a>'; 
-                $nestedData[] = $val->name;
-                $nestedData[] = $val->comments; 
-                $nestedData[] = '<a href="'.base_url('user/product/details/'.$val->am_id).'" target="_blank">#'.$val->am_code.'</a>';
+                $statusStr = '<a class="statusChange btn btn-'.($value->am_status == "active"?"info":"warning").' btn-xs" href="javascript:void(0);" title="Click to change Status" value="'.($value->am_status == "active"?"unlock":"lock").'" id="status_'.$value->am_id.'" name="'.$value->am_id.'"><i id="i_status_'.$value->am_id.'" class="fa fa-'.($value->am_status == "active"?"unlock":"lock").'"></i><span id="span_status_'.$value->am_id.'">'.ucfirst($value->am_status).'</span>'; 
+
+                $code = '#'.$value->am_code;
+                if($value->days < 8){
+                    $code .= '<br><span class="badge badge-pill badge-danger">New</span><br>';
+                }
+                $code .= '<span class="badge badge-pill badge-danger">Active for '.$value->days.' Days</span><br>';
+                $nestedData[] = $code;
+                $img = '';
+                if($value->default_image != ''){
+                    if($value->am_is_booked == 'yes'){
+                        $img .= '<span class="booked"></span>';
+                    }
+                    $img .= '<img height="125" width="125" src="'.base_url('uploads/animal/thumb/'.$value->default_image).'">';
+                }
+                $nestedData[] = $img;
+                $nestedData[] = $value->amd_name; 
+                $nestedData[] = $value->amd_price; 
+                if($value->am_user_type == 'user'){
+                    $nestedData[] = '<i class="fa fa-user"></i>'.$value->user_name.'<br>
+                            <i class="fa fa-phone"></i>'.$value->mobile.'<br>
+                            <i class="fa fa-at"></i>'.$value->email.'<br>';
+                 }else{
+                    $nestedData[] = 'Admin';
+                }
+                        
+                
+                $nestedData[] = $value->am_viewed_count;
                 $nestedData[] = $statusStr;
-                $nestedData[] = date("F j, Y, g:i a", strtotime($val->created_date));
+                $nestedData[] = $statusStr;
+                $nestedData[] = date("F j, Y, g:i a", strtotime($value->am_created_date));
                 $nestedData[] = $actionStr;
                 $rows[] = $nestedData;
                 unset($actionStr);unset($statusStr);unset($nestedData);
