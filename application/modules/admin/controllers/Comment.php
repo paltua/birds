@@ -18,15 +18,80 @@ class Comment extends MX_Controller
     {
         $data = array();
         $data['page_title'] = 'Comments';
-        $data['status'] = 0;
-        $msg = '';
-        $data['msg'] = $this->template->getMessage($data['status'],$msg);
-        $data['list'] = $this->comment_model->listing();
+        $status = $this->session->userdata('status');
+        $msg = $this->session->userdata('msg');
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $data['dataTableUrl'] = base_url('admin/comment/viewListDataTable');
         $data['controller'] = $this->controller;
 
         $this->template->setTitle('Admin : Comments');
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);
+    }
+
+    public function viewListDataTable(){
+        $requestData = $this->input->post();
+
+        $columns = array(
+            0 => 'UM.name',
+            1 => 'CM.comments',
+            2 => 'AM.am_code',
+            3 => 'CM.com_status',
+            4 => 'CM.created_date'
+        );
+        if (!isset($requestData['order'][0]['column'])) {
+            $orderBy['col'] = 'CM.created_date';
+            $orderBy['val'] = 'DESC';
+        } else {
+            $orderBy['col'] = $columns[$requestData['order'][0]['column']];
+            $orderBy['val'] = $requestData['order'][0]['dir'];
+        }
+
+        $limit = array('start' => $requestData['start'], 'perpage' => $requestData['length']);
+        $searchData = trim($requestData['search']['value']);
+        $where = array();
+
+        $recordsTotal = $this->comment_model->getDataTableTotalCount($where);
+        $recordsFiltered = $this->comment_model->getDataTableFilteredCount($searchData, $where);
+        $rowsData = $this->comment_model->getDataTableData($searchData, $where, $orderBy, $limit);
+
+        $rows = $this->_getArrayData($rowsData);
+        //print_r($rows);
+        $json_data = array(
+            "draw" => intval($requestData['draw']), // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw. 
+            "recordsTotal" => intval($recordsTotal), // total number of records
+            "recordsFiltered" => intval($recordsFiltered), // total number of records after searching, if there is no searching then totalFiltered = totalData
+            "data" => $rows  // total data array
+        );
+        echo json_encode($json_data);
+        exit;
+    }
+
+    /*
+     * function _getArrayData()
+     * This function is used to make array for client listing page
+     */
+
+    private function _getArrayData($data = array()) {
+        $rows = array();
+        if (count($data) > 0) {
+            /*pr($data);*/
+            foreach ($data as $val) {
+
+                $actionStr = '<a href="'.base_url().'admin/'.$this->controller.'/delete/'.$val->com_id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
+                
+                $statusStr = '<a class="statusChange btn btn-'.($val->com_status == "active"?"info":"warning").' btn-xs" href="javascript:void(0);" title="Click to change Status" value="'.($val->com_status == 'active'?'unlock':'lock').'" id="status_'.$val->com_id.'" name="'.$val->com_id.'"><i id="i_status_'.$val->com_id.'" class="fa fa-'.($val->com_status == 'active'?'unlock':'lock').'"></i><span id="span_status_'.$val->com_id.'">'.ucfirst($val->com_status).'</span></a>'; 
+                $nestedData[] = $val->name;
+                $nestedData[] = $val->comments; 
+                $nestedData[] = '<a href="'.base_url('user/product/details/'.$val->am_id).'" target="_blank">#'.$val->am_code.'</a>';
+                $nestedData[] = $statusStr;
+                $nestedData[] = date("F j, Y, g:i a", strtotime($val->created_date));
+                $nestedData[] = $actionStr;
+                $rows[] = $nestedData;
+                unset($actionStr);unset($statusStr);unset($nestedData);
+            }
+        }
+        return $rows;
     }
 
     public function adduser() 
@@ -93,11 +158,11 @@ class Comment extends MX_Controller
 
     public function delete() 
     { 
-        $this->load->model('user_model');
-        $id = $this->uri->segment(4);
-        $this->user_model->user_delete($id);
-        //$this->session->set_flashdata('msg', 'Successfully Added'); 
-        redirect(base_url().$this->adminName.'/user');
+        $where['com_id'] = $this->uri->segment(4);
+        $this->tbl_generic_model->delete('comments', $where);
+        $this->session->set_flashdata('status', 'success');
+        $this->session->set_flashdata('msg', 'Successfully Deleted'); 
+        redirect(base_url().'admin/comment/index');
     }
 
     public function ajax_list()

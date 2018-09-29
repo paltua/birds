@@ -11,14 +11,42 @@
 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true,
+            /*responsive: true,
             order: [[ 3 , "desc" ]],
-            columnDefs: [{ targets: 'no-sort', orderable: false }],
+            columnDefs: [{ targets: 'no-sort', orderable: false }],*/
+            responsive: true,
+            serverSide: true,
+            ajax:{
+                url : "<?php echo $dataTableUrl;?>", // json datasource
+                type: "post",  // method  , by default get
+                dataType: "json",
+                error: function(){  // error handling
+                    //$(".employee-grid-error").html("");
+                    $("#dataTableId").append('<tbody class="employee-grid-error"><tr><th colspan="13">No record found.</th></tr></tbody>');
+                    $("#data-table_processing").css("display","none");
+                }
+            },
+            
+            deferRender: true,
+            bProcessing: true,
+            iDisplayLength: 10,
+            bPaginate: true,
+            scroller: {
+                loadingIndicator: true,
+            },
+            columnDefs: [ {
+                "targets": 'no-sort',
+                "orderable": false,
+            }],
+            aaSorting: [],
+
         });
 
-        $(".statusChange").click(function(){
+        
+        $('#dataTables-example').on('click', '.statusChange', function(){    
             var url = '<?php echo base_url('admin/'.$controller.'/changeStatus');?>';
             var am_id = $(this).attr('name');
+            //alert(am_id);
             var am_status = $(this).attr('value');
             $.post( url, { am_id : am_id}, function( data ) {
                 if(am_status == 'lock'){
@@ -36,6 +64,8 @@
 
     });
 </script>
+
+
 
 
 <div class="row">
@@ -59,36 +89,13 @@
                 <tr>
                     <th>Name</th>
                     <th>Comment</th>
+                    <th>Product ID</th>
                     <th>Status</th>
                     <th>Created Date</th>
                     <th class="no-sort">Action</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php if(count($list) > 0){
-                    foreach ($list as $key => $value) {
-                        if($key%2 == 0){
-                            $listClass = 'gradeC';
-                        }else{
-                            $listClass = 'gradeU';
-                        }
-                ?>
-                <tr class="<?php echo $listClass;?> ">
-                    <td><?php echo $value->name;?></td>
-                    <td><?php echo $value->comments;?></td>
-                    <td>
-                        <a class="statusChange btn btn-<?php echo $value->com_status == 'active'?'info':'warning';?> btn-xs" href="javascript:void(0);" title="Click to change Status" value="<?php echo $value->com_status == 'active'?'unlock':'lock';?>" id="status_<?php echo $value->com_id;?>" name="<?php echo $value->com_id;?>"><i id="i_status_<?php echo $value->com_id;?>" class="fa fa-<?php echo $value->com_status == 'active'?'unlock':'lock';?>"></i>
-                            <span id="span_status_<?php echo $value->com_id;?>"><?php echo ucfirst($value->com_status);?></span>
-                        </a>
-                    </td>
-                    <td><?php echo date("F j, Y, g:i a", strtotime($value->created_date));?></td>
-                    <td class="center">
-                        <!-- <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/edit/<?php echo $value->com_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a> -->
-                        <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->com_id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-                    </td>
-                </tr>
-                <?php } } ?>
-            </tbody>
+            
         </table>
     </div>
 </div>
