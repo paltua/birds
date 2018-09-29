@@ -98,7 +98,7 @@
         <div class="container">
             <div class="content-sec">
                 <div class="row">
-                    <div class="col-md-6">              
+                    <div class="col-md-12">              
                         <div id="horizontalTab" class="homepdlist-tab">
                             <ul class="resp-tabs-list">
                                 <li>Premium listings</li>
@@ -180,28 +180,46 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="video-sec">
-                            <div class="video-box">
-                                <iframe width="100%" height="350" src="https://www.youtube.com/embed/ICIKly4Mh4k?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <div class="botm-social">
-                                        <ul>
-                                            <?php $this->load->view(THEME.'/common/socialLink');?>
-                                        </ul>
+                        <div class="botm-carsl">
+                            <h3 class="title">Best Choices</h3>
+                            <div class="box-wrap">
+                                <div class="category-circle carousel-10 owl-carousel owl-theme">
+                                    <!-- <div class="item">
+                                        <figure>
+                                            <div class="circle-layout">
+                                                <img src="images/buddies_01_img.jpg" alt="Buddies">
+                                                <figcaption>
+                                                    <a href="javascript:void(0)" class="button"><i class="lnr lnr-plus-circle"></i></a>
+                                                </figcaption>
+                                            </div>                              
+                                        </figure>
+                                        <h3><a href="javascript:void(0)">Buddies</a></h3>
+                                    </div> -->
+                                    <?php if(count($bestCat) > 0){
+                                        foreach ($bestCat as $key => $value) {
+                                    ?>
+                                    <div class="item">
+                                        <figure>
+                                            <div class="circle-layout">
+                                                <?php 
+                                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
+                                                if($value->image_name != ''){
+                                                    $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
+                                                }?>
+                                                <img src="<?php echo $imagePath;?>" alt="<?php echo $value->acmd_name;?>">
+                                                <figcaption>
+                                                    <a href="javascript:void(0)" class="button"><i class="lnr lnr-plus-circle"></i></a>
+                                                </figcaption>
+                                            </div>                              
+                                        </figure>
+                                        <h3><a href="<?php echo base_url('user/product/search/'.$value->acm_id);?>"><?php echo $value->acmd_name;?></a></h3>
                                     </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <!-- <a href="javascript:void(0)" class="btn subscribe">Subscribe to my channels</a> -->
-                                    <script src="https://apis.google.com/js/platform.js"></script>
-                                    <div class="g-ytsubscribe" data-channelid="UCMP0o_U6wmJ2Zd60N2hWpXQ" data-layout="default" data-theme="dark" data-count="default"></div>
+                                <?php } } ?>
+                                    
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>      
@@ -223,43 +241,27 @@
             </div>
             <div class="two-grid secright">
                 <div class="content-sec">
-                    <h3>Best Choices</h3>
-                    <div class="box-wrap">
-                        <div class="category-circle carousel-3 owl-carousel owl-theme">
-                            <!-- <div class="item">
-                                <figure>
-                                    <div class="circle-layout">
-                                        <img src="images/buddies_01_img.jpg" alt="Buddies">
-                                        <figcaption>
-                                            <a href="javascript:void(0)" class="button"><i class="lnr lnr-plus-circle"></i></a>
-                                        </figcaption>
-                                    </div>                              
-                                </figure>
-                                <h3><a href="javascript:void(0)">Buddies</a></h3>
-                            </div> -->
-                            <?php if(count($bestCat) > 0){
-                                foreach ($bestCat as $key => $value) {
-                            ?>
-                            <div class="item">
-                                <figure>
-                                    <div class="circle-layout">
-                                        <?php 
-                                        $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
-                                        if($value->image_name != ''){
-                                            $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
-                                        }?>
-                                        <img src="<?php echo $imagePath;?>" alt="<?php echo $value->acmd_name;?>">
-                                        <figcaption>
-                                            <a href="javascript:void(0)" class="button"><i class="lnr lnr-plus-circle"></i></a>
-                                        </figcaption>
-                                    </div>                              
-                                </figure>
-                                <h3><a href="<?php echo base_url('user/product/search/'.$value->acm_id);?>"><?php echo $value->acmd_name;?></a></h3>
+                    <div class="video-sec">
+                        <div class="video-box">
+                            <iframe width="100%" height="350" src="https://www.youtube.com/embed/ICIKly4Mh4k?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="botm-social">
+                                    <ul>
+                                        <?php $this->load->view(THEME.'/common/socialLink');?>
+                                    </ul>
+                                </div>
                             </div>
-                        <?php } } ?>
-                            
+                            <div class="col-md-5">
+                                <!-- <a href="javascript:void(0)" class="btn subscribe">Subscribe to my channels</a> -->
+                                <script src="https://apis.google.com/js/platform.js"></script>
+                                <div class="g-ytsubscribe" data-channelid="UCMP0o_U6wmJ2Zd60N2hWpXQ" data-layout="default" data-theme="dark" data-count="default"></div>
+                            </div>
                         </div>
                     </div>
+
+                    
                 </div>
             </div>
         </div>

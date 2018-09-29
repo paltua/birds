@@ -8,16 +8,45 @@ jQuery(document).ready(function ($) {
 	    nav:true,
 	    responsive:{
 	        0:{
-	            items:1,
+	            items:3,
+	            margin:10,
 	        },
 	        600:{
-	            items:1,
+	            items:5,
+	            margin:10,
 	        },
 	        1000:{
-	            items:2,
+	            items:6,
+	            margin:10,
 	        },
 	        1200:{
-	            items:2,
+	            items:7,
+	            margin:20,
+	        }
+	    }
+	})
+	$('.carousel-10').owlCarousel({
+	    loop:true,
+	    margin:20,
+	    responsiveClass:true,
+	    dots: false,
+	    nav:true,
+	    responsive:{
+	        0:{
+	            items:3,
+	            margin:10,
+	        },
+	        600:{
+	            items:5,
+	            margin:10,
+	        },
+	        1000:{
+	            items:8,
+	            margin:10,
+	        },
+	        1200:{
+	            items:10,
+	            margin:20,
 	        }
 	    }
 	})
@@ -53,7 +82,7 @@ jQuery(document).ready(function ($) {
 	            items:2,
 	        },
 	        600:{
-	            items:4,
+	            items:3,
 	        },
 	        1000:{
 	            items:6,
