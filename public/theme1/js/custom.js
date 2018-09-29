@@ -10,18 +10,22 @@ jQuery(document).ready(function ($) {
 	        0:{
 	            items:3,
 	            margin:10,
+	            nav:false,
 	        },
 	        600:{
 	            items:5,
 	            margin:10,
+	            nav:false,
 	        },
 	        1000:{
 	            items:6,
 	            margin:10,
+	            nav:true,
 	        },
 	        1200:{
 	            items:7,
 	            margin:20,
+	            nav:true,
 	        }
 	    }
 	})
@@ -35,18 +39,22 @@ jQuery(document).ready(function ($) {
 	        0:{
 	            items:3,
 	            margin:10,
+	            nav:false,
 	        },
 	        600:{
 	            items:5,
 	            margin:10,
+	            nav:false,
 	        },
 	        1000:{
 	            items:8,
 	            margin:10,
+	            nav:true,
 	        },
 	        1200:{
 	            items:10,
 	            margin:20,
+	            nav:true,
 	        }
 	    }
 	})
@@ -59,36 +67,48 @@ jQuery(document).ready(function ($) {
 	    responsive:{
 	        0:{
 	            items:1,
+	            nav:false,
 	        },
 	        600:{
 	            items:2,
+	            nav:false,
 	        },
 	        1000:{
 	            items:3,
+	            nav:true,
 	        },
 	        1200:{
 	            items:3,
+	            nav:true,
 	        }
 	    }
 	})
 	$('.carousel-5').owlCarousel({
 	    loop:true,
-	    margin:30,
+	    //margin:30,
 	    responsiveClass:true,
 	    dots: false,
 	    nav:true,
 	    responsive:{
 	        0:{
-	            items:2,
+	            items:3,
+	            margin:10,
+	            nav:false,
 	        },
 	        600:{
-	            items:3,
+	            items:4,
+	            margin:10,
+	            nav:false,
 	        },
 	        1000:{
 	            items:6,
+	            margin:15,
+	            nav:true,
 	        },
 	        1200:{
 	            items:7,
+	            margin:30,
+	            nav:true,
 	        }
 	    }
 	})
@@ -101,12 +121,15 @@ jQuery(document).ready(function ($) {
 	    responsive:{
 	        0:{
 	            items:1,
+	            nav:false,
 	        },
 	        600:{
 	            items:3,
+	            nav:false,
 	        },
 	        1000:{
 	            items:7,
+	            nav:true,
 	        }
 	    }
 	})
