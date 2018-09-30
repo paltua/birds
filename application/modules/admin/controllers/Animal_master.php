@@ -39,7 +39,7 @@ class Animal_master extends MY_Controller
             3 => 'AMD.amd_price',
             5 => 'AM.am_viewed_count',
             6 => 'AM.am_status',
-            7 => 'AM.am_status',
+            7 => 'AM.am_dip_choice',
             8 => 'AM.am_created_date'
         );
         if (!isset($requestData['order'][0]['column'])) {
@@ -115,7 +115,11 @@ class Animal_master extends MY_Controller
                 
                 $nestedData[] = $value->am_viewed_count;
                 $nestedData[] = $statusStr;
-                $nestedData[] = $statusStr;
+                $dipChoiceStatus = '';
+                if($value->am_dip_choice == 'yes'){
+                    $dipChoiceStatus = 'checked';
+                }
+                $nestedData[] = '<input class="dipChoice" type="checkbox" name="" value="'.$value->am_id.'" '.$dipChoiceStatus.'>';
                 $nestedData[] = date("F j, Y, g:i a", strtotime($value->am_created_date));
                 $nestedData[] = $actionStr;
                 $rows[] = $nestedData;
@@ -409,6 +413,13 @@ class Animal_master extends MY_Controller
         $am_id = $this->input->post('am_id');
         $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status.');
         $this->animal_master_model->changeStatus($am_id);
+        echo json_encode($data);
+    }
+
+    public function changeDipankarCHoiceStatus(){
+        $am_id = $this->input->post('am_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully added to the choice list of Dipankar.');
+        $this->animal_master_model->changeDipankarCHoiceStatus($am_id);
         echo json_encode($data);
     }
 

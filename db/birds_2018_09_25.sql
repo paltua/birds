@@ -8,3 +8,9 @@ INSERT INTO `about_us_user` (`auu_id`, `name`, `mobile`, `email`, `img`, `last_u
 (5, 'E', '98', 'e@gmail.com', '', '2018-09-23 14:27:44', 'pos 2'),
 (6, 'FFF', '98', 'f@gmail.com', '', '2018-09-26 16:35:12', 'pos 3');
 COMMIT;
+
+ALTER TABLE `animal_master` ADD `am_dip_choice` ENUM('yes','no') NOT NULL DEFAULT 'no' AFTER `am_is_booked`;
+
+CREATE TABLE `settings` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `name_val` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `last_updated_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_by` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+INSERT INTO `settings` (`id`, `name`, `name_val`, `last_updated_date`, `updated_by`) VALUES (NULL, 'you_tube_link', '', CURRENT_TIMESTAMP, '0');
+INSERT INTO `settings` (`id`, `name`, `name_val`, `last_updated_date`, `updated_by`) VALUES (NULL, 'about_bird_en', '', CURRENT_TIMESTAMP, '0'),(NULL, 'about_bird_ben', '', CURRENT_TIMESTAMP, '0'),(NULL, 'about_bird_hi', '', CURRENT_TIMESTAMP, '0')

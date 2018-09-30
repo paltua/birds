@@ -178,6 +178,12 @@ class Animal_master_model extends CI_Model {
         return true;
     }
 
+    public function changeDipankarCHoiceStatus($am_id = 0){
+        $sql = "UPDATE `animal_master` SET `am_dip_choice`=IF(am_dip_choice ='yes','no','yes') WHERE 1 AND am_id=".$am_id;
+        $this->db->query($sql);
+        return true;
+    }
+
     public function getCountryList(){
         $this->db->select('*');
         $this->db->from('countries');

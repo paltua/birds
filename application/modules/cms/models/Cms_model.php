@@ -39,7 +39,20 @@ class Cms_model extends CI_Model {
                     AND AM.`am_status`='active' 
                     AND AM.`am_deleted` = '0'
                 ORDER BY AM.`am_id` DESC
-                LIMIT 15";
+                LIMIT 35";
+        return $this->db->query($sql)->result();            
+    }
+    
+    public function getDipChoicesProduct(){
+        $sql = "SELECT AM.`am_id`, AMD.`amd_name`, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.`ami_path` 
+                FROM `animal_master` AM 
+                JOIN `animal_master_details` AMD ON AMD.am_id=AM.am_id AND AMD.language='en' 
+                LEFT JOIN `animal_master_images` AMI ON AMI.`am_id`=AM.`am_id` AND AMI.`ami_default`='1' 
+                WHERE 1 
+                    AND AM.`am_status`='active' 
+                    AND AM.`am_deleted` = '0'
+                    AND AM.`am_dip_choice` = 'yes'
+                ORDER BY AM.`am_id` DESC ";
         return $this->db->query($sql)->result();            
     }
 
@@ -53,7 +66,7 @@ class Cms_model extends CI_Model {
                     AND AM.`am_status`='active' 
                     AND AM.`am_deleted` = '0'
                 ORDER BY AMD.`amd_price` DESC
-                LIMIT 15";
+                LIMIT 35";
         return $this->db->query($sql)->result();
     }
 

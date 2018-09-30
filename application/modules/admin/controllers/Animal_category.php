@@ -90,34 +90,39 @@ class Animal_category extends MY_Controller
         foreach($data['editData'] as $key => $value){
             $this->form_validation->set_rules('data['.$value->acmd_id.'][acmd_name]', 'Name in '.$value->lang_name, 'required|trim');
         }
-        if ($this->form_validation->run() == TRUE){
-            $nameArr = $this->input->post('data');
-            $eng_lang_id = $this->input->post('eng_lang_id');
-            $nameCheck = $this->name_check($nameArr[$eng_lang_id]['acmd_name'], $id);
-            if($nameCheck){
-                if(count($nameArr)){
-                    $maWhere['acm_id'] = $id;
-                    $maData['acm_url_name'] = url_title($nameArr[$eng_lang_id]['acmd_name']);
-                    $maData['parent_id'] = $this->input->post('parent_id_en');
-                    $this->tbl_generic_model->edit('animal_category_master', $maData, $maWhere);
-                    foreach ($nameArr as $key => $value) {
-                        $where = $upData = array();
-                        $where['acmd_id'] = $key;
-                        $upData['acmd_name'] = $value['acmd_name'];
-                        $upData['acmd_short_desc'] = $value['acmd_short_desc'];
-                        $this->tbl_generic_model->edit('animal_category_master_details', $upData, $where);
+        if($_FILES['name'] != ''){
+            if ($this->form_validation->run() == TRUE){
+                $nameArr = $this->input->post('data');
+                $eng_lang_id = $this->input->post('eng_lang_id');
+                $nameCheck = $this->name_check($nameArr[$eng_lang_id]['acmd_name'], $id);
+                if($nameCheck){
+                    if(count($nameArr)){
+                        $maWhere['acm_id'] = $id;
+                        $maData['acm_url_name'] = url_title($nameArr[$eng_lang_id]['acmd_name']);
+                        $maData['parent_id'] = $this->input->post('parent_id_en');
+                        $this->tbl_generic_model->edit('animal_category_master', $maData, $maWhere);
+                        foreach ($nameArr as $key => $value) {
+                            $where = $upData = array();
+                            $where['acmd_id'] = $key;
+                            $upData['acmd_name'] = $value['acmd_name'];
+                            $upData['acmd_short_desc'] = $value['acmd_short_desc'];
+                            $this->tbl_generic_model->edit('animal_category_master_details', $upData, $where);
+                        }
                     }
+                    $this->_upload($id);
+                    $status = 'success';
+                    $msg = 'Successfully Updated';
+                    $this->session->set_flashdata('status', $status);
+                    $this->session->set_flashdata('msg', $msg);
+                    redirect(base_url().'admin/'.$this->controller);
+                }else{
+                    $status = 'danger';
+                    $msg = 'This name is already used in English';
                 }
-                $this->_upload($id);
-                $status = 'success';
-                $msg = 'Successfully Updated';
-                $this->session->set_flashdata('status', $status);
-                $this->session->set_flashdata('msg', $msg);
-                redirect(base_url().'admin/'.$this->controller);
-            }else{
-                $status = 'danger';
-                $msg = 'This name is already used in English';
             }
+        }elseif($_FILES && $_FILES['name'] == ''){
+            $status = 'danger';
+            $msg = 'Please Select Category Image.';
         }
         $data['msg'] = $this->template->getMessage($status, $msg);
         //$data['parentCat'] = $this->animal_category_model->getParent(0);

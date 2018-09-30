@@ -64,6 +64,14 @@
             }, "json");
         });
 
+        $('#dataTables-example').on('click', '.dipChoice', function(){ 
+            var url = '<?php echo base_url('admin/animal_master/changeDipankarCHoiceStatus');?>';
+            var am_id = $(this).val();
+            $.post( url, { am_id : am_id}, function( data ) {
+                $("#msgShow").html(data.msg);
+            }, "json");
+        });
+
     });
 </script>
 

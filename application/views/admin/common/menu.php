@@ -337,6 +337,9 @@
                 </ul>
             </li> -->
             <li>
+                <a href="<?php echo base_url('admin/settings');?>"><i class="fa fa-cog fa-fw"></i></i> Settings</a>
+            </li>
+            <li>
                 <a href="<?php echo base_url('admin/auth/logout');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
         </ul>
