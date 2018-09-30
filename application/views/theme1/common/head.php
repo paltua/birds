@@ -1,4 +1,5 @@
 <meta charset="UTF-8">
+<link rel="icon" href="<?php echo base_url('public/'.THEME.'/');?>images/fav.png" type="image/png" sizes="16x16">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title><?php echo $title;?></title>
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
