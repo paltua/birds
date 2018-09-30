@@ -4,7 +4,12 @@
 <script src="<?php echo base_url().$resourceNameAdmin;?>vendor/summernote/summernote-bs4.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.contentTextarea').summernote();
+        $('.contentTextarea').summernote({
+            height: 500,   //set editable area's height
+            codemirror: { // codemirror options
+                theme: 'monokai'
+            }
+        });
     });
 </script>
 <form role="form" method="post" enctype="multipart/form-data">
@@ -34,7 +39,12 @@
                         <h4><?php echo $value;?> Content</h4>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <textarea class="form-control contentTextarea" rows="25" name="about_bird_<?php echo $key;?>"> <?php echo $set['about_bird_'.$key];?></textarea>
+                                <label>Short Description</label>
+                                <textarea class="form-control" rows="5" name="about_bird_<?php echo $key;?>"> <?php echo $set['short_about_bird_'.$key];?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Long Description</label>
+                                <textarea class="form-control contentTextarea" rows="35" name="about_bird_<?php echo $key;?>"> <?php echo $set['about_bird_'.$key];?></textarea>
                             </div>
                         </div>
                     </div>

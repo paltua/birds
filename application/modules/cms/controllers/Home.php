@@ -23,10 +23,35 @@ class Home extends MY_Controller
         $data['dipChoices'] = $this->cms_model->getDipChoicesProduct();
         $data['bestCat'] = $this->cms_model->getLevelOneCategory();
         $data['gallery'] = $this->tbl_generic_model->get('gallery', '*', array(), array('created_date' => 'DESC'));
+        $settings = $this->tbl_generic_model->get('settings','*', array());
+        //pr($settings);
+        if(count($settings) > 0){
+            foreach ($settings as $key => $value) {
+                $data['set'][$value->name] = $value->name_val;
+            }
+        }
         $data['msg'] = $this->template->getMessage($data['status'], $msg);
         $this->template->setTitle('Home');
         $this->template->setLayout('home');    
         $this->template->homeRender('cms/'.$this->controller.'/index', $data);
+    }
+
+    public function know_more_about_birds(){
+        $data = array();
+        $status = '';
+        $msg = '';
+        $settings = $this->tbl_generic_model->get('settings','*', array());
+        //pr($settings);
+        if(count($settings) > 0){
+            foreach ($settings as $key => $value) {
+                $data['set'][$value->name] = $value->name_val;
+            }
+        }
+        $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $this->template->setTitle('About Us');
+        $this->template->setLayout('cms');
+        $this->template->homeRender($this->controller.'/know_more_about_birds', $data);
     }
 
     

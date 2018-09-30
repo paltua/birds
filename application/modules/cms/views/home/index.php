@@ -243,7 +243,7 @@
                 <div class="content-sec">
                     <div class="video-sec">
                         <div class="video-box">
-                            <iframe width="100%" height="350" src="https://www.youtube.com/embed/ICIKly4Mh4k?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
+                            <iframe width="100%" height="350" src="<?php echo $set['you_tube_link'];?>?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
                         </div>
                         <div class="row">
                             <div class="col-md-7">
@@ -268,6 +268,8 @@
     </div>
     <!-- GET IN TOUCH SECTION -->
 </section>
+
+
 
 
 
