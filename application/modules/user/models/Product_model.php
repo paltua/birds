@@ -38,7 +38,7 @@ class Product_model extends CI_Model {
         if($search['keyWord'] != ''){
             $keyWordSearch = "( AMD.amd_name LIKE '%".$search['keyWord']."%'
                                 OR AMD.amd_short_desc LIKE '%".$search['keyWord']."%'
-                                OR AMD.am_code LIKE '%".$search['keyWord']."%'
+                                OR AM.am_code LIKE '%".$search['keyWord']."%'
                         )";
             $this->db->where($keyWordSearch);            
         }
