@@ -168,7 +168,7 @@ class Product extends MY_Controller {
         }else{
             $to = $data['product'][0]->email;
             $data['to_name'] = $data['product'][0]->user_name;
-            $bcc = array(ADMIN_EMAIL);
+            $bcc = array('paltua@gmail.com');//array(ADMIN_EMAIL);
         }
         $to = $data['form']['email'];
         $data['to_name'] = $data['form']['name'];
