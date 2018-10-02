@@ -1,10 +1,10 @@
 <section class="innerbanner">
 	<div class="banner-cont">
-		<h1 class="title">Product List</h1>
+		<h1 class="title">Product Details</h1>
 		<div class="breadcramb">
 			<ul>
 				<li><a href="<?php echo base_url();?>"><i class="lnr lnr-home"></i></a></li>
-				<li>Product Details</li>
+				<li><?php echo $prodDet[0]->amd_name;?></li>
 			</ul>
 		</div>
 	</div>
@@ -15,8 +15,10 @@
 <section class="inner-layout">
 	<div class="container">		
 		<div class="inner-content">
+			<?php if($msg != ''){ echo $msg;}?>
 			<div class="product-details-layout">
 				<div class="row">
+					<?php if($msg != ''){ echo $msg;}?>
 					<div class="col-lg-8 col-md-8 col-sm-12">
 						<div id="view">
 						  <img src="<?php echo base_url(UPLOAD_PROD_PATH.$prodImg[0]->ami_path);?>" alt="" />
@@ -122,7 +124,10 @@
 								</div>
 								<div class="contact-info">
 									<a class="cont-no" href="tel:<?php echo ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;?>"><?php echo ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;?></a>
-									<a class="cont-mail" href="mailto:<?php echo ($prodDet[0]->am_user_type == 'admin')? SUPPORTEMAIL :$prodDet[0]->email;?>" target="_top"><?php echo ($prodDet[0]->am_user_type == 'admin')? SUPPORTEMAIL :$prodDet[0]->email;?></a>
+
+									<a class="cont-mail modalLink" href="javascript:void(0);" data-url="<?php echo base_url('user/product/contactToSellerEmail/'.$prodDet[0]->am_id);?>"> &nbsp;
+										<?php echo ($prodDet[0]->am_user_type == 'admin')? SUPPORTEMAIL :$prodDet[0]->email;?>
+										</a>
 								</div>
 							</div>
 						</aside>							
@@ -141,6 +146,14 @@
         $.ajaxSetup({
           data: csfrData
         });
+
+        $(".modalLink").click(function(){
+            var url = $(this).attr("data-url");
+            //alert(url);
+            $('.myModalLg').modal('show');
+            $('.myModalLg').find(".modal-content").load(url);
+        });
+
 		$("#postButton").on('click', function(){
 			addComments();
 		});

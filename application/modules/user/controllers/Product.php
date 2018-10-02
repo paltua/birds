@@ -65,8 +65,8 @@ class Product extends MY_Controller {
 
 	public function details($am_id = 0){
 		$data = array();
-        $status = '';
-        $msg = '';
+        $status = $this->session->flashdata('status');
+        $msg = $this->session->flashdata('msg');
         $this->_addViewedDetails($am_id);
         $data['prodDet'] = $this->product_model->getProductDetails($am_id);
         $data['prodImg'] = $this->product_model->getProductImages($am_id);
@@ -124,6 +124,57 @@ class Product extends MY_Controller {
             $this->tbl_generic_model->add('animal_master_viewed', $data);
             $this->product_model->updateViewedCount($am_id);
         }
+    }
+
+    public function contactToSellerEmail(){
+        $data = array();
+        $data['am_id'] = $am_id = $this->uri->segment(4);
+        $where['user_id'] = $this->session->userdata('user_id');
+        $user = $this->tbl_generic_model->get('user_master', '*', $where);
+        if(count($user) > 0){
+            $data['user']['name'] = $user[0]->name; 
+            $data['user']['email'] = $user[0]->email;
+            $data['user']['mobile'] = $user[0]->mobile;
+        }else{
+            $data['user']['name'] = ''; 
+            $data['user']['email'] = '';
+            $data['user']['mobile'] = '';
+        }
+        $this->load->view('product/contactToSellerEmail', $data);
+    }
+
+    public function submitContactToSellerEmail(){
+        $data = array();
+        $data['am_id'] = $am_id = $this->uri->segment(4);
+        $data['product'] = $this->product_model->getProductDetails($am_id);
+        $data['form'] = $this->input->post('contact_us');
+        if($data['form']['name'] != '' && $data['form']['email'] != '' ){
+            $this->_sendEmail($data);
+            $this->session->set_flashdata('status', 'success');
+            $this->session->set_flashdata('msg', 'Thank You! You have successfully Submit your query to the Seller for the Listing #'.$data['product'][0]->am_code);
+        }else{
+            $this->session->set_flashdata('status', 'danger');
+            $this->session->set_flashdata('msg', 'Please enter the Name and Email field.');
+        }
+        redirect('user/product/details/'.$am_id);
+    }
+
+    private function _sendEmail($contact_us = array()){
+        $data = $contact_us;
+        if($data['product'][0]->am_user_type == 'admin'){
+            $to = ADMIN_EMAIL;
+            $data['to_name'] = ADMIN_NAME;
+            $bcc = array();
+        }else{
+            $to = $data['product'][0]->email;
+            $data['to_name'] = $data['product'][0]->user_name;
+            $bcc = array(ADMIN_EMAIL);
+        }
+        $to = $data['form']['email'];
+        $data['to_name'] = $data['form']['name'];
+        $subject = "Request for #".$data['product'][0]->am_code." | Parrot Dipankar";
+        $body = $this->load->view('user/'.$this->controller.'/email', $data, TRUE);
+        $this->tbl_generic_model->sendEmail($to, $subject, $body, array(), $bcc);
     }
 
 	
