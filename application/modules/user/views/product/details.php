@@ -18,7 +18,6 @@
 			<?php if($msg != ''){ echo $msg;}?>
 			<div class="product-details-layout">
 				<div class="row">
-					<?php if($msg != ''){ echo $msg;}?>
 					<div class="col-lg-8 col-md-8 col-sm-12">
 						<div id="view">
 						  <img src="<?php echo base_url(UPLOAD_PROD_PATH.$prodImg[0]->ami_path);?>" alt="" />
