@@ -168,7 +168,7 @@ class Product extends MY_Controller {
         }else{
             $to = $data['product'][0]->email;
             $data['to_name'] = $data['product'][0]->user_name;
-            $bcc = array('paltua@gmail.com');//array(ADMIN_EMAIL);
+            $bcc = array(ADMIN_EMAIL);
         }
         $subject = "Request for #".$data['product'][0]->am_code." | Parrot Dipankar";
         $body = $this->load->view('user/'.$this->controller.'/email', $data, TRUE);
