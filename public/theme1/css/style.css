@@ -362,7 +362,7 @@ video::-webkit-media-controls { display:none !important; }
 .inner-top-cat {background: rgba(0,0,0,0.1); padding: 10px 0;}
 .inner-top-cat .category-circle figure {width: 100px; height: 100px; padding: 4px;}
 .inner-top-cat .category-circle figure .circle-layout {width: 90px;height: 90px;}
-.inner-top-cat .category-circle .owl-item .item h3 {font-size: 18px;margin: 0}
+.inner-top-cat .category-circle .owl-item .item h3 {font-size: 13px;margin: 0}
 .inner-top-cat .category-circle .owl-item .item h3 a {color:#2a2a2a;}
 .inner-top-cat .category-circle.owl-theme .owl-nav {margin-top: 0;}
 .inner-top-cat.category-circle.owl-carousel .owl-nav button { margin-top: -14px; margin-bottom: 0;}
