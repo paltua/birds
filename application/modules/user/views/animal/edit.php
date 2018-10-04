@@ -117,7 +117,7 @@
 						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-12"><h3 class="title">Edit</h3></div>
-								<div class="col-md-12 multi-horizontal" data-for="name">
+								<div class="col-md-6 multi-horizontal" data-for="name">
 									<div class="form-group">
 										<label class="form-control-label ">Category *</label>
 		                                <select class="form-control form-check-input" name="cat_id" id="animal_cat_id" required="">
@@ -135,7 +135,7 @@
 		                                <?php echo form_error('cat_id', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
-	                            <div class="col-md-12 multi-horizontal" data-for="price">
+	                            <div class="col-md-6 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Title *</label>
 		                                <input class="form-control input" name="amd_name" data-form-field="Title" placeholder="Title" value="<?php echo $details[0]->amd_name;?>" required="" id="Title-form4-4v" type="text">
@@ -145,13 +145,13 @@
 	                            <div class="col-md-12">
 									<div class="form-check">
 									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios2" value="sell" <?php if($details[0]->buy_or_sell == 'sell'){?> checked <?php }?>>
-									  	<label class="form-check-label" for="exampleRadios2">
+									  	<label class="form-check-label checkbox-inline" for="exampleRadios2">
 									    	Sell
 									  	</label>
 									</div>
 									<div class="form-check">
 									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios1" value="buy" <?php if($details[0]->buy_or_sell == 'buy'){?> checked <?php }?>>
-									  	<label class="form-check-label" for="exampleRadios1">
+									  	<label class="form-check-label checkbox-inline" for="exampleRadios1">
 									    	Buy
 									  	</label>
 									</div>
@@ -235,21 +235,27 @@
 							<?php for ($i=count($images) + 1; $i < 7  ; $i++) { ?>
 									
 								<div class="col-md-2">
-									<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
-									<input type="hidden" name="addedImage[<?php echo $i;?>]" value="0">
-									<div class="col-md-12">
+									
+									<div class="upldimg-box">
 										<img id="imagePreview_<?php echo $i;?>" src="<?php echo base_url('public/'.THEME.'/images/add-image.jpg');?>">
 									</div>
-									<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
+									<div class="dflt">
+										<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
+									</div>
+									<div class="upload-btn-wrapper">
+									  <button class="btn-dflt">Upload a file</button>
+									  <input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
+										<input type="hidden" name="addedImage[<?php echo $i;?>]" value="0">
+									</div>
 								</div>
 							<?php }?>
 								
 							</div>					
 						</div>
-                        <div class="input-group-btn col-md-4">
-                        	<div class="row">
-                            <button type="submit" class="btn btn-primary btn-form display-4">Publish Item</button>
-                            <a href="<?php echo base_url('user/animal/listing');?>" class="btn btn-primary btn-form">Back</a>
+                        <div class="col-md-4">
+                        	<div class="btn-group">
+                            <button type="submit" class="btn btn-form display-4">Publish Item</button>
+                            <a href="<?php echo base_url('user/animal/listing');?>" class="btn btn-form">Back</a>
                             </div>
                         </div>
 					</div>

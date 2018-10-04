@@ -98,7 +98,7 @@
 						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-12"><h3 class="title">Add free listing</h3></div>
-								<div class="col-md-12 multi-horizontal" data-for="name">
+								<div class="col-md-6 multi-horizontal" data-for="name">
 									<div class="form-group">
 										<label class="form-control-label ">Category *</label>
 		                                <select class="form-control form-check-input" name="cat_id" id="animal_cat_id" required="">
@@ -112,7 +112,7 @@
 		                                <?php echo form_error('cat_id', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
-	                            <div class="col-md-12 multi-horizontal" data-for="price">
+	                            <div class="col-md-6 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Title *</label>
 		                                <input class="form-control input" name="amd_name" data-form-field="Title" placeholder="Title" required="" id="Title-form4-4v" type="text">
@@ -197,11 +197,18 @@
 							<?php for ($i=1; $i < 7 ; $i++) { ?>
 									
 								<div class="col-md-2">
-									<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
-									<div class="col-md-12">
+									
+									<div class="upldimg-box">
 										<img id="imagePreview_<?php echo $i;?>" src="<?php echo base_url('public/'.THEME.'/images/add-image.jpg');?>">
 									</div>
-									<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
+									<div class="dflt">
+										<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
+									</div>
+									<div class="upload-btn-wrapper">
+										<button class="btn-dflt">Upload a file</button>
+										<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
+									</div>
+									
 								</div>
 							<?php }?>
 								
