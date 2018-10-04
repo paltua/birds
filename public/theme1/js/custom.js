@@ -120,15 +120,15 @@ jQuery(document).ready(function ($) {
 	    nav:true,
 	    responsive:{
 	        0:{
-	            items:1,
-	            nav:false,
-	        },
-	        600:{
 	            items:3,
 	            nav:false,
 	        },
+	        600:{
+	            items:6,
+	            nav:false,
+	        },
 	        1000:{
-	            items:7,
+	            items:9,
 	            nav:true,
 	        }
 	    }

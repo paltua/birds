@@ -360,8 +360,8 @@ video::-webkit-media-controls { display:none !important; }
 .breadcramb ul li:last-child::after {display: none}
 .breadcramb ul li a {color: #fff}
 .inner-top-cat {background: rgba(0,0,0,0.1); padding: 10px 0;}
-.inner-top-cat .category-circle figure {width: 100px; height: 100px; padding: 4px;}
-.inner-top-cat .category-circle figure .circle-layout {width: 90px;height: 90px;}
+.inner-top-cat .category-circle figure {width: 78px; height: 78px; padding: 4px;margin-bottom: 3px}
+.inner-top-cat .category-circle figure .circle-layout {width: 70px;height: 70px;}
 .inner-top-cat .category-circle .owl-item .item h3 {font-size: 13px;margin: 0}
 .inner-top-cat .category-circle .owl-item .item h3 a {color:#2a2a2a;}
 .inner-top-cat .category-circle.owl-theme .owl-nav {margin-top: 0;}
