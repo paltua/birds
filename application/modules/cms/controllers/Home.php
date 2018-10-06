@@ -22,7 +22,7 @@ class Home extends MY_Controller
         $data['premiumProduct'] = $this->cms_model->getPremiumProduct();
         $data['dipChoices'] = $this->cms_model->getDipChoicesProduct();
         $data['bestCat'] = $this->cms_model->getLevelOneCategory();
-        $data['gallery'] = $this->tbl_generic_model->get('gallery', '*', array(), array('created_date' => 'DESC'));
+        $data['gallery'] = $this->cms_model->getGalleryList();
         $settings = $this->tbl_generic_model->get('settings','*', array());
         //pr($settings);
         if(count($settings) > 0){

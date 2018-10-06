@@ -97,6 +97,14 @@ class Cms_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function getGalleryList($limit = 10){
+        $this->db->select('*');
+        $this->db->from('gallery');
+        $this->db->order_by('created_date','DESC');
+        $this->db->limit('8');
+        return $this->db->get()->result();
+    }
+
     
     
 
