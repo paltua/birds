@@ -21,7 +21,7 @@ class Home extends MY_Controller
         $data['latestProduct'] = $this->cms_model->getLetestProduct();
         $data['premiumProduct'] = $this->cms_model->getPremiumProduct();
         $data['dipChoices'] = $this->cms_model->getDipChoicesProduct();
-        $data['bestCat'] = $this->cms_model->getLevelOneCategory();
+        $data['bestCat'] = $this->cms_model->getBestChoices();
         $data['gallery'] = $this->cms_model->getGalleryList();
         $settings = $this->tbl_generic_model->get('settings','*', array());
         //pr($settings);

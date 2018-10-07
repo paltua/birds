@@ -9,7 +9,7 @@
 						<?php 
 			              $imagePath = base_url('public/'.THEME.'/images/cockatiel_01_img.jpg');
 			              if($value->ami_path != ''){
-			                $imagePath = base_url(UPLOAD_PROD_PATH.$value->ami_path);
+			                $imagePath = base_url(UPLOAD_PROD_PATH.'thumb/'.$value->ami_path);
 			              }?>
 			              <a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" >
 						<img src="<?php echo $imagePath;?>"/>
