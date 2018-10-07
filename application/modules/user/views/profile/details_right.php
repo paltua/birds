@@ -22,7 +22,7 @@
               </div>
             </div>         
             <div class="input-group-btn col-md-12">
-                <button href="" type="submit" class="btn btn-primary btn-form display-4">Create Account</button>
+                <button href="" type="submit" class="btn btn-primary btn-form display-4">Update Password</button>
             </div>
           </div>
           </form>
