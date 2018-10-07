@@ -203,22 +203,17 @@
                                         <figure>
                                             <div class="circle-layout">
                                                 <?php 
-                                                $imagePath = base_url('public/'.THEME.'/images/cockatiel_01_img.jpg');
+                                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
                                                 if($value->image_name != ''){
-                                                    $imagePath = base_url(UPLOAD_PROD_PATH.'thumb/'.$value->ami_path);
+                                                    $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
                                                 }?>
-                                                <img src="<?php echo $imagePath;?>" alt="<?php echo $value->amd_name;?>">
+                                                <img src="<?php echo $imagePath;?>" alt="<?php echo $value->acmd_name;?>">
                                                 <figcaption>
-                                                    <a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="button"><i class="lnr lnr-plus-circle"></i></a>
+                                                    <a href="<?php echo base_url('user/product/search/'.$value->acm_id);?>" class="button"><i class="lnr lnr-plus-circle"></i></a>
                                                 </figcaption>
                                             </div>                              
                                         </figure>
-                                        <h3>
-                                        <a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
-                                            <?php echo $value->amd_name;?>
-                                        </a>
-                                        </h3>
-                                        <h5>RS <?php echo $value->amd_price;?></h5>
+                                        <h3><a href="<?php echo base_url('user/product/search/'.$value->acm_id);?>"><?php echo $value->acmd_name;?></a></h3>
                                     </div>
                                 <?php } } ?>
                                     

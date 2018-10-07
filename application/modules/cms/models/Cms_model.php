@@ -93,15 +93,24 @@ class Cms_model extends CI_Model {
 
     public function getBestChoices(){
         $selectedCat = '33,34,43';
-        $this->db->select('AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path');
-        $this->db->from('animal_category_relation ACR');
-        $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
-        $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
-        $this->db->join('animal_master_images AMI','AMI.am_id=ACR.am_id AND AMI.ami_default = 1','LEFT');
-        $this->db->join('animal_category_master ACM',"ACM.acm_id = ACR.acm_id AND ACM.parent_id > 0");
-        $this->db->where_in('ACR.acm_id', $selectedCat);
-        $this->db->group_by('AM.am_id');
-        return $this->db->get()->result();
+        $sql = "SELECT
+                    `ACM`.`parent_id`,
+                    `ACM`.`image_name`,
+                    `ACMD`.*,
+                    `LANG`.`lang_name`
+                FROM
+                    `animal_category_master` `ACM`
+                INNER JOIN `animal_category_master_details` `ACMD` ON
+                    `ACMD`.`acm_id` = `ACM`.`acm_id`
+                JOIN `language` `LANG` ON
+                    `LANG`.`language` = `ACMD`.`language`
+                WHERE 1
+                    AND `ACM`.`acm_is_deleted` = '0' 
+                    AND `ACM`.`acm_status` = 'active' 
+                    AND `ACMD`.`language` = 'en'
+                    AND ACM.acm_id IN (".$selectedCat.")";
+                    
+        return $this->db->query($sql)->result();
     }
 
     public function getAboutUsUser(){
