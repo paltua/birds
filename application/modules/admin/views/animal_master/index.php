@@ -65,11 +65,22 @@
         });
 
         $('#dataTables-example').on('click', '.dipChoice', function(){ 
-            var url = '<?php echo base_url('admin/animal_master/changeDipankarCHoiceStatus');?>';
-            var am_id = $(this).val();
-            $.post( url, { am_id : am_id}, function( data ) {
-                $("#msgShow").html(data.msg);
-            }, "json");
+            var confirmStatus = confirm('Are you sure to add this product in your choice?');
+            var checkedStatus = $(this).prop("checked");
+            if(confirmStatus == true){
+                var url = '<?php echo base_url('admin/animal_master/changeDipankarCHoiceStatus');?>';
+                var am_id = $(this).val();
+                $.post( url, { am_id : am_id}, function( data ) {
+                    $("#msgShow").html(data.msg);
+                }, "json");
+            }else{
+
+                if( checkedStatus == true){
+                    $(this).prop("checked", false);
+                }else{
+                    $(this).prop("checked", true);
+                }
+            }           
         });
 
     });

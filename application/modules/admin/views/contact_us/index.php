@@ -21,7 +21,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">ontact Us <!-- <a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
+        <h1 class="page-header">Contact Us <!-- <a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
         <i class="fa fa-plus-circle"></i> Add</a> --></h1>
         
     </div>

@@ -418,7 +418,7 @@ class Animal_master extends MY_Controller
 
     public function changeDipankarCHoiceStatus(){
         $am_id = $this->input->post('am_id');
-        $data['msg'] = $this->template->getMessage('success', 'Successfully added to the choice list of Dipankar.');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully updated to the choice list of Dipankar.');
         $this->animal_master_model->changeDipankarCHoiceStatus($am_id);
         echo json_encode($data);
     }
