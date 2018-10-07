@@ -10,22 +10,18 @@ jQuery(document).ready(function ($) {
 	        0:{
 	            items:3,
 	            margin:10,
-	            nav:false,
 	        },
 	        600:{
 	            items:5,
 	            margin:10,
-	            nav:false,
 	        },
 	        1000:{
 	            items:6,
 	            margin:10,
-	            nav:true,
 	        },
 	        1200:{
 	            items:7,
 	            margin:20,
-	            nav:true,
 	        }
 	    }
 	})
@@ -39,22 +35,18 @@ jQuery(document).ready(function ($) {
 	        0:{
 	            items:3,
 	            margin:10,
-	            nav:false,
 	        },
 	        600:{
 	            items:5,
 	            margin:10,
-	            nav:false,
 	        },
 	        1000:{
 	            items:8,
 	            margin:10,
-	            nav:true,
 	        },
 	        1200:{
 	            items:10,
 	            margin:20,
-	            nav:true,
 	        }
 	    }
 	})
@@ -67,19 +59,15 @@ jQuery(document).ready(function ($) {
 	    responsive:{
 	        0:{
 	            items:1,
-	            nav:false,
 	        },
 	        600:{
 	            items:2,
-	            nav:false,
 	        },
 	        1000:{
 	            items:3,
-	            nav:true,
 	        },
 	        1200:{
 	            items:3,
-	            nav:true,
 	        }
 	    }
 	})
@@ -91,24 +79,21 @@ jQuery(document).ready(function ($) {
 	    nav:true,
 	    responsive:{
 	        0:{
-	            items:3,
-	            margin:10,
-	            nav:false,
+	            items:4,
+	            margin:5,
+	            nav:true,
 	        },
 	        600:{
 	            items:4,
 	            margin:10,
-	            nav:false,
 	        },
 	        1000:{
 	            items:6,
 	            margin:15,
-	            nav:true,
 	        },
 	        1200:{
 	            items:7,
 	            margin:30,
-	            nav:true,
 	        }
 	    }
 	})
@@ -121,15 +106,12 @@ jQuery(document).ready(function ($) {
 	    responsive:{
 	        0:{
 	            items:3,
-	            nav:false,
 	        },
 	        600:{
 	            items:6,
-	            nav:false,
 	        },
 	        1000:{
 	            items:9,
-	            nav:true,
 	        }
 	    }
 	})
@@ -202,8 +184,38 @@ $(window).bind("load resize", function() {
 	if (width <= 767) {
 		
 		$('.btn.pub-list').detach().insertAfter('#header .navbtn');
+		$('.logbtn').detach().insertAfter('#header .navbtn');
 	}
 	else {
 		$('.btn.pub-list').detach().appendTo('#header .headerright > div:nth-child(2)');
+		$('.logbtn').detach().appendTo('#header .headerright > div:nth-child(3)');
 	}
 });
+
+function postsCarousel() {
+		var checkWidth = $(window).width();
+		var owlPost = $("#latest-posts .posts-wrapper");
+		if (checkWidth > 767) {
+			if(typeof owlPost.data('owl.carousel') != 'undefined'){
+				owlPost.data('owl.carousel').destroy(); 
+			}
+			owlPost.removeClass('owl-carousel');
+		} else if (checkWidth < 768) {
+			owlPost.addClass('owl-carousel');
+			owlPost.owlCarousel({
+				items : 1,
+				slideSpeed : 500,
+				animateOut: 'fadeOut',
+				touchDrag: false,
+				mouseDrag: false,
+				autoplay: true,
+				autoplaySpeed: 8000,
+				autoplayTimeout: 8000,
+				dots: true,
+				loop: true
+			});
+		}
+	}
+
+  postsCarousel();
+  $(window).resize(postsCarousel);

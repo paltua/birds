@@ -48,6 +48,12 @@
 	.search-layout {width: 518px;}
 	.homepdlist-tab .resp-tabs-list li {font-size:15px; padding: 6px !important}
 	.left-static {width: auto; left: 30px; top: 531px;}
+	.homeGetTouch .secleft .img-grid {margin-top:0px}
+	.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover, .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
+    width: 20px;
+    height: 20px;
+    background-size: 20px;
+}
 }
 @media screen and (max-width:768px) {
 	h2.resp-accordion {font-size: 17px;padding: 10px 15px;background: #fff;font-weight: 500;}
@@ -74,7 +80,7 @@
 	.comments-sec .comment-add-layout {margin-bottom: 20px}
 	.register-block {border-left: none; margin-top: 20px}
 	.login-block h2.title, .register-block h2.title { font-size: 1.5rem}
-	.headerright { position: fixed; width: 100%; height: 100%; left: 0; right: 0; top: 0; z-index: 999; border:15px solid #fff; background-color: rgba(181,49,60,0.9); overflow: auto; opacity: 0; visibility: hidden; -webkit-transition: all linear 0.5s; -moz-transition: all linear 0.5s; transition: all linear 0.5s; }
+	.headerright { position: fixed; width: 100%; height: 100%; left: 0; right: 0; top: 0; z-index: 999; border:10px solid #fff; background-color: rgba(181,49,60,0.9); overflow: auto; opacity: 0; visibility: hidden; -webkit-transition: all linear 0.5s; -moz-transition: all linear 0.5s; transition: all linear 0.5s; }
 	.headerright.menuopen {opacity: 1; visibility: visible;}
 	.topsearch .topsearchlayout,.menusection .menulayout { position: relative; width:100%; height: 100%; display: table; vertical-align: middle; text-align: center; background-color: rgba(181,49,60,0.9);}
 	.topsearch .topsearchlayout form, .menusection .menulayout nav { position: relative; display: table-cell;; vertical-align: middle; padding:0 3%; }
@@ -95,9 +101,9 @@
 	.menusection nav ul li { padding:10px 0; }
 	.menusection nav ul li a { font-size: 17px; color: #fff; -webkit-transition: all linear 0.5s; -moz-transition: all linear 0.5s; transition: all linear 0.5s;}
 	.menusection nav ul li a:hover { color: #0a0a0a }
-	.navbtn {display: block; top: 29px; right: 20px; z-index: 9999}
+	.navbtn {display: block; top: 29px; right: 10px; z-index: 9999}
 	.navbtn.navtogl em:nth-child(2) {width: 0}
-	.navbtn.navtogl em:first-child {transform:rotate(45deg); top: 13px; position: relative;}
+	.navbtn.navtogl em:first-child {transform:rotate(45deg); top: 12px; position: relative;}
 	.navbtn.navtogl em:last-child {transform:rotate(-45deg); bottom: 4px; position: relative;}
 	.navbtn.navtogl:hover em:first-child,.navbtn.navtogl:hover em:nth-child(3) {width:100%;}
 	#header nav ul li {float: none; margin-left: 0; width: 100%; padding: 8px 0}
@@ -113,14 +119,34 @@
 	.htop {top:auto;bottom:0;font-size: 11px}
 	#footer {padding-bottom: 40px; z-index: 2}
 	.btn.pub-list {
-		padding: 5px 28px 5px 22px;
+		padding: 5px;
 	    position: fixed;
-	    right: 57px;
+	    right: 115px;
 	    background-size: 15px;
 	    background-position: 4px center;
 	    top: 24px;
+	    background-image: none;
+	    font-size: 11px;
 	}
-	.btn.pub-list::after {top: 9px;right: 8px;}
+	.logbtn {
+	    cursor: pointer;
+	    background-color: #ff1212;
+	    background-repeat: no-repeat;
+	    background-position: 86% center;
+	    display: block;
+	    border: none;
+	    padding: 6px 10px;
+	    font-size: 11px;
+	    font-weight: 600;
+	    text-transform: uppercase;
+	    color: #fff;
+	    border-radius: 3px;
+	    background-size: 16px;
+	    position: fixed;
+	    right: 46px;
+	    top: 24px;
+	}
+	.btn.pub-list::after {display:none;}
 	.botm-carsl h3.title {margin-top:15px;}
 	#header .headerright > div:nth-child(2) {height:0px;padding: 0;}
 }
@@ -154,13 +180,13 @@
 	.left-static {left: 10px;}
 	.homeBanner h6  {padding: 0 15px}
 	.category-circle figure {
-	    width: 84px;
-	    height: 84px;
+	    width: 64px;
+	    height: 64px;
 	    padding: 4px;
 	}
 	.category-circle figure .circle-layout{
-		width: 76px;
-    	height: 76px;
+		width: 56px;
+    	height: 56px;
 	}
 	.botm-carsl .category-circle figure {
 	    width: 86px;

@@ -133,7 +133,7 @@ a:hover {text-decoration:none;}
 #header .headerright .inline-elmnt .logbtn:hover {background-color: #094800}
 #header .headerright .login .logbtn {background-image: url(../images/icon-login.png)}
 #header .headerright .logout .logbtn {background-image: url(../images/icon-logout.png)}
-.navbtn { display: none; cursor: pointer; top: 3px; height:19px; width: 30px; position: fixed; border:none; background: none;}
+.navbtn { display: none; cursor: pointer; top: 3px; height:19px; width: 20px; position: fixed; border:none; background: none;}
 .navbtn em {width:100%; height: 3px; background: #fff; display: block;-webkit-transition: all linear 0.5s;-moz-transition: all linear 0.5s;transition: all linear 0.5s}
 .navbtn em:nth-child(2) { margin: 5px 0 }
 .navbtn:hover em:nth-child(1) { width:40%; }
@@ -251,7 +251,8 @@ table tr td {position: relative;}
 .homeGetTouch .gridwrap { display: -webkit-flex; display: -ms-flexbox; display: flex; -ms-flex-wrap:wrap; flex-wrap:wrap; height: 100% }
 .homeGetTouch .gridwrap .two-grid { flex-grow: 1; height: 100%; width: 50%; vertical-align: top;}
 .homeGetTouch .secleft .img-grid ul li { position: relative; float: left; width: 25%; height: 25%; overflow: hidden; }
-.homeGetTouch .secleft .img-grid,.homeGetTouch .secleft .img-grid ul { position: relative;height: 100%;}
+.homeGetTouch .secleft .img-grid,.homeGetTouch .secleft .img-grid ul { position: relative;height: 100%; }
+.homeGetTouch .secleft .img-grid {margin-top:160px}
 .homeGetTouch .secleft .img-grid ul li img { width: 100%; height: 100%;}
 .homeGetTouch .secright { background-color: #0e0e0e; background-image: url(../images/logo-light.png); background-position: center center;  background-repeat: no-repeat; text-align: center; padding: 0 22px; }
 .homeGetTouch .secright .content-sec { position: relative; padding-top: 177px; height: 100%; padding-bottom: 114px }
@@ -527,6 +528,9 @@ div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content
 div.dataTables_paginate {float:right;}
 div.dataTables_paginate ul li {display: :inline-block; margin-left: 4px}
 div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; display: block;}
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+    display: block;
+}
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }
@@ -596,7 +600,7 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
 	.botmlayout .box figure ul li:last-child {padding-bottom: 5px }
 	.botmlayout .box figure .sm-icon { width: 48px; height: 48px;}
 	.botmlayout .box figure .sm-icon, .botmlayout .box figure .xs-icon {border: 3px solid rgba(0,0,0,0.1);}
-	.homeGetTouch .secleft .img-grid, .homeGetTouch .secleft .img-grid ul {height: 100%}
+	.homeGetTouch .secleft .img-grid, .homeGetTouch .secleft .img-grid ul {height: 100%;;}
   .homepdlist .content-sec { padding-top: 138px;}
   .homediscover .content-sec {padding-top: 234px;}
   .homecategory .content-sec {padding-top: 160px;}
