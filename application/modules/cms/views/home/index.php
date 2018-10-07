@@ -184,18 +184,7 @@
                         <div class="botm-carsl">
                             <h3 class="title">Best Choices</h3>
                             <div class="box-wrap">
-                                <div class="category-circle carousel-10 owl-carousel owl-theme">
-                                    <!-- <div class="item">
-                                        <figure>
-                                            <div class="circle-layout">
-                                                <img src="images/buddies_01_img.jpg" alt="Buddies">
-                                                <figcaption>
-                                                    <a href="javascript:void(0)" class="button"><i class="lnr lnr-plus-circle"></i></a>
-                                                </figcaption>
-                                            </div>                              
-                                        </figure>
-                                        <h3><a href="javascript:void(0)">Buddies</a></h3>
-                                    </div> -->
+                                <div class="category-circle carousel-3 owl-carousel owl-theme">
                                     <?php if(count($bestCat) > 0){
                                         foreach ($bestCat as $key => $value) {
                                     ?>
