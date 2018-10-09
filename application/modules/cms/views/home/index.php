@@ -129,6 +129,7 @@
                                         </div>
                                     <?php endforeach; endif;  ?>
                                     </div>
+                                    <a href="javascript:void(0)" class="btn btn-danger">View More</a>
                                 </div>
                                 <div>
                                     <div class="homelist-box carousel-2 owl-carousel owl-theme">
@@ -153,6 +154,7 @@
                                             </div>
                                         <?php endforeach; endif;  ?>
                                     </div>
+                                    <a href="javascript:void(0)" class="btn btn-danger">View More</a>
                                 </div>
                                 
                                 <div>
@@ -178,17 +180,61 @@
                                         </div>
                                     <?php endforeach; endif;  ?>
                                     </div>
+                                    <a href="javascript:void(0)" class="btn btn-danger">View More</a>
                                 </div>
                             </div>
                         </div>
                         <div class="botm-carsl">
                             <h3 class="title">Best Choices</h3>
                             <div class="box-wrap">
-                                <div class="category-circle carousel-3 owl-carousel owl-theme">
+                                <div class="category-circle">
+                                    <div class="circle-item">
+                                        <figure>
+                                            <div class="circle-layout">
+                                                
+                                                <img src="<?php echo $imagePath;?>" alt="">
+                                                <figcaption>
+                                                    <a href="#" class="button"><i class="lnr lnr-plus-circle"></i></a>
+                                                </figcaption>
+                                            </div>                              
+                                        </figure>
+                                        <h3><a href="#">gdefh</a></h3>
+                                    </div>
+                                </div>
+                                <div class="category-circle">
+                                    <div class="circle-item">
+                                        <figure>
+                                            <div class="circle-layout">
+                                                
+                                                <img src="<?php echo $imagePath;?>" alt="">
+                                                <figcaption>
+                                                    <a href="#" class="button"><i class="lnr lnr-plus-circle"></i></a>
+                                                </figcaption>
+                                            </div>                              
+                                        </figure>
+                                        <h3><a href="#">gdefh</a></h3>
+                                    </div>
+                                </div>
+                                <div class="category-circle">
+                                    <div class="circle-item">
+                                        <figure>
+                                            <div class="circle-layout">
+                                                
+                                                <img src="<?php echo $imagePath;?>" alt="">
+                                                <figcaption>
+                                                    <a href="#" class="button"><i class="lnr lnr-plus-circle"></i></a>
+                                                </figcaption>
+                                            </div>                              
+                                        </figure>
+                                        <h3><a href="#">gdefh</a></h3>
+                                    </div>
+                                </div>
+
+                                <div class="category-circle">
                                     <?php if(count($bestCat) > 0){
                                         foreach ($bestCat as $key => $value) {
                                     ?>
-                                    <div class="item">
+                                    <div class="circle-item">
                                         <figure>
                                             <div class="circle-layout">
                                                 <?php 

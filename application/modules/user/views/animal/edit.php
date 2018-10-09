@@ -222,12 +222,18 @@
 							<?php if(count($images) > 0){?>
 								<?php foreach ($images as $keyIm => $valueIm) {?>
 									<div class="col-md-2">
-										<input type="file" onchange="readURL(this, '<?php echo $keyIm + 1;?>');" data-id="<?php echo $keyIm + 1;?>" name="ami_path_<?php echo $keyIm + 1;?>" />
+										
 										<input type="hidden" name="addedImage[<?php echo $keyIm + 1;?>]" value="<?php echo $valueIm->ami_id;?>">
-										<div class="col-md-12">
+										<div class="upldimg-box">
 											<img id="imagePreview_<?php echo $keyIm + 1;?>" src="<?php echo base_url(UPLOAD_PROD_PATH.$valueIm->ami_path);?>">
 										</div>
+										<div class="dflt">
 										<input type="radio" name="default" <?php if($valueIm->ami_default == 1){?>checked=""<?php }?> value="<?php echo $keyIm + 1;?>">Default
+										</div>
+										<div class="upload-btn-wrapper">
+											<button class="btn-dflt">Upload a file</button>
+										<input type="file" onchange="readURL(this, '<?php echo $keyIm + 1;?>');" data-id="<?php echo $keyIm + 1;?>" name="ami_path_<?php echo $keyIm + 1;?>" />
+										</div>
 										<input type="button" class="btn btn-danger deleteImg" id="buttunId_<?php echo $valueIm->ami_id;?>" value="Delete" onclick="return deleteImage(<?php echo $valueIm->ami_id;?>, <?php echo $keyIm + 1;?>)" name="" >
 									</div>
 								<?php } ?>
