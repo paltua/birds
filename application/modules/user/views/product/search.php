@@ -90,33 +90,33 @@
 			<div class="product-listing-layout">
 				<div class="row">
 					<?php if(count($selectedCatDet) > 0){ ?>
-					<div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="aside-layout">
-							<div class="aside-item">
-								<div id="verticalTab">
-									<ul class="resp-tabs-list">
-										<?php foreach ($selectedCatDet as $key => $value) {
-											?>
-									<li><?php echo $value->lang_name;?></li>
-								<?php }} ?>
-									</ul>
-									<div class="resp-tabs-container">
-										<?php if(count($selectedCatDet) > 0){
-											foreach ($selectedCatDet as $key => $value) {
-											?>
-										<div>
-											<p><?php echo $value->acmd_name;?></p>
-											<p><?php echo $value->acmd_short_desc;?></p>
+						<div class="col-lg-4 col-md-12 col-sm-12">
+							<div class="aside-layout">
+								<div class="aside-item">
+									<div id="verticalTab">
+										<ul class="resp-tabs-list">
+											<?php foreach ($selectedCatDet as $key => $value) {
+												?>
+										<li><?php echo $value->lang_name;?></li>
+									<?php }} ?>
+										</ul>
+										<div class="resp-tabs-container">
+											<?php if(count($selectedCatDet) > 0){
+												foreach ($selectedCatDet as $key => $value) {
+												?>
+											<div>
+												<p><?php echo $value->acmd_name;?></p>
+												<p><?php echo $value->acmd_short_desc;?></p>
+											</div>
+											<?php } ?>						
 										</div>
-										<?php } ?>						
 									</div>
 								</div>
+								<div class="aside-item"></div>
 							</div>
-							<div class="aside-item"></div>
 						</div>
-					</div>
-				<?php } ?>	
-					<div class="col-lg-<?php if(count($selectedCatDet) > 0){ ?>8<?php }else{?>12<?php }?> col-md-12 col-sm-12  <?php if(count($selectedCatDet) > 0){ ?>cont-part<?php }?>">
+					<?php } ?>	
+					<div class="col-lg-<?php if($selectedCatId > 0){ ?>8<?php }else{?>12<?php }?> col-md-12 col-sm-12  <?php if($selectedCatId > 0){ ?>cont-part<?php }?>">
 						<div class="row">
 							<div class="col-md-12">
 								<h3>Search</h3>
@@ -198,7 +198,11 @@
 											$this->load->view('user/product/single', $viewData);
 											?>
 										</div>
+										<?php if($prodListCount > $limit['perPage']){?>
+										<a href="javascript:void(0);" id="loadMoreId" class="btn btn-primary float-right">Load More</a>
+										<?php } ?>
 									</div>
+									
 									
 									<div>
 										<div class="row">

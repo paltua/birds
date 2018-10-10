@@ -6,6 +6,21 @@ class Product_model extends CI_Model {
 		log_message('INFO', 'Product_model enter');
 	}
 
+    public function getCountAll($cat_id = 0, $search = array()){
+        $this->db->select('AM.*');
+        $this->db->from('animal_master AM');
+        $this->db->join('animal_master_details AMD',"AMD.am_id=AM.am_id");
+        if($cat_id > 0){
+            $this->db->where('ACR.acm_id', $cat_id);
+        }
+        $this->_search($search);
+        $this->db->group_by('AM.am_id');
+        /*$this->db->get();
+        echo $this->db->last_query();
+        exit;*/
+        return $this->db->count_all_results();
+    }
+
 	public function getProductListAll($cat_id = 0, $search = array(), $limit = array(), $orderBy = array()){
         $this->db->select('AM.*, AMD.*, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.ami_path, ACMD.acmd_name,UM.name user_name,UM.um_created_date,UM.email, UM.mobile,CONT.name country_name, ST.name state_name, CT.name city_name');
         $this->db->from('animal_category_relation ACR');

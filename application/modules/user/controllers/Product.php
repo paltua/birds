@@ -2,13 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Product extends MY_Controller {
-	public $controller;
+    public $controller;
+    public $perPage;
 	
 	public function __construct(){
 		parent::__construct();
 		$this->controller = $this->router->fetch_class();
 		$this->load->model('cms/cms_model');
         $this->load->model('product_model');
+        $this->perPage = 10;
 	}
 
 	public function index(){
@@ -20,15 +22,17 @@ class Product extends MY_Controller {
         $status = '';
         $msg = '';
         //print_r($this->input->post());
-        $data['limit'] = $limit = array('start' => 0, 'perPage' => 10);
-        $data['orderBy'] = $orderBy = array('col' => 'AMD.amd_price', 'act' => 'DESC');
+        $data['limit'] = $limit = array('start' => 0, 'perPage' => $this->perPage);
+        $data['orderBy'] = $orderBy = array('col' => 'AM.am_created_date', 'act' => 'DESC');
         $data['keyWord'] = $search['keyWord'] = $this->input->post('keyWord');
         $data['country_id'] = $search['country_id'] = $this->input->post('country_id');
         $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
         $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
         $data['price'] = $search['price'] = $this->_priceArray();
         //pr($search);
+        $data['selectedCatId'] = $category_id;
         $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
+        $data['prodListCount'] = $this->product_model->getCountAll($category_id, $search);
         $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
         //$data['prodListComp'] = $this->product_model->getProductListComp($category_id);
         //$data['prodListUser'] = $this->product_model->getProductListUser($category_id);
@@ -61,6 +65,17 @@ class Product extends MY_Controller {
             }
         }
         return $retData;
+    }
+
+    public function getAjaxData(){
+        $data['limit'] = $limit = array('start' => 0, 'perPage' => $this->perPage);
+        $data['orderBy'] = $orderBy = array('col' => 'AM.am_created_date', 'act' => 'DESC');
+        $data['keyWord'] = $search['keyWord'] = $this->input->post('keyWord');
+        $data['country_id'] = $search['country_id'] = $this->input->post('country_id');
+        $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
+        $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
+        $data['price'] = $search['price'] = $this->_priceArray();
+        $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
     }
 
 	public function details($am_id = 0){
