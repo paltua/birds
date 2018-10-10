@@ -121,7 +121,12 @@
                                                 <div class="box-layout">
                                                     <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
                                                     <figcaption>
-                                                        <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?></a></h3>
+                                                        <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
+                                                        <?php if(strlen($value->amd_name) <= 13){
+                                                                echo $value->amd_name;
+                                                            }else{
+                                                                echo substr($value->amd_name,0,11).'..';
+                                                            };?></a></h3>
                                                         <h5>RS <?php echo $value->amd_price;?></h5>
                                                     </figcaption>
                                                 </div>                              
@@ -146,7 +151,14 @@
                                                     <div class="box-layout">
                                                         <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
                                                         <figcaption>
-                                                            <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?></a></h3>
+                                                            <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
+                                                            
+                                                            <?php if(strlen($value->amd_name) <= 13){
+                                                                echo $value->amd_name;
+                                                            }else{
+                                                                echo substr($value->amd_name,0,11).'..';
+                                                            };?>
+                                                            </a></h3>
                                                             <h5>RS <?php echo $value->amd_price;?></h5>
                                                         </figcaption>
                                                     </div>                              
@@ -172,7 +184,14 @@
                                                 <div class="box-layout">
                                                     <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
                                                     <figcaption>
-                                                        <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?></a></h3>
+                                                        <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
+                                                        
+                                                        <?php if(strlen($value->amd_name) <= 13){
+                                                            echo $value->amd_name;
+                                                        }else{
+                                                            echo substr($value->amd_name,0,11).'..';
+                                                        };?>
+                                                        </a></h3>
                                                         <h5>RS <?php echo $value->amd_price;?></h5>
                                                     </figcaption>
                                                 </div>                              
