@@ -47,6 +47,18 @@
             var city_ids = '';
             cityList(state_id, city_ids);
         });
+
+		$("#loadMoreId").click(function(){
+			var formData = $("#searchForm").serialize();
+			var url = "<?php echo base_url('user/product/getAjaxData');?>";
+			$.post( url, formData, function(result){
+				$("#productListDivId").append(result.html);
+				$("#startPage").val(result.startPage);
+				if(result.loaderStatus == 'hide'){
+					$("#loadMoreId").hide();
+				}
+			},'json');
+		});
     });
 
     function stateList(country_id, state_id){
@@ -121,8 +133,10 @@
 							<div class="col-md-12">
 								<h3>Search</h3>
 								<div class="pd-search-filter-layout">									
-									<form class="row" method="post">
+									<form class="row" method="post" id="searchForm">
 										<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+										<input type="hidden" name="startPage" id="startPage" value="<?php echo $limit['start'];?>">
+										<input type="hidden" name="category_id" value="<?php echo $category_id;?>">
 										<div class="col-md-3">
 											<div class="form-group">
 												<label>Keyword</label>
@@ -192,35 +206,38 @@
 								</div>
 								<div class="resp-tabs-container">
 									<div>
-										<div class="row">
+										<div class="row" id="productListDivId">
 											<?php 
 											$viewData['list'] = $prodListAll;
 											$this->load->view('user/product/single', $viewData);
 											?>
 										</div>
-										<?php if($prodListCount > $limit['perPage']){?>
-										<a href="javascript:void(0);" id="loadMoreId" class="btn btn-primary float-right">Load More</a>
-										<?php } ?>
+										<div class="buttonLoadMoreClass">
+											<?php if($prodListCount > $limit['perPage']){?>
+											<a href="javascript:void(0);" id="loadMoreId" class="btn btn-primary float-right">Load More</a>
+											<?php } ?>
+										</div>
+										
 									</div>
 									
 									
-									<div>
+									<!-- <div>
 										<div class="row">
 											<?php 
-											/*$viewData['list'] = $prodListUser;
-											$this->load->view('user/product/single', $viewData);*/
+											// $viewData['list'] = $prodListUser;
+											// $this->load->view('user/product/single', $viewData);
 											?>
 										</div>
-									</div>
+									</div> -->
 
-									<div>
+									<!-- <div>
 										<div class="row">
 											<?php 
 											/*$viewData['list'] = $prodListComp;
 											$this->load->view('user/product/single', $viewData);*/
 											?>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

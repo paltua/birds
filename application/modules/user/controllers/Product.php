@@ -37,7 +37,8 @@ class Product extends MY_Controller {
         //$data['prodListComp'] = $this->product_model->getProductListComp($category_id);
         //$data['prodListUser'] = $this->product_model->getProductListUser($category_id);
         $data['country'] = $this->tbl_generic_model->getCountryList();
-		$data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['category_id'] = $category_id;
         $data['msg'] = $this->template->getMessage($status,$msg);
         $this->template->setTitle('Product Search');
         $this->template->setLayout('cms');
@@ -68,14 +69,29 @@ class Product extends MY_Controller {
     }
 
     public function getAjaxData(){
-        $data['limit'] = $limit = array('start' => 0, 'perPage' => $this->perPage);
-        $data['orderBy'] = $orderBy = array('col' => 'AM.am_created_date', 'act' => 'DESC');
-        $data['keyWord'] = $search['keyWord'] = $this->input->post('keyWord');
-        $data['country_id'] = $search['country_id'] = $this->input->post('country_id');
-        $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
-        $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
-        $data['price'] = $search['price'] = $this->_priceArray();
-        $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
+        //pr($this->input->post());
+        $category_id = $this->input->post('category_id');
+        $postLimit = $this->input->post('startPage');
+        $sendLim = $retData['startPage'] = $postLimit + 1;
+        $dbLim = $sendLim * $this->perPage;
+        $limit = array('start' => $dbLim, 'perPage' => $this->perPage);
+        $orderBy = array('col' => 'AM.am_created_date', 'act' => 'DESC');
+        $search['keyWord'] = $this->input->post('keyWord');
+        $search['country_id'] = $this->input->post('country_id');
+        $search['state_id'] = $this->input->post('state_id');
+        $search['city_id'] = $this->input->post('city_id');
+        $search['price'] = $this->_priceArray();
+        $prodListCount = $this->product_model->getCountAll($category_id, $search);
+        if($prodListCount > ($dbLim + $this->perPage)){
+            $retData['loaderStatus'] = 'show';
+        }else{
+            $retData['loaderStatus'] = 'hide';
+        }
+        $data['list'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
+        $html = $this->load->view('user/product/single', $data, true);
+        $retData['html'] = $html;
+        $retData['status'] = 'success';
+        echo json_encode($retData) ;       
     }
 
 	public function details($am_id = 0){

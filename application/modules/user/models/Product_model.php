@@ -7,14 +7,14 @@ class Product_model extends CI_Model {
 	}
 
     public function getCountAll($cat_id = 0, $search = array()){
-        $this->db->select('AM.*');
-        $this->db->from('animal_master AM');
-        $this->db->join('animal_master_details AMD',"AMD.am_id=AM.am_id");
+        $this->db->select('ACR.am_id');
+        $this->db->from('animal_category_relation ACR');
+        $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
+        $this->db->join('animal_category_master ACM',"ACM.acm_id = ACR.acm_id AND ACM.parent_id > 0");
         if($cat_id > 0){
             $this->db->where('ACR.acm_id', $cat_id);
         }
-        $this->_search($search);
-        $this->db->group_by('AM.am_id');
+        $this->db->group_by('ACR.am_id');
         /*$this->db->get();
         echo $this->db->last_query();
         exit;*/
