@@ -50,10 +50,15 @@
 	.left-static {width: auto; left: 30px; top: 531px;}
 	.homeGetTouch .secleft .img-grid {margin-top:0px}
 	.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover, .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
-    width: 20px;
-    height: 20px;
-    background-size: 20px;
-}
+	    width: 20px;
+	    height: 20px;
+	    background-size: 20px;
+	}
+	h1 {font-size: 1.5rem}
+	.inner-layout .inner-content {
+	    padding: 30px 0;
+	    min-height: 150px;
+	}
 }
 @media screen and (max-width:768px) {
 	h2.resp-accordion {font-size: 17px;padding: 10px 15px;background: #fff;font-weight: 500;}
@@ -149,6 +154,23 @@
 	.btn.pub-list::after {display:none;}
 	.botm-carsl h3.title {margin-top:15px;}
 	#header .headerright > div:nth-child(2) {height:0px;padding: 0;}
+	.user-drop {
+		background-color: #fff;
+	    position: absolute;
+	    margin-bottom: 0;
+	    right: 0;
+	    top: 100%;
+	    min-width: 160px;
+	    display: none;
+	}
+	.user-drop li a {
+	    display: block;
+	    padding: 10px;
+	    border-bottom: 1px solid rgba(0,0,0,0.1);
+	    -webkit-transition: all linear 0.5s;
+	    transition: all linear 0.5s;
+	    text-transform: uppercase;
+	}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}

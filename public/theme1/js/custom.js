@@ -165,6 +165,9 @@ jQuery(document).ready(function ($) {
 		zoomContainer: '#zoom',
 		zoomLevel: 2,
     });
+    $('.logbtn').click(function() {
+    	$('.user-drop').slideToggle();
+    });
 });
 
 $(window).scroll(function() {
@@ -185,10 +188,12 @@ $(window).bind("load resize", function() {
 		
 		$('.btn.pub-list').detach().insertAfter('#header .navbtn');
 		$('.logbtn').detach().insertAfter('#header .navbtn');
+		$('.user-drop').detach().insertAfter('.logbtn.after-log');
 	}
 	else {
 		$('.btn.pub-list').detach().appendTo('#header .headerright > div:nth-child(2)');
 		$('.logbtn').detach().appendTo('#header .headerright > div:nth-child(3)');
+		$('.user-drop').detach().prependTo('.logout');
 	}
 });
 

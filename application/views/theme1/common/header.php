@@ -28,7 +28,7 @@
 		<?php if($this->session->userdata('user_id') > 0){?>
 			<div class="inline-elmnt logout">
 				<a href="javascript:void(0)" class="logbtn after-log"><?php echo $this->session->userdata('name');?></a>
-				<ul>
+				<ul class="user-drop">
 					<li><a href="<?php echo base_url('user/animal/listing');?>">My Listing</a></li>
 					<li><a href="<?php echo base_url('user/profile/details');?>">My Profile</a></li>
 					<li><a href="<?php echo base_url('user/auth/logout');?>">Log Out</a></li>
