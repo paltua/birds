@@ -3,4 +3,4 @@
 	<li class="twt"><a href="https://twitter.com/parrotdipankar">Twitter</a></li>
 	<li class="inst"><a href="https://www.instagram.com/parrotdipankar/">Instagram</a></li>
 	<li class="linkd"><a href="javascript:void(0)">Linkdin</a></li>
-	<li class="utube"><a href="www.youtube.com/c/PARROTDIPANKAR">YouTube</a></li>
+	<li class="utube"><a href="https://www.youtube.com/c/PARROTDIPANKAR">YouTube</a></li>
