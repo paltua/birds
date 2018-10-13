@@ -534,7 +534,7 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
     display: block;
 }
 .botm-carsl .box-wrap {text-align:center;}
-.botm-carsl .box-wrap .category-circle {display:inline-block; margin:0 10px;}
+.botm-carsl .box-wrap .category-circle {display:inline-block; margin:0 -4px 0 0;}
 .botm-carsl .box-wrap .category-circle h3 { font-size: 13px;
     font-weight: 400;
     margin-top: 15px;

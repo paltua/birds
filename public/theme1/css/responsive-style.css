@@ -171,6 +171,15 @@
 	    transition: all linear 0.5s;
 	    text-transform: uppercase;
 	}
+	.htop.publish-middle {
+	    position: fixed;
+	    z-index: 4;
+	}
+	.botm-carsl .box-wrap .category-circle {
+	    width: 33.33%;
+	    vertical-align: top;
+	    padding: 0 5px;
+	}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}
