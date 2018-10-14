@@ -541,6 +541,8 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
     text-transform: capitalize;}
     .botm-carsl .box-wrap .category-circle h3 a {color: #fff;}
     div.dataTables_filter input {width:auto;}
+.owl-carousel .owl-nav button.owl-prev {background: url(http://localhost/birds/public/theme1/css/../images/arrow-prev-grey.png) no-repeat;}
+.owl-carousel .owl-nav button.owl-next {background: url(http://localhost/birds/public/theme1/css/../images/arrow-next-grey.png) no-repeat;}
 @media (min-width:768px) {
 	.outer-container,.homeBanner .fp-slidesNav,.banner-container { padding-left: 50px; padding-right: 50px }
   #header .logo { -webkit-transform: skew(0,8deg); transform: skew(0,8deg); -webkit-transform-origin: top; transform-origin: top; -webkit-flex-shrink: 1; flex-shrink: 1; margin-top: -42px; }
