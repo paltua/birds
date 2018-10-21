@@ -10,7 +10,7 @@ class Product extends MY_Controller {
 		$this->controller = $this->router->fetch_class();
 		$this->load->model('cms/cms_model');
         $this->load->model('product_model');
-        $this->perPage = 10;
+        $this->perPage = 1;
 	}
 
 	public function index(){
