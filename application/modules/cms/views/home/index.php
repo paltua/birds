@@ -248,13 +248,14 @@
                         <?php }?>
                     </ul>
                     <?php } ?>
+                    <!-- <a href="<?php echo base_url('user/product/gallery/');?>" class="btn btn-danger">View All</a> -->
                 </div>
             </div>
             <div class="two-grid secright">
                 <div class="content-sec">
                     <div class="video-sec">
                         <div class="video-box">
-                            <iframe width="100%" height="350" src="<?php echo $set['you_tube_link'];?>?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
+                            <iframe width="100%" height="350" src="<?php echo $set['you_tube_link'];?>?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;disablekb=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
                         </div>
                         <div class="row">
                             <div class="col-md-7">
