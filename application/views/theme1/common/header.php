@@ -27,8 +27,9 @@
 		<?php }?>
 		<?php if($this->session->userdata('user_id') > 0){?>
 			<div class="inline-elmnt logout">
-				<a href="javascript:void(0)" class="logbtn after-log"><?php echo $this->session->userdata('name');?></a>
+				<a href="javascript:void(0)" class="logbtn after-log"></a>
 				<ul class="user-drop">
+					<li class="user-details"><img src="<?php echo base_url('public/'.THEME.'/');?>images/usernav.png"><?php echo $this->session->userdata('name');?></li>
 					<li><a href="<?php echo base_url('user/animal/listing');?>">My Listing</a></li>
 					<li><a href="<?php echo base_url('user/profile/details');?>">My Profile</a></li>
 					<li><a href="<?php echo base_url('user/auth/logout');?>">Log Out</a></li>

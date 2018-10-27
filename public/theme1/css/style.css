@@ -715,3 +715,38 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
   .homeVideo iframe {width: 1920px !important; height: 1080px !important}
 }
 .inner-page-wrap .logout ul {background-color: #ddd;}
+
+
+/*//////////////////////////////////////////////
+Sudipta*/
+#header .headerright .logout .logbtn {
+  background-image: url(../images/user.png) !important;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+  background-position: center;
+  border-radius: 50px;
+}
+
+.user-details {
+  padding: 10px 10px 17px 10px;
+  background: #ededed;
+}
+.user-details img {
+  float: left;
+  margin-right: 5px;
+}
+@media screen and (max-width: 767px) {
+  #header .logbtn {
+    background-image: url(../images/user.png) !important;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    background-position: center;
+    border-radius: 50px;
+  }
+}
+/*//////////////////////////////////////////////
+Sudipta*/
