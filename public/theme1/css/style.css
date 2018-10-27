@@ -747,6 +747,14 @@ Sudipta*/
     background-position: center;
     border-radius: 50px;
   }
+  #header .nolog {
+    background-color: #ff1212;
+    background-repeat: no-repeat;
+    background-image: none !important;
+    width: auto;
+    border-radius: 3px;
+    padding: 8px 5px;
+  }
 }
 /*//////////////////////////////////////////////
 Sudipta*/

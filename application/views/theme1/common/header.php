@@ -22,7 +22,7 @@
 			</div>
 		<?php if($this->session->userdata('user_id') <= 0){?>	
 			<div class="inline-elmnt login">
-				<a href="<?php echo base_url('user/auth/login');?>" class="logbtn after-log">Login</a>
+				<a href="<?php echo base_url('user/auth/login');?>" class="logbtn after-log nolog">Login</a>
 			</div>
 		<?php }?>
 		<?php if($this->session->userdata('user_id') > 0){?>
