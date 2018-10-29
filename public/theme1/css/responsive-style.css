@@ -126,13 +126,14 @@
 	.btn.pub-list {
 		padding: 5px;
 	    position: fixed;
-	    right: 115px;
+	    right: 89px;
 	    background-size: 15px;
 	    background-position: 4px center;
 	    top: 24px;
 	    background-image: none;
 	    font-size: 11px;
 	}
+	
 	.logbtn {
 	    cursor: pointer;
 	    background-color: #ff1212;
@@ -179,6 +180,10 @@
 	    width: 33.33%;
 	    vertical-align: top;
 	    padding: 0 5px;
+	}
+	.edit-pushclass {
+		position: relative;
+    margin: 0;
 	}
 }
 @media screen and (max-width:640px) {

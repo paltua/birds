@@ -101,7 +101,7 @@
 								<div class="col-md-6 multi-horizontal" data-for="name">
 									<div class="form-group">
 										<label class="form-control-label ">Category *</label>
-		                                <select class="form-control form-check-input" name="cat_id" id="animal_cat_id" required="">
+		                                <select class="col-lg-12 form-control  edit-pushclass" name="cat_id" id="animal_cat_id" required="">
 		                                	<option value="">Select One</option>
 		                                	<?php if(count($category) > 0){
                                             foreach ($category as $value) {
