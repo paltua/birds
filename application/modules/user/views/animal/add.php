@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url();?>public/admin/vendor/chosen/chosen.min.css">
 <script src="<?php echo base_url();?>public/admin/vendor/chosen/chosen.jquery.min.js"></script>
+
 <script type="text/javascript"> 
 
     $(document).ready(function(){

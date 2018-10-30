@@ -121,7 +121,9 @@ $('[data-fancybox="gallery"]').fancybox({
 });
 
 </script>
-
+<script src="<?php echo base_url('public/'.THEME.'/');?>js/jquery-asRange.js"></script>
+<script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/prefixfree.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('public/'.THEME.'/');?>js/zoom-slideshow.js"></script>
 
 
 </body>

@@ -1,5 +1,6 @@
 
-	<?php $this->load->view('theme1/common/disc');?>
+
+<?php $this->load->view('theme1/common/disc');?>
 	<button class="navbtn"><em></em><em></em><em></em></button>
 	<div class="outer-container">
 		<div class="headerleft">
@@ -38,3 +39,6 @@
 		<?php }?>
 		</div>
 	</div>
+
+	
+
