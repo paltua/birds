@@ -163,7 +163,8 @@
             if($(this).attr('href') == '#') {
 			  $(this).text($(this).attr('data-phone'));
 			  $(this).attr('title', 'Click to Call');
-              $(this).attr('href', 'tel:' + $(this).attr('data-phone'));
+			  $(this).attr('href', 'tel:' + $(this).attr('data-phone'));
+			  return false;
             }
           });
 	});
