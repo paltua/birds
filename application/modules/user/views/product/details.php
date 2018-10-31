@@ -109,20 +109,15 @@
 										<script async src="https://static.addtoany.com/menu/page.js"></script>
 									</span>
 <!-- AddToAny END -->
-									
-									<!-- <span title="Send this listing to your friend"><a href="javascript:void(0)"><i class="lnr lnr-users"></i></a></span> -->
-									<!-- <span title="Report item"><i class="lnr lnr-flag"></i>
-										<ul>
-											<li><a href="javascript:void(0)">Spam</a></li>
-											<li><a href="javascript:void(0)">Misclassified</a></li>											
-											<li><a href="javascript:void(0)">Duplicated</a></li>
-											<li><a href="javascript:void(0)">Expired</a></li>
-											<li><a href="javascript:void(0)">Offensive</a></li>
-										</ul>
-									</span> -->
+
 								</div>
 								<div class="contact-info">
-									<a class="cont-no" href="tel:<?php echo ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;?>"><?php echo ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;?></a>
+									<?php 
+									$tel = ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;
+									$showTel = substr($tel,0,7).'XXX';
+									?>
+									<a class="cont-no sellersPhone" title="Click to view the Phone Number" href="#" data-phone="<?php echo $tel;?>">
+									<?php echo $showTel;?></a>
 
 									<a class="cont-mail modalLink" href="javascript:void(0);" data-url="<?php echo base_url('user/product/contactToSellerEmail/'.$prodDet[0]->am_id);?>"> &nbsp;
 										<?php echo ($prodDet[0]->am_user_type == 'admin')? SUPPORTEMAIL :$prodDet[0]->email;?>
@@ -164,6 +159,14 @@
 		      return true;
 		    }
 		});
+		$('.sellersPhone').click(function(){
+            if($(this).attr('href') == '#') {
+			  $(this).text($(this).attr('data-phone'));
+			  $(this).attr('title', 'Click to Call');
+              $(this).attr('href', 'tel:' + $(this).attr('data-phone'));
+              return false;
+            }
+          });
 	});
 
 	function addComments(){
