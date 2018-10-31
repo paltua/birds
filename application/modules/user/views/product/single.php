@@ -20,7 +20,13 @@
 					<div class="content-item item-left">
 						<div>
 							<h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?></a></h3>
-							<h4><?php echo $value->amd_short_desc;?></h4>
+							<h4><?php //echo $value->amd_short_desc;
+									if(strlen($value->amd_short_desc) >= 280){
+										echo substr($value->amd_short_desc, 275).'...';
+									}else{
+										echo $value->amd_short_desc;
+									}
+							?></h4>
 							<h5><span class="location"><?php echo showLocation($value->country_name, $value->state_name, $value->city_name);?></span>
 								<span class="publshby">Published by <b><?php echo ($value->am_user_type == 'admin')?'Company': $value->user_name;?></b></span></h5>
 						</div>
