@@ -178,8 +178,20 @@ class Animal_master_model extends CI_Model {
         return true;
     }
 
-    public function changeDipankarCHoiceStatus($am_id = 0){
+    public function changeDipankarChoiceStatus($am_id = 0){
         $sql = "UPDATE `animal_master` SET `am_dip_choice`=IF(am_dip_choice ='yes','no','yes') WHERE 1 AND am_id=".$am_id;
+        $this->db->query($sql);
+        return true;
+    }
+
+    public function changePetChoiceStatus($am_id = 0){
+        $sql = "UPDATE `animal_master` SET `am_pet_choice`=IF(am_pet_choice ='yes','no','yes') WHERE 1 AND am_id=".$am_id;
+        $this->db->query($sql);
+        return true;
+    }
+
+    public function changeFoodChoiceStatus($am_id = 0){
+        $sql = "UPDATE `animal_master` SET `am_food_choice`=IF(am_food_choice ='yes','no','yes') WHERE 1 AND am_id=".$am_id;
         $this->db->query($sql);
         return true;
     }

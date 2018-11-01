@@ -119,7 +119,17 @@ class Animal_master extends MY_Controller
                 if($value->am_dip_choice == 'yes'){
                     $dipChoiceStatus = 'checked';
                 }
-                $nestedData[] = '<input class="dipChoice" type="checkbox" name="" value="'.$value->am_id.'" '.$dipChoiceStatus.'>';
+                $dipPetStatus = '';
+                if($value->am_pet_choice == 'yes'){
+                    $dipPetStatus = 'checked';
+                }
+                $dipFoodStatus = '';
+                if($value->am_food_choice == 'yes'){
+                    $dipFoodStatus = 'checked';
+                }
+                $nestedData[] = '<p><input class="dipChoice" type="checkbox" name="" value="'.$value->am_id.'" '.$dipChoiceStatus.'>Dip choice</p><p>
+                <input class="petChoice" type="checkbox" name="" value="'.$value->am_id.'" '.$dipPetStatus.'>Pets</p>
+                <input class="foodChoice" type="checkbox" name="" value="'.$value->am_id.'" '.$dipFoodStatus.'>Foods</p>';
                 $nestedData[] = date("F j, Y, g:i a", strtotime($value->am_created_date));
                 $nestedData[] = $actionStr;
                 $rows[] = $nestedData;
@@ -416,10 +426,22 @@ class Animal_master extends MY_Controller
         echo json_encode($data);
     }
 
-    public function changeDipankarCHoiceStatus(){
+    public function changeDipankarChoiceStatus(){
         $am_id = $this->input->post('am_id');
         $data['msg'] = $this->template->getMessage('success', 'Successfully updated to the choice list of Dipankar.');
-        $this->animal_master_model->changeDipankarCHoiceStatus($am_id);
+        $this->animal_master_model->changeDipankarChoiceStatus($am_id);
+        echo json_encode($data);
+    }
+    public function changePetChoiceStatus(){
+        $am_id = $this->input->post('am_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully updated this product for Pet listing');
+        $this->animal_master_model->changePetChoiceStatus($am_id);
+        echo json_encode($data);
+    }
+    public function changeFoodChoiceStatus(){
+        $am_id = $this->input->post('am_id');
+        $data['msg'] = $this->template->getMessage('success', 'Successfully updated this product for Foods & Accessories listing.');
+        $this->animal_master_model->changeFoodChoiceStatus($am_id);
         echo json_encode($data);
     }
 

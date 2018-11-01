@@ -15,3 +15,5 @@ CREATE TABLE `settings` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255)
 INSERT INTO `settings` (`id`, `name`, `name_val`, `last_updated_date`, `updated_by`) VALUES (NULL, 'you_tube_link', '', CURRENT_TIMESTAMP, '0');
 INSERT INTO `settings` (`id`, `name`, `name_val`, `last_updated_date`, `updated_by`) VALUES (NULL, 'about_bird_en', '', CURRENT_TIMESTAMP, '0'),(NULL, 'about_bird_ben', '', CURRENT_TIMESTAMP, '0'),(NULL, 'about_bird_hi', '', CURRENT_TIMESTAMP, '0');
 INSERT INTO `settings` (`id`, `name`, `name_val`, `last_updated_date`, `updated_by`) VALUES (NULL, 'short_about_bird_en', '', CURRENT_TIMESTAMP, '0'),(NULL, 'short_about_bird_ben', '', CURRENT_TIMESTAMP, '0'),(NULL, 'short_about_bird_hi', '', CURRENT_TIMESTAMP, '0');
+
+ALTER TABLE `animal_master` ADD `am_pet_choice` ENUM('yes','no') NOT NULL DEFAULT 'no' AFTER `am_dip_choice`, ADD `am_food_choice` ENUM('yes','no') NOT NULL DEFAULT 'no' AFTER `am_pet_choice`;
