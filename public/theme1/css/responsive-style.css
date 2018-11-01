@@ -131,7 +131,8 @@
 	    background-position: 4px center;
 	    top: 24px;
 	    background-image: none;
-	    font-size: 11px;
+		font-size: 11px;
+		margin-right: 5px;
 	}
 	
 	.logbtn {
