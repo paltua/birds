@@ -247,9 +247,14 @@
                         <li><a href="<?php echo base_url('uploads/gallery/'.$value->g_path);?>" data-fancybox="gallery"><img src="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>" alt=""/></a></li>
                         <?php }?>
                     </ul>
+                    <div class="cmmon wrapbutton">
+                     <button href="#" class="btn pub-list-btn">View All</button>
+                     </div>
                     <?php } ?>
-                    <!-- <a href="<?php echo base_url('user/product/gallery/');?>" class="btn btn-danger">View All</a> -->
+                    
                 </div>
+               
+                    
             </div>
             <div class="two-grid secright">
                 <div class="content-sec">

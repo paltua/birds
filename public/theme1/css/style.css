@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 * {	padding: 0;	margin: 0;}
 *, *:after, *::before {	-webkit-box-sizing: border-box;	-moz-box-sizing: border-box; box-sizing: border-box;}
 header, section, footer, aside, nav, main, article, figure { display: block; }
@@ -240,7 +241,7 @@ table tr td {position: relative;overflow: hidden;}
 .homelist-box figure .box-layout figcaption h3 {margin-bottom: 2px;font-size: 13px;}
 .homelist-box figure .box-layout figcaption h3 a { font-weight: 500; color: #282828;-webkit-transition: all ease-in-out 0.5s; transition: all ease-in-out 0.5s; }
 .homelist-box figure .box-layout figcaption h3 a:hover {color: #f95615}
-.homelist-box figure .box-layout figcaption h5 {font-size: 13px; font-weight: 500; color: #f12227; margin-bottom:0}
+.homelist-box figure .box-layout figcaption h5 {font-family: 'Open Sans', sans-serif; font-weight:700 !important;font-size: 13px; font-weight: 500; color: #f12227; margin-bottom:0}
 .homelist-box figure .pdimg .detailsbtn {width: 35px; height: 35px; cursor: pointer; z-index: 3; border-radius: 50%; border: none; position: absolute; top: 0; bottom: 0;left: 0;right: 0;margin: auto; -webkit-transition: all ease-in-out 0.9s; transition: all ease-in-out 0.9s; -webkit-transform: scale(0);transform: scale(0); opacity: 0; visibility: hidden;}
 .homelist-box figure:hover .pdimg .detailsbtn {-webkit-transform: scale(1);transform: scale(1);opacity: 1; visibility: visible;}
 .homelist-box figure .pdimg .detailsbtn i { font-size: 35px;color: #fff;}
@@ -612,7 +613,7 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
 	.botmlayout .box figure ul li:last-child {padding-bottom: 5px }
 	.botmlayout .box figure .sm-icon { width: 48px; height: 48px;}
 	.botmlayout .box figure .sm-icon, .botmlayout .box figure .xs-icon {border: 3px solid rgba(0,0,0,0.1);}
-	.homeGetTouch .secleft .img-grid, .homeGetTouch .secleft .img-grid ul {height: 100%;;}
+	.homeGetTouch .secleft .img-grid, .homeGetTouch .secleft .img-grid ul {height: auto;}
   .homepdlist .content-sec { padding-top: 138px;}
   .homediscover .content-sec {padding-top: 234px;}
   .homecategory .content-sec {padding-top: 160px;}
@@ -755,6 +756,36 @@ Sudipta*/
     border-radius: 3px;
     padding: 8px 5px;
   }
+}
+
+.pd-item-box, .contact-info, .addrs-block, .dataTables_wrapper, .product-details-layout  {
+  font-family: 'Open Sans', sans-serif;
+}
+.wrapbutton button {
+  position: relative;
+}
+.pub-list-btn {
+color: #fff;
+padding: 11px 48px 10px 42px;
+background: #f95615 ;
+font-size: 12px;
+overflow: hidden;
+font-weight: 600;
+margin-left: 10px;
+} 
+.wrapbutton {
+  width: 100%;
+  float: left;
+  margin-top: 20px;
+}
+.pub-list-btn:after {
+  background: none;
+}
+.pub-list-btn:hover:after {
+  background: none;
+}
+.pubnew {
+  background: #f95615 url(http://localhost/birds/public/theme1/images/plus.png) no-repeat 10px center !important;
 }
 /*//////////////////////////////////////////////
 Sudipta*/

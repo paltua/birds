@@ -19,7 +19,7 @@
 				</nav>
 			</div>
 			<div class="inline-elmnt">
-				<a href="<?php echo base_url('user/animal/add');?>" class="btn pub-list">Publish Listing</a>
+				<a href="<?php echo base_url('user/animal/add');?>" class="btn pub-list pubnew">Post free Ad</a>
 			</div>
 		<?php if($this->session->userdata('user_id') <= 0){?>	
 			<div class="inline-elmnt login">
