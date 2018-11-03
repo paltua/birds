@@ -16,7 +16,7 @@
   <div class="container">   
     <div class="inner-content">
       <div class="section homeGetTouch" id="section2">
-        <div class="gridwrap">
+        
             <div class="two-grid secleft">
                 <div class="img-grid clearfix">
                 <?php if(count($gallery) > 0){?>
@@ -29,7 +29,7 @@
                 </div>
                 
             </div>  
-        </div>
+        
       </div>
     </div>
   </div>

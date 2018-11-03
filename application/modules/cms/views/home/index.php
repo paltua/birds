@@ -248,7 +248,7 @@
                         <?php }?>
                     </ul>
                     <div class="cmmon wrapbutton">
-                     <button href="#" class="btn pub-list-btn">View All</button>
+                     <a href="<?php echo base_url('cms/gallery');?>" class="btn pub-list-btn">View All</a>
                      </div>
                     <?php } ?>
                     
