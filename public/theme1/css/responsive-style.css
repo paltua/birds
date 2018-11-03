@@ -59,11 +59,17 @@
 	    padding: 30px 0;
 	    min-height: 150px;
 	}
+	.homeGetTouch .gridwrap {
+		margin-top: -16px;
+	}
 }
 @media screen and (max-width:768px) {
 	h2.resp-accordion {font-size: 17px;padding: 10px 15px;background: #fff;font-weight: 500;}
 	.homepdlist-tab .resp-tab-content {
 	    padding: 9px 0;
+	}
+	.homeGetTouch .gridwrap {
+		margin-top: -16px;
 	}
 }
 @media screen and (max-width:767px) {
@@ -192,6 +198,18 @@
 	.dropdown:hover .dropdown-menu {
 		display: block;
 	  }
+	  .pubnew {
+	  width: auto;
+	padding: 5px 5px 5px 24px !important;
+	background: #f95615 url(http://localhost/birds/public/theme1/images/plus.png) no-repeat 4px center !important;
+}
+#header .nolog{
+	height: 28px;
+	padding: 7px 5px;
+}
+.homeGetTouch .gridwrap {
+	margin-top: -16px;
+}
 }
 @media screen and (max-width:640px) {
 	#header .headerright .inline-elmnt .navbtn {width: 22px;margin-left: 9px;}
