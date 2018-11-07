@@ -19,7 +19,7 @@
     <div class="section homeBanner" id="section0">
         <div class="container">
             <div class="content-sec clearfix">
-                <h2 class="title text-center">Chossing The Right Bird</h2>
+                <h2 class="title text-center">Choosing The Right Bird</h2>
                 <h3 class="sub-title text-center">For You And Your Family</h3>
 
                 <!-- <h4 class="text-center">Browse Categories <span>(Discover new products)</span></h4> -->
