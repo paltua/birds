@@ -18,8 +18,8 @@ class Home extends MY_Controller
         $data['status'] = 0;
         $msg = '';
         $data['category'] = $this->cms_model->getLevelOneCategory();
-        $data['latestProduct'] = $this->cms_model->getLetestProduct();
-        $data['premiumProduct'] = $this->cms_model->getPremiumProduct();
+        $data['latestProduct'] = $this->cms_model->getLetestProduct();// am_pet_choice
+        $data['premiumProduct'] = $this->cms_model->getPremiumProduct();// am_food_choice
         $data['dipChoices'] = $this->cms_model->getDipChoicesProduct();
         $data['bestCat'] = $this->cms_model->getBestChoices();
         $data['gallery'] = $this->cms_model->getGalleryList();

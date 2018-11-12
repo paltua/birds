@@ -785,7 +785,7 @@ margin-left: 10px;
   background: none;
 }
 .pubnew {
-  background: #f95615 url(http://localhost/birds/public/theme1/images/plus.png) no-repeat 10px center !important;
+  background: #f95615 url(../images/plus.png) no-repeat 10px center !important;
 }
 /*//////////////////////////////////////////////
 Sudipta*/

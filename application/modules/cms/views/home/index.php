@@ -101,8 +101,8 @@
                     <div class="col-md-12">              
                         <div id="horizontalTab" class="homepdlist-tab">
                             <ul class="resp-tabs-list">
-                                <li>Latest listings</li>
-                                <li>Premium listings</li>
+                                <li>Pet's Listings</li>
+                                <li>Foods & Accessories Listings</li>
                                 <li>Dipankar's Choice</li>
                             </ul>
                             <div class="resp-tabs-container">

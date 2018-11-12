@@ -38,6 +38,7 @@ class Cms_model extends CI_Model {
                 WHERE 1 
                     AND AM.`am_status`='active' 
                     AND AM.`am_deleted` = '0'
+                    AND AM.`am_pet_choice` = 'yes'
                 ORDER BY AM.`am_id` DESC
                 LIMIT 35";
         return $this->db->query($sql)->result();            
@@ -65,6 +66,7 @@ class Cms_model extends CI_Model {
                 WHERE 1 
                     AND AM.`am_status`='active' 
                     AND AM.`am_deleted` = '0'
+                    AND AM.`am_food_choice` = 'yes'
                 ORDER BY AMD.`amd_price` DESC
                 LIMIT 35";
         return $this->db->query($sql)->result();
