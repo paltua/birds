@@ -614,7 +614,7 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
 	.botmlayout .box figure .sm-icon { width: 48px; height: 48px;}
 	.botmlayout .box figure .sm-icon, .botmlayout .box figure .xs-icon {border: 3px solid rgba(0,0,0,0.1);}
 	.homeGetTouch .secleft .img-grid, .homeGetTouch .secleft .img-grid ul {height: auto;}
-  .homepdlist .content-sec { padding-top: 138px;}
+  .homepdlist .content-sec { padding-top: 117px;}
   .homediscover .content-sec {padding-top: 234px;}
   .homecategory .content-sec {padding-top: 160px;}
   #fp-nav ul li a.active span { margin: -11.5px 0 0 10.5px;}
@@ -737,6 +737,21 @@ Sudipta*/
 .user-details img {
   float: left;
   margin-right: 5px;
+}
+.overflow-sec {
+  overflow: auto;
+}
+.bst-ch {
+  padding: 30px 15px;
+}
+.food-acc-sec {
+  margin-top: 25px;
+  float: left;
+  width: 100%; 
+}
+.fd-title {
+  color:#fff;
+  font-size: 20px;
 }
 @media screen and (max-width: 767px) {
   #header .logbtn {

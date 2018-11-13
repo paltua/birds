@@ -94,7 +94,7 @@
     </div>
     <!-- BANNER SECTION -->
 
-    <div class="section homepdlist" id="section1">
+    <div class="section homepdlist overflow-sec" id="section1">
         <div class="container">
             <div class="content-sec">
                 <div class="row">
@@ -102,7 +102,7 @@
                         <div id="horizontalTab" class="homepdlist-tab">
                             <ul class="resp-tabs-list">
                                 <li>Pet's Listings</li>
-                                <li>Foods & Accessories Listings</li>
+                                <!-- <li>Foods & Accessories Listings</li> -->
                                 <li>Dipankar's Choice</li>
                             </ul>
                             <div class="resp-tabs-container">
@@ -136,40 +136,9 @@
                                     </div>
                                     <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a>
                                 </div>
-                                <div>
-                                    <div class="homelist-box carousel-2 owl-carousel owl-theme">
-                                        
-                                        <?php if(count($premiumProduct) > 0):
-                                                foreach ($premiumProduct as $key => $value) :
-                                                    $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
-                                                    if($value->ami_path != ''){
-                                                        $imagePath = base_url(UPLOAD_PROD_PATH.'thumb/'.$value->ami_path);
-                                                    }
-                                            ?>
-                                            <div class="item">
-                                                <figure>
-                                                    <div class="box-layout">
-                                                        <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
-                                                        <figcaption>
-                                                            <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
-                                                            
-                                                            <?php if(strlen($value->amd_name) <= 13){
-                                                                echo $value->amd_name;
-                                                            }else{
-                                                                echo substr($value->amd_name,0,11).'..';
-                                                            };?>
-                                                            </a></h3>
-                                                            <h5>RS <?php echo $value->amd_price;?></h5>
-                                                        </figcaption>
-                                                    </div>                              
-                                                </figure>
-                                            </div>
-                                        <?php endforeach; endif;  ?>
-                                    </div>
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a>
-                                </div>
                                 
-                                <div>
+                                
+                                <div class="">
                                     <div class="homelist-box carousel-2 owl-carousel owl-theme">
                                         
                                         <?php if(count($dipChoices) > 0):
@@ -203,7 +172,82 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="botm-carsl">
+                        
+                    </div>     
+                    
+                    
+
+<div class="col-md-12 food-acc-sec">              
+                        <div id="horizontalTab" class="homepdlist-tab">
+                            <h4 class="fd-title">Foods & Accessories Listings</h4>
+                            <div class="resp-tabs-container">
+                               
+                                <div> 
+                                    <div class="homelist-box carousel-2 owl-carousel owl-theme">
+                                        
+                                        <?php if(count($premiumProduct) > 0):
+                                                foreach ($premiumProduct as $key => $value) :
+                                                    $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
+                                                    if($value->ami_path != ''){
+                                                        $imagePath = base_url(UPLOAD_PROD_PATH.'thumb/'.$value->ami_path);
+                                                    }
+                                            ?>
+                                            <div class="item">
+                                                <figure>
+                                                    <div class="box-layout">
+                                                        <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
+                                                        <figcaption>
+                                                            <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
+                                                            
+                                                            <?php if(strlen($value->amd_name) <= 13){
+                                                                echo $value->amd_name;
+                                                            }else{
+                                                                echo substr($value->amd_name,0,11).'..';
+                                                            };?>
+                                                            </a></h3>
+                                                            <h5>RS <?php echo $value->amd_price;?></h5>
+                                                        </figcaption>
+                                                    </div>                              
+                                                </figure>
+                                            </div>
+                                        <?php endforeach; endif;  ?>
+                                    </div>
+                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a>
+                                </div>
+                                
+                               
+                            </div>
+                        </div>
+                        
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>      
+    </div>
+    
+
+    <div class="section homeGetTouch overflow-sec" id="section2">
+        <div class="gridwrap">
+            <div class="two-grid secleft">
+                <div class="img-grid clearfix">
+                    <?php if(count($gallery) > 0){?>
+                    <ul>
+                        <?php foreach ($gallery as $key => $value) {?>
+                        <li><a href="<?php echo base_url('uploads/gallery/'.$value->g_path);?>" data-fancybox="gallery"><img src="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>" alt=""/></a></li>
+                        <?php }?>
+                    </ul>
+                    <div class="cmmon wrapbutton">
+                     <a href="<?php echo base_url('cms/gallery');?>" class="btn pub-list-btn">View All</a>
+                     </div>
+                    <?php } ?>
+                    
+                </div>
+                <div class="botm-carsl bst-ch">
                             <h3 class="title">Best Choices</h3>
                             <div class="box-wrap">
                             <?php if(count($bestCat) > 0){
@@ -230,30 +274,6 @@
                             <?php } } ?>    
                             </div>
                         </div>
-                    </div>                    
-                </div>
-            </div>
-        </div>      
-    </div>
-    
-
-    <div class="section homeGetTouch" id="section2">
-        <div class="gridwrap">
-            <div class="two-grid secleft">
-                <div class="img-grid clearfix">
-                    <?php if(count($gallery) > 0){?>
-                    <ul>
-                        <?php foreach ($gallery as $key => $value) {?>
-                        <li><a href="<?php echo base_url('uploads/gallery/'.$value->g_path);?>" data-fancybox="gallery"><img src="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>" alt=""/></a></li>
-                        <?php }?>
-                    </ul>
-                    <div class="cmmon wrapbutton">
-                     <a href="<?php echo base_url('cms/gallery');?>" class="btn pub-list-btn">View All</a>
-                     </div>
-                    <?php } ?>
-                    
-                </div>
-               
                     
             </div>
             <div class="two-grid secright">
