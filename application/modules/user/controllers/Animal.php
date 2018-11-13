@@ -41,7 +41,8 @@ class Animal extends MY_Controller {
         if ($this->form_validation->run() == TRUE){
         	$am_id = 0;
             $nameArr = $this->input->post('amd_name');
-            $nameCheck = $this->name_check($nameArr, $am_id);
+            //$nameCheck = $this->name_check($nameArr, $am_id);
+            $nameCheck = true;//$this->name_check($nameArr, $am_id);
             if($nameCheck){
                 $shortDescArr = $this->input->post('amd_short_desc');
                 $priceArr = $this->input->post('amd_price');
@@ -144,7 +145,7 @@ class Animal extends MY_Controller {
         $where['am_id'] = $am_id;
         if ($this->form_validation->run() == TRUE){
             $nameArr = $this->input->post('amd_name');
-            $nameCheck = $this->name_check($nameArr, $am_id);
+            $nameCheck = true;//$this->name_check($nameArr, $am_id);
             if($nameCheck){
                 $shortDescArr = $this->input->post('amd_short_desc');
                 $priceArr = $this->input->post('amd_price');
