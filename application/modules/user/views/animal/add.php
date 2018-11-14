@@ -201,14 +201,15 @@
 									
 									<div class="upldimg-box">
 										<img id="imagePreview_<?php echo $i;?>" src="<?php echo base_url('public/'.THEME.'/images/add-image.jpg');?>">
+										<div class="upload-btn-wrapper wr-upload">
+										<button class="btn-dflt"></button>
+										<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
+									</div>
 									</div>
 									<div class="dflt">
 										<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
 									</div>
-									<div class="upload-btn-wrapper">
-										<button class="btn-dflt">Upload a file</button>
-										<input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
-									</div>
+									
 									
 								</div>
 							<?php }?>

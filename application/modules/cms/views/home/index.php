@@ -100,11 +100,14 @@
                 <div class="row">
                     <div class="col-md-12">              
                         <div id="horizontalTab" class="homepdlist-tab">
-                            <ul class="resp-tabs-list">
+                            <div class="common wr-fuol">
+                            <ul class="resp-tabs-list pull-left">
                                 <li>Pet's Listings</li>
                                 <!-- <li>Foods & Accessories Listings</li> -->
                                 <li>Dipankar's Choice</li>
                             </ul>
+                            <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right">View All</a>
+                            </div>
                             <div class="resp-tabs-container">
                                 <div>
                                     <div class="homelist-box carousel-2 owl-carousel owl-theme">
@@ -134,7 +137,7 @@
                                         </div>
                                     <?php endforeach; endif;  ?>
                                     </div>
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a>
+                                    
                                 </div>
                                 
                                 
@@ -168,7 +171,7 @@
                                         </div>
                                     <?php endforeach; endif;  ?>
                                     </div>
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a>
+                                    <!-- <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a> -->
                                 </div>
                             </div>
                         </div>
@@ -179,7 +182,10 @@
 
 <div class="col-md-12 food-acc-sec">              
                         <div id="horizontalTab" class="homepdlist-tab">
-                            <h4 class="fd-title">Foods & Accessories Listings</h4>
+                        <div class="common wr-fuol">
+                            <h4 class="fd-title pull-left">Foods & Accessories Listings</h4>
+                            <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right">View All</a>
+                                                    </div>
                             <div class="resp-tabs-container">
                                
                                 <div> 
@@ -212,7 +218,7 @@
                                             </div>
                                         <?php endforeach; endif;  ?>
                                     </div>
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a>
+                                    
                                 </div>
                                 
                                

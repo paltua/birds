@@ -228,13 +228,13 @@ table tr td {position: relative;overflow: hidden;}
 .homepdlist-tab .resp-tabs-list li {position: relative; float: none; vertical-align: top; font-weight: 500; font-size: 20px; color: #f12227; background: #fff;}
 .homepdlist-tab .resp-tabs-list li::after {content: ''; display: block; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background-color: rgba(0,0,0,0.2)}
 .homepdlist-tab .resp-tabs-list .resp-tab-active { border: none; background-color: #f12227; color: #fff; text-shadow: 2px 4px 5px rgba(0,0,0,0.75)}
-.homepdlist-tab .resp-tabs-list .resp-tab-active::before {content: ''; display: block; position: absolute; top: -8px; left: 0; width: 100%; height: 8px; background-color: #f12227}
+/* .homepdlist-tab .resp-tabs-list .resp-tab-active::before {content: ''; display: block; position: absolute; top: -8px; left: 0; width: 100%; height: 8px; background-color: #f12227} */
 .homepdlist-tab .resp-tabs-container { background: none; margin-top: 85px; }
 .homepdlist-tab .resp-tab-content { border: none;padding: 0px;}
-.homelist-box figure .pdimg {position:relative; display: block; background: #3e3835;height: 117px;
+.homelist-box figure .pdimg {position:relative; display: block; background: #3e3835;height:90px;
     overflow: hidden;}
 .homelist-box figure .pdimg img {    max-height: 117px;
-    min-height: 117px;
+    min-height: 90px;
     width: 100%;-webkit-transition: all ease-in-out 0.5s; transition: all ease-in-out 0.5s;}
 .homelist-box figure:hover .pdimg img {opacity:0.3;}
 .homelist-box figure .box-layout figcaption {background: #fff; text-align: center; padding: 17px 10px}
@@ -255,8 +255,8 @@ table tr td {position: relative;overflow: hidden;}
 .homeGetTouch .gridwrap .two-grid { flex-grow: 1; height: 100%; width: 50%; vertical-align: top;}
 .homeGetTouch .secleft .img-grid ul li { position: relative; float: left; width: 25%; height: 25%; overflow: hidden; }
 .homeGetTouch .secleft .img-grid,.homeGetTouch .secleft .img-grid ul { position: relative;height: 100%; }
-.homeGetTouch .secleft .img-grid {margin-top:160px}
-.homeGetTouch .secleft .img-grid ul li img { width: 100%; height: 100%;}
+.homeGetTouch .secleft .img-grid {margin-top:70px}
+.homeGetTouch .secleft .img-grid ul li img { width: 100%; height: 135px;}
 .homeGetTouch .secright { background-color: #0e0e0e; background-image: url(../images/logo-light.png); background-position: center center;  background-repeat: no-repeat; text-align: center; padding: 0 22px; }
 .homeGetTouch .secright .content-sec { position: relative; padding-top: 177px; height: 100%; padding-bottom: 114px }
 .homeGetTouch .secright .content-sec .box-wrap {padding-bottom: 30px;}
@@ -614,14 +614,14 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
 	.botmlayout .box figure .sm-icon { width: 48px; height: 48px;}
 	.botmlayout .box figure .sm-icon, .botmlayout .box figure .xs-icon {border: 3px solid rgba(0,0,0,0.1);}
 	.homeGetTouch .secleft .img-grid, .homeGetTouch .secleft .img-grid ul {height: auto;}
-  .homepdlist .content-sec { padding-top: 117px;}
+  .homepdlist .content-sec { padding-top: 130px;}
   .homediscover .content-sec {padding-top: 234px;}
   .homecategory .content-sec {padding-top: 160px;}
   #fp-nav ul li a.active span { margin: -11.5px 0 0 10.5px;}
   .homeVideo iframe {width: 100% !important; height: 100% !important}
   .homecategory .content-sec .category-circle {margin-top:40px;}
-  .homepdlist-tab .resp-tabs-container {margin-top: 25px;}
-  .homelist-box figure .box-layout figcaption {padding: 5px;}
+  .homepdlist-tab .resp-tabs-container {margin-top: 8px;}
+  .homelist-box figure .box-layout figcaption {padding:2px;}
   .homeGetTouch .secright .botm-logo { margin: 45px auto 0;}
   .homeGetTouch .secright .content-sec .box-wrap { padding-bottom: 25px;}
   .homeGetTouch .secright .content-sec { padding: 145px 75px 60px 61px;}
@@ -632,8 +632,8 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
   .homeBanner .content-sec {padding-top: 160px;}
   .homeBanner .category-circle {margin-top: 20px}
   #header nav ul li {margin-left: 15px}
-  .homepdlist-tab .resp-tabs-list li {font-size:15px; padding: 7px 15px;}
-  .homepdlist-tab .resp-tab-active { padding: 4px 14px 10px 14px !important;}
+  .homepdlist-tab .resp-tabs-list li {font-size:13px; padding: 5px 15px;}
+  .homepdlist-tab .resp-tab-active { padding:3px 14px 7px 14px !important;}
   .left-static { bottom: -365px; left: 44px;}
   .search-layout .search-group .dropdown select {padding: 12px 30px 13px 10px;}
   #footer ul.ft-social li {width:30px;height:30px;}
@@ -742,7 +742,7 @@ Sudipta*/
   overflow: auto;
 }
 .bst-ch {
-  padding: 30px 15px 70px 15px;
+  padding: 10px 15px 30px 15px;
 }
 .food-acc-sec {
   margin-top: 25px;
@@ -802,6 +802,27 @@ margin-left: 10px;
 }
 .pubnew {
   background: #f95615 url(../images/plus.png) no-repeat 10px center !important;
+}
+.wr-upload {
+  position: absolute;
+  top: 0;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  background: transparent;
+  border: 0;
+}
+.wr-upload .btn-dflt{
+  border: 0;
+    background: transparent;
+}
+.homelist-box figure {
+  margin-bottom: 0;
+}
+.wr-fuol {
+  display: block;
+  width: 100%;
+  float: left;
+    margin-bottom: 5px;
 }
 /*//////////////////////////////////////////////
 Sudipta*/

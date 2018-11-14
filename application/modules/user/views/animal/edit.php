@@ -226,14 +226,15 @@
 										<input type="hidden" name="addedImage[<?php echo $keyIm + 1;?>]" value="<?php echo $valueIm->ami_id;?>">
 										<div class="upldimg-box">
 											<img id="imagePreview_<?php echo $keyIm + 1;?>" src="<?php echo base_url(UPLOAD_PROD_PATH.$valueIm->ami_path);?>">
+											<div class="upload-btn-wrapper wr-upload">
+											<button class="btn-dflt"></button>
+										<input type="file" onchange="readURL(this, '<?php echo $keyIm + 1;?>');" data-id="<?php echo $keyIm + 1;?>" name="ami_path_<?php echo $keyIm + 1;?>" />
+										</div>
 										</div>
 										<div class="dflt">
 										<input type="radio" name="default" <?php if($valueIm->ami_default == 1){?>checked=""<?php }?> value="<?php echo $keyIm + 1;?>">Default
 										</div>
-										<div class="upload-btn-wrapper">
-											<button class="btn-dflt">Upload a file</button>
-										<input type="file" onchange="readURL(this, '<?php echo $keyIm + 1;?>');" data-id="<?php echo $keyIm + 1;?>" name="ami_path_<?php echo $keyIm + 1;?>" />
-										</div>
+										
 										<input type="button" class="btn btn-danger deleteImg" id="buttunId_<?php echo $valueIm->ami_id;?>" value="Delete" onclick="return deleteImage(<?php echo $valueIm->ami_id;?>, <?php echo $keyIm + 1;?>)" name="" >
 									</div>
 								<?php } ?>
@@ -244,15 +245,16 @@
 									
 									<div class="upldimg-box">
 										<img id="imagePreview_<?php echo $i;?>" src="<?php echo base_url('public/'.THEME.'/images/add-image.jpg');?>">
+										<div class="upload-btn-wrapper wr-upload">
+									  <button class="btn-dflt"></button>
+									  <input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
+										<input type="hidden" name="addedImage[<?php echo $i;?>]" value="0">
+									</div>
 									</div>
 									<div class="dflt">
 										<input type="radio" name="default" <?php if($i == 1){?>checked=""<?php }?> value="<?php echo $i;?>">Default
 									</div>
-									<div class="upload-btn-wrapper">
-									  <button class="btn-dflt">Upload a file</button>
-									  <input type="file" onchange="readURL(this, '<?php echo $i;?>');" data-id="<?php echo $i;?>" name="ami_path_<?php echo $i;?>" />
-										<input type="hidden" name="addedImage[<?php echo $i;?>]" value="0">
-									</div>
+									
 								</div>
 							<?php }?>
 								
