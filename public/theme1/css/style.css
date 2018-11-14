@@ -742,12 +742,13 @@ Sudipta*/
   overflow: auto;
 }
 .bst-ch {
-  padding: 30px 15px;
+  padding: 30px 15px 70px 15px;
 }
 .food-acc-sec {
   margin-top: 25px;
   float: left;
   width: 100%; 
+  padding-bottom: 50px;
 }
 .fd-title {
   color:#fff;
