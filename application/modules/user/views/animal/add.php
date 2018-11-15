@@ -217,7 +217,8 @@
 							</div>					
 						</div>
                         <div class="input-group-btn col-md-12">
-                            <button href="" type="submit" class="btn btn-primary btn-form display-4">Publish Item</button>
+                            <button type="submit" class="btn btn-primary btn-form display-4">Publish Item</button>
+							<a href="<?php echo base_url('user/animal/listing');?>" class="btn btn-warning btn-form display-4">Cancel</a>
                         </div>
 					</div>
 				</form>					

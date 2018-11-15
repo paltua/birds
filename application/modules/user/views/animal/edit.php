@@ -260,12 +260,12 @@
 								
 							</div>					
 						</div>
-                        <div class="col-md-4">
-                        	<div class="btn-group">
-                            <button type="submit" class="btn btn-form display-4">Publish Item</button>
-                            <a href="<?php echo base_url('user/animal/listing');?>" class="btn btn-form">Back</a>
+                        
+							<div class="input-group-btn col-md-12">
+                            <button type="submit" class="btn btn-primary btn-form display-4">Update Item</button>
+                            <a href="<?php echo base_url('user/animal/listing');?>" class="btn btn-warning btn-form">Cancel</a>
                             </div>
-                        </div>
+                        
 					</div>
 				</form>					
 			</div>
