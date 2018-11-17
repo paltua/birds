@@ -17,7 +17,7 @@ class Product extends MY_Controller {
         $this->search();
 	}
 
-	public function search($category_id = 0){
+	public function search($category_id = 0, $choices = ''){
 		$data = array();
         $status = '';
         $msg = '';
@@ -28,6 +28,8 @@ class Product extends MY_Controller {
         $data['country_id'] = $search['country_id'] = $this->input->post('country_id');
         $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
         $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
+        $data['buy_or_sell'] = $search['buy_or_sell'] = '';
+        $data['choices'] = $search['choices'] = $choices;
         $data['price'] = $search['price'] = $this->_priceArray();
         //pr($search);
         $data['selectedCatId'] = $category_id;
@@ -205,6 +207,67 @@ class Product extends MY_Controller {
         $body = $this->load->view('user/'.$this->controller.'/email', $data, TRUE);
         $this->tbl_generic_model->sendEmail($to, $subject, $body, array(), $bcc);
     }
+
+    public function buy($category_id = 0){
+		$data = array();
+        $status = '';
+        $msg = '';
+        //print_r($this->input->post());
+        $data['limit'] = $limit = array('start' => 0, 'perPage' => $this->perPage);
+        $data['orderBy'] = $orderBy = array('col' => 'AM.am_created_date', 'act' => 'DESC');
+        $data['keyWord'] = $search['keyWord'] = $this->input->post('keyWord');
+        $data['country_id'] = $search['country_id'] = $this->input->post('country_id');
+        $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
+        $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
+        $data['buy_or_sell'] = $search['buy_or_sell'] = 'buy';
+        $data['choices'] = $search['choices'] = '';
+        $data['price'] = $search['price'] = $this->_priceArray();
+        //pr($search);
+        $data['selectedCatId'] = $category_id;
+        $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
+        $data['prodListCount'] = $this->product_model->getCountAll($category_id, $search);
+        $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
+        //$data['prodListComp'] = $this->product_model->getProductListComp($category_id);
+        //$data['prodListUser'] = $this->product_model->getProductListUser($category_id);
+        $data['country'] = $this->tbl_generic_model->getCountryList();
+        $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['category_id'] = $category_id;
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $this->template->setTitle('Product Search');
+        $this->template->setLayout('cms');
+        $this->template->homeRender('user/'.$this->controller.'/search', $data);
+    }
+    
+    public function sell($category_id = 0){
+		$data = array();
+        $status = '';
+        $msg = '';
+        //print_r($this->input->post());
+        $data['limit'] = $limit = array('start' => 0, 'perPage' => $this->perPage);
+        $data['orderBy'] = $orderBy = array('col' => 'AM.am_created_date', 'act' => 'DESC');
+        $data['keyWord'] = $search['keyWord'] = $this->input->post('keyWord');
+        $data['country_id'] = $search['country_id'] = $this->input->post('country_id');
+        $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
+        $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
+        $data['buy_or_sell'] = $search['buy_or_sell'] = 'sell';
+        $data['choices'] = $search['choices'] = '';
+        $data['price'] = $search['price'] = $this->_priceArray();
+        //pr($search);
+        $data['selectedCatId'] = $category_id;
+        $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
+        $data['prodListCount'] = $this->product_model->getCountAll($category_id, $search);
+        $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
+        //$data['prodListComp'] = $this->product_model->getProductListComp($category_id);
+        //$data['prodListUser'] = $this->product_model->getProductListUser($category_id);
+        $data['country'] = $this->tbl_generic_model->getCountryList();
+        $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['category_id'] = $category_id;
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $this->template->setTitle('Product Search');
+        $this->template->setLayout('cms');
+        $this->template->homeRender('user/'.$this->controller.'/search', $data);
+    }
+    
 
 	
 

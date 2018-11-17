@@ -72,6 +72,19 @@ class Product_model extends CI_Model {
         if($search['price']['max_select'] > 0){
             $this->db->where('AMD.amd_price <= ', $search['price']['max_select']);
         }
+        if($search['buy_or_sell'] == 'sell' || $search['buy_or_sell'] == 'buy'){
+            $this->db->where('AM.buy_or_sell = ', $search['buy_or_sell']);
+        }
+
+        if($search['choices'] != ''){
+            if($search['choices'] == 'dip'){
+                $this->db->where('AM.am_dip_choice = ', 'yes');
+            }elseif($search['choices'] == 'pet'){
+                $this->db->where('AM.am_pet_choice = ', 'yes');
+            }elseif($search['choices'] == 'food'){
+                $this->db->where('AM.am_food_choice = ', 'yes');
+            }
+        }
         $this->db->where('AMD.language','en');
     }
 

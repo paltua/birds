@@ -41,12 +41,15 @@
         });
 
         $(".bookedStatus").click(function(){
-        	var url = '<?php echo base_url('user/animal/changeBookedStatus');?>';
-            var am_id = $(this).attr('name');
-            $.post( url, { am_id : am_id}, function( data ) {
-                $("#bookedTdId_"+am_id).html('Booked');
-                $("#msgId").html(data.msg);
-            }, "json");
+			var confirmStatus = confirm('Are you sure to Booked this product for Post Listing?');
+			if(confirmStatus == true){
+				var url = '<?php echo base_url('user/animal/changeBookedStatus');?>';
+				var am_id = $(this).attr('name');
+				$.post( url, { am_id : am_id}, function( data ) {
+					$("#bookedTdId_"+am_id).html('Booked');
+					$("#msgId").html(data.msg);
+				}, "json");	
+			}
         });
 
     });
