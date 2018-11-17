@@ -126,6 +126,7 @@
 		                    <td><?php echo $value->am_status == 'inactive'?'Waiting for Approval':'Active' ;?>
 		                    </td>
 		                    <td id="bookedTdId_<?php echo $value->am_id;?>">
+							<span class="badge badge-pill badge-primary">
 		                    <?php if($value->am_is_booked == 'no'){?>
 		                    <a href="javascript:void();" class="bookedStatus" name="<?php echo $value->am_id;?>" title="click to booked">
 		                    	Not Booked
@@ -133,6 +134,7 @@
 		                    <?php }else{?>
 		                    	Booked
 		                    <?php }?>
+							</span>
 		                    </td>
 		                    <td><?php echo date("F j, Y, g:i a", strtotime($value->am_created_date));?></td>
 		                    <td class="center">
