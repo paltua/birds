@@ -238,9 +238,9 @@
     
 
     <div class="section homeGetTouch overflow-sec" id="section2">
-        <div class="gridwrap">
-            <div class="two-grid secleft">
-                <div class="img-grid clearfix">
+        <div class="gridwrap gal-full">
+        <div class="common wr-gal two-grid secleft full-wr">
+        <div class="img-grid clearfix">
                     <?php if(count($gallery) > 0){?>
                     <ul>
                         <?php foreach ($gallery as $key => $value) {?>
@@ -253,6 +253,9 @@
                     <?php } ?>
                     
                 </div>
+        </div>
+            <div class="two-grid secleft sstop">
+                
                 <div class="botm-carsl bst-ch">
                             <h3 class="title">Best Choices</h3>
                             <div class="box-wrap">
@@ -282,11 +285,11 @@
                         </div>
                     
             </div>
-            <div class="two-grid secright">
+            <div class="two-grid secright sstop" >
                 <div class="content-sec">
                     <div class="video-sec">
                         <div class="video-box">
-                            <iframe width="100%" height="350" src="<?php echo $set['you_tube_link'];?>?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;disablekb=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
+                            <iframe width="100%" height="200" src="<?php echo $set['you_tube_link'];?>?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;disablekb=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
                         </div>
                         <div class="row">
                             <div class="col-md-7">
