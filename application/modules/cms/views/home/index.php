@@ -106,10 +106,10 @@
                                 <!-- <li>Foods & Accessories Listings</li> -->
                                 <li>Dipankar's Choice</li>
                             </ul>
-                            <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right">View All</a>
+                            
                             </div>
-                            <div class="resp-tabs-container">
-                                <div>
+                            <div class="resp-tabs-container ">
+                                <div class="momar">
                                     <div class="homelist-box carousel-2 owl-carousel owl-theme">
                                         
                                         <?php if(count($latestProduct) > 0):
@@ -137,6 +137,9 @@
                                         </div>
                                     <?php endforeach; endif;  ?>
                                     </div>
+                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
+
+                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right mobview mar-bot">View All</a>
                                     
                                 </div>
                                 
@@ -171,6 +174,10 @@
                                         </div>
                                     <?php endforeach; endif;  ?>
                                     </div>
+
+                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
+
+<a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right mobview">View All</a>
                                     <!-- <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a> -->
                                 </div>
                             </div>
@@ -184,7 +191,7 @@
                         <div id="horizontalTab" class="homepdlist-tab">
                         <div class="common wr-fuol">
                             <h4 class="fd-title pull-left">Foods & Accessories Listings</h4>
-                            <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right">View All</a>
+                            <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right deskview">View All</a>
                                                     </div>
                             <div class="resp-tabs-container">
                                
@@ -218,6 +225,7 @@
                                             </div>
                                         <?php endforeach; endif;  ?>
                                     </div>
+                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right mobview">View All</a>
                                     
                                 </div>
                                 
@@ -248,7 +256,7 @@
                         <?php }?>
                     </ul>
                     <div class="cmmon wrapbutton">
-                     <a href="<?php echo base_url('cms/gallery');?>" class="btn pub-list-btn">View All</a>
+                     <a href="<?php echo base_url('cms/gallery');?>" class="btn pub-list-btn pull-right">View All</a>
                      </div>
                     <?php } ?>
                     

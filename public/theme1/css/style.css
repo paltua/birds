@@ -255,7 +255,7 @@ table tr td {position: relative;overflow: hidden;}
 .homeGetTouch .gridwrap .two-grid { flex-grow: 1; width: 50%; vertical-align: top;}
 .homeGetTouch .secleft .img-grid ul li { position: relative; float: left; width: 12.5%; height: 25%; overflow: hidden; }
 .homeGetTouch .secleft .img-grid,.homeGetTouch .secleft .img-grid ul { position: relative;height: 100%; }
-.homeGetTouch .secleft .img-grid {margin-top:70px}
+.homeGetTouch .secleft .img-grid {margin-top:110px;     margin-bottom: 30px;}
 .homeGetTouch .secleft .img-grid ul li img { width: 100%; height: 135px;}
 .homeGetTouch .secright { background-color: #0e0e0e; background-image: url(../images/logo-light.png); background-position: center center;  background-repeat: no-repeat; text-align: center; padding: 0 22px; }
 .homeGetTouch .secright .content-sec { position: relative; padding-top: 177px; height: 100%; padding-bottom: 114px }
@@ -761,28 +761,25 @@ margin-top: -60px;
   padding-bottom: 50px;
 }
 .fd-title {
-  color:#fff;
-  font-size: 20px;
+  border: none;
+    background-color: #f12227;
+    color: #fff;
+    position: relative;
+    text-shadow: 2px 4px 5px rgba(0,0,0,0.75);
+    font-size: 13px;
+    padding: 5px 8px 9px 8px;
 }
-@media screen and (max-width: 767px) {
-  #header .logbtn {
-    background-image: url(../images/user.png) !important;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    text-align: center;
-    background-position: center;
-    border-radius: 50px;
-  }
-  #header .nolog {
-    background-color: #ff1212;
-    background-repeat: no-repeat;
-    background-image: none !important;
-    width: auto;
-    border-radius: 3px;
-    padding: 8px 5px;
-  }
+.fd-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(0,0,0,0.2);
 }
+
 
 .pd-item-box, .contact-info, .addrs-block, .dataTables_wrapper, .product-details-layout  {
   font-family: 'Open Sans', sans-serif;
@@ -791,14 +788,16 @@ margin-top: -60px;
   position: relative;
 }
 .pub-list-btn {
-color: #fff;
-padding: 11px 48px 10px 42px;
-background: #f95615 ;
-font-size: 12px;
-overflow: hidden;
-font-weight: 600;
-margin-left: 10px;
-} 
+  color: #fff;
+  padding: 5px 27px 2px 27px;
+  background: #f95615;
+  font-size: 12px;
+  overflow: hidden;
+  font-weight: 600;
+  margin-right: 10px;
+  float: right;
+  margin-top: -11px;
+}
 .wrapbutton {
   width: 100%;
   float: left;
@@ -834,7 +833,60 @@ margin-left: 10px;
   float: left;
     margin-bottom: 5px;
 }
+.pub-list-btn {
+  background: #f95615;
+}
+.pub-list-btn:hover {
+  background: #c53e09;
+  color: #fff;
+}
 
+.mobview {
+  display: none;
+}
+.for-top-but {
+  position: absolute;
+    top: -5px;
+    right: 14px;
+}
 
+@media screen and (max-width: 767px) {
+  #header .logbtn {
+    background-image: url(../images/user.png) !important;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    background-position: center;
+    border-radius: 50px;
+  }
+  #header .nolog {
+    background-color: #ff1212;
+    background-repeat: no-repeat;
+    background-image: none !important;
+    width: auto;
+    border-radius: 3px;
+    padding: 8px 5px;
+  }
+  .mobview {
+    display: block;
+  }
+  .deskview {
+    display: none;
+  }
+  .momar {
+    margin-bottom: 30px;
+  }
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {
+    right: -20px !important;
+}
+.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
+  left: -20px !important;
+}
+.homeGetTouch .secleft .img-grid ul li img {
+  width: 100%;
+  height: auto;
+}
+}
 /*//////////////////////////////////////////////
 Sudipta*/
