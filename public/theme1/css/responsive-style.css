@@ -201,7 +201,7 @@
 	  .pubnew {
 	  width: auto;
 	padding: 5px 5px 5px 24px !important;
-	background: #f95615 url(http://localhost/birds/public/theme1/images/plus.png) no-repeat 4px center !important;
+	background: #f95615 url(../images/plus.png) no-repeat 4px center !important;
 }
 #header .nolog{
 	height: 28px;
