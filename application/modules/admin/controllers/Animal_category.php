@@ -90,7 +90,7 @@ class Animal_category extends MY_Controller
         foreach($data['editData'] as $key => $value){
             $this->form_validation->set_rules('data['.$value->acmd_id.'][acmd_name]', 'Name in '.$value->lang_name, 'required|trim');
         }
-        if($_FILES['name'] != ''){
+        //if(isset($_FILES['name']) && $_FILES['name'] != ''){
             if ($this->form_validation->run() == TRUE){
                 $nameArr = $this->input->post('data');
                 $eng_lang_id = $this->input->post('eng_lang_id');
@@ -120,10 +120,10 @@ class Animal_category extends MY_Controller
                     $msg = 'This name is already used in English';
                 }
             }
-        }elseif($_FILES && $_FILES['name'] == ''){
-            $status = 'danger';
-            $msg = 'Please Select Category Image.';
-        }
+        // }elseif(isset($_FILES['name']) && $_FILES['name'] == ''){
+        //     $status = 'danger';
+        //     $msg = 'Please Select Category Image.';
+        // }
         $data['msg'] = $this->template->getMessage($status, $msg);
         //$data['parentCat'] = $this->animal_category_model->getParent(0);
         $data['parentCat'] = $this->_getParentCatArr();
