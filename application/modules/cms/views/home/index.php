@@ -137,9 +137,9 @@
                                         </div>
                                     <?php endforeach; endif;  ?>
                                     </div>
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
+                                    <a href="<?php echo base_url('user/product/search/0/pet');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
 
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right mobview mar-bot">View All</a>
+                                    <a href="<?php echo base_url('user/product/search/0/pet');?>" class="btn btn-danger pull-right mobview mar-bot">View All</a>
                                     
                                 </div>
                                 
@@ -175,9 +175,9 @@
                                     <?php endforeach; endif;  ?>
                                     </div>
 
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
+                                    <a href="<?php echo base_url('user/product/search/0/dip');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
 
-<a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right mobview">View All</a>
+                                    <a href="<?php echo base_url('user/product/search/0/dip');?>" class="btn btn-danger pull-right mobview">View All</a>
                                     <!-- <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a> -->
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                         <div id="horizontalTab" class="homepdlist-tab">
                         <div class="common wr-fuol">
                             <h4 class="fd-title pull-left">Foods & Accessories Listings</h4>
-                            <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right deskview">View All</a>
+                            <a href="<?php echo base_url('user/product/search/0/food');?>" class="btn btn-danger pull-right deskview">View All</a>
                                                     </div>
                             <div class="resp-tabs-container">
                                
@@ -225,7 +225,7 @@
                                             </div>
                                         <?php endforeach; endif;  ?>
                                     </div>
-                                    <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger pull-right mobview">View All</a>
+                                    <a href="<?php echo base_url('user/product/search/0/food');?>" class="btn btn-danger pull-right mobview">View All</a>
                                     
                                 </div>
                                 
