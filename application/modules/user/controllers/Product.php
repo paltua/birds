@@ -29,15 +29,18 @@ class Product extends MY_Controller {
         $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
         $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
         $data['buy_or_sell'] = $search['buy_or_sell'] = '';
+        if($this->input->post('choices') != ''){
+            $choices = $this->input->post('choices');
+        }
         $data['choices'] = $search['choices'] = $choices;
         $data['price'] = $search['price'] = $this->_priceArray();
         //pr($search);
         $data['selectedCatId'] = $category_id;
         $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
-        $data['prodListCount'] = $this->product_model->getCountAll($category_id, $search);
+        //$data['prodCount'] = $this->product_model->getCountAll($category_id);
+        $data['prodListCount'] = $this->product_model->getProductCountAll($category_id, $search);
         $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
-        //$data['prodListComp'] = $this->product_model->getProductListComp($category_id);
-        //$data['prodListUser'] = $this->product_model->getProductListUser($category_id);
+        
         $data['country'] = $this->tbl_generic_model->getCountryList();
         $data['category'] = $this->cms_model->getLevelOneCategory();
         $data['category_id'] = $category_id;
@@ -83,6 +86,8 @@ class Product extends MY_Controller {
         $search['state_id'] = $this->input->post('state_id');
         $search['city_id'] = $this->input->post('city_id');
         $search['price'] = $this->_priceArray();
+        $search['choices'] = $this->input->post('choices');
+        $search['buy_or_sell'] = $this->input->post('buy_or_sell');
         $prodListCount = $this->product_model->getCountAll($category_id, $search);
         if($prodListCount > ($dbLim + $this->perPage)){
             $retData['loaderStatus'] = 'show';
@@ -220,15 +225,18 @@ class Product extends MY_Controller {
         $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
         $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
         $data['buy_or_sell'] = $search['buy_or_sell'] = 'buy';
-        $data['choices'] = $search['choices'] = '';
+        $choices = '';
+        if($this->input->post('choices') != ''){
+            $choices = $this->input->post('choices');
+        }
+        $data['choices'] = $search['choices'] = $choices;
         $data['price'] = $search['price'] = $this->_priceArray();
         //pr($search);
         $data['selectedCatId'] = $category_id;
         $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
-        $data['prodListCount'] = $this->product_model->getCountAll($category_id, $search);
+        $data['prodListCount'] = $this->product_model->getProductCountAll($category_id, $search);
         $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
-        //$data['prodListComp'] = $this->product_model->getProductListComp($category_id);
-        //$data['prodListUser'] = $this->product_model->getProductListUser($category_id);
+        
         $data['country'] = $this->tbl_generic_model->getCountryList();
         $data['category'] = $this->cms_model->getLevelOneCategory();
         $data['category_id'] = $category_id;
@@ -250,15 +258,17 @@ class Product extends MY_Controller {
         $data['state_id'] = $search['state_id'] = $this->input->post('state_id');
         $data['city_id'] = $search['city_id'] = $this->input->post('city_id');
         $data['buy_or_sell'] = $search['buy_or_sell'] = 'sell';
-        $data['choices'] = $search['choices'] = '';
+        $choices = '';
+        if($this->input->post('choices') != ''){
+            $choices = $this->input->post('choices');
+        }
+        $data['choices'] = $search['choices'] = $choices;
         $data['price'] = $search['price'] = $this->_priceArray();
         //pr($search);
         $data['selectedCatId'] = $category_id;
         $data['selectedCatDet'] = $this->cms_model->getSelectedCategory($category_id);
-        $data['prodListCount'] = $this->product_model->getCountAll($category_id, $search);
+        $data['prodListCount'] = $this->product_model->getProductCountAll($category_id, $search);
         $data['prodListAll'] = $this->product_model->getProductListAll($category_id, $search, $limit, $orderBy);
-        //$data['prodListComp'] = $this->product_model->getProductListComp($category_id);
-        //$data['prodListUser'] = $this->product_model->getProductListUser($category_id);
         $data['country'] = $this->tbl_generic_model->getCountryList();
         $data['category'] = $this->cms_model->getLevelOneCategory();
         $data['category_id'] = $category_id;

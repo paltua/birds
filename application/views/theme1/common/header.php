@@ -14,6 +14,8 @@
 					<ul>
 						<li><a href="<?php echo base_url();?>">Home</a></li>
 						<li><a href="<?php echo base_url('cms/about_us');?>">About US</a></li>
+						<li><a href="<?php echo base_url('user/product/sell');?>">Sell</a></li>
+						<li><a href="<?php echo base_url('user/product/buy');?>">Buy</a></li>
 						<li><a href="<?php echo base_url('cms/contact_us');?>">Contact Us</a></li>
 					</ul>
 				</nav>

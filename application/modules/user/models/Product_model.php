@@ -6,14 +6,37 @@ class Product_model extends CI_Model {
 		log_message('INFO', 'Product_model enter');
 	}
 
+    
     public function getCountAll($cat_id = 0, $search = array()){
         $this->db->select('ACR.am_id');
         $this->db->from('animal_category_relation ACR');
         $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
+        $this->db->where('AM.am_deleted','0');
+        $this->db->group_by('ACR.am_id');
+        /*$this->db->get();
+        echo $this->db->last_query();
+        exit;*/
+        return $this->db->count_all_results();
+    }
+
+    public function getProductCountAll($cat_id = 0, $search = array()){
+        $this->db->select('ACR.am_id');
+        $this->db->from('animal_category_relation ACR');
+        $this->db->join('animal_master AM',"AM.am_id = ACR.am_id AND AM.am_status = 'active' AND AM.am_deleted = '0'");
+        $this->db->join('animal_master_details AMD','AMD.am_id=AM.am_id','LEFT');
+        $this->db->join('animal_master_images AMI','AMI.am_id=ACR.am_id AND AMI.ami_default = 1','LEFT');
+        //$this->db->join('user_master UM', "UM.user_id=AM.user_id AND UM.um_status = 'active' AND UM.um_deleted = '0'", 'LEFT');
+        $this->db->join('user_master UM', "UM.user_id=AM.user_id", 'LEFT');
         $this->db->join('animal_category_master ACM',"ACM.acm_id = ACR.acm_id AND ACM.parent_id > 0");
+        $this->db->join('animal_category_master_details ACMD',"ACMD.acm_id = ACR.acm_id AND ACMD.language = 'en'");
+        $this->db->join('animal_location AL','AL.am_id=AM.am_id','LEFT');
+        $this->db->join('countries CONT','CONT.id=AL.country_id','LEFT');
+        $this->db->join('states ST','ST.id=AL.state_id','LEFT');
+        $this->db->join('cities CT','CT.id=AL.city_id','LEFT');
         if($cat_id > 0){
             $this->db->where('ACR.acm_id', $cat_id);
         }
+        $this->_search($search);
         $this->db->group_by('ACR.am_id');
         /*$this->db->get();
         echo $this->db->last_query();
@@ -43,9 +66,9 @@ class Product_model extends CI_Model {
         $this->db->order_by($orderBy['col'], $orderBy['act']);
         $this->db->limit($limit['perPage'], $limit['start']);
         
-        /*$this->db->get();
-        echo $this->db->last_query();
-        exit;*/
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
         return $this->db->get()->result();
     }
 
@@ -86,6 +109,7 @@ class Product_model extends CI_Model {
             }
         }
         $this->db->where('AMD.language','en');
+        $this->db->where('AM.am_deleted','0');
     }
 
     public function getProductListComp($cat_id = 0){

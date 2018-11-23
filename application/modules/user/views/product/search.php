@@ -137,6 +137,7 @@
 										<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 										<input type="hidden" name="startPage" id="startPage" value="<?php echo $limit['start'];?>">
 										<input type="hidden" name="category_id" value="<?php echo $category_id;?>">
+										<input type="hidden" name="buy_or_sell" value="<?php echo $buy_or_sell;?>">
 										<div class="col-md-3">
 											<div class="form-group">
 												<label>Keyword</label>
@@ -183,7 +184,27 @@
 										            <input class="range-example-input-2" type="text" min="<?php echo $price['min'];?>" max="<?php echo $price['max'];?>" value="<?php echo $price['min_select'];?>,<?php echo $price['max_select'];?>" name="price" step="10" />
 										        </div>
 											</div>
-										</div>	
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Pet's Listings</label>
+												<input class="" type="radio" name="choices" value="pet" <?php if($choices == 'pet'){ echo 'checked';}?> />
+											</div>
+										</div>
+										<div class="col-md-3">	
+											<div class="form-group">
+												<label>Dipankar's Choice</label>
+												<input class="" type="radio" name="choices" value="dip" <?php if($choices == 'dip'){ echo 'checked';}?> />
+											</div>
+										</div>
+										<div class="col-md-3">	
+											<div class="form-group">
+												<label>Foods & Accessories Listings</label>
+												<input class="" type="radio" name="choices" value="food" <?php if($choices == 'food'){ echo 'checked';}?> />
+											</div>
+										</div>
+										
+											
 										<div class="col-md-12">
 											<div class="example">
 									            <button type="submit" class="btn btn-info">Search</button>
@@ -202,7 +223,9 @@
 											<!-- <li>Personal</li>
 											<li>Company</li> -->
 										</ul>
+										<span class="col-md-12">Total Result <?php echo $prodListCount;?></span>
 									</div>
+									
 								</div>
 								<div class="resp-tabs-container">
 									<div>

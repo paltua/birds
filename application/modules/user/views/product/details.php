@@ -62,7 +62,7 @@
 										foreach ($comments as $keyCom => $valueCom) {
 									?>
 									<figure>
-										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/ft-img-gallery_04.jpg');?>" alt=""></span>
+										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/site-logo.png');?>" alt=""></span>
 										<figcaption>
 											<p><?php echo $valueCom->comments;?> </p>
 											<h3><?php echo $valueCom->name;?></h3>
