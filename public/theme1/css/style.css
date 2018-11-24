@@ -861,6 +861,27 @@ margin-top: -60px;
   margin-right: 10px;
   cursor: pointer;
 }
+.tot-res-right {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  background: #f95615;
+  padding: 2px 12px 0px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #ccc;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #fff;
+}
+.pet-listss-gr input[type="radio"]{
+  float: left;
+  width: auto !important;
+  margin-top: 4px;
+  margin-right: 5px;
+}
+.but-mar-bottom {
+  margin-bottom: 20px;
+}
 @media screen and (max-width: 767px) {
   #header .logbtn {
     background-image: url(../images/user.png) !important;

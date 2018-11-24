@@ -185,27 +185,29 @@
 										        </div>
 											</div>
 										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>Pet's Listings</label>
-												<input class="" type="radio" name="choices" value="pet" <?php if($choices == 'pet'){ echo 'checked';}?> />
+										<div class="commmon wrapbutton">
+										<div class="col-md-3 pull-left">
+											<div class="form-group pet-listss-gr">
+												<input class="" type="radio" name="choices" value="pet" <?php if($choices == 'pet'){ echo 'checked';}?> /><label>Pet's Listings</label>
+												
 											</div>
 										</div>
-										<div class="col-md-3">	
-											<div class="form-group">
-												<label>Dipankar's Choice</label>
-												<input class="" type="radio" name="choices" value="dip" <?php if($choices == 'dip'){ echo 'checked';}?> />
+										<div class="col-md-3 pull-left">	
+											<div class="form-group pet-listss-gr">
+												<input class="" type="radio" name="choices" value="dip" <?php if($choices == 'dip'){ echo 'checked';}?> /><label>Dipankar's Choice</label>
+												
 											</div>
 										</div>
-										<div class="col-md-3">	
-											<div class="form-group">
-												<label>Foods & Accessories Listings</label>
-												<input class="" type="radio" name="choices" value="food" <?php if($choices == 'food'){ echo 'checked';}?> />
+										<div class="col-md-3 pull-left">	
+											<div class="form-group pet-listss-gr">
+												<input class="" type="radio" name="choices" value="food" <?php if($choices == 'food'){ echo 'checked';}?> /><label>Foods & Accessories Listings</label>
+												
 											</div>
 										</div>
+													</div>
 										
 											
-										<div class="col-md-12">
+										<div class="col-md-12 but-mar-bottom pull-left">
 											<div class="example">
 									            <button type="submit" class="btn btn-info">Search</button>
 									        </div>
@@ -223,7 +225,7 @@
 											<!-- <li>Personal</li>
 											<li>Company</li> -->
 										</ul>
-										<span class="col-md-12">Total Result <?php echo $prodListCount;?></span>
+										<span class="tot-res-right">Total Result <?php echo $prodListCount;?></span>
 									</div>
 									
 								</div>
