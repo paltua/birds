@@ -88,7 +88,7 @@ class Product extends MY_Controller {
         $search['price'] = $this->_priceArray();
         $search['choices'] = $this->input->post('choices');
         $search['buy_or_sell'] = $this->input->post('buy_or_sell');
-        $prodListCount = $this->product_model->getCountAll($category_id, $search);
+        $prodListCount = $this->product_model->getProductCountAll($category_id, $search);
         if($prodListCount > ($dbLim + $this->perPage)){
             $retData['loaderStatus'] = 'show';
         }else{
