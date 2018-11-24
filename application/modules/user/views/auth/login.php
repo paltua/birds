@@ -18,7 +18,8 @@
       <div class="col-md-12 multi-horizontal" data-for="phone">
         <div class="form-group">
           <label class="form-control-label ">Password</label>
-            <input class="form-control input" id="login-password" value="" name="user_master[password]" placeholder="Password" tabindex="2" data-form-field="Password" placeholder="Password" required="" id="phone-form4-4v" type="password">
+            <input class="form-control input" id="password-field" value="" name="user_master[password]" placeholder="Password" tabindex="2" data-form-field="Password" placeholder="Password" required="" id="phone-form4-4v" type="password">
+            <span toggle="#password-field" class="fas fa fa-fw fa-eye field-icon toggle-password"></span>
         </div>
       </div>      
       <div class="input-group-btn col-md-6">

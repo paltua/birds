@@ -849,7 +849,18 @@ margin-top: -60px;
     top: -5px;
     right: 14px;
 }
-
+.field-icon {
+  float: right;
+  margin-left: 0;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
 @media screen and (max-width: 767px) {
   #header .logbtn {
     background-image: url(../images/user.png) !important;
