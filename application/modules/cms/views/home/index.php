@@ -121,8 +121,8 @@
                                         ?>
                                         <div class="item">
                                             <figure>
-                                                <div class="box-layout">
-                                                    <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
+                                                <div class="box-layout img-icons">
+                                                    <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="fa fa-link"></i></a><a href="" data-fancybox="gallery" class="detailsbtn fa-img-link"><i class="fa fa-image"></i></a></span>
                                                     <figcaption>
                                                         <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
                                                         <?php if(strlen($value->amd_name) <= 13){
@@ -207,8 +207,8 @@
                                             ?>
                                             <div class="item">
                                                 <figure>
-                                                    <div class="box-layout">
-                                                        <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="lnr lnr-plus-circle"></i></a></span>
+                                                    <div class="box-layout img-icons">
+                                                        <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="fa fa-link"></i></a><a href="" data-fancybox="gallery" class="detailsbtn fa-img-link"><i class="fa fa-image"></i></a></span>
                                                         <figcaption>
                                                             <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
                                                             

@@ -882,6 +882,16 @@ margin-top: -60px;
 .but-mar-bottom {
   margin-bottom: 20px;
 }
+.img-icons  i {
+  font-size: 18px !important;
+}
+.img-icons  .detailsbtn {
+  left:-15px !important ;
+}
+.img-icons .fa-img-link {
+  left: 60px !important;
+  display: block !important;
+}
 @media screen and (max-width: 767px) {
   #header .logbtn {
     background-image: url(../images/user.png) !important;
