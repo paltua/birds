@@ -57,7 +57,7 @@ class Template{
         $this->_layout = $layout;
     }
     
-    public function setTitle($title = 'SIDBI'){
+    public function setTitle($title = 'Parrot Dipankar'){
         $this->title = $title;
     }
     
