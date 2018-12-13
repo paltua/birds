@@ -11,13 +11,6 @@ class Cron_send_reg_req extends MX_Controller
     }
 
     public function index(){
-
-    	/*$to = 'paltua@gmail.com';
-		$subject = 'testing';
-		$body ='testing';
-		$cc = array();
-		$bcc = array();
-		$this->tbl_generic_model->sendEmail($to , $subject , $body , $cc , $bcc);*/
     	$data = $this->cron_send_reg_req_model->getDetails();
     	if(count($data) > 0){
     		foreach ($data as $key => $value) {
@@ -31,6 +24,7 @@ class Cron_send_reg_req extends MX_Controller
                 $where['user_id'] = $value->user_id;
                 $this->tbl_generic_model->edit('user_master', $user_master, $where);
     		}
+            echo 'sent';
     	}
     }
 
