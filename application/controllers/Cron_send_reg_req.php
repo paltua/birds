@@ -33,12 +33,12 @@ class Cron_send_reg_req extends MX_Controller
     }
 
     private function _sendActivateEmail($user_master = array()){
-        $generatetime = urlencode(base64_encode($user_master['random_unique_id'])) ;
+        $generatetime = urlencode(base64_encode($user_master['pwd'])) ;
         $url = base_url() . "user/auth/activate/".$generatetime ;
         $viewData['url'] = $url;
         $viewData['full_name'] = $user_master['name'];
         $viewData['pwd'] = $user_master['pwd'];
-        $msgbody = $this->load->view('auth/regEmailCron', $viewData,TRUE);
+        $msgbody = $this->load->view('user/auth/regEmailCron', $viewData,TRUE);
         $to = $user_master['email'];
         $subject = 'Account activation : '.SITENAME;
         $body = $msgbody;
