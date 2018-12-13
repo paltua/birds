@@ -21,8 +21,10 @@ class Cron_send_reg_req extends MX_Controller
     	$data = $this->cron_send_reg_req_model->getDetails();
     	if(count($data) > 0){
     		foreach ($data as $key => $value) {
-                $email['pwd'] = $user_master['random_unique_id'] = date('Ymdhis').rand(100,999);
-    			$user_master['password'] = $this->getPassword($user_master['random_unique_id']);
+                $email['pwd'] = $this->randomString(8);
+                $user_master['password'] = $this->getPassword($email['pwd']);
+                $email['random_unique_id'] = $user_master['random_unique_id'] = date('Ymdhis').rand(100,999);
+    			
                 $email['email'] = $value->email;
                 $email['name'] = $value->name;
     			$this->_sendActivateEmail($email);
@@ -33,11 +35,12 @@ class Cron_send_reg_req extends MX_Controller
     }
 
     private function _sendActivateEmail($user_master = array()){
-        $generatetime = urlencode(base64_encode($user_master['pwd'])) ;
+        $generatetime = urlencode(base64_encode($user_master['random_unique_id'])) ;
         $url = base_url() . "user/auth/activate/".$generatetime ;
         $viewData['url'] = $url;
         $viewData['full_name'] = $user_master['name'];
         $viewData['pwd'] = $user_master['pwd'];
+        $viewData['email'] = $user_master['email'];
         $msgbody = $this->load->view('user/auth/regEmailCron', $viewData,TRUE);
         $to = $user_master['email'];
         $subject = 'Account activation : '.SITENAME;
@@ -52,5 +55,16 @@ class Cron_send_reg_req extends MX_Controller
             $newPwd = password_hash($pwd,PASSWORD_BCRYPT, array('cost'=>$cost));
         }
         return $newPwd;
+    }
+
+    function randomString($length = 7) {
+        $str = "";
+        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $max = count($characters) - 1;
+        for ($i = 0; $i < $length; $i++) {
+            $rand = mt_rand(0, $max);
+            $str .= $characters[$rand];
+        }
+        return $str;
     }
 }
