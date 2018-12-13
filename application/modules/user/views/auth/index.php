@@ -16,8 +16,8 @@
     <div class="inner-content">
       <div class="row">
         <?php echo $loginHtml;?>
-        <?php //echo $registrationHtml;?>   
-        <?php $this->load->view('user/auth/error');?>     
+        <?php echo $registrationHtml;?>   
+        <?php //$this->load->view('user/auth/error');?>     
       </div>  
     </div>
   </div>
