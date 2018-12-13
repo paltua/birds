@@ -153,7 +153,11 @@ class Tbl_generic_model extends CI_Model {
 
     public function sendEmail($to = '', $subject = '', $body = '', $cc = array(), $bcc = array()){
         $this->load->library('email');
-        $config['protocol'] = 'sendmail';
+        /*$config['protocol'] = 'sendmail';*/
+        $config['protocol'] = 'SMTP';
+        $config['smtp_host'] = 'mail.parrotdipankar.com';
+        $config['smtp_user'] = 'info@parrotdipankar.com';
+        $config['smtp_pass'] = 'TOshJemkebmyWu9';
         $config['mailpath'] = '/usr/sbin/sendmail';
         $config['charset'] = 'iso-8859-1';
         $config['wordwrap'] = TRUE;
