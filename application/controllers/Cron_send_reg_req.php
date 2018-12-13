@@ -18,7 +18,7 @@ class Cron_send_reg_req extends MX_Controller
 		$cc = array();
 		$bcc = array();
 		$this->tbl_generic_model->sendEmail($to , $subject , $body , $cc , $bcc);*/
-    	$data = $this->cron_send_reg_req->getDetails();
+    	$data = $this->cron_send_reg_req_model->getDetails();
     	if(count($data) > 0){
     		foreach ($data as $key => $value) {
                 $email['pwd'] = $user_master['random_unique_id'] = date('Ymdhis').rand(100,999);
