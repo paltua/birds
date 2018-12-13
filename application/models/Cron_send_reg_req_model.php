@@ -9,7 +9,7 @@ class Cron_send_reg_req_model extends CI_Model {
 
 	public function getDetails(){
 		$this->db->select('*');
-		$this->db->form('user_master');
+		$this->db->from('user_master');
 		/*$this->db->where('um_status', 'inactive');
 		$this->db->where('um_deleted', '1');*/
 		$this->db->where('user_id', '705');
