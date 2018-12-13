@@ -12,12 +12,12 @@ class Cron_send_reg_req extends MX_Controller
 
     public function index(){
 
-    	$to = 'paltua@gmail.com';
+    	/*$to = 'paltua@gmail.com';
 		$subject = 'testing';
 		$body ='testing';
 		$cc = array();
 		$bcc = array();
-		$this->tbl_generic_model->sendEmail($to , $subject , $body , $cc , $bcc);
+		$this->tbl_generic_model->sendEmail($to , $subject , $body , $cc , $bcc);*/
     	$data = $this->cron_send_reg_req->getDetails();
     	if(count($data) > 0){
     		foreach ($data as $key => $value) {
