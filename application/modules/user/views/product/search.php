@@ -131,7 +131,7 @@
 					<div class="col-lg-<?php if($selectedCatId > 0){ ?>8<?php }else{?>12<?php }?> col-md-12 col-sm-12  <?php if($selectedCatId > 0){ ?>cont-part<?php }?>">
 						<div class="row">
 							<div class="col-md-12">
-								<?php $postType = (($buy_or_sell == 'sell')?'Sale':$buy_or_sell);
+								<?php $postType = (($buy_or_sell == 'sell')?'Sale':$buy_or_sell);?>
 								<h3> Post Search <?php if($buy_or_sell != ''){ echo 'for '.ucwords($postType); }?></h3>
 								<div class="pd-search-filter-layout">									
 									<form class="row" method="post" id="searchForm">
