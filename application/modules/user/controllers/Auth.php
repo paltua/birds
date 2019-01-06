@@ -41,6 +41,30 @@ class Auth extends MX_Controller
         $this->template->homeRender('user/'.$this->controller.'/index', $data);
     }
 
+    public function login_fb(){
+        $this->ion_user_auth->isLogIn();
+        $data = array();
+        $status = '';
+        $msg = '';
+        $this->load->library('form_validation');
+        $data['action'] = $this->input->post('action','');
+        if($data['action'] == 'login'){
+            $res = $this->_submitLogin();
+            $status = $res['status'];$msg = $res['msg'];
+        }elseif($data['action'] == 'register'){
+            $res = $this->_submitRegistration();
+            $status = $res['status'];$msg = $res['msg'];
+        }
+        
+        $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['msg'] = $this->template->getMessage($status,$msg);
+        $data['loginHtml'] = $this->load->view('user/auth/login_fb', $data, TRUE);
+        $data['registrationHtml'] = $this->load->view('user/auth/registration', $data, TRUE);
+        $this->template->setTitle('Login');
+        $this->template->setLayout('cms');
+        $this->template->homeRender('user/'.$this->controller.'/index_fb', $data);
+    }
+
     private function _submitLogin(){
         $status = '';
         $msg = '';
