@@ -332,6 +332,10 @@ class Auth extends MX_Controller
         $this->template->setLayout('cms');
         $this->template->homeRender('auth/reset_password', $data);
     }
+
+    public function get_fb_user(){
+        
+    }
     
     /* 
     * function logout()
