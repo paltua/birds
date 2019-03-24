@@ -116,8 +116,13 @@
 									$tel = ($prodDet[0]->am_user_type == 'admin')? SITEMOBILE :$prodDet[0]->mobile;
 									$showTel = substr($tel,0,7).'XXX';
 									?>
-									<a class="cont-no sellersPhone" title="Click to view the Phone Number" href="#" data-phone="<?php echo $tel;?>">
+									<?php if($userId > 0){ ?>
+										<a class="cont-no sellersPhone" title="Click to view the Phone Number" href="#" data-phone="<?php echo $tel;?>">
 									<?php echo $showTel;?></a>
+									<?php }else{ ?>
+									<a class="cont-no " title="Please login to view the Phone Number" href="javascript:void(0);">
+									<?php echo $showTel;?></a>
+									<?php } ?>
 
 									<a class="cont-mail modalLink" href="javascript:void(0);" data-url="<?php echo base_url('user/product/contactToSellerEmail/'.$prodDet[0]->am_id);?>"> &nbsp;
 										<?php echo ($prodDet[0]->am_user_type == 'admin')? SUPPORTEMAIL :$prodDet[0]->email;?>

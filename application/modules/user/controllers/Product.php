@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Product extends MY_Controller {
     public $controller;
     public $perPage;
+    public $userId;
 	
 	public function __construct(){
 		parent::__construct();
@@ -11,6 +12,7 @@ class Product extends MY_Controller {
 		$this->load->model('cms/cms_model');
         $this->load->model('product_model');
         $this->perPage = 10;
+        $this->userId = $this->session->userdata('user_id');
 	}
 
 	public function index(){
@@ -102,7 +104,8 @@ class Product extends MY_Controller {
     }
 
 	public function details($am_id = 0){
-		$data = array();
+        $data = array();
+        $data['userId'] = $this->userId;
         $status = $this->session->flashdata('status');
         $msg = $this->session->flashdata('msg');
         $this->_addViewedDetails($am_id);
