@@ -120,7 +120,7 @@
 										<a class="cont-no sellersPhone" title="Click to view the Phone Number" href="#" data-phone="<?php echo $tel;?>">
 									<?php echo $showTel;?></a>
 									<?php }else{ ?>
-									<a class="cont-no " title="Please login to view the Phone Number" href="javascript:void(0);">
+									<a class="cont-no " title="Please login to view the Phone Number" href="<?php echo base_url('user/auth/login');?>">
 									<?php echo $showTel;?></a>
 									<?php } ?>
 
