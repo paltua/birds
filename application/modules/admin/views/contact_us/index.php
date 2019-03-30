@@ -15,6 +15,11 @@
             order: [[ 4 , "desc" ]],
             columnDefs: [{ targets: 'no-sort', orderable: false }],
         });
+
+        $('#dataTables-example').on('click', '.openModal', function(e){
+            e.preventDefault();
+            $('#myModal').modal('show').find('.modal-body').load($(this).attr('data-href'));
+        });
     });
 </script>
 
@@ -63,6 +68,9 @@
                     <td class="center">
                         <!-- <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/edit/<?php echo $value->com_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
                         <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->com_id;?>" class="btn btn-primary btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
+                        <button type="button" class="btn btn-primary openModal" data-href="<?php echo base_url('admin/contact_us/reply/'.$value->con_id);?>" data-toggle="modal" data-target="">
+                            <i class="fa fa-reply fa-fw"></i> Reply
+                        </button>
                     </td>
                 </tr>
                 <?php } } ?>
@@ -70,3 +78,30 @@
         </table>
     </div>
 </div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal"><span class="rounded-top">&times;</span></button>
+          <h4 class="modal-title"><i class="fa fa-reply fa-fw"></i>Reply</h4>
+          
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>

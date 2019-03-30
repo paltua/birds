@@ -27,4 +27,14 @@ class Contact_us extends MX_Controller
         $this->template->setLayout('dashboard');    
         $this->template->homeAdminRender('admin/'.$this->controller.'/index',$data);
     }
+
+    public function reply($con_id = 0){
+        $data = array();
+        $data['status'] = 0;
+        $msg = '';
+        $data['msg'] = $this->template->getMessage($data['status'],$msg);
+        $data['con_id'] = $con_id;
+        $data['list'] = $this->contact_us_model->getOne($con_id);
+        $this->load->view('admin/'.$this->controller.'/reply',$data);
+    }
 }
