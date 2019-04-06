@@ -104,7 +104,7 @@ class Animal_master extends MY_Controller
                 }
                 $nestedData[] = $img;
                 $nestedData[] = $value->amd_name;
-                $nestedData[] = $value->amd_desc; 
+                $nestedData[] = $value->amd_short_desc; 
                 $nestedData[] = $value->amd_price; 
                 if($value->am_user_type == 'user'){
                     $nestedData[] = '<i class="fa fa-user"></i>'.$value->user_name.'<br>
