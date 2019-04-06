@@ -82,7 +82,7 @@ class Animal_master extends MY_Controller
             /*pr($data);*/
             foreach ($data as $value) {
                 $actionStr = '';
-                $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/image/'.$value->am_id.'" class="btn btn-primary btn-xs"><i class="fa fa-picture-o"></i> Image</a>';
+                $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/image/'.$value->am_id.'" class="btn btn-warning btn-xs"><i class="fa fa-picture-o"></i> Image</a>';
                 $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/edit/'.$value->am_id.'" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>';
                 $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/delete/'.$value->am_id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
                 
@@ -93,6 +93,7 @@ class Animal_master extends MY_Controller
                     $code .= '<br><span class="badge badge-pill badge-danger">New</span><br>';
                 }
                 $code .= '<span class="badge badge-pill badge-danger">Active for '.$value->days.' Days</span><br>';
+                $code .= '<span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i>'.ucfirst($value->buy_or_sell).'</span><br>';
                 $nestedData[] = $code;
                 $img = '';
                 if($value->default_image != ''){
@@ -102,7 +103,8 @@ class Animal_master extends MY_Controller
                     $img .= '<img height="125" width="125" src="'.base_url('uploads/animal/thumb/'.$value->default_image).'">';
                 }
                 $nestedData[] = $img;
-                $nestedData[] = $value->amd_name; 
+                $nestedData[] = $value->amd_name;
+                $nestedData[] = $value->amd_desc; 
                 $nestedData[] = $value->amd_price; 
                 if($value->am_user_type == 'user'){
                     $nestedData[] = '<i class="fa fa-user"></i>'.$value->user_name.'<br>

@@ -148,6 +148,7 @@
                     <th>SKU Code</th>
                     <th class="no-sort">Image</th>
                     <th>Pets Name</th>
+                    <th class="no-sort">Description</th>
                     <th>Price</th>
                     <!-- <th>Category</th>
                     <th>User Type</th> -->
