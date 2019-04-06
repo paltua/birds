@@ -28,7 +28,10 @@
 									}
 							?></h4>
 							<h5><span class="location"><?php echo showLocation($value->country_name, $value->state_name, $value->city_name);?></span>
-								<span class="publshby">Published by <b><?php echo ($value->am_user_type == 'admin')?'Company': $value->user_name;?></b></span></h5>
+								<span class="publshby">Published by <b><?php echo ($value->am_user_type == 'admin')?'Company': $value->user_name;?></b></span>
+								
+							</h5>
+							<span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i><?php echo 'To '.ucfirst($value->buy_or_sell);?></span>
 						</div>
 					</div>
 					<div class="content-item item-right">

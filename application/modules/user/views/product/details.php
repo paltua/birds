@@ -40,13 +40,14 @@
 						</div>
 						<div class="details-pd">
 							<div class="details-item">
-								<h2><?php echo $prodDet[0]->amd_name;?></h2>
+								<p><span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i><?php echo 'To '.ucfirst($prodDet[0]->buy_or_sell);?></span><h2><?php echo $prodDet[0]->amd_name;?></h2></p>
 								<ul>
 									<li><label>Category</label><span><?php echo $prodDet[0]->acmd_name;?></span></li>
 									<li><label>Price</label><span>Rs. <?php echo $prodDet[0]->amd_price;?></span></li>
 									<li><label>Listing ID</label><span>#<?php echo $prodDet[0]->am_code;?></span></li>
 									<li><label>Viewed</label><span><?php echo $prodDet[0]->am_viewed_count;?>+</span></li>
 									<li><label>Publish date</label><span><?php echo getViewDate($prodDet[0]->am_created_date);?></span></li>
+									<li><label>Viewed</label><span><?php echo $prodDet[0]->am_viewed_count;?>+</span></li>
 								</ul>
 							</div>
 							<div class="details-item">
