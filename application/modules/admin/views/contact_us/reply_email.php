@@ -6,6 +6,7 @@
                             <tbody><tr>
                                 <td  valign="top" style="padding: 8px;background: #E7E7E7;" colspan="3">
                                     <a target="_blank" href="<?php echo base_url();?>" class="navbar-brand navbar-brand-logo">
+                                    <img height="75" width="100" src="<?php echo base_url('public/'.THEME.'/images/site-logo.png');?>">
                                     </a>
                                 </td>
                             </tr>
