@@ -17,3 +17,36 @@ INSERT INTO `settings` (`id`, `name`, `name_val`, `last_updated_date`, `updated_
 INSERT INTO `settings` (`id`, `name`, `name_val`, `last_updated_date`, `updated_by`) VALUES (NULL, 'short_about_bird_en', '', CURRENT_TIMESTAMP, '0'),(NULL, 'short_about_bird_ben', '', CURRENT_TIMESTAMP, '0'),(NULL, 'short_about_bird_hi', '', CURRENT_TIMESTAMP, '0');
 
 ALTER TABLE `animal_master` ADD `am_pet_choice` ENUM('yes','no') NOT NULL DEFAULT 'no' AFTER `am_dip_choice`, ADD `am_food_choice` ENUM('yes','no') NOT NULL DEFAULT 'no' AFTER `am_pet_choice`;
+
+--
+-- Table structure for table `contact_us_reply`
+--
+
+CREATE TABLE `contact_us_reply` (
+  `cur_id` bigint(20) NOT NULL,
+  `con_id` int(11) NOT NULL,
+  `comment` longtext NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `contact_us_reply`
+--
+ALTER TABLE `contact_us_reply`
+  ADD PRIMARY KEY (`cur_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `contact_us_reply`
+--
+ALTER TABLE `contact_us_reply`
+  MODIFY `cur_id` bigint(20) NOT NULL AUTO_INCREMENT;
+COMMIT;

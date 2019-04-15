@@ -37,4 +37,28 @@ class Contact_us extends MX_Controller
         $data['list'] = $this->contact_us_model->getOne($con_id);
         $this->load->view('admin/'.$this->controller.'/reply',$data);
     }
+
+    public function sendEmailToUser($contact_us = array()){
+        $message = $inData['comment'] = $this->input->post('message');
+        $user_email = $this->input->post('user_email');
+        $user_name = $this->input->post('user_name');
+        $con_id = $inData['con_id'] = $this->input->post('con_id');
+        $data['message'] = $message;
+        if($data['message'] == ''){
+            $status = $data['status'] = 'danger';
+            $msg = 'Please provide the Reply comment.';
+        }else{
+            $to = $user_email;
+            $data['to_name'] = $user_name;
+            $subject = "Contact Us Reply | Parrot Dipankar";
+            $data['email_body'] = $body = $this->load->view('admin/'.$this->controller.'/reply_email', $data, TRUE);
+            $inData['created_by'] = $this->_user_id;
+            $this->tbl_generic_model->add('contact_us_reply', $inData);
+            $this->tbl_generic_model->sendEmail($to, $subject, $body, array(), array());
+            $status = $data['status'] = 'success';
+            $msg = 'You have successfully replied .';
+        }
+        $data['msg'] = $this->template->getMessage($status, $msg);
+        echo json_encode($data);
+    }
 }

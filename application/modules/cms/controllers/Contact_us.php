@@ -25,7 +25,8 @@ class Contact_us extends MY_Controller
                 $contact_us = $this->input->post('contact_us');
                 $this->tbl_generic_model->add('contact_us', $contact_us);
                 $status = 'success';
-                $msg = 'Thank you to contact us.One of our executive will contact you as soon as possible.';
+                //$msg = 'Thank you to contact us.One of our executive will contact you as soon as possible.';
+                $msg = "Thanks for reaching out to us.For your queries please call <strong>8910342482</strong> or <strong>8016633204</strong>";
                 $this->_sendEmailToAdmin($contact_us);
             }
         }
