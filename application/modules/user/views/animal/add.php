@@ -124,13 +124,13 @@
 									<div class="form-check">
 									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios2" value="sell" checked>
 									  	<label class="form-check-label" for="exampleRadios2">
-									    	Sell
+									    	Want to Sell
 									  	</label>
 									</div>
 									<div class="form-check">
 									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios1" value="buy">
 									  	<label class="form-check-label" for="exampleRadios1">
-									    	Buy
+									    	Want to Buy
 									  	</label>
 									</div>
 								</div>

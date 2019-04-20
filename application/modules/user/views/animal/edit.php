@@ -146,13 +146,13 @@
 									<div class="form-check">
 									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios2" value="sell" <?php if($details[0]->buy_or_sell == 'sell'){?> checked <?php }?>>
 									  	<label class="form-check-label checkbox-inline" for="exampleRadios2">
-									    	Sell
+									    	Want to Sell
 									  	</label>
 									</div>
 									<div class="form-check">
 									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios1" value="buy" <?php if($details[0]->buy_or_sell == 'buy'){?> checked <?php }?>>
 									  	<label class="form-check-label checkbox-inline" for="exampleRadios1">
-									    	Buy
+									    	Want to Buy
 									  	</label>
 									</div>
 								</div>

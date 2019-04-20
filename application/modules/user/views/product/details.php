@@ -46,7 +46,7 @@
 								<i class="fa fa-tag"></i><?php echo ($prodDet[0]->buy_or_sell=='buy'?'To ':'For ').ucfirst($prodDet[0]->buy_or_sell);?>
 								</span>
 								<?php }?>
-								<h2><?php echo $prodDet[0]->amd_name;?></h2>
+								<h2><?php echo $prodDet[0]->amd_name;?> : <?php echo $prodDet[0]->acmd_name;?></h2>
 								</p>
 								<ul>
 									<li><label>Category</label><span><?php echo $prodDet[0]->acmd_name;?></span></li>

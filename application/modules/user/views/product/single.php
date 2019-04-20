@@ -19,7 +19,7 @@
 				<figcaption>
 					<div class="content-item item-left">
 						<div>
-							<h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?></a></h3>
+							<h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;?> : <?php echo $value->acmd_name;?></a></h3>
 							<h4><?php //echo $value->amd_short_desc;
 									if(strlen($value->amd_short_desc) >= 280){
 										echo substr($value->amd_short_desc,0, 275).'...';
