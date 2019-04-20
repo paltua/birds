@@ -61,6 +61,7 @@
                     $("#message").val('');
                     $("#sucErrMsg").html('');
                     $("#sucErrMsg").hide(1000);
+                    $('#myModal').modal('hide');
                 }, 3000);
             }, "json");
         })

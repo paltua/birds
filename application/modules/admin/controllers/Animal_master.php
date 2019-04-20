@@ -93,7 +93,12 @@ class Animal_master extends MY_Controller
                     $code .= '<br><span class="badge badge-pill badge-danger">New</span><br>';
                 }
                 $code .= '<span class="badge badge-pill badge-danger">Active for '.$value->days.' Days</span><br>';
-                $code .= '<span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i>To '.ucfirst($value->buy_or_sell).'</span><br>';
+                if($value->buy_or_sell == 'buy'){
+                    $code .= '<span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i>To '.ucfirst($value->buy_or_sell).'</span><br>';
+                }elseif($value->buy_or_sell == 'sell'){
+                    $code .= '<span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i>For '.ucfirst($value->buy_or_sell).'</span><br>';
+                }
+                
                 $nestedData[] = $code;
                 $img = '';
                 if($value->default_image != ''){

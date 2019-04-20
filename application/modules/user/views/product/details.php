@@ -40,7 +40,14 @@
 						</div>
 						<div class="details-pd">
 							<div class="details-item">
-								<p><span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i><?php echo 'To '.ucfirst($prodDet[0]->buy_or_sell);?></span><h2><?php echo $prodDet[0]->amd_name;?></h2></p>
+								<p>
+								<?php if($prodDet[0]->buy_or_sell != ''){?>
+								<span class="badge badge-pill badge-warning">
+								<i class="fa fa-tag"></i><?php echo ($prodDet[0]->buy_or_sell=='buy'?'To ':'For ').ucfirst($prodDet[0]->buy_or_sell);?>
+								</span>
+								<?php }?>
+								<h2><?php echo $prodDet[0]->amd_name;?></h2>
+								</p>
 								<ul>
 									<li><label>Category</label><span><?php echo $prodDet[0]->acmd_name;?></span></li>
 									<li><label>Price</label><span>Rs. <?php echo $prodDet[0]->amd_price;?></span></li>

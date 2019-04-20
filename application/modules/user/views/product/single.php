@@ -31,7 +31,12 @@
 								<span class="publshby">Published by <b><?php echo ($value->am_user_type == 'admin')?'Company': $value->user_name;?></b></span>
 								
 							</h5>
-							<span class="badge badge-pill badge-warning"><i class="fa fa-tag"></i><?php echo 'To '.ucfirst($value->buy_or_sell);?></span>
+							<?php if($value[0]->buy_or_sell != ''){?>
+								<span class="badge badge-pill badge-warning">
+								<i class="fa fa-tag"></i><?php echo ($value[0]->buy_or_sell=='buy'?'To ':'For ').ucfirst($value[0]->buy_or_sell);?>
+								</span>
+								<?php }?>
+							
 						</div>
 					</div>
 					<div class="content-item item-right">
