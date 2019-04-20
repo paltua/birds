@@ -195,10 +195,12 @@ class Product_model extends CI_Model {
     }
 
     public function getCommentList($am_id = 0){
-        $this->db->select('COM.*,UM.name');
+        $this->db->select('COM.*,UM.name, TIMESTAMPDIFF(SECOND, COM.created_date, NOW()) time_sec,TIMESTAMPDIFF(MINUTE, COM.created_date, NOW()) time_min,TIMESTAMPDIFF(HOUR, COM.created_date, NOW()) time_hour ');
         $this->db->from('comments COM');
-        $this->db->join('user_master UM',"UM.user_id=COM.user_id AND UM.um_status='active' AND UM.um_deleted = '0'");
-        $this->db->where('COM.am_id', $am_id);
+        $this->db->join('user_master UM',"UM.user_id=COM.user_id AND UM.um_status='active' AND UM.um_deleted = '0'",'LEFT');
+        if($am_id > 0){
+            $this->db->where('COM.am_id', $am_id);
+        }
         $this->db->where('COM.com_status', 'active');
         $this->db->order_by('COM.created_date','ASC');
         return $this->db->get()->result();

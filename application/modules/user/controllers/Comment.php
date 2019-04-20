@@ -29,7 +29,7 @@ class Comment extends MY_Controller {
 		$this->tbl_generic_model->add('comments', $inData);
 		$data['html'] = '';
 		$data['html'] = '<figure>
-					<span class="pic"><img src="'.base_url('public/'.THEME.'/images/ft-img-gallery_04.jpg').'" alt=""></span>
+					<span class="pic"><img src="'.base_url('public/'.THEME.'/images/site-logo.png').'" alt=""></span>
 					<figcaption>
 						<p>'.$inData['comments'].'</p>
 						<h3>'.$this->session->userdata('name').'</h3>

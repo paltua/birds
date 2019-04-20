@@ -70,11 +70,18 @@
 										foreach ($comments as $keyCom => $valueCom) {
 									?>
 									<figure>
-										<span class="pic"><img src="<?php echo base_url('public/'.THEME.'/images/site-logo.png');?>" alt=""></span>
+										<span class="pic">
+											<?php if($valueCom->user_id > 0){?>
+												<i class="fas fa-user fa-4x"></i>
+											<?php }else{?>
+												<img src="<?php echo base_url('public/'.THEME.'/images/site-logo.png');?>" alt="">
+											<?php } ?>
+											</span>	
+										
 										<figcaption>
 											<p><?php echo $valueCom->comments;?> </p>
-											<h3><?php echo $valueCom->name;?></h3>
-											<h4><?php echo getViewDate($valueCom->created_date);?></h4>
+											<h3><?php echo ($valueCom->user_id > 0)?$valueCom->name:'Admin';?></h3>
+											<h4><?php echo getViewDate($valueCom->created_date,$valueCom->time_sec,$valueCom->time_min,$valueCom->time_hour );?></h4>
 										</figcaption>
 									</figure>
 								<?php }} ?>

@@ -427,7 +427,7 @@ video::-webkit-media-controls { display:none !important; }
 #pics-thumbs img {padding: 5px;margin: 0 2px;border-radius: 0px;box-shadow: 0 0 3px rgba(0,0,0,.0.4);cursor: pointer;height: 75px;transition-duration: .5s;display: inline-block;}
 .product-details-layout h2 {font-size: 26px; margin-bottom: 15px}
 .comment-layout .comment-item figure {display: -wevkit-flex; display: -ms-flexbox; display: flex; -webkit-align-items: flex-start; align-items: flex-start; padding: 10px 0}
-.comment-layout .comment-item figure .pic {width:80px;height: 80px; border-radius: 50%; overflow: hidden; display: block; margin-right: 8px}
+.comment-layout .comment-item figure .pic {width:80px;height: 80px; border-radius: 30%; overflow: hidden; display: block; margin-right: 8px}
 .comment-layout .comment-item figure .pic img {max-width: 90px; max-height: 90px}
 .comment-layout .comment-item figure figcaption {-webkit-flex:1;flex:1;}
 .comment-layout .comment-item figure figcaption p {font-size: 14px;}

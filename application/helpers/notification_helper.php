@@ -32,7 +32,27 @@ function getLanguageArrAnimalMaster(){
   return $retArr;
 }
 
-function getViewDate($date = "now"){
+function getViewDate($date = "now", $time_sec=0,$time_min=0,$time_hour=0){
+  $showDate = date("F j, Y", strtotime($date));
+  if($time_sec <= 60){
+    $showDate = $time_sec.' seconds ago';
+  }elseif ($time_min <= 60) {
+    if($time_min == 1){
+      $showDate = $time_min.' minute ago';
+    }else{
+      $showDate = $time_min.' minutes ago';
+    }
+  }elseif ($time_hour <= 24) {
+    if($time_hour == 1){
+      $showDate = $time_hour.' hour ago';
+    }else{
+      $showDate = $time_hour.' hours ago';
+    }
+  }
+  return $showDate;
+}
+
+function getViewDateBCK($date = "now"){
     $showDate = date("F j, Y", strtotime($date));
     $today = 'now';
     $datetime1 = new DateTime($today);
