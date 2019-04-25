@@ -116,7 +116,7 @@
 	                            <div class="col-md-6 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Title *</label>
-		                                <input class="form-control input" name="amd_name" data-form-field="Title" placeholder="Title"  id="Title-form4-4v" type="text">
+		                                <input class="form-control input" name="amd_name" value="<?php echo set_value('amd_name'); ?>" data-form-field="Title" placeholder="Title"  id="Title-form4-4v" type="text">
 		                                <?php echo form_error('amd_name', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
@@ -143,7 +143,7 @@
 	                            <div class="col-md-12 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Price</label>
-		                                <input class="form-control input" name="amd_price" data-form-field="Price" placeholder="Price" id="Price-form4-4v" type="text">
+		                                <input class="form-control input" name="amd_price" value="<?php echo set_value('amd_price'); ?>" data-form-field="Price" placeholder="Price" id="Price-form4-4v" type="text">
 		                                
 	                            	</div>
 	                            </div>
@@ -151,7 +151,7 @@
 	                            <div class="col-md-12" data-for="email">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Description *</label>
-		                                <textarea class="form-control textarea" name="amd_short_desc" data-form-field="Textarea" placeholder="Description" id="textarea-form4-4v"></textarea>
+		                                <textarea class="form-control textarea" name="amd_short_desc" data-form-field="Textarea" placeholder="Description" id="textarea-form4-4v"><?php echo set_value('amd_short_desc'); ?></textarea>
 		                                <?php echo form_error('amd_short_desc', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
