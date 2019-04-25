@@ -34,10 +34,10 @@ class Animal extends MY_Controller {
 		$this->load->library('form_validation');
         $this->form_validation->set_rules('cat_id', 'Category', 'required|trim');
         $this->form_validation->set_rules('amd_name', 'Title', 'required|trim');
-        $this->form_validation->set_rules('buy_or_sell', 'Buy or Sell', 'required|trim');
+        $this->form_validation->set_rules('buy_or_sell', 'Transaction Type', 'required|trim', array('required' => 'Please choose a option Buy or Sell'));
         $this->form_validation->set_rules('amd_short_desc', 'Short Description', 'required|trim'); 
         $this->form_validation->set_rules('country_id', 'Country', 'required|trim'); 
-        //pr($this->input->post());
+        // pr($this->input->post());
         if ($this->form_validation->run() == TRUE){
         	$am_id = 0;
             $nameArr = $this->input->post('amd_name');
@@ -75,6 +75,12 @@ class Animal extends MY_Controller {
             }else{
                 $status = 'danger';
                 $msg = 'This name is already used.';
+            }
+        }elseif ($this->form_validation->run() == FALSE){
+            $msg = validation_errors();
+            if($msg != ''){
+                $msg = "Please find the error(s) as below.";
+                $status = 'danger';
             }
         }
         $data['country_id'] = 0;

@@ -102,7 +102,7 @@
 								<div class="col-md-6 multi-horizontal" data-for="name">
 									<div class="form-group">
 										<label class="form-control-label ">Category *</label>
-		                                <select class="col-lg-12 form-control  edit-pushclass" name="cat_id" id="animal_cat_id" required="">
+		                                <select class="col-lg-12 form-control  edit-pushclass" name="cat_id" id="animal_cat_id" >
 		                                	<option value="">Select One</option>
 		                                	<?php if(count($category) > 0){
                                             foreach ($category as $value) {
@@ -116,13 +116,15 @@
 	                            <div class="col-md-6 multi-horizontal" data-for="price">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Title *</label>
-		                                <input class="form-control input" name="amd_name" data-form-field="Title" placeholder="Title" required="" id="Title-form4-4v" type="text">
+		                                <input class="form-control input" name="amd_name" data-form-field="Title" placeholder="Title"  id="Title-form4-4v" type="text">
 		                                <?php echo form_error('amd_name', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
-	                            <div class="col-md-12">
+	                            <div class="col-md-12 ">
+								
+									<label class="form-control-label "><b>Transaction Type *</b></label><br>
 									<div class="form-check">
-									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios2" value="sell" checked>
+									  	<input class="form-check-input" type="radio" name="buy_or_sell" id="exampleRadios2" value="sell" >
 									  	<label class="form-check-label" for="exampleRadios2">
 									    	Want to Sell
 									  	</label>
@@ -133,6 +135,8 @@
 									    	Want to Buy
 									  	</label>
 									</div>
+									<?php echo form_error('buy_or_sell', '<p class="text-danger">', '</p>'); ?>
+									
 								</div>
 	                            
 								
@@ -147,7 +151,7 @@
 	                            <div class="col-md-12" data-for="email">
 	                            	<div class="form-group">
 		                            	<label class="form-control-label ">Description *</label>
-		                                <textarea class="form-control textarea" name="amd_short_desc" data-form-field="Textarea" placeholder="Description" required="" id="textarea-form4-4v"></textarea>
+		                                <textarea class="form-control textarea" name="amd_short_desc" data-form-field="Textarea" placeholder="Description" id="textarea-form4-4v"></textarea>
 		                                <?php echo form_error('amd_short_desc', '<p class="text-danger">', '</p>'); ?>
 	                            	</div>
 	                            </div>
@@ -161,8 +165,8 @@
 								<div class="col-md-12 multi-horizontal" data-for="name">
 									<div class="form-group">
 										<label class="form-control-label ">Country *</label>
-		                                <select class="form-control select" name="country_id" id="animal_country_id" required="">
-		                                	<option>Select One</option>
+		                                <select class="form-control select" name="country_id" id="animal_country_id" >
+		                                	<option value="">Select One</option>
 		                                	<?php if(count($country) > 0){
                                                 foreach ($country as $value) {
                                             	$selected = '';
