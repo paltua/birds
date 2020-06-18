@@ -13,8 +13,8 @@ class Product extends MY_Controller {
         $this->load->model('product_model');
         $this->perPage = 10;
         $this->userId = $this->session->userdata('user_id');
-        redirect(this->base_url());
-	}
+        redirect(base_url());
+    }
 
 	public function index(){
         $this->search();
