@@ -244,6 +244,9 @@
                 </ul>
             </li> -->
             <li>
+                <a href="<?php echo base_url('admin/blog');?>"><i class="fa fa-android"></i> Blogs</a>
+            </li>
+            <li>
                 <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Pets and Pet Accessories<!-- Animals --></a>
             </li>
             <li>

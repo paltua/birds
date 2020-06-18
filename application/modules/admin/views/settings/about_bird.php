@@ -1,7 +1,6 @@
 
-<link href="<?php echo base_url().$resourceNameAdmin;?>vendor/summernote/summernote-bs4.css" rel="stylesheet">
-<!-- DataTables JavaScript -->
-<script src="<?php echo base_url().$resourceNameAdmin;?>vendor/summernote/summernote-bs4.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $('.contentTextarea').summernote({
