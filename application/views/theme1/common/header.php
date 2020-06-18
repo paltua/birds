@@ -14,14 +14,14 @@
 					<ul>
 						<li><a href="<?php echo base_url();?>">Home</a></li>
 						<li><a href="<?php echo base_url('cms/about_us');?>">About US</a></li>
-						<li><a href="<?php echo base_url('user/product/sell');?>">Sale</a></li>
-						<li><a href="<?php echo base_url('user/product/buy');?>">Buy</a></li>
+						<!-- <li><a href="<?php echo base_url('user/product/sell');?>">Sale</a></li>
+						<li><a href="<?php echo base_url('user/product/buy');?>">Buy</a></li> -->
 						<li><a href="<?php echo base_url('cms/contact_us');?>">Contact Us</a></li>
 					</ul>
 				</nav>
 			</div>
 			<div class="inline-elmnt">
-				<a href="<?php echo base_url('user/animal/add');?>" class="btn pub-list pubnew">Post free Ad</a>
+				<a href="<?php echo base_url('user/animal/add');?>" class="btn pub-list pubnew">PD Charitable Trust</a>
 			</div>
 		<?php if($this->session->userdata('user_id') <= 0){?>	
 			<div class="inline-elmnt login">
