@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | of this setting
 |
 */
-defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
+defined( 'SHOW_DEBUG_BACKTRACE' ) OR define( 'SHOW_DEBUG_BACKTRACE', TRUE );
 /*
 |--------------------------------------------------------------------------
 | Check AJAX
@@ -20,8 +20,8 @@ defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 | Set the server request for ajax calling
 |
 */
-defined('IS_AJAX') OR define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
-defined('DIRECT_ACCESS_MSG') OR define('DIRECT_ACCESS_MSG', 'No direct script access allowed.');
+defined( 'IS_AJAX' ) OR define( 'IS_AJAX', isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' );
+defined( 'DIRECT_ACCESS_MSG' ) OR define( 'DIRECT_ACCESS_MSG', 'No direct script access allowed.' );
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
@@ -29,16 +29,16 @@ defined('DIRECT_ACCESS_MSG') OR define('DIRECT_ACCESS_MSG', 'No direct script ac
 |
 | These prefs are used when checking and setting modes when working
 | with the file system.  The defaults are fine on servers with proper
-| security, but you may wish (or even need) to change the values in
-| certain environments (Apache running a separate process for each
-| user, PHP under CGI with Apache suEXEC, etc.).  Octal values should
+| security, but you may wish ( or even need ) to change the values in
+| certain environments ( Apache running a separate process for each
+| user, PHP under CGI with Apache suEXEC, etc. ).  Octal values should
 | always be used to set the mode correctly.
 |
 */
-defined('FILE_READ_MODE')  OR define('FILE_READ_MODE', 0644);
-defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0666);
-defined('DIR_READ_MODE')   OR define('DIR_READ_MODE', 0755);
-defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
+defined( 'FILE_READ_MODE' )  OR define( 'FILE_READ_MODE', 0644 );
+defined( 'FILE_WRITE_MODE' ) OR define( 'FILE_WRITE_MODE', 0666 );
+defined( 'DIR_READ_MODE' )   OR define( 'DIR_READ_MODE', 0755 );
+defined( 'DIR_WRITE_MODE' )  OR define( 'DIR_WRITE_MODE', 0755 );
 
 /*
 |--------------------------------------------------------------------------
@@ -48,14 +48,16 @@ defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
 | These modes are used when working with fopen()/popen()
 |
 */
-defined('FOPEN_READ')                           OR define('FOPEN_READ', 'rb');
-defined('FOPEN_READ_WRITE')                     OR define('FOPEN_READ_WRITE', 'r+b');
-defined('FOPEN_WRITE_CREATE_DESTRUCTIVE')       OR define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb'); // truncates existing file data, use with care
-defined('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE')  OR define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 'w+b'); // truncates existing file data, use with care
-defined('FOPEN_WRITE_CREATE')                   OR define('FOPEN_WRITE_CREATE', 'ab');
-defined('FOPEN_READ_WRITE_CREATE')              OR define('FOPEN_READ_WRITE_CREATE', 'a+b');
-defined('FOPEN_WRITE_CREATE_STRICT')            OR define('FOPEN_WRITE_CREATE_STRICT', 'xb');
-defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
+defined( 'FOPEN_READ' )                           OR define( 'FOPEN_READ', 'rb' );
+defined( 'FOPEN_READ_WRITE' )                     OR define( 'FOPEN_READ_WRITE', 'r+b' );
+defined( 'FOPEN_WRITE_CREATE_DESTRUCTIVE' )       OR define( 'FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb' );
+// truncates existing file data, use with care
+defined( 'FOPEN_READ_WRITE_CREATE_DESTRUCTIVE' )  OR define( 'FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 'w+b' );
+// truncates existing file data, use with care
+defined( 'FOPEN_WRITE_CREATE' )                   OR define( 'FOPEN_WRITE_CREATE', 'ab' );
+defined( 'FOPEN_READ_WRITE_CREATE' )              OR define( 'FOPEN_READ_WRITE_CREATE', 'a+b' );
+defined( 'FOPEN_WRITE_CREATE_STRICT' )            OR define( 'FOPEN_WRITE_CREATE_STRICT', 'xb' );
+defined( 'FOPEN_READ_WRITE_CREATE_STRICT' )       OR define( 'FOPEN_READ_WRITE_CREATE_STRICT', 'x+b' );
 
 /*
 |--------------------------------------------------------------------------
@@ -73,24 +75,26 @@ defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREA
 | The three main conventions used for determining exit status codes
 | are as follows:
 |
-|    Standard C/C++ Library (stdlibc):
+|    Standard C/C++ Library ( stdlibc ):
 |       http://www.gnu.org/software/libc/manual/html_node/Exit-Status.html
-|       (This link also contains other GNU-specific conventions)
+|       ( This link also contains other GNU-specific conventions )
 |    BSD sysexits.h:
-|       http://www.gsp.com/cgi-bin/man.cgi?section=3&topic=sysexits
+|       http://www.gsp.com/cgi-bin/man.cgi?section = 3&topic = sysexits
 |    Bash scripting:
 |       http://tldp.org/LDP/abs/html/exitcodes.html
 |
 */
 
-defined('ADMIN_NAME')      OR define('ADMIN_NAME', 'admin'); // highest automatically-assigned error code
-defined('ADMIN_EMAIL')     OR define('ADMIN_EMAIL', 'parrotdipankarweb@gmail.com');//srvbera@gmail.com
-defined('SUPPORTEMAIL')    OR define('SUPPORTEMAIL', 'info@parrotdipankar.com');
-//defined('SITEMOBILE')    OR define('SITEMOBILE', '9903638848');
-defined('SITEMOBILE')    OR define('SITEMOBILE', '9635928755');
-defined('THEME') OR define('THEME', 'theme1');
-defined('SITENAME') OR define('SITENAME', 'parrotdipankar.com');
-defined('UPLOAD_CAT_PATH') OR define('UPLOAD_CAT_PATH', 'uploads/category/');
-defined('UPLOAD_PROD_PATH') OR define('UPLOAD_PROD_PATH', 'uploads/animal/');
-defined('UPLOAD_ABOUT_US_USER') OR define('UPLOAD_ABOUT_US_USER', 'uploads/about_us_user/');
-
+defined( 'ADMIN_NAME' )      OR define( 'ADMIN_NAME', 'admin' );
+// highest automatically-assigned error code
+defined( 'ADMIN_EMAIL' )     OR define( 'ADMIN_EMAIL', 'parrotdipankarweb@gmail.com' );
+//srvbera@gmail.com
+defined( 'SUPPORTEMAIL' )    OR define( 'SUPPORTEMAIL', 'info@parrotdipankar.com' );
+//defined( 'SITEMOBILE' )    OR define( 'SITEMOBILE', '9903638848' );
+defined( 'SITEMOBILE' )    OR define( 'SITEMOBILE', '9635928755' );
+defined( 'THEME' ) OR define( 'THEME', 'theme1' );
+defined( 'SITENAME' ) OR define( 'SITENAME', 'parrotdipankar.com' );
+defined( 'UPLOAD_CAT_PATH' ) OR define( 'UPLOAD_CAT_PATH', 'uploads/category/' );
+defined( 'UPLOAD_PROD_PATH' ) OR define( 'UPLOAD_PROD_PATH', 'uploads/animal/' );
+defined( 'UPLOAD_ABOUT_US_USER' ) OR define( 'UPLOAD_ABOUT_US_USER', 'uploads/about_us_user/' );
+defined( 'UPLOAD_BLOG_PATH' ) OR define( 'UPLOAD_BLOG_PATH', 'uploads/blog/' );
