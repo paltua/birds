@@ -116,7 +116,7 @@ class Blog extends MX_Controller {
             $this->data['animal_sub_cat'] = $this->blog_model->getAllAnimalParentCategory( $this->data['catData'][0]->acm_id );
         }
         $this->data['msg'] = $this->template->getMessage( $status, $msg );
-        $this->template->setTitle( 'Admin : '.$this->data['page_title'].' '.$this->action );
+        $this->template->setTitle( 'Admin : '.ucfirst( $this->data['page_title'] ).' '.ucfirst( $this->action ) );
         $this->template->setLayout( 'dashboard' );
         $this->template->homeAdminRender( 'admin/'.$this->controller.'/add_edit_form', $this->data );
     }
@@ -228,7 +228,7 @@ class Blog extends MX_Controller {
             $this->data['animal_sub_cat'] = $this->blog_model->getAllAnimalParentCategory( $this->data['catData'][0]->acm_id );
         }
         $this->data['msg'] = $this->template->getMessage( $status, $msg );
-        $this->template->setTitle( 'Admin : '.$this->data['page_title'].' '.$this->action );
+        $this->template->setTitle( 'Admin : '.ucfirst( $this->data['page_title'] ).' '.ucfirst( $this->action ) );
         $this->template->setLayout( 'dashboard' );
         $this->template->homeAdminRender( 'admin/'.$this->controller.'/add_edit_form', $this->data );
     }
@@ -287,16 +287,20 @@ class Blog extends MX_Controller {
     public function image( $blog_id = 0 ) {
         $data = array();
         $data['controller'] = $this->controller;
-        $data['page_title'] = 'Dashboard';
         $status = $this->session->flashdata( 'status' );
         $msg = $this->session->flashdata( 'msg' );
 
-        $data['editData'] = $this->animal_master_model->getSingle( $blog_id );
+        $data['editData'] = $this->blog_model->getSingle( $blog_id );
+        $data['page_title'] = ucfirst( $this->controller ).' Images of '.$data['editData'][0]->title;
         $this->_upload( $blog_id );
         $data['blog_id'] = $blog_id;
-        $data['list'] = $this->animal_master_model->getImageList( $blog_id );
-        $data['msg'] = $this->template->getMessage( $status, $msg );
-        $this->template->setTitle( 'Admin : Blog Image' );
+        $data['list'] = $this->blog_model->getImageList( $blog_id );
+        $data['msg'] = '';
+        if ( $msg != '' ) {
+            $data['msg'] = $this->template->getMessage( $status, $msg );
+        }
+        $data['defaultPath'] = base_url( 'admin/blog/setDefaultImage' );
+        $this->template->setTitle( 'Admin : '.$data['page_title'] );
         $this->template->setLayout( 'dashboard' );
 
         $this->template->homeAdminRender( 'admin/'.$this->controller.'/image', $data );
@@ -304,7 +308,7 @@ class Blog extends MX_Controller {
 
     private function _upload( $blog_id = 0 ) {
         $config['upload_path']          = UPLOAD_BLOG_PATH;
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         /*$config['max_size']             = 100;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;
@@ -319,12 +323,13 @@ class Blog extends MX_Controller {
             } else {
                 $this->session->set_flashdata( 'status', 'success' );
                 $this->session->set_flashdata( 'msg', 'Successfully Uploaded' );
-                $inData['ami_path'] = $path = $this->upload->data( 'file_name' );
+                $inData['image_path'] = $path = $this->upload->data( 'file_name' );
                 $inData['blog_id'] = $blog_id;
+                $this->image_lib->clear();
                 $this->_resizeImage( $path );
-                $this->tbl_generic_model->add( 'animal_master_images', $inData );
-                redirect( base_url().'admin/'.$this->controller.'/image/'.$blog_id );
+                $this->tbl_generic_model->add( 'blog_images', $inData );
             }
+            redirect( base_url().'admin/'.$this->controller.'/image/'.$blog_id );
         }
     }
 
@@ -336,24 +341,27 @@ class Blog extends MX_Controller {
         $config['maintain_ratio'] = TRUE;
         $config['width']         = 250;
         $config['height']       = 250;
-
-        //$this->load->library( 'image_lib', $config );
+        $this->load->library( 'image_lib' );
         $this->image_lib->initialize( $config );
-
         $this->image_lib->resize();
+        // if ( $this->image_lib->resize() ) {
+        //     echo 'success';
+        // } else {
+        //     echo $this->image_lib->display_errors();
+        // }
+        // die;
     }
 
-    public function image_delete( $blog_id = 0 ) {
-        $where['blog_id'] = $blog_id;
-        $data = $this->tbl_generic_model->get( 'animal_master_images', '*', $where );
+    public function image_delete( $blog_image_id = 0 ) {
+        $where['blog_image_id'] = $blog_image_id;
+        $data = $this->tbl_generic_model->get( 'blog_images', '*', $where );
         if ( !empty( $data ) ) {
             $this->session->set_flashdata( 'status', 'success' );
             $this->session->set_flashdata( 'msg', 'Successfully Deleted' );
-            $this->tbl_generic_model->delete( 'animal_master_images', $where );
-            @unlink( UPLOAD_BLOG_PATH.$data[0]->ami_path );
-            @unlink( UPLOAD_BLOG_PATH.'thumb/'.$data[0]->ami_path );
-            $blog_id = $data[0]->blog_id;
-            redirect( base_url().'admin/'.$this->controller.'/image/'.$blog_id );
+            $this->tbl_generic_model->delete( 'blog_images', $where );
+            @unlink( UPLOAD_BLOG_PATH.$data[0]->image_path );
+            @unlink( UPLOAD_BLOG_PATH.'thumb/'.$data[0]->image_path );
+            redirect( base_url().'admin/'.$this->controller.'/image/'.$data[0]->blog_id );
         } else {
             $this->session->set_flashdata( 'status', 'danger' );
             $this->session->set_flashdata( 'msg', 'Wrong Parameter' );
@@ -362,10 +370,10 @@ class Blog extends MX_Controller {
     }
 
     public function setDefaultImage() {
-        $am_id = $this->input->post( 'am_id' );
+        $blog_image_id = $this->input->post( 'blog_image_id' );
         $blog_id = $this->input->post( 'blog_id' );
         $data['msg'] = $this->template->getMessage( 'success', 'Successfully set the default Image.' );
-        $this->animal_master_model->setDefaultImage( $am_id, $blog_id );
+        $this->blog_model->setDefaultImage( $blog_id, $blog_image_id );
         echo json_encode( $data );
     }
 }
