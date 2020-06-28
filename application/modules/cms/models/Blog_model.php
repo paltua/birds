@@ -8,7 +8,15 @@ class Blog_model extends CI_Model {
     }
 
     function getBlogDashboard() {
-
+        $this->db->select( 'B.*, BREV.title,BREV.title_url, BREV.short_desc, BREV.is_status, BREV.created_date,
+        BIMG.image_path, BIMG.image_alt' );
+        $this->db->from( 'blogs B' );
+        $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = B.blog_revision_id', 'INNER' );
+        $this->db->join( 'blog_images BIMG', 'BIMG.blog_id = B.blog_id AND BIMG.orders = 1 AND BIMG.is_status != "delete"', 'LEFT' );
+        $this->db->where( 'BREV.is_status', 'active' );
+        $this->db->order_by( 'B.blog_id', 'DESC' );
+        $this->db->limit( 4, 0 );
+        return $this->db->get()->result();
     }
 
     function getBlogList() {
