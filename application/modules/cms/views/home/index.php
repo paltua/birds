@@ -15,7 +15,7 @@ function submitForm() {
 </script>
 
 <section id="fullpage">
-    <div class="section homeBanner" id="section0">
+    <div class="section homeBanner topban-sud-home" id="section0">
 
         <div class="w-100 slider-top-sud">
             <div class="container">
@@ -23,9 +23,9 @@ function submitForm() {
                     <div class="owl-carousel owl-theme owl-slider-top-sud">
                         <?php if(count($blogs) > 0){?>
                         <?php foreach ($blogs as $key => $value) {?>
-                        <div class="item"><img src="<?php echo base_url('uploads/blog/'.$value->image_path);?>"
-                                alt="<?php echo $value->title;?>">
-                            <div class="col-12 col-md-12 col-lg-5 col-xl-5 wrap-text-slider-sud">
+                        <div class="item"><div class="img-wrap"><img src="<?php echo base_url('uploads/blog/'.$value->image_path);?>"
+                                alt="<?php echo $value->title;?>"></div>
+                            <div class="col-12 col-md-6 col-lg-5 col-xl-5 wrap-text-slider-sud">
                                 <h3><?php echo $value->title;?></h3>
                                 <p><?php echo $value->short_desc;?></p>
                                 <a href="<?php echo base_url('cms/blog/details/'.$value->title_url);?>">View Details</a>
@@ -33,9 +33,9 @@ function submitForm() {
                         </div>
                         <?php }?>
                         <?php }else{?>
-                        <div class="item"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_03.jpg"
-                                alt="">
-                            <div class="col-12 col-md-12 col-lg-5 col-xl-5 wrap-text-slider-sud">
+                        <div class="item"><div class="img-wrap"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_03.jpg"
+                                alt=""></div>
+                            <div class="col-12 col-md-6 col-lg-5 col-xl-5 wrap-text-slider-sud">
                                 <h3>Title will come here</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id dolor
                                     dignissim vel vulputate eros feugiat. Mauris accumsan aliquam ultrices.</p>
@@ -66,7 +66,7 @@ function submitForm() {
     <!-- BANNER SECTION -->
 
     <div class="section homepdlist overflow-sec" id="section1">
-        <div class="container">
+        <div class="container flex-wrap-sud">
             <div class="col-sm-12 col-md-12 col-lg-7 float-left">
                 <div class="content-sec clearfix sud-text">
                     <h2 class="title text-center mt-4">Know more about Birds</h2>

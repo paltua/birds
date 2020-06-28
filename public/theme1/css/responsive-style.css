@@ -17,7 +17,7 @@
 	#header .logo { max-width: 82px;padding: 17px 6px 11px 6px;}
 	#fullpage { overflow-x: hidden; }
 	#footer {position: relative;text-align: center;}
-	.section { height: 100% !important }
+	
 	.homeBanner h2 {font-size: 32px;line-height: 42px;}
 	.homeBanner h3 {font-size: 28px;line-height: 36px;}
 	.homeBanner .bannertxt { padding-top: 160px;}
@@ -254,3 +254,4 @@
 	    height: 86px;
 	}
 }
+

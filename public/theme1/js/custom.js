@@ -123,6 +123,32 @@ jQuery(document).ready(function ($) {
 			}
 		}
 	})
+	$('.owl-slider-blog-sud').owlCarousel({
+		loop: true,
+		//margin:30,
+		responsiveClass: true,
+		dots: false,
+		nav: true,
+		responsive: {
+			0: {
+				items: 1,
+				margin: 5,
+				nav: true,
+			},
+			600: {
+				items: 2,
+				margin: 5,
+			},
+			1000: {
+				items: 4,
+				margin: 5,
+			},
+			1200: {
+				items: 4,
+				margin: 5,
+			}
+		}
+	})
 	$('.carousel-7').owlCarousel({
 		loop: true,
 		margin: 30,
