@@ -17,13 +17,54 @@
 
 <section id="fullpage"> 
     <div class="section homeBanner" id="section0">
+
+    <div class="w-100 slider-top-sud">
         <div class="container">
-            <div class="content-sec clearfix">
-                <h2 class="title text-center">Choosing The Right Bird</h2>
-                <h3 class="sub-title text-center">For You And Your Family</h3>
+            <div class="w-100 slider-top-inner">
+                 <div class="owl-carousel owl-theme owl-slider-top-sud">
+                    <div class="item"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_03.jpg" alt="">
+                <div class="col-12 col-md-12 col-lg-5 col-xl-5 wrap-text-slider-sud">
+                    <h3>Title will come here</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id dolor dignissim vel vulputate eros feugiat. Mauris accumsan aliquam ultrices.</p>
+                    <a href="#">View Details</a>
+                </div>
+                </div>
+                     <div class="item"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_03.jpg" alt="">
+                    <div class="col-12 col-md-12 col-lg-5 col-xl-5 wrap-text-slider-sud">
+                    <h3>Title will come here</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id dolor dignissim vel vulputate eros feugiat. Mauris accumsan aliquam ultrices.</p>
+                    <a href="#">View Details</a>
+                </div></div>
+                      <div class="item"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_03.jpg" alt="">
+                    <div class="col-12 col-md-12 col-lg-5 col-xl-5 wrap-text-slider-sud">
+                    <h3>Title will come here</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id dolor dignissim vel vulputate eros feugiat. Mauris accumsan aliquam ultrices.</p>
+                    <a href="#">View Details</a>
+                </div></div>
+                 </div>
+            </div>
+        </div>
+    </div>
+        
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active" style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_01.jpg); background-repeat: no-repeat;"></div>
+                <div class="carousel-item" style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_02.jpg); background-repeat: no-repeat;"></div>
+                <div class="carousel-item" style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_03.jpg); background-repeat: no-repeat;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- BANNER SECTION -->
+
+    <div class="section homepdlist overflow-sec" id="section1">
+        <div class="container">
+            <div class="col-sm-12 col-md-12 col-lg-7 float-left">
+            <div class="content-sec clearfix sud-text">
+                <h2 class="title text-center mt-4">Know more about Birds</h2>
+                <!-- <h3 class="sub-title text-center">For You And Your Family</h3> -->
 
                 <!-- <h4 class="text-center">Browse Categories <span>(Discover new products)</span></h4> -->
-                <h6 class="text-center">Browse our classifieds and find best deal for you - buy, sell or exchange items</h5>
+                <!-- <h6 class="text-center">Browse our classifieds and find best deal for you - buy, sell or exchange items</h5> -->
                 <div class="search-layout">
                     <form method="post" action="<?php echo base_url('user/product/search');?>" id="searchFormId">
                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
@@ -49,7 +90,7 @@
                 </form>
                 </div>
 
-                <div class="category-circle carousel-5 owl-carousel owl-theme">
+                <div class="category-circle carousel-5 owl-carousel owl-theme mt-5 owl-new-sud">
                     <!-- <div class="item">
                         <figure>
                             <div class="circle-layout">
@@ -83,171 +124,33 @@
                 <?php } } ?>
                 </div>
             </div>
-        </div>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active" style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_01.jpg); background-repeat: no-repeat;"></div>
-                <div class="carousel-item" style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_02.jpg); background-repeat: no-repeat;"></div>
-                <div class="carousel-item" style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_03.jpg); background-repeat: no-repeat;"></div>
             </div>
-        </div>
-    </div>
-    <!-- BANNER SECTION -->
-
-    <div class="section homepdlist overflow-sec" id="section1">
-        <div class="container">
-            <div class="content-sec">
-                <div class="row">
-                    <div class="col-md-12">              
-                        <div id="horizontalTab" class="homepdlist-tab">
-                            <div class="common wr-fuol">
-                            <ul class="resp-tabs-list pull-left">
-                                <li>Pet's Listings</li>
-                                <!-- <li>Foods & Accessories Listings</li> -->
-                                <li>Dipankar's Choice</li>
-                            </ul>
-                            
+            <div class="col-sm-12 col-md-12 col-lg-5 float-left">
+            <div class="video-sec sud-video-sec">
+                        <div class="video-box">
+                            <iframe width="100%" height="325px" src="<?php echo $set['you_tube_link'];?>?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;disablekb=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="botm-social">
+                                    <ul>
+                                        <?php $this->load->view(THEME.'/common/socialLink');?>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="resp-tabs-container ">
-                                <div class="momar">
-                                    <div class="homelist-box carousel-2 owl-carousel owl-theme">
-                                        
-                                        <?php if(count($latestProduct) > 0):
-                                            foreach ($latestProduct as $key => $value) :
-                                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
-                                                if($value->ami_path != ''){
-                                                    $imagePath = base_url(UPLOAD_PROD_PATH.'thumb/'.$value->ami_path);
-                                                }
-                                        ?>
-                                        <div class="item">
-                                            <figure>
-                                                <div class="box-layout img-icons">
-                                                    <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="fa fa-link"></i></a><a href="<?php echo $imagePath;?>" data-fancybox="gallery" class="detailsbtn fa-img-link"><i class="fa fa-image"></i></a></span>
-                                                    <figcaption>
-                                                        <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
-                                                        <?php if(strlen($value->amd_name) <= 13){
-                                                                echo $value->amd_name;
-                                                            }else{
-                                                                echo substr($value->amd_name,0,11).'..';
-                                                            };?></a></h3>
-                                                        <h5>RS <?php echo $value->amd_price;?></h5>
-                                                    </figcaption>
-                                                </div>                              
-                                            </figure>
-                                        </div>
-                                    <?php endforeach; endif;  ?>
-                                    </div>
-                                    <a href="<?php echo base_url('user/product/search/0/pet');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
-
-                                    <a href="<?php echo base_url('user/product/search/0/pet');?>" class="btn btn-danger pull-right mobview mar-bot">View All</a>
-                                    
-                                </div>
-                                
-                                
-                                <div class="">
-                                    <div class="homelist-box carousel-2 owl-carousel owl-theme">
-                                        
-                                        <?php if(count($dipChoices) > 0):
-                                            foreach ($dipChoices as $key => $value) :
-                                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
-                                                if($value->ami_path != ''){
-                                                    $imagePath = base_url(UPLOAD_PROD_PATH.'thumb/'.$value->ami_path);
-                                                }
-                                        ?>
-                                        <div class="item">
-                                            <figure>
-                                                <div class="box-layout img-icons">
-                                                    <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies">
-                                                        <a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="fa fa-link"></i></a><a href="<?php echo $imagePath;?>" data-fancybox="gallery" class="detailsbtn fa-img-link"><i class="fa fa-image"></i></a>
-                                                    </span>
-                                                    <figcaption>
-                                                        <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
-                                                        
-                                                        <?php if(strlen($value->amd_name) <= 13){
-                                                            echo $value->amd_name;
-                                                        }else{
-                                                            echo substr($value->amd_name,0,11).'..';
-                                                        };?>
-                                                        </a></h3>
-                                                        <h5>RS <?php echo $value->amd_price;?></h5>
-                                                    </figcaption>
-                                                </div>                              
-                                            </figure>
-                                        </div>
-                                    <?php endforeach; endif;  ?>
-                                    </div>
-
-                                    <a href="<?php echo base_url('user/product/search/0/dip');?>" class="btn btn-danger pull-right deskview for-top-but">View All</a>
-
-                                    <a href="<?php echo base_url('user/product/search/0/dip');?>" class="btn btn-danger pull-right mobview">View All</a>
-                                    <!-- <a href="<?php echo base_url('user/product/search/');?>" class="btn btn-danger">View All</a> -->
-                                </div>
+                            <div class="col-md-4 pl-0 data-subs-sud">
+                                <!-- <a href="javascript:void(0)" class="btn subscribe">Subscribe to my channels</a> -->
+                                <script src="https://apis.google.com/js/platform.js"></script>
+                                <div class="g-ytsubscribe" data-channelid="UCMP0o_U6wmJ2Zd60N2hWpXQ" data-layout="default" data-theme="dark" data-count="default"></div>
                             </div>
                         </div>
-                        
-                    </div>     
-                    
-                    
-
-<div class="col-md-12 food-acc-sec">              
-                        <div id="horizontalTab" class="homepdlist-tab">
-                        <div class="common wr-fuol">
-                            <h4 class="fd-title pull-left">Foods & Accessories Listings</h4>
-                            <a href="<?php echo base_url('user/product/search/0/food');?>" class="btn btn-danger pull-right deskview">View All</a>
-                                                    </div>
-                            <div class="resp-tabs-container">
-                               
-                                <div> 
-                                    <div class="homelist-box carousel-2 owl-carousel owl-theme">
-                                        
-                                        <?php if(count($premiumProduct) > 0):
-                                                foreach ($premiumProduct as $key => $value) :
-                                                    $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
-                                                    if($value->ami_path != ''){
-                                                        $imagePath = base_url(UPLOAD_PROD_PATH.'thumb/'.$value->ami_path);
-                                                    }
-                                            ?>
-                                            <div class="item">
-                                                <figure>
-                                                    <div class="box-layout img-icons">
-                                                        <span class="pdimg"><img src="<?php echo $imagePath;?>" alt="Buddies"><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>" class="detailsbtn"><i class="fa fa-link"></i></a><a href="<?php echo $imagePath;?>" data-fancybox="gallery" class="detailsbtn fa-img-link"><i class="fa fa-image"></i></a></span>
-                                                        <figcaption>
-                                                            <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
-                                                            
-                                                            <?php if(strlen($value->amd_name) <= 13){
-                                                                echo $value->amd_name;
-                                                            }else{
-                                                                echo substr($value->amd_name,0,11).'..';
-                                                            };?>
-                                                            </a></h3>
-                                                            <h5>RS <?php echo $value->amd_price;?></h5>
-                                                        </figcaption>
-                                                    </div>                              
-                                                </figure>
-                                            </div>
-                                        <?php endforeach; endif;  ?>
-                                    </div>
-                                    <a href="<?php echo base_url('user/product/search/0/food');?>" class="btn btn-danger pull-right mobview">View All</a>
-                                    
-                                </div>
-                                
-                               
-                            </div>
-                        </div>
-                        
                     </div>
-
-
-
-
-
-                </div>
             </div>
-        </div>      
+        </div>     
     </div>
     
 
-    <div class="section homeGetTouch overflow-sec" id="section2">
+    <!-- <div class="section homeGetTouch overflow-sec" id="section2">
         <div class="gridwrap gal-full">
         <div class="common wr-gal two-grid secleft full-wr">
         <div class="img-grid clearfix">
@@ -297,31 +200,13 @@
             </div>
             <div class="two-grid secright sstop" >
                 <div class="content-sec">
-                    <div class="video-sec">
-                        <div class="video-box">
-                            <iframe width="100%" height="200" src="<?php echo $set['you_tube_link'];?>?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;disablekb=0" frameborder="0" allow="encrypted-media" allowfullscreen ></iframe>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="botm-social">
-                                    <ul>
-                                        <?php $this->load->view(THEME.'/common/socialLink');?>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <!-- <a href="javascript:void(0)" class="btn subscribe">Subscribe to my channels</a> -->
-                                <script src="https://apis.google.com/js/platform.js"></script>
-                                <div class="g-ytsubscribe" data-channelid="UCMP0o_U6wmJ2Zd60N2hWpXQ" data-layout="default" data-theme="dark" data-count="default"></div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- GET IN TOUCH SECTION -->
 </section>
 
