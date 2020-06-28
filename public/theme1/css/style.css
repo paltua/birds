@@ -269,7 +269,15 @@ table tr td {position: relative;overflow: hidden;}
 .botm-links ul li:last-child::after { display: none; }
 .video-sec .video-box {margin-bottom: 10px}
 .botm-social ul {padding-left: 0; margin:0; text-align: left;}
-.botm-social ul li { display: inline-block;position: relative; width:38px; height: 38px; border-radius:50%; background: #2b2b2b; margin-right:5px; }
+.botm-social ul li { 
+  display: inline-block;
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #2b2b2b;
+    margin-right: 2px;
+   }
 .botm-social ul li a, #footer ul.ft-social li a { width: 30px; height: 30px; display: block; text-indent: 999px; overflow: hidden;position: absolute; top: 0; bottom: 0;left: 0;right: 0; margin: auto; -webkit-transition: all linear 0.5s; -moz-transition: all linear 0.5s; transition: all linear 0.5s }
 .botm-social ul li.fb a, #footer ul.ft-social li.fb a { background-image: url(../images/icon-fb.png); background-repeat: no-repeat; background-position: 0 0 }
 .botm-social ul li.fb:hover a, #footer ul.ft-social li.fb:hover a {background-position: 0 -30px }
@@ -291,8 +299,7 @@ table tr td {position: relative;overflow: hidden;}
         left: 125%;
     }
 }
-}
-}
+
 @keyframes shine {
     100% {
         left: 125%;
@@ -529,7 +536,7 @@ div.dataTables_filter label { -webkit-justify-content: flex-end; justify-content
 .chosen-container {width:100%!important;}
 .form-check {display: inline-block; vertical-align: middle;}
 div.dataTables_paginate {float:right;}
-div.dataTables_paginate ul li {display: :inline-block; margin-left: 4px}
+div.dataTables_paginate ul li {display: inline-block; margin-left: 4px}
 div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; display: block;}
 .owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
     display: block;
@@ -892,6 +899,110 @@ margin-top: -60px;
   left: 60px !important;
   display: block !important;
 }
+.sud-text h6, h3 {
+  color:#ffffff;
+}
+.sud-video-sec {
+  padding-top: 130px;
+  padding-left: 30px;
+}
+.owl-new-sud .owl-next {
+  right: -35px !important;
+    top: 44% !important;
+}
+.owl-new-sud .owl-prev {
+  left: -34px !important;
+    top: 44% !important;
+}
+.slider-top-inner {
+    position: relative;
+    z-index: 2;
+    top: 100px;
+    height: calc(100vh - 180px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.owl-slider-top-sud .item {
+  position: relative;
+}
+.owl-slider-top-sud .item img {
+  width: 100%;
+}
+.wrap-text-slider-sud {
+  position: absolute;
+  right:0;
+  top:0;
+  background: rgba(0, 0, 0, 0.75);
+  height: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px 50px 30px 30px;
+}
+.wrap-text-slider-sud h3{
+  color: #fff;
+  font-size: 22px;
+  text-transform: none;
+  font-weight: bold;
+}
+.wrap-text-slider-sud p{
+  color: #fff;
+  font-size: 14px;
+  margin: 20px 0;
+}
+.wrap-text-slider-sud a{
+  color: #fff;
+    font-size: 12px;
+    background: #f95615;
+    padding: 10px 20px;
+    outline: none;
+    border: 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.slider-top-sud .owl-nav {
+    margin-top: 0;
+    position: absolute;
+    width: 100%;
+    top: 45%;
+    z-index: 9999;
+}
+.slider-top-sud .owl-nav .owl-prev {
+  left: 10px !important;
+  opacity: 0.7;
+}
+.slider-top-sud .owl-nav .owl-prev:hover {
+  opacity: 1;
+}
+.slider-top-sud .owl-nav .owl-next {
+  right: 10px !important;
+  opacity: 0.7;
+}
+.slider-top-sud .owl-nav .owl-next:hover {
+  opacity:1;
+}
+@media (min-width:768px) and (max-width:991px) {
+  .slider-top-inner {
+    position: relative;
+    z-index: 2;
+    top: 44px;
+}
+.wrap-text-slider-sud {
+    position: relative;
+}
+.slider-top-sud .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
+  left: 10px !important;
+}
+.slider-top-sud .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {
+  right: 10px !important;
+}
+}
 @media screen and (max-width: 767px) {
   #header .logbtn {
     background-image: url(../images/user.png) !important;
@@ -928,6 +1039,31 @@ margin-top: -60px;
 .homeGetTouch .secleft .img-grid ul li img {
   width: 100%;
   height: auto;
+}
+.homepdlist .sud-text {
+  padding: 80px 0 20px 0 !important;
+}
+.sud-video-sec {
+    padding-top: 0;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+.data-subs-sud {
+  padding-left: 15px !important;
+}
+.slider-top-inner {
+    position: relative;
+    z-index: 2;
+    top: 44px;
+}
+.wrap-text-slider-sud {
+    position: relative;
+}
+.slider-top-sud .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
+  left: 10px !important;
+}
+.slider-top-sud .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {
+  right: 10px !important;
 }
 }
 /*//////////////////////////////////////////////
