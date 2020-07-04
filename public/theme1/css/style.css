@@ -914,7 +914,7 @@ margin-top: -60px;
 .slider-top-inner {
     position: relative;
     z-index: 2;
-    top: 100px;
+    top: 115px;
     height: calc(100vh - 180px);
     display: flex;
     justify-content: center;
@@ -925,30 +925,33 @@ margin-top: -60px;
   position: relative;
 }
 .owl-slider-top-sud .item img {
-  width: 100%;
+    width: auto;
+    min-height: 70vh;
+    object-fit: cover;
 }
 .wrap-text-slider-sud {
   position: absolute;
-  right:0;
-  top:0;
+  left:0;
+  bottom:0;
   background: rgba(0, 0, 0, 0.75);
-  height: 100%;
+  height: auto;
   display: flex;
-  align-items: baseline;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  padding: 30px 50px 30px 30px;
+  padding: 20px;
+  min-height: 200px;
 }
 .wrap-text-slider-sud h3{
   color: #fff;
-  font-size: 22px;
+  font-size: 16px;
   text-transform: none;
   font-weight: bold;
 }
 .wrap-text-slider-sud p{
   color: #fff;
-  font-size: 14px;
-  margin: 20px 0;
+    font-size: 13px;
+    margin: 0 0 10px 0;
 }
 .wrap-text-slider-sud a{
   color: #fff;
@@ -962,6 +965,7 @@ margin-top: -60px;
     letter-spacing: 1px;
     border-radius: 4px;
     font-weight: 600;
+    margin-top: 15px;
 }
 .slider-top-sud .owl-nav {
     margin-top: 0;
@@ -1150,6 +1154,31 @@ margin-top: -60px;
   font-size: 14px;
   font-weight: 700;
 }
+.resp-vtabs ul.list-left-sud {
+  width: 15%;
+}
+.resp-vtabs .right-details-sud {
+  width: 85%;
+}
+.resp-vtabs .right-details-sud h3{
+  color: #000000;
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 0;
+}
+.resp-vtabs .right-details-sud p {
+  font-size: 14px;
+  text-transform: none;
+} 
+.product-wrap-sud {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+}
+.product-wrap-sud .blog-slider-owl-sud {
+    padding: 10px 50px 0 50px;
+}
 /*****sudipta****/
 @media (min-width:992px) and (max-width:1024px) {
 .topban-sud-home {
@@ -1234,7 +1263,6 @@ margin-top: -60px;
 }
 .wrap-text-slider-sud {
 	position: relative;
-	min-height: 280px;
 }
 .slider-top-sud .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
   left: 10px !important;

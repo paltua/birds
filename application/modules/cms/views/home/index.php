@@ -25,7 +25,7 @@ function submitForm() {
                         <?php foreach ($blogs as $key => $value) {?>
                         <div class="item"><div class="img-wrap"><img src="<?php echo base_url('uploads/blog/'.$value->image_path);?>"
                                 alt="<?php echo $value->title;?>"></div>
-                            <div class="col-12 col-md-6 col-lg-5 col-xl-5 wrap-text-slider-sud">
+                            <div class="col-12 wrap-text-slider-sud">
                                 <h3><?php echo $value->title;?></h3>
                                 <p><?php echo $value->short_desc;?></p>
                                 <a href="<?php echo base_url('cms/blog/details/'.$value->title_url);?>">View Details</a>
@@ -54,12 +54,12 @@ function submitForm() {
                 <div class="carousel-item active"
                     style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_01.jpg); background-repeat: no-repeat;">
                 </div>
-                <div class="carousel-item"
+                <!-- <div class="carousel-item"
                     style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_02.jpg); background-repeat: no-repeat;">
                 </div>
                 <div class="carousel-item"
                     style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_03.jpg); background-repeat: no-repeat;">
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

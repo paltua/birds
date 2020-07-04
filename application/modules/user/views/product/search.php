@@ -102,24 +102,75 @@
 			<div class="product-listing-layout">
 				<div class="row">
 					<?php if(count($selectedCatDet) > 0){ ?>
-						<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
 							<div class="aside-layout">
 								<div class="aside-item">
 									<div id="verticalTab">
-										<ul class="resp-tabs-list">
+										<ul class="resp-tabs-list list-left-sud">
 											<?php foreach ($selectedCatDet as $key => $value) {
 												?>
 										<li><?php echo $value->lang_name;?></li>
 									<?php }} ?>
 										</ul>
-										<div class="resp-tabs-container">
+										<div class="resp-tabs-container right-details-sud">
 											<?php if(count($selectedCatDet) > 0){
 												foreach ($selectedCatDet as $key => $value) {
 												?>
 											<div>
-												<p><?php echo $value->acmd_name;?></p>
+												<h3><?php echo $value->acmd_name;?></h3>
 												<p><?php echo $value->acmd_short_desc;?></p>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id dolor dignissim vel vulputate eros feugiat. Mauris accumsan aliquam ultrices. Vivamus sit amet pulvinar mi. Nam at placerat urna. Sed rutrum, ante eget<br><br> fermentum sodales, est eros condimentum velit, nec consectetur lorem augue ac sapien. Morbi et arcu sit amet lacus ornare malesuada. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec blandit sem purus. Pellentesque quis magna odio, non mattis mi. In et dui mauris, sit amet ullamcorper nisl.<br><br>Duis a orci nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi feugiat ultrices elementum. Nullam nisi elit, semper nec eleifend et, auctor aliquet risus. Curabitur placerat lacus et orci blandit ac lacinia sem dignissim. Nam nec odio elit. Pellentesque dapibus commodo leo quis feugiat. In hac habitasse platea dictumst. Integer id tortor sit amet purus viverra aliquam nec ac elit. Fusce facilisis urna sed ligula pellentesque molestie. Duis ac risus elit. Proin ut felis diam. Ut felis diam, convallis sit amet hendrerit id, euismod id mi. <br><br>Nullam nisl purus, semper et tristique a, ullamcorper vitae metus. 
+Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Nullam neque erat, tempor eget dictum sit amet, laoreet vitae leo. Sed eu pretium purus. Pellentesque vestibulum arcu eu lacus aliquam sollicitudin vel ac metus. Maecenas pellentesque, nibh eget eleifend pharetra, mauris nisl ornare orci, sit amet suscipit mauris ante id nulla.  </p>
+
+<div class="w-100 wrap-blog-slider product-wrap-sud">
+    <h4>See other Products</h4>
+    <div class="w-100 blog-slider-owl-sud">
+    <div class="owl-carousel owl-theme owl-slider-blog-sud">
+        <div class="item">
+        <a class="w-100 blog-inner-wap-slider" href="#">
+           <div class="w-100 img-blog-sli"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_01.jpg" alt="Image"></div>
+           <div class="w-100 content-blog-sli">
+            <h5>Title of the blog</h5>
+           </div>
+        </a>
+        </div>
+        <div class="item">
+        <a class="w-100 blog-inner-wap-slider" href="#">
+           <div class="w-100 img-blog-sli"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_01.jpg" alt="Image"></div>
+           <div class="w-100 content-blog-sli">
+            <h5>Title of the blog</h5>
+           </div>
+        </a>
+        </div>
+        <div class="item">
+        <a class="w-100 blog-inner-wap-slider" href="#">
+           <div class="w-100 img-blog-sli"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_01.jpg" alt="Image"></div>
+           <div class="w-100 content-blog-sli">
+            <h5>Title of the blog</h5>
+           </div>
+        </a>
+        </div>
+        <div class="item">
+        <a class="w-100 blog-inner-wap-slider" href="#">
+           <div class="w-100 img-blog-sli"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_01.jpg" alt="Image"></div>
+           <div class="w-100 content-blog-sli">
+            <h5>Title of the blog</h5>
+           </div>
+        </a>
+        </div>
+        <div class="item">
+        <a class="w-100 blog-inner-wap-slider" href="#">
+           <div class="w-100 img-blog-sli"><img src="http://localhost/birds/public/theme1/images/sectionbanner01_01.jpg" alt="Image"></div>
+           <div class="w-100 content-blog-sli">
+            <h5>Title of the blog</h5>
+           </div>
+        </a>
+        </div>
+    </div>
+    </div>
+    </div>
 											</div>
+											
 											<?php } ?>						
 										</div>
 									</div>
@@ -128,146 +179,7 @@
 							</div>
 						</div>
 					<?php } ?>	
-					<div class="col-lg-<?php if($selectedCatId > 0){ ?>8<?php }else{?>12<?php }?> col-md-12 col-sm-12  <?php if($selectedCatId > 0){ ?>cont-part<?php }?>">
-						<div class="row">
-							<div class="col-md-12">
-								<?php $postType = (($buy_or_sell == 'sell')?'Sale':$buy_or_sell);?>
-								<h3> Post Search <?php if($buy_or_sell != ''){ echo 'for '.ucwords($postType); }?></h3>
-								<div class="pd-search-filter-layout">									
-									<form class="row" method="post" id="searchForm">
-										<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-										<input type="hidden" name="startPage" id="startPage" value="<?php echo $limit['start'];?>">
-										<input type="hidden" name="category_id" value="<?php echo $category_id;?>">
-										<input type="hidden" name="buy_or_sell" value="<?php echo $buy_or_sell;?>">
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>Keyword</label>
-												<input type="text" name="keyWord" value="<?php echo $keyWord;?>" placeholder="I'm Looking For">
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>Country</label>
-												<select id="animal_country_id" name="country_id">
-													<option value="">Select One</option>
-													<?php if(count($country) > 0){
-                                                    foreach ($country as $value) {
-                                                    	$selected = '';
-                                                    	if($value->id == $country_id){
-                                                    		$selected = 'selected';
-                                                    	}
-                                                        ?>
-                                                        <option value="<?php echo $value->id;?>" <?php echo $selected;?>><?php echo $value->name;?></option>
-                                                    <?php }} ?>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>State</label>
-												<select id="animal_state_id" name="state_id">
-													
-												</select>
-											</div>
-										</div>
-										<div class="col-md-3">
-											<div class="form-group">
-												<label>City</label>
-												<select id="animal_city_id" name="city_id[]" multiple>
-													
-												</select>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<label>Price</label>
-												<div class="example">
-										            <input class="range-example-input-2" type="text" min="<?php echo $price['min'];?>" max="<?php echo $price['max'];?>" value="<?php echo $price['min_select'];?>,<?php echo $price['max_select'];?>" name="price" step="10" />
-										        </div>
-											</div>
-										</div>
-										<div class="commmon wrapbutton">
-										<div class="col-md-3 pull-left">
-											<div class="form-group pet-listss-gr">
-												<input class="" type="radio" name="choices" value="pet" <?php if($choices == 'pet'){ echo 'checked';}?> /><label>Pet's Listings</label>
-												
-											</div>
-										</div>
-										<div class="col-md-3 pull-left">	
-											<div class="form-group pet-listss-gr">
-												<input class="" type="radio" name="choices" value="dip" <?php if($choices == 'dip'){ echo 'checked';}?> /><label>Dipankar's Choice</label>
-												
-											</div>
-										</div>
-										<div class="col-md-3 pull-left">	
-											<div class="form-group pet-listss-gr">
-												<input class="" type="radio" name="choices" value="food" <?php if($choices == 'food'){ echo 'checked';}?> /><label>Foods & Accessories Listings</label>
-												
-											</div>
-										</div>
-													</div>
-										
-											
-										<div class="col-md-12 but-mar-bottom pull-left">
-											<div class="example">
-									            <button type="submit" class="btn btn-info">Search</button>
-									        </div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="product-item">
-							<div id="horizontalTab" class="pd-list-tab">
-								<div class="row">
-									<div class="col-md-12">
-										<ul class="resp-tabs-list clearfix">
-											<li>All Results</li>
-											<!-- <li>Personal</li>
-											<li>Company</li> -->
-										</ul>
-										<span class="tot-res-right">Total Result <?php echo $prodListCount;?></span>
-									</div>
-									
-								</div>
-								<div class="resp-tabs-container">
-									<div>
-										<div class="row" id="productListDivId">
-											<?php 
-											$viewData['list'] = $prodListAll;
-											$this->load->view('user/product/single', $viewData);
-											?>
-										</div>
-										<div class="buttonLoadMoreClass">
-											<?php if($prodListCount > $limit['perPage']){?>
-											<a href="javascript:void(0);" id="loadMoreId" class="btn btn-primary float-right">Load More</a>
-											<?php } ?>
-										</div>
-										
-									</div>
-									
-									
-									<!-- <div>
-										<div class="row">
-											<?php 
-											// $viewData['list'] = $prodListUser;
-											// $this->load->view('user/product/single', $viewData);
-											?>
-										</div>
-									</div> -->
-
-									<!-- <div>
-										<div class="row">
-											<?php 
-											/*$viewData['list'] = $prodListComp;
-											$this->load->view('user/product/single', $viewData);*/
-											?>
-										</div>
-									</div> -->
-								</div>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>

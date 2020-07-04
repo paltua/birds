@@ -114,11 +114,11 @@ jQuery(document).ready(function ($) {
 				margin: 5,
 			},
 			1000: {
-				items: 1,
+				items: 2,
 				margin: 5,
 			},
 			1200: {
-				items: 1,
+				items: 2,
 				margin: 5,
 			}
 		}
