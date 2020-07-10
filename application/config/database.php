@@ -72,15 +72,15 @@ Whether verify the server certificate or not ( 'mysqli' only )
 | the query builder class.
 */
 
-$active_group = 'welspun_ems';
+$active_group = 'default';
 $query_builder = TRUE;
 
-$db['welspun_ems'] = array(
+$db['default'] = array(
     'dsn'	=> '',
     'hostname' => 'localhost',
     'username' => 'root',
-	'password' => '',
-	'database' => 'birds',
+    'password' => 'Abcd@1234',
+    'database' => 'parrotdi_birds',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,

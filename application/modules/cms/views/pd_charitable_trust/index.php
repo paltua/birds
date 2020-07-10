@@ -1,6 +1,6 @@
 <section class="innerbanner">
     <div class="banner-cont">
-        <h1 class="title">About Us</h1>
+        <h1 class="title">PD Charitable Trust</h1>
         <div class="breadcramb">
             <ul>
                 <li><a href="<?php echo base_url();?>"><i class="lnr lnr-home"></i></a></li>
@@ -34,19 +34,7 @@
             </div>
             <div class="bottom-imglist">
                 <div class="row">
-                    <?php if(count($about_us_user) > 0){
-                            foreach ($about_us_user as $key => $value) {
-                                if($value->img == ''){
-                                    $image = base_url('public/'.THEME.'/images/no-image.jpg');
-                                }else{
-                                    $image = base_url(UPLOAD_ABOUT_US_USER.'thumb/'.$value->img);
-                                }
-                        ?>
-                    <div class="col-md-2">
-                        <img src="<?php echo $image;?>" alt="">
-                        <h6><?php echo  $value->name;?></h6>
-                    </div>
-                    <?php } } ?>
+
                 </div>
             </div>
         </div>

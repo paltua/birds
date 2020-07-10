@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 
 /*
 | -------------------------------------------------------------------------
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	$route['default_controller'] = 'welcome';
 |
 | This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
+| URI contains no data. In the above example, the 'welcome' class
 | would be loaded.
 |
 |	$route['404_override'] = 'errors/page_missing';
@@ -54,6 +54,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['cms'] = 'cms/home/index';
+$route['cms/pd-charitable-trust'] = 'cms/pd_charitable_trust';
+$route['cms/contact-us'] = 'cms/contact_us';
+$route['cms/about-us'] = 'cms/about_us';
+$route['cms/google-privacy-policy'] = 'cms/google_privacy_policy';
 
 
 $route[ADMIN_NAME] = 'admin/auth';
@@ -63,8 +67,8 @@ $route[ADMIN_NAME.'/auth/logout'] = 'admin/auth/logout';
 $route[ADMIN_NAME.'/user'] = 'admin/user/index';
 $route[ADMIN_NAME.'/user/adduser'] = 'admin/user/adduser';
 $route[ADMIN_NAME.'/user/save'] = 'admin/user/save';
-$route[ADMIN_NAME.'/user/delete/(:num)'] = 'admin/user/delete/$1';
-$route[ADMIN_NAME.'/user/edit/(:num)'] = 'admin/user/edit/$1';
+$route[ADMIN_NAME.'/user/delete/( :num )'] = 'admin/user/delete/$1';
+$route[ADMIN_NAME.'/user/edit/( :num )'] = 'admin/user/edit/$1';
 $route[ADMIN_NAME.'/user/edituser'] = 'admin/user/edituser';
 $route[ADMIN_NAME.'/user/Ajax_CheckEmail'] = 'admin/user/Ajax_CheckEmail';
 
@@ -73,4 +77,4 @@ $route[ADMIN_NAME.'/query/ajax_Modallist'] = 'admin/query/ajax_Modallist';
 
 $route[ADMIN_NAME.'/auth/forgotPassword'] = 'admin/auth/forgotPassword';
 $route[ADMIN_NAME.'/auth/forgotPasswordEmail'] = 'admin/auth/forgotPasswordEmail';
-$route[ADMIN_NAME.'/auth/resetPassword/(:any)/(:any)'] = 'admin/auth/resetPassword/$1/$2';
+$route[ADMIN_NAME.'/auth/resetPassword/( :any )/( :any )'] = 'admin/auth/resetPassword/$1/$2';

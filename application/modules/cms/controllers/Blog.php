@@ -16,12 +16,14 @@ class Blog extends MY_Controller {
 
     }
 
-    public function details() {
+    public function details( $title_url = '' ) {
         $data = array();
         $status = '';
         $msg = '';
+        $data['details'] = $this->blog_model->getBlogDetails( $title_url );
+        $data['images'] = $this->blog_model->getBlogDetailsImages( $title_url );
         $data['msg'] = $this->template->getMessage( $status, $msg );
-        $this->template->setTitle( 'Blog:' );
+        $this->template->setTitle( 'Blog:'.$data['details'][0]->title );
         $this->template->setLayout( 'cms' );
         $this->template->homeRender( 'cms/'.$this->controller.'/details', $data );
     }
