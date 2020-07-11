@@ -1,7 +1,7 @@
 <div class="outer-container clearfix">
     <div class="row">
         <div class="col-lg-3 col-md-12">
-            <p>Copyright © <?php echo date("Y");?> ParrotDipankar</p>
+            <p>Copyright ©<?php echo date("Y");?> ParrotDipankar</p>
         </div>
         <div class="col-lg-6 col-md-12">
             <div class="botm-links">

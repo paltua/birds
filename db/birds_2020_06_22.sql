@@ -52,6 +52,18 @@ CREATE TABLE `blog_animal_categorys` (
   KEY `blog_revision_id` (`blog_revision_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 
+CREATE TABLE `blog_comments` (
+  `blog_com_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `parent_blog_com_id` int(11) NOT NULL DEFAULT '0',
+  `comments` longtext NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `blog_revision_id` bigint(20) NOT NULL,
+  `com_status` enum('active','inactive') NOT NULL DEFAULT 'active',
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`blog_com_id`),
+  KEY `index2` (`blog_revision_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 

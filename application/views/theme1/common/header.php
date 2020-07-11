@@ -38,7 +38,9 @@
                 <li class='user-details'><img src="<?php echo base_url('public/'.THEME.'/');?>images/usernav.png"><?php echo $this->session->userdata( 'name' );
         ?>
                 </li>
-                <li><a href="<?php echo base_url('user/animal/listing');?>">My Listing</a></li>
+                <!-- <li><a href = ''>My Listing</a></li> -->
+                <?php // echo base_url( 'user/animal/listing' );
+        ?>
                 <li><a href="<?php echo base_url('user/profile/details');?>">My Profile</a></li>
                 <li><a href="<?php echo base_url('user/auth/logout');?>">Log Out</a></li>
             </ul>
