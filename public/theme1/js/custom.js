@@ -155,6 +155,7 @@ jQuery(document).ready(function ($) {
 		responsiveClass: true,
 		dots: false,
 		nav: true,
+		startPosition: startPositionOwlCarSeven,
 		responsive: {
 			0: {
 				items: 3,

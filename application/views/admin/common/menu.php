@@ -5,7 +5,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a href="<?php echo base_url();?>" class="logo navbar-brand"><img src="<?php echo base_url('public/admin/site-logo.png');?>" alt="ParrotDipankar"/></a>
+    <a href="<?php echo base_url();?>" class="logo navbar-brand"><img
+            src="<?php echo base_url('public/admin/site-logo.png');?>" alt="ParrotDipankar" /></a>
 </div>
 <!-- /.navbar-header -->
 
@@ -246,11 +247,13 @@
             <li>
                 <a href="<?php echo base_url('admin/blog');?>"><i class="fa fa-android"></i> Blogs</a>
             </li>
+            <!-- <li>
+                <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Pets and Pet Accessories</a>
+            </li> -->
             <li>
-                <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Pets and Pet Accessories<!-- Animals --></a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Product Types<!-- Animal Category --></a>
+                <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Product
+                    Types
+                    <!-- Animal Category --></a>
             </li>
             <!-- <li>
                 <a href="<?php echo base_url('admin/animal_book');?>"><i class="fa fa-book"></i> Pets Books</a>

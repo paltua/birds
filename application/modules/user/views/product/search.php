@@ -50,33 +50,6 @@ $(document).ready(function() {
                                         <div>
                                             <h3><?php echo $value->acmd_name;?></h3>
                                             <p><?php echo $value->acmd_short_desc;?></p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus
-                                                felis id dolor dignissim vel vulputate eros feugiat. Mauris accumsan
-                                                aliquam ultrices. Vivamus sit amet pulvinar mi. Nam at placerat urna.
-                                                Sed rutrum, ante eget<br><br> fermentum sodales, est eros condimentum
-                                                velit, nec consectetur lorem augue ac sapien. Morbi et arcu sit amet
-                                                lacus ornare malesuada. Class aptent taciti sociosqu ad litora torquent
-                                                per conubia nostra, per inceptos himenaeos. Donec blandit sem purus.
-                                                Pellentesque quis magna odio, non mattis mi. In et dui mauris, sit amet
-                                                ullamcorper nisl.<br><br>Duis a orci nisi. Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit. Morbi feugiat ultrices elementum. Nullam
-                                                nisi elit, semper nec eleifend et, auctor aliquet risus. Curabitur
-                                                placerat lacus et orci blandit ac lacinia sem dignissim. Nam nec odio
-                                                elit. Pellentesque dapibus commodo leo quis feugiat. In hac habitasse
-                                                platea dictumst. Integer id tortor sit amet purus viverra aliquam nec ac
-                                                elit. Fusce facilisis urna sed ligula pellentesque molestie. Duis ac
-                                                risus elit. Proin ut felis diam. Ut felis diam, convallis sit amet
-                                                hendrerit id, euismod id mi. <br><br>Nullam nisl purus, semper et
-                                                tristique a, ullamcorper vitae metus.
-                                                Sed non vulputate nisi. Pellentesque habitant morbi tristique senectus
-                                                et netus et malesuada fames ac turpis egestas. In hac habitasse platea
-                                                dictumst. Nullam neque erat, tempor eget dictum sit amet, laoreet vitae
-                                                leo. Sed eu pretium purus. Pellentesque vestibulum arcu eu lacus aliquam
-                                                sollicitudin vel ac metus. Maecenas pellentesque, nibh eget eleifend
-                                                pharetra, mauris nisl ornare orci, sit amet suscipit mauris ante id
-                                                nulla. </p>
-
-
                                         </div>
 
                                         <?php } ?>
