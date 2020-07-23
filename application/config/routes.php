@@ -61,7 +61,6 @@ $route['cms/google-privacy-policy'] = 'cms/google_privacy_policy';
 
 
 $route[ADMIN_NAME] = 'admin/auth';
-$route[ADMIN_NAME] = 'admin/auth';
 $route[ADMIN_NAME.'/dashboard'] = 'admin/dashboard';
 $route[ADMIN_NAME.'/auth/logout'] = 'admin/auth/logout';
 $route[ADMIN_NAME.'/user'] = 'admin/user/index';
