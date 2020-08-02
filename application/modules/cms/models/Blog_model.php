@@ -49,7 +49,7 @@ class Blog_model extends CI_Model {
         $this->db->from( 'blog_comments BCOM' );
         $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = BCOM.blog_revision_id', 'INNER' );
         $this->db->join( 'user_master UM', 'UM.user_id = BCOM.user_id', 'INNER' );
-        $this->db->where( 'BCOM.com_status', 'active' );
+        $this->db->where( 'BCOM.is_deleted', '0' );
         $this->db->where( 'BREV.blog_id', $blog_id );
         $this->db->order_by( 'BCOM.created_date', 'DESC' );
         // $this->sql_print();

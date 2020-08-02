@@ -205,7 +205,7 @@
         <ul class="dropdown-menu dropdown-user">
             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
             </li>
-            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+            <li><a href="<?php echo base_url('admin/settings');?>"><i class="fa fa-gear fa-fw"></i> Settings</a>
             </li>
             <li class="divider"></li>
             <li><a href="<?php echo base_url('admin/auth/logout');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -244,26 +244,39 @@
                     </li>
                 </ul>
             </li> -->
-            <li>
-                <a href="<?php echo base_url('admin/blog');?>"><i class="fa fa-android"></i> Blogs</a>
-            </li>
             <!-- <li>
-                <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Pets and Pet Accessories</a>
+                <a href="<?php echo base_url('admin/blog');?>"><i class="fa fa-android"></i> Blogs</a>
             </li> -->
             <li>
                 <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Product
                     Types
                     <!-- Animal Category --></a>
             </li>
+            <li>
+                <a href="javascript:void(0)"><i class="fa fa-android"></i> Blog Management<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="<?php echo base_url('admin/blog');?>" class="active" href="blank.html">Blogs</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('admin/comment');?>">Comments</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li>
+                <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Pets and Pet Accessories</a>
+            </li> -->
+
             <!-- <li>
                 <a href="<?php echo base_url('admin/animal_book');?>"><i class="fa fa-book"></i> Pets Books</a>
             </li> -->
             <li>
                 <a href="<?php echo base_url('admin/user');?>"><i class="fa fa-users"></i> Users</a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="<?php echo base_url('admin/comment');?>"><i class="fa fa-comments"></i> Comments</a>
-            </li>
+            </li> -->
             <li>
                 <a href="<?php echo base_url('admin/gallery');?>"><i class="fa fa-comments"></i> Gallery</a>
             </li>
@@ -330,18 +343,8 @@
                         
                     </li>
                 </ul>
-            </li>
-            <li >
-                <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a class="active" href="blank.html">Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="login.html">Login Page</a>
-                    </li>
-                </ul>
             </li> -->
+
             <li>
                 <a href="<?php echo base_url('admin/settings');?>"><i class="fa fa-cog fa-fw"></i></i> Settings</a>
             </li>

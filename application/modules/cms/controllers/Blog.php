@@ -26,6 +26,8 @@ class Blog extends MY_Controller {
         if ( $data['details'][0]->blog_id > 0 ) {
             $data['images'] = $this->blog_model->getDetailsImages( $title_url );
             $data['list'] = $this->blog_model->getOthersBlog( $data['details'][0]->blog_id );
+        } else {
+            redirect( base_url() );
         }
         $data['msg'] = $this->template->getMessage( $status, $msg );
         $this->template->setTitle( 'Blog:'.$data['details'][0]->title );
@@ -68,12 +70,36 @@ class Blog extends MY_Controller {
                 $text = str_replace( $value, substr( $value, 0, 3 ).'XXXXXX', $text );
             }
         }
-        // preg_match_all( '/(?:[0-9]{8})+/s', $text, $resultNine, PREG_PATTERN_ORDER );
-        // if ( count( $resultNine ) > 0 ) {
-        //     foreach ( $resultNine[0] as $key => $value ) {
-        //         $text = str_replace( $value, substr( $value, 0, 2 ).'XXXXXX', $text );
-        //     }
-        // }
+        preg_match_all( '/(?:[0-9]{8})+/s', $text, $resultNine, PREG_PATTERN_ORDER );
+        if ( count( $resultNine ) > 0 ) {
+            foreach ( $resultNine[0] as $key => $value ) {
+                $text = str_replace( $value, substr( $value, 0, 2 ).'XXXXXX', $text );
+            }
+        }
+        preg_match_all( '/(?:[0-9]{7})+/s', $text, $resultNine, PREG_PATTERN_ORDER );
+        if ( count( $resultNine ) > 0 ) {
+            foreach ( $resultNine[0] as $key => $value ) {
+                $text = str_replace( $value, substr( $value, 0, 1 ).'XXXXXX', $text );
+            }
+        }
+        preg_match_all( '/(?:[0-9]{6})+/s', $text, $resultNine, PREG_PATTERN_ORDER );
+        if ( count( $resultNine ) > 0 ) {
+            foreach ( $resultNine[0] as $key => $value ) {
+                $text = str_replace( $value, substr( $value, 0, 1 ).'XXXXX', $text );
+            }
+        }
+        preg_match_all( '/(?:[0-9]{5})+/s', $text, $resultNine, PREG_PATTERN_ORDER );
+        if ( count( $resultNine ) > 0 ) {
+            foreach ( $resultNine[0] as $key => $value ) {
+                $text = str_replace( $value, substr( $value, 0, 1 ).'XXXX', $text );
+            }
+        }
+        preg_match_all( '/(?:[0-9]{4})+/s', $text, $resultNine, PREG_PATTERN_ORDER );
+        if ( count( $resultNine ) > 0 ) {
+            foreach ( $resultNine[0] as $key => $value ) {
+                $text = str_replace( $value, substr( $value, 0, 1 ).'XXX', $text );
+            }
+        }
 
         preg_match_all( '/[\._a-zA-Z0-9-]+@[\._a-zA-Z0-9-]+/i', $text, $matches );
         if ( count( $matches ) > 0 ) {

@@ -130,4 +130,12 @@ class Cms_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function getPageContent( $name = '' ) {
+        $this->db->select( '*' );
+        $this->db->from( 'settings' );
+        $this->db->where( 'name', $name );
+        $this->db->limit( '8' );
+        return $this->db->get()->result();
+    }
+
 }

@@ -43,15 +43,14 @@ $(document).ready(function() {
                                         <li><?php echo $value->lang_name;?></li>
                                         <?php }} ?>
                                     </ul>
-                                    <div class="resp-tabs-container right-details-sud">
+                                    <div class="resp-tabs-container right-details-sud ">
                                         <?php if(count($selectedCatDet) > 0){
 												foreach ($selectedCatDet as $key => $value) {
 												?>
-                                        <div>
+                                        <div class="wrap-details-blog">
                                             <h3><?php echo $value->acmd_name;?></h3>
-                                            <p><?php echo $value->acmd_short_desc;?></p>
+                                            <?php echo $value->acmd_desc;?>
                                         </div>
-
                                         <?php } ?>
                                     </div>
                                 </div>

@@ -1,7 +1,7 @@
 <?php
 defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 
-class Pd_charitable_trust extends MY_Controller  {
+class Pd_charitable_trust extends MY_Controller {
     public $controller;
 
     public function __construct() {
@@ -11,11 +11,12 @@ class Pd_charitable_trust extends MY_Controller  {
         $this->controller = $this->router->fetch_class();
     }
 
-    public function index()  {
+    public function index() {
         $data = array();
         $status = '';
         $msg = '';
         $data['category'] = $this->cms_model->getLevelOneCategory();
+        $data['content'] = $this->cms_model->getPageContent( 'pd_charitable_trust' );
         $data['msg'] = $this->template->getMessage( $status, $msg );
         $this->template->setTitle( 'About Us' );
         $this->template->setLayout( 'cms' );
