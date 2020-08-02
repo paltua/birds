@@ -1,7 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 
-class Template{
+class Template {
     private $_masterTemplate;
     private $_masterTemplateFolderPath;
     private $_region;
@@ -21,13 +21,14 @@ class Template{
     public $resourceNameAdmin;
     private $_masterTemplateFolderPathAdmin;
     #code
-    public function __construct(){
+
+    public function __construct() {
         self::$_CI = &get_instance();
         $this->_setInitVal();
         $this->adminName = ADMIN_NAME;
     }
-    
-    private function _setInitVal(){
+
+    private function _setInitVal() {
         $this->themeName = THEME.'/';
         $this->resourceName = 'public/'.$this->themeName;
         $this->masterTemplateFolderPath = $this->themeName.'templates/';
@@ -36,49 +37,49 @@ class Template{
         $this->resourceNameAdmin = 'public/admin/';
         $this->masterTemplateFolderPathAdmin = $this->themeNameAdmin.'templates/';
 
-        $this->user_id = self::$_CI->session->userdata('user_id');
-        $this->user_category = self::$_CI->session->userdata('user_category');
+        $this->user_id = self::$_CI->session->userdata( 'user_id' );
+        $this->user_category = self::$_CI->session->userdata( 'user_category' );
 
-        if($this->user_id!=''){
+        if ( $this->user_id != '' ) {
             $this->isLoggedIn = 'Y';
-        }else{
+        } else {
             $this->isLoggedIn = 'N';
         }
-        $this->user_name = trim(self::$_CI->session->userdata('name'));
+        $this->user_name = trim( self::$_CI->session->userdata( 'name' ) );
         $this->module = self::$_CI->router->fetch_module();
         $this->controller = self::$_CI->router->fetch_class();
         $this->method = self::$_CI->router->fetch_method();
-        
+
         $this->title = 'Home';
         $this->data = $this->_setData();
     }
-    
-    public function setLayout($layout = 'home'){
+
+    public function setLayout( $layout = 'home' ) {
         $this->_layout = $layout;
     }
-    
-    public function setTitle($title = 'Parrot Dipankar'){
+
+    public function setTitle( $title = 'Parrot Dipankar' ) {
         $this->title = $title;
     }
-    
-    public function homeRender($filePath = '',$data = array()){
+
+    public function homeRender( $filePath = '', $data = array() ) {
         $this->masterTemplate = $this->masterTemplateFolderPath.$this->_layout;
         $this->_region = $this->_getHomeRegion();
-        $this->_region['content'] = $this->_content($filePath,$data);
-        self::$_CI->load->view($this->masterTemplate,$this->_region);
+        $this->_region['content'] = $this->_content( $filePath, $data );
+        self::$_CI->load->view( $this->masterTemplate, $this->_region );
     }
 
-    public function homeAdminRender($filePath = '',$data = array()){
+    public function homeAdminRender( $filePath = '', $data = array() ) {
         $this->masterTemplate = $this->masterTemplateFolderPathAdmin.$this->_layout;
         $this->_region = $this->_getHomeAdminRegion();
-        $this->_region['content'] = $this->_content($filePath,$data);
-        self::$_CI->load->view($this->masterTemplate,$this->_region);
+        $this->_region['content'] = $this->_content( $filePath, $data );
+        self::$_CI->load->view( $this->masterTemplate, $this->_region );
     }
 
-    
-    private function _getHomeRegion(){
+    private function _getHomeRegion() {
         $rg = array();
         $rg['head'] = $this->_getHead();
+        $rg['google_add'] = $this->_getGoogleAdd();
         $rg['header'] = $this->_getHeader();
         $rg['menu'] = $this->_getMenu();
         $rg['publish'] = $this->_getPublish();
@@ -87,9 +88,10 @@ class Template{
         return $rg;
     }
 
-    private function _getHomeAdminRegion(){
+    private function _getHomeAdminRegion() {
         $rg = array();
         $rg['head'] = $this->_getAdminHead();
+        $rg['google_add'] = $this->_getGoogleAdd();
         $rg['header'] = $this->_getAdminHeader();
         $rg['menu'] = $this->_getAdminMenu();
         //$rg['slider'] = $this->_getSlider();
@@ -99,10 +101,10 @@ class Template{
         return $rg;
     }
 
-    
-    private function _getLoginRegion(){
+    private function _getLoginRegion() {
         $rg = array();
         $rg['head'] = $this->_getHead();
+        $rg['google_add'] = $this->_getGoogleAdd();
         $rg['header'] = $this->_getHeader();
         //$rg['slider'] = $this->_getSlider();
         $rg['headerLogin'] = $this->_getHeaderLogin();
@@ -111,7 +113,7 @@ class Template{
         return $rg;
     }
 
-    private function _getLoginAdminRegion(){
+    private function _getLoginAdminRegion() {
         $rg = array();
         $rg['head'] = $this->_getAdminHead();
         $rg['header'] = $this->_getAdminHeader();
@@ -122,23 +124,24 @@ class Template{
         return $rg;
     }
 
-    public function loginRender($filePath = '',$data = array()){
+    public function loginRender( $filePath = '', $data = array() ) {
         $this->masterTemplate = $this->masterTemplateFolderPath.$this->_layout;
         $this->_region = $this->_getLoginRegion();
-        $this->_region['content'] = $this->_content($filePath,$data);
-        self::$_CI->load->view($this->masterTemplate,$this->_region);
+        $this->_region['content'] = $this->_content( $filePath, $data );
+        self::$_CI->load->view( $this->masterTemplate, $this->_region );
     }
 
-    public function loginAdminRender($filePath = '',$data = array()){
+    public function loginAdminRender( $filePath = '', $data = array() ) {
         $this->masterTemplate = $this->masterTemplateFolderPathAdmin.$this->_layout;
         $this->_region = $this->_getLoginAdminRegion();
-        $this->_region['content'] = $this->_content($filePath,$data);
-        self::$_CI->load->view($this->masterTemplate, $this->_region);
+        $this->_region['content'] = $this->_content( $filePath, $data );
+        self::$_CI->load->view( $this->masterTemplate, $this->_region );
     }
-    
-    private function _getDashboardRegion(){
+
+    private function _getDashboardRegion() {
         $rg = array();
         $rg['head'] = $this->_getHead();
+        $rg['google_add'] = $this->_getGoogleAdd();
         $rg['header'] = $this->_getHeader();
         //$rg['slider'] = $this->_getSlider();
         $rg['headerLogin'] = $this->_getHeaderLogin();
@@ -147,7 +150,7 @@ class Template{
         return $rg;
     }
 
-    private function _getAdminDashboardRegion(){
+    private function _getAdminDashboardRegion() {
         $rg = array();
         $rg['head'] = $this->_getHead();
         $rg['header'] = $this->_getAdminHeader();
@@ -158,87 +161,103 @@ class Template{
         return $rg;
     }
 
-    public function dashboardRender($filePath = '',$data = array()){
+    public function dashboardRender( $filePath = '', $data = array() ) {
         $this->masterTemplate = $this->masterTemplateFolderPath.$this->_layout;
         $this->_region = $this->_getHomeRegion();
-        $this->_region['content'] = $this->_content($filePath,$data);
-        self::$_CI->load->view($this->masterTemplate,$this->_region);
+        $this->_region['content'] = $this->_content( $filePath, $data );
+        self::$_CI->load->view( $this->masterTemplate, $this->_region );
     }
 
-    public function dashboardAdminRender($filePath = '',$data = array()){
+    public function dashboardAdminRender( $filePath = '', $data = array() ) {
         $this->masterTemplate = $this->masterTemplateFolderPath.$this->_layout;
         $this->_region = $this->_getHomeAdminRegion();
-        $this->_region['content'] = $this->_content($filePath,$data);
-        self::$_CI->load->view($this->masterTemplate,$this->_region);
+        $this->_region['content'] = $this->_content( $filePath, $data );
+        self::$_CI->load->view( $this->masterTemplate, $this->_region );
     }
-    
-    private function _content($filePath = '',$data = array()){
+
+    private function _content( $filePath = '', $data = array() ) {
         $content = '';
-        if($filePath != ''){
+        if ( $filePath != '' ) {
             $retData = $data;
             $retData['resourceName'] = $this->resourceName;
-            $content = self::$_CI->load->view($filePath,$retData,true);
-        }else{
-            $message = "File is blank.";
+            $content = self::$_CI->load->view( $filePath, $retData, true );
+        } else {
+            $message = 'File is blank.';
             $status_code = 500;
-            show_error($message, $status_code, $heading = 'An Error Was Encountered');
+            show_error( $message, $status_code, $heading = 'An Error Was Encountered' );
         }
         return $content;
     }
 
-
-    private function _getHead(){
+    private function _getGoogleAdd() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeName.'common/head',$this->data,true);        
+        return self::$_CI->load->view( $this->themeName.'common/google_add', $this->data, true );
+
     }
 
-    private function _getMenu(){
+    private function _getHead() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeName.'common/menu',$this->data,true);        
+        return self::$_CI->load->view( $this->themeName.'common/head', $this->data, true );
+
     }
 
-    private function _getPublish(){
+    private function _getMenu() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeName.'common/publish',$this->data,true);        
+        return self::$_CI->load->view( $this->themeName.'common/menu', $this->data, true );
+
     }
 
-    private function _getSearch(){
+    private function _getPublish() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeName.'common/search',$this->data,true);        
+        return self::$_CI->load->view( $this->themeName.'common/publish', $this->data, true );
+
     }
 
-    private function _getHeader(){
-        $this->data['title'] = $this->title; 
-        $this->data['menu'] = '';//$this->_menuArray();  
-        // if($this->isLoggedIn=='Y'){
+    private function _getSearch() {
+        $this->data['title'] = $this->title;
+        return self::$_CI->load->view( $this->themeName.'common/search', $this->data, true );
+
+    }
+
+    private function _getHeader() {
+        $this->data['title'] = $this->title;
+
+        $this->data['menu'] = '';
+        //$this->_menuArray();
+
+        // if ( $this->isLoggedIn == 'Y' ) {
         //     $this->data['afterLogInMenu'] = $this->_getAfterLoginMenu();
-        // }else{
+        // } else {
         //     $this->data['afterLogInMenu'] = '';
         // }
-        
-        return self::$_CI->load->view($this->themeName.'common/header',$this->data,true);        
+
+        return self::$_CI->load->view( $this->themeName.'common/header', $this->data, true );
+
     }
 
-    private function _getAdminHead(){
+    private function _getAdminHead() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeNameAdmin.'common/head',$this->data,true);        
+        return self::$_CI->load->view( $this->themeNameAdmin.'common/head', $this->data, true );
+
     }
 
-    private function _getAdminHeader(){
-        $this->data['title'] = $this->title;      
-        return self::$_CI->load->view($this->themeNameAdmin.'common/header',$this->data,true);        
+    private function _getAdminHeader() {
+        $this->data['title'] = $this->title;
+
+        return self::$_CI->load->view( $this->themeNameAdmin.'common/header', $this->data, true );
+
     }
 
-    private function _getAfterLoginMenu(){
-        $this->data['title'] = $this->title; 
-        $this->data['afterLoginMenu'] = $this->_menuArrayAfterLogin();   
-        return self::$_CI->load->view($this->themeNameAdmin.'common/afterLoginMenu',$this->data,true);        
+    private function _getAfterLoginMenu() {
+        $this->data['title'] = $this->title;
+
+        $this->data['afterLoginMenu'] = $this->_menuArrayAfterLogin();
+
+        return self::$_CI->load->view( $this->themeNameAdmin.'common/afterLoginMenu', $this->data, true );
+
     }
 
-    
-
-
-    private function _getSlider(){
+    private function _getSlider() {
         $sql = "SELECT 
                     COUNT(DISTINCT USR.unit_id) total,
                     SUM(RM.actual_annual_ghg_reduction_tco2e) emission_offset,
@@ -259,90 +278,84 @@ class Template{
                 GROUP BY USR.sector_subsector_id
                 HAVING total >= 25
                 ORDER BY SM.sector_name";
-        $this->data['slideData'] = self::$_CI->tbl_generic_model->ExecuteQuery($sql);        
-        return self::$_CI->load->view($this->themeName.'common/slider',$this->data,true);        
+        $this->data['slideData'] = self::$_CI->tbl_generic_model->ExecuteQuery( $sql );
+
+        return self::$_CI->load->view( $this->themeName.'common/slider', $this->data, true );
+
     }
-    
-    
-    
-    private function _getHeaderLogin(){
+
+    private function _getHeaderLogin() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeName.'common/headerLogin',$this->data,true);
+        return self::$_CI->load->view( $this->themeName.'common/headerLogin', $this->data, true );
     }
 
-    private function _getAdminMenu(){
+    private function _getAdminMenu() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeNameAdmin.'common/menu', $this->data, true);
+        return self::$_CI->load->view( $this->themeNameAdmin.'common/menu', $this->data, true );
     }
 
-
-
-    private function _getAdminHeaderLogin(){
+    private function _getAdminHeaderLogin() {
         $this->data['title'] = $this->title;
-        return self::$_CI->load->view($this->themeNameAdmin.'common/headerLogin',$this->data,true);
+        return self::$_CI->load->view( $this->themeNameAdmin.'common/headerLogin', $this->data, true );
     }
-    
-    
-    
-    private function _getFooter(){
+
+    private function _getFooter() {
         $this->data['footerMenu'] = $this->_footerMenuArray();
         $this->data['footerConnect'] = $this->_footerConnectArray();
-        return self::$_CI->load->view($this->themeName.'common/footer',$this->data,true);        
+        return self::$_CI->load->view( $this->themeName.'common/footer', $this->data, true );
+
     }
 
-    private function _getAdminFooter(){
+    private function _getAdminFooter() {
         $this->data['footerMenu'] = $this->_footerMenuAdminArray();
         $this->data['footerConnect'] = $this->_footerConnectArray();
-        return self::$_CI->load->view($this->themeNameAdmin.'common/footer',$this->data,true);        
+        return self::$_CI->load->view( $this->themeNameAdmin.'common/footer', $this->data, true );
+
     }
 
-
-    private function _footerMenuArray(){
+    private function _footerMenuArray() {
         $menu = array(
-                'home' => array('href' => base_url(),'title' => 'Home','name' => 'Home','active' => $this->controller == ''?'active':''),
-                'about' => array('href' => base_url().'cms/page/about_us','title' => 'About us','name' => 'About us','active' => ($this->controller == 'page' && $this->method == 'about_us')?'active':''),
-                'contact' => array('href' => base_url().'cms/page/contact_us','title' => 'Contact','name' => 'Contact Us','active' => ($this->controller == 'page' && $this->method == 'contact_us')?'active':''),
-                'privacy' => array('href' => base_url().'cms/page/privacy_policy','title' => 'Privacy Policy','name' => 'Privacy Policy','active' => ($this->controller == 'page' && $this->method == 'privacy_policy')?'active':''),
-            );
+            'home' => array( 'href' => base_url(), 'title' => 'Home', 'name' => 'Home', 'active' => $this->controller == ''?'active':'' ),
+            'about' => array( 'href' => base_url().'cms/page/about_us', 'title' => 'About us', 'name' => 'About us', 'active' => ( $this->controller == 'page' && $this->method == 'about_us' )?'active':'' ),
+            'contact' => array( 'href' => base_url().'cms/page/contact_us', 'title' => 'Contact', 'name' => 'Contact Us', 'active' => ( $this->controller == 'page' && $this->method == 'contact_us' )?'active':'' ),
+            'privacy' => array( 'href' => base_url().'cms/page/privacy_policy', 'title' => 'Privacy Policy', 'name' => 'Privacy Policy', 'active' => ( $this->controller == 'page' && $this->method == 'privacy_policy' )?'active':'' ),
+        );
         return $menu;
     }
 
-    private function _footerMenuAdminArray(){
-        if((self::$_CI->session->userdata('aum_role_id')) == 1){
-             $menu = array(
-                'dasboard' => array('href' => base_url().$this->adminName.'/dashboard','title' => 'Dashboard','name' => 'Dashboard','active' => $this->controller == ''?'active':''),
-                'User' => array('href' => base_url().$this->adminName.'/user','title' => 'User','name' => 'User','active' => $this->controller == ''?'active':''),
-                'Query' => array('href' => base_url().$this->adminName.'/querycontent','title' => 'Querycontent','name' => 'Query','active' => $this->controller == ''?'active':''),
-                'Logout' => array('href' => base_url().$this->adminName.'/auth/logout','title' => 'Logout','name' => 'Logout','active' => $this->controller == ''?'active':''),
-                
-            );
-        }else{
+    private function _footerMenuAdminArray() {
+        if ( ( self::$_CI->session->userdata( 'aum_role_id' ) ) == 1 ) {
             $menu = array(
-                'dasboard' => array('href' => base_url().$this->adminName.'/dashboard','title' => 'Dashboard','name' => 'Dashboard','active' => $this->controller == ''?'active':''),
-                'Query' => array('href' => base_url().$this->adminName.'/querycontent','title' => 'Querycontent','name' => 'Query','active' => $this->controller == ''?'active':''),
-                'Logout' => array('href' => base_url().$this->adminName.'/auth/logout','title' => 'Logout','name' => 'Logout','active' => $this->controller == ''?'active':''),
-                
+                'dasboard' => array( 'href' => base_url().$this->adminName.'/dashboard', 'title' => 'Dashboard', 'name' => 'Dashboard', 'active' => $this->controller == ''?'active':'' ),
+                'User' => array( 'href' => base_url().$this->adminName.'/user', 'title' => 'User', 'name' => 'User', 'active' => $this->controller == ''?'active':'' ),
+                'Query' => array( 'href' => base_url().$this->adminName.'/querycontent', 'title' => 'Querycontent', 'name' => 'Query', 'active' => $this->controller == ''?'active':'' ),
+                'Logout' => array( 'href' => base_url().$this->adminName.'/auth/logout', 'title' => 'Logout', 'name' => 'Logout', 'active' => $this->controller == ''?'active':'' ),
+
+            );
+        } else {
+            $menu = array(
+                'dasboard' => array( 'href' => base_url().$this->adminName.'/dashboard', 'title' => 'Dashboard', 'name' => 'Dashboard', 'active' => $this->controller == ''?'active':'' ),
+                'Query' => array( 'href' => base_url().$this->adminName.'/querycontent', 'title' => 'Querycontent', 'name' => 'Query', 'active' => $this->controller == ''?'active':'' ),
+                'Logout' => array( 'href' => base_url().$this->adminName.'/auth/logout', 'title' => 'Logout', 'name' => 'Logout', 'active' => $this->controller == ''?'active':'' ),
+
             );
         }
         return $menu;
     }
 
-
-    private function _footerConnectArray(){
+    private function _footerConnectArray() {
 
     }
 
-    
-    private function _getFooterLogin(){
-        return self::$_CI->load->view($this->themeName.'common/footerLogin',$this->data,true);
+    private function _getFooterLogin() {
+        return self::$_CI->load->view( $this->themeName.'common/footerLogin', $this->data, true );
     }
 
-    private function _getFooterAdminLogin(){
-        return self::$_CI->load->view($this->themeNameAdmin.'common/footerLogin',$this->data,true);
+    private function _getFooterAdminLogin() {
+        return self::$_CI->load->view( $this->themeNameAdmin.'common/footerLogin', $this->data, true );
     }
 
-    
-    private function _setData(){
+    private function _setData() {
         $data['user_id'] = $this->user_id;
         $data['module'] = $this->module;
         $data['class'] = $this->controller;
@@ -357,10 +370,10 @@ class Template{
         $data['isLoggedIn'] = $this->isLoggedIn;
         return $data;
     }
-    
-    public function getMessage($status = 'success', $msg = ''){
+
+    public function getMessage( $status = 'success', $msg = '' ) {
         $retMsg = '';
-        if($status != '' && $msg != '' ){
+        if ( $status != '' && $msg != '' ) {
             $retMsg .= '<div role="alert" class="alert alert-'.$status.'">';
             $retMsg .= '<a href="javascript:void(0)" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
             $retMsg .= $msg;
@@ -369,5 +382,4 @@ class Template{
         return $retMsg;
     }
 
-    
 }

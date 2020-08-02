@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="<?php echo base_url('public/'.THEME.'/');?>css/jquery.fancybox.css" />
     <link href="<?php echo base_url('public/'.THEME.'/');?>css/style.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('public/'.THEME.'/');?>css/responsive-style.css" rel="stylesheet" type="text/css">
+    <?php if($google_add != ''): echo $google_add; endif;?>
 
     <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
