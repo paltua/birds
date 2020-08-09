@@ -996,7 +996,7 @@ margin-top: -60px;
   flex-direction: row;
 }
 .wrap-blog-image{
-  height: 300px;
+  max-height: 400px;
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
@@ -1004,6 +1004,7 @@ margin-top: -60px;
 }
 .wrap-blog-image img{
   width: 100%;
+  object-fit: cover;
 }
 .wrap-details-blog {
   margin-bottom: 25px;
@@ -1028,16 +1029,16 @@ margin-top: -60px;
 .wrap-details-blog p {
   font-size: 15px;
   font-weight: 600;
-  margin: 25px 0 ;
+  margin: 12px 0 ;
   color: #333333;
 }
 .wrap-details-blog ol {
   list-style: decimal;
-  padding-left: 20px;
+  padding-left: 35px;
 }
 .wrap-details-blog ul {
   list-style: circle;
-  padding-left: 20px;
+  padding-left: 35px;
 }
 .wrap-blog-slider {
   padding: 20px 0;
