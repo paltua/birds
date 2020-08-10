@@ -20,8 +20,7 @@
             </nav>
         </div>
         <div class='inline-elmnt'>
-            <a href="<?php echo base_url('cms/pd-charitable-trust');?>" class='btn pub-list pubnew'>PD Charitable
-                Trust</a>
+            <a href="<?php echo base_url('cms/pd-charitable-trust');?>" class='btn pub-list pubnew'>Charity</a>
         </div>
         <?php if ( $this->session->userdata( 'user_id' ) <= 0 ) {
     ?>
