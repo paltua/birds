@@ -85,5 +85,3 @@ $(document).ready(function() {
         </div>
     </div>
 </section>
-<link rel="stylesheet" href="<?php echo base_url('public/'.THEME.'/');?>css/asRange.css" type="text/css">
-<script src="<?php echo base_url('public/'.THEME.'/');?>js/jquery-asRange.js"></script>
