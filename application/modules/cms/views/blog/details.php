@@ -21,18 +21,12 @@
                 alt="<?php echo $images[0]->title;?>">
         </div> -->
         <div class="owl-carousel owl-theme owl-slider-single">
+            <?php foreach ($images as $key => $value) {?>
             <div class="w-100 wrap-blog-image item">
-                <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$images[0]->image_path);?>"
-                    alt="<?php echo $images[0]->title;?>">
+                <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$value->image_path);?>"
+                    alt="<?php echo $value->title;?>">
             </div>
-            <div class="w-100 wrap-blog-image item">
-                <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$images[0]->image_path);?>"
-                    alt="<?php echo $images[0]->title;?>">
-            </div>
-            <div class="w-100 wrap-blog-image item">
-                <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$images[0]->image_path);?>"
-                    alt="<?php echo $images[0]->title;?>">
-            </div>
+            <?php }?>
         </div>
         <?php } ?>
         <div class="w-100 wrap-details-blog">

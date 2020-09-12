@@ -24,7 +24,7 @@ class Blog extends MY_Controller {
         $data['images'] =  [];
         $data['comments'] =  [];
         if ( $data['details'][0]->blog_id > 0 ) {
-            $data['images'] = $this->blog_model->getDetailsImages( $title_url );
+            $data['images'] = $this->blog_model->getDetailsImages( $data['details'][0]->blog_id );
             $data['list'] = $this->blog_model->getOthersBlog( $data['details'][0]->blog_id );
         } else {
             redirect( base_url() );

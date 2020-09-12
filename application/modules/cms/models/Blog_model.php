@@ -33,13 +33,13 @@ class Blog_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    function getDetailsImages( $title_url = '' ) {
+    function getDetailsImages( $blog_id = 0 ) {
         $this->db->select( 'B.*, BREV.*,BIMG.*' );
         $this->db->from( 'blogs B' );
-        $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = B.blog_revision_id', 'INNER' );
+        // $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = B.blog_revision_id', 'INNER' );
         $this->db->join( 'blog_images BIMG', 'BIMG.blog_id = B.blog_id AND BIMG.is_status != "delete"', 'LEFT' );
         $this->db->where( 'BREV.is_status', 'active' );
-        $this->db->where( 'BREV.title_url', $title_url );
+        $this->db->where( 'B.blog_id', $blog_id );
         $this->db->order_by( 'BIMG.orders', 'DESC' );
         return $this->db->get()->result();
     }
