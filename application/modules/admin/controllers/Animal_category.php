@@ -22,7 +22,6 @@ class Animal_category extends MY_Controller {
         $data['lang'] = getLanguageArr();
         $data['msg'] = $this->template->getMessage( $status, $msg );
         $data['list'] = $this->animal_category_model->getAllData();
-        print_r( $data['list'] );
         $this->template->setTitle( 'Admin : Product Types' );
         $this->template->setLayout( 'dashboard' );
 
@@ -161,7 +160,7 @@ class Animal_category extends MY_Controller {
 
     private function _upload( $acm_id = 0 ) {
         $config['upload_path']          = 'uploads/category/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
         /*$config['max_size']             = 100;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;
@@ -170,13 +169,14 @@ class Animal_category extends MY_Controller {
         $this->load->library( 'upload', $config );
         if ( $_FILES ) {
             if ( ! $this->upload->do_upload( 'image_name' ) ) {
+                print_r( $this->upload->display_errors() );
+                die;
                 $this->session->set_flashdata( 'status', 'danger' );
                 $this->session->set_flashdata( 'msg', $this->upload->display_errors() );
             } else {
                 $this->session->set_flashdata( 'status', 'success' );
                 $this->session->set_flashdata( 'msg', 'Successfully Uploaded' );
                 $inData['image_name'] = $this->upload->data( 'file_name' );
-
                 $where['acm_id'] = $acm_id;
                 $data = $this->tbl_generic_model->get( 'animal_category_master', '*', $where );
                 if ( $data[0]->image_name != '' ) {

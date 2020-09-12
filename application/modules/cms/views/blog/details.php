@@ -116,6 +116,7 @@ function addComments() {
                 blog_revision_id: blog_revision_id
             }, function(data) {
                 if (data.html == 'success') {
+                    $("#comments").val('');
                     generateCommentsList();
                 }
             }, 'json');

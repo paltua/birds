@@ -2,6 +2,7 @@
 <script src="<?php echo base_url();?>public/admin/vendor/chosen/chosen.jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    $("#imageId").hide();
     var csfrData = {};
     csfrData['<?php echo $this->security->get_csrf_token_name(); ?>'] =
         '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -13,6 +14,20 @@ $(document).ready(function() {
         no_results_text: "Oops, No Transformer found!"
     });
 });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#imageId").show();
+            $('#blah')
+                .attr('src', e.target.result)
+                .width(150)
+                .height(150);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 </script>
 
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -132,11 +147,19 @@ $(document).ready(function() {
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Category image</label>
                                         <input type="file" name="image_name" class="form-control-file"
-                                            id="exampleFormControlFile1">
+                                            onchange="readURL(this);" id="exampleFormControlFile1"
+                                            accept="image/gif, image/jpeg, image/png">
                                         <?php if($value->image_name != ''){?>
                                         <img src="<?php echo base_url('uploads/category/'.$value->image_name);?>"
                                             height="100" width="150">
                                         <?php } ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="imageId" class=" alert alert-success  alert-dismissable">
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-hidden="true">×</button>
+                                            <img id="blah" src="#" alt="" />
+                                        </div>
                                     </div>
                                     <?php endif;?>
                                     <div class="form-group">

@@ -123,7 +123,8 @@ $(document).ready(function() {
                                     <div class="form-group">
                                         <label for="exampleFormControlFile1">Category image</label>
                                         <input type="file" name="image_name" onchange="readURL(this);"
-                                            class="form-control-file" id="exampleFormControlFile1">
+                                            class="form-control-file" id="exampleFormControlFile1"
+                                            accept="image/gif, image/jpeg, image/png">
                                     </div>
                                     <div class="form-group">
                                         <div id="imageId" class=" alert alert-success  alert-dismissable">
