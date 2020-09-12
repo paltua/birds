@@ -34,7 +34,7 @@ class Blog_model extends CI_Model {
     }
 
     function getDetailsImages( $blog_id = 0 ) {
-        $this->db->select( 'B.*, BREV.*,BIMG.*' );
+        $this->db->select( 'B.*, BIMG.*' );
         $this->db->from( 'blogs B' );
         // $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = B.blog_revision_id', 'INNER' );
         $this->db->join( 'blog_images BIMG', 'BIMG.blog_id = B.blog_id AND BIMG.is_status != "delete"', 'LEFT' );
