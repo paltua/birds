@@ -72,7 +72,7 @@ $(document).ready(function() {
                         <div class="col-lg-3 " id="imageDivId">
                             <div id="imageId" class=" alert alert-success alert-dismissable">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <img id="blah" src="#" alt="" />
+                                <img width="200" height="100" id="blah" src="#" alt="" />
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -113,7 +113,7 @@ $(document).ready(function() {
                         <tr class="<?php echo $listClass;?> ">
                             <td>
                                 <div class="col-sm-3">
-                                    <img width="150" height="150"
+                                    <img width="200" height="100"
                                         src="<?php echo base_url();?>uploads/<?php echo $controller;?>/thumb/<?php echo $value->image_path;?>"
                                         alt="" /></div>
                             </td>

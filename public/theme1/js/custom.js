@@ -1,3 +1,4 @@
+var slectedHomeCatId = 0;
 jQuery(document).ready(function ($) {
 
 	$('.carousel-2').owlCarousel({
@@ -85,15 +86,15 @@ jQuery(document).ready(function ($) {
 				nav: true,
 			},
 			600: {
-				items: 3,
+				items: 2,
 				margin: 5,
 			},
 			1000: {
 				items: 3,
 				margin: 5,
 			},
-			1200: {
-				items: 4,
+			1500: {
+				items: 5,
 				margin: 5,
 			}
 		}
@@ -121,6 +122,33 @@ jQuery(document).ready(function ($) {
 			},
 			1200: {
 				items: 2,
+				margin: 5,
+			}
+		}
+	})
+	$('.owl-slider-single').owlCarousel({
+		loop: true,
+		autoplay: 1000,
+		autoplayHoverPause: false,
+		responsiveClass: true,
+		dots: false,
+		nav: false,
+		responsive: {
+			0: {
+				items: 1,
+				margin: 5,
+				nav: true,
+			},
+			600: {
+				items: 1,
+				margin: 5,
+			},
+			1000: {
+				items: 1,
+				margin: 5,
+			},
+			1200: {
+				items: 1,
 				margin: 5,
 			}
 		}
@@ -236,6 +264,10 @@ jQuery(document).ready(function ($) {
 			input.attr("type", "password");
 		}
 	});
+	$(".homeDd").click(function () {
+		slectedHomeCatId = $(this).attr('data');
+		$('#form_cat_id').val(slectedHomeCatId);
+	})
 });
 
 $(window).scroll(function () {
@@ -264,6 +296,16 @@ $(window).bind("load resize", function () {
 		$('.user-drop').detach().prependTo('.logout');
 	}
 });
+
+function submitForm() {
+	var form = $('#searchFormId');
+	var cat_id = $('#form_cat_id').val();
+	if (cat_id != '' && cat_id > 0) {
+		cat_id = '/' + cat_id;
+		form.attr('action', form.attr('action') + cat_id).trigger('submit');
+	}
+	return false;
+}
 
 function postsCarousel() {
 	var checkWidth = $(window).width();

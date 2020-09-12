@@ -45,7 +45,7 @@
 	.carousel-inner,.carousel-item {height: 100%;}
 	#footer ul.ft-social {text-align: center;}
 	.homeBanner {padding-bottom: 12px;}
-	.search-layout {width: 518px;}
+	/* .search-layout {width: 518px;} */
 	.homepdlist-tab .resp-tabs-list li {font-size:15px; padding: 6px !important}
 	.left-static {width: auto; left: 30px; top: 531px;}
 	.homeGetTouch .secleft .img-grid {margin-top:0px}
@@ -235,7 +235,8 @@
 	.search-layout .search-group input[type="text"] {width:100%; border-radius: 0px}
 	.search-layout .search-group input[type="submit"] {width:100%;height: 40px;border-radius: 0px}
 	.search-layout .search-group .dropdown select {background-position: 98% 50%}
-	.search-layout .search-group .dropdown { width: 100%;}
+	.search-layout .search-group .dropdown { width: 100%; float: left;}
+	.what-looking  {width: 100%;border-radius: 0;padding-bottom: 15px;}
 	.homeBanner .content-sec {padding-top: 124px;}
 	.left-static h5 a {display: block}
 	.left-static {left: 10px;}

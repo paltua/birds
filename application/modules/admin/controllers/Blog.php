@@ -85,7 +85,7 @@ class Blog extends MX_Controller {
                 $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/delete/'.$value->blog_id.'" class="deleteChange btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
                 $statusStr = '<a class="statusChange btn btn-'.( $value->is_status == 'active'?'info':'warning' ).' btn-xs" href="javascript:void(0);" title="Click to change Status" value="'.( $value->is_status == 'active'?'unlock':'lock' ).'" id="status_'.$value->blog_id.'" name="'.$value->blog_id.'"><i id="i_status_'.$value->blog_id.'" class="fa fa-'.( $value->is_status == 'active'?'unlock':'lock' ).'"></i><span id="span_status_'.$value->blog_id.'">'.ucfirst( $value->is_status ).'</span>';
 
-                $img = '<img height="125" width="125" alt="'.$value->image_alt.'" src="'.base_url( 'uploads/blog/thumb/'.$value->image_path ).'">';
+                $img = '<img height="100" width="200" alt="'.$value->image_alt.'" src="'.base_url( 'uploads/blog/thumb/'.$value->image_path ).'">';
                 $nestedData[] = $value->title;
                 $nestedData[] = $img;
                 $nestedData[] = $value->short_desc;
@@ -257,7 +257,7 @@ class Blog extends MX_Controller {
             $editData = $this->blog_model->getSingleData( $blog_id );
             $blogRevData = array();
             $blogRevData['title'] = $editData[0]->title;
-            $blogRevData['title_url'] = $editData[0]->title_url;
+            $blogRevData['title_url'] = $editData[0]->title_url.'-'.$this->_getCode();
             $blogRevData['short_desc'] = $editData[0]->short_desc;
             $blogRevData['long_desc'] = $editData[0]->long_desc;
             $blogRevData['blog_id'] = $editData[0]->blog_id;
@@ -267,11 +267,12 @@ class Blog extends MX_Controller {
                 $blogRevData['is_status'] = $editData[0]->is_status == 'active'?'inactive':'active';
             }
             $blog_revision_id = $this->tbl_generic_model->add( 'blog_revisions', $blogRevData );
+
             $where['blog_id'] = $blog_id;
             $upData['blog_revision_id'] = $blog_revision_id;
             $this->tbl_generic_model->edit( 'blogs', $upData, $where );
             if ( $action != 'delete' ) {
-                $catData = $this->blog_model->getAssignCat( $blog_id );
+                $catData = $this->blog_model->getAssignCatForStatus( $editData[0]->blog_revision_id );
                 $inData = array();
                 foreach ( $catData as $key => $value ) {
                     $inData[] = array(

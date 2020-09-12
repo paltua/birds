@@ -208,7 +208,7 @@ table tr td {position: relative;overflow: hidden;}
 .category-circle figure figcaption a.button:hover { -webkit-animation-name: hvr-icon-pulse-grow; animation-name: hvr-icon-pulse-grow;  -webkit-animation-duration: 0.3s; animation-duration: 0.3s;-webkit-animation-timing-function: linear; animation-timing-function: linear; -webkit-animation-iteration-count: infinite; animation-iteration-count: infinite; -webkit-animation-direction: alternate; animation-direction: alternate;}
 .homecategory .content-sec h3.title {font-size: 22px; margin-bottom: 5px; line-height: 28px}
 .homecategory .content-sec h5.subtitle {font-size: 16px; margin-bottom: 5px; line-height: 22px}
-.search-layout {width: 100%; height: 50px; background: rgba(255,255,255,.19); padding: 6px; border-radius: 50px; margin: 15px auto 0}
+.search-layout {width: 100%;  background: rgba(255,255,255,.19); padding: 6px; border-radius: 50px; margin: 15px auto 0}
 .search-layout .search-group {display: -webkit-flex; display:-ms-flexbox; display: flex; height: 100%;}
 .search-layout .search-group input[type="text"] {width:50%;-webkit-flex-grow:9;flex-grow:9; background: #fff; border-radius: 50px 0 0 50px; border: none; padding: 10px 15px; font-family: 'Raleway', sans-serif; font-size: 14px; color: #8e8e8e}
 .search-layout .search-group input[type="submit"] {width:10%;-webkit-flex-grow:2;flex-grow:2; border-radius: 0 50px 50px 0; border: none; background-color: #ff1212; background-image: url("../images/search-icon.png"); background-repeat: no-repeat; background-position:center center; color: #fff;  font-size: 0px; font-weight: 500;-webkit-transition: all ease-in-out 0.5s; transition: all ease-in-out 0.5s; cursor: pointer;}
@@ -632,7 +632,7 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
   .homeGetTouch .secright .content-sec .box-wrap { padding-bottom: 25px;}
   .homeGetTouch .secright .content-sec { padding: 0px 75px 30px 61px;}
   #header .logo { margin-top: -29px;}
-  .search-layout {width: 100%; height: 55px; padding: 6px;}
+  .search-layout {width: 100%; padding: 6px;}
   .search-layout .search-group input[type="text"] {font-size: 16px;}
   .homelist-box figure .box-layout figcaption h3 {font-size: 15px;}
   .homeBanner .content-sec {padding-top: 160px;}
@@ -658,7 +658,7 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
   #fp-nav ul li:hover a.active span {width: 3px;border-radius: 0;height: 25px;margin: -8.5px 0 0 -1.5px;}
 	#fp-nav ul li { width: 17px; height: 17px; margin: 28px 7px;}
 	.outer-container,.banner-container,.homeBanner .fp-slidesNav { padding-left: 170px; padding-right: 170px }
-	.section .title { font-size: 55px; font-weight: 700; line-height: 60px; margin-bottom: 10px}
+	.section .title { font-weight: 700; line-height: 60px; margin-bottom: 10px}
 	.section .parainfo {font-size: 20px; line-height: 28px;}
 	.btn { padding: 15px 64px 12px 21px;}
 	.btn::after {right: 20px; top: 17px; width:17px; height: 12px; background-size: 17px}
@@ -693,7 +693,7 @@ div.dataTables_paginate ul li a {border: 1px solid #ddd; padding: 5px 8px; displ
   .homecategory .content-sec .category-circle { margin-top: 50px;}
   .homepdlist-tab .resp-tabs-container {margin-top: 40px;}
   #header .logo { margin-top: -42px;}
-  .search-layout {width: 100%; height: 80px; padding: 10px;}
+  .search-layout {width: 100%;  padding: 10px;}
   .category-circle figure { width: 130px; height: 130px;padding: 6px;}
   .category-circle figure .circle-layout {width: 118px; height: 118px;}
   .category-circle .owl-item .item h3 { font-size: 13px;}
@@ -925,14 +925,10 @@ margin-top: -60px;
   position: relative;
 }
 .owl-slider-top-sud .item img {
-    width: auto;
-    min-height: 70vh;
-    object-fit: cover;
+    width: 100%;
 }
 .wrap-text-slider-sud {
-  position: absolute;
-  left:0;
-  bottom:0;
+  position: relative;
   background: rgba(0, 0, 0, 0.75);
   height: auto;
   display: flex;
@@ -940,7 +936,7 @@ margin-top: -60px;
   justify-content: flex-start;
   flex-direction: column;
   padding: 20px;
-  min-height: 200px;
+  min-height: 210px;
 }
 .wrap-text-slider-sud h3{
   color: #fff;
@@ -952,6 +948,7 @@ margin-top: -60px;
   color: #fff;
     font-size: 13px;
     margin: 0 0 10px 0;
+    min-height: 80px;
 }
 .wrap-text-slider-sud a{
   color: #fff;
@@ -996,15 +993,12 @@ margin-top: -60px;
   flex-direction: row;
 }
 .wrap-blog-image{
-  max-height: 400px;
   width: 100%;
-  overflow: hidden;
   border-radius: 10px;
   margin: 25px 0;
 }
 .wrap-blog-image img{
   width: 100%;
-  height: 400px;
 }
 .wrap-details-blog {
   margin-bottom: 25px;
@@ -1068,7 +1062,6 @@ margin-top: -60px;
   transition: ease 0.3s;
 }
 .img-blog-sli {
-  height: 100px;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
 }
@@ -1188,11 +1181,127 @@ margin-top: -60px;
 .product-wrap-sud .blog-slider-owl-sud {
     padding: 10px 50px 0 50px;
 }
+.what-looking {
+    font-size: 17px;
+    font-weight: 700;
+    width: 270px;
+    padding-left: 15px;
+    background: #fff;
+    border-radius: 30px 0 0 30px;
+    padding-top: 15px;
+    text-align: left;
+}
+.select-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #333333;
+  z-index: 9;
+}
+
+.select-box__current {
+  position: relative;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+}
+.select-box__current:focus + .select-box__list {
+  opacity: 1;
+  -webkit-animation-name: none;
+          animation-name: none;
+          max-height: 300px;
+          overflow: auto;
+}
+.select-box__current:focus + .select-box__list .select-box__option {
+  cursor: pointer;
+}
+.select-box__current:focus .select-box__icon {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+          transform: translateY(-50%) rotate(180deg);
+}
+.select-box__icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 20px;
+  opacity: 0.3;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.select-box__value {
+  display: -webkit-box;
+  display: flex;
+}
+.select-box__input {
+  display: none;
+}
+.select-box__input:checked + .select-box__input-text {
+  display: block;
+}
+.select-box__input-text {
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 15px;
+  background-color: #ededed;
+}
+.select-box__list {
+  position: absolute;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  opacity: 0;
+  -webkit-animation-name: HideList;
+          animation-name: HideList;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: step-start;
+          animation-timing-function: step-start;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+.select-box__option {
+  display: block;
+  padding: 15px;
+  background-color: #fff;
+  margin: 0
+}
+.select-box__option:hover, .select-box__option:focus {
+  color: #546c84;
+  background-color: #fbfbfb;
+}
+
+@-webkit-keyframes HideList {
+  from {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  to {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+}
+
+@keyframes HideList {
+  from {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  to {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+}
 /*****sudipta****/
 @media (min-width:992px) and (max-width:1024px) {
-.topban-sud-home {
-  height: 100% !important;
-}
+
 }
 @media (min-width:768px) and (max-width:991px) {
   .slider-top-inner {
@@ -1207,7 +1316,7 @@ margin-top: -60px;
   right: 10px !important;
 }
 .topban-sud-home {
-    height: 100% !important;
+
     padding-bottom: 100px;
     padding-top: 50px;
 }
@@ -1289,10 +1398,6 @@ margin-top: -60px;
 .topban-sud-home {
   height: auto !important;
   padding-bottom: 80px !important;
-}
-.img-wrap {
-  max-height: 130px;
-  overflow: hidden;
 }
 .flex-wrap-sud {
 	flex-direction: column;

@@ -85,6 +85,15 @@ class Blog_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function getAssignCatForStatus( $blog_revision_id = 0 ) {
+        $this->db->select( 'BAC.*' );
+        $this->db->from( 'blog_animal_categorys BAC' );
+        $this->db->where( 'BAC.blog_revision_id', $blog_revision_id );
+        $this->db->order_by( 'BAC.acm_id', 'ASC' );
+        // $this->sql_print();
+        return $this->db->get()->result();
+    }
+
     public function getSingle( $am_id = 0 ) {
         $this->db->select( '*' );
         $this->db->from( 'blogs B' );

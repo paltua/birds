@@ -1,26 +1,40 @@
 <section class="innerbanner">
     <div class="banner-cont">
         <h1 class="title">Bolg</h1>
-        <div class="breadcramb">
+        <!-- <div class="breadcramb">
             <ul>
                 <li><a href="<?php echo base_url();?>"><i class="lnr lnr-home"></i></a></li>
                 <li>Home</li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </section>
 
 
 
 <section class="inner-layout">
+
     <div class="container">
         <?php if(count($images) > 0){?>
-        <div class="w-100 wrap-blog-image">
+        <!-- <div class="w-100 wrap-blog-image">
             <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$images[0]->image_path);?>"
                 alt="<?php echo $images[0]->title;?>">
+        </div> -->
+        <div class="owl-carousel owl-theme owl-slider-single">
+            <div class="w-100 wrap-blog-image item">
+                <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$images[0]->image_path);?>"
+                    alt="<?php echo $images[0]->title;?>">
+            </div>
+            <div class="w-100 wrap-blog-image item">
+                <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$images[0]->image_path);?>"
+                    alt="<?php echo $images[0]->title;?>">
+            </div>
+            <div class="w-100 wrap-blog-image item">
+                <img src="<?php echo base_url(UPLOAD_BLOG_PATH.$images[0]->image_path);?>"
+                    alt="<?php echo $images[0]->title;?>">
+            </div>
         </div>
         <?php } ?>
-
         <div class="w-100 wrap-details-blog">
             <h1><?php echo $details[0]->title;?></h1>
             <span><?php echo date(' jS F Y',strtotime($details[0]->created_date));?></span>
