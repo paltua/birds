@@ -22,6 +22,7 @@ class Animal_category extends MY_Controller {
         $data['lang'] = getLanguageArr();
         $data['msg'] = $this->template->getMessage( $status, $msg );
         $data['list'] = $this->animal_category_model->getAllData();
+        print_r( $data['list'] );
         $this->template->setTitle( 'Admin : Product Types' );
         $this->template->setLayout( 'dashboard' );
 

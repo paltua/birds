@@ -160,7 +160,7 @@ jQuery(document).ready(function ($) {
 		responsiveClass: true,
 		dots: false,
 		nav: true,
-		startPosition: startPositionOwlCarSeven,
+		startPosition: typeof startPositionOwlCarSeven === "undefined" ? 0 : startPositionOwlCarSeven,
 		responsive: {
 			0: {
 				items: 3,

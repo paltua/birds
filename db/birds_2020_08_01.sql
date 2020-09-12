@@ -11,5 +11,7 @@ INSERT INTO `settings` (`name`, `name_val`, `updated_by`) VALUES ('pd_charitable
 
 INSERT INTO `settings` (`name`, `name_val`, `updated_by`) VALUES ('about_us', 'about us', '1');
 
+ALTER TABLE `animal_category_master_details` 
+CHANGE COLUMN `acmd_desc` `acmd_desc` LONGTEXT CHARACTER SET 'utf8' NULL DEFAULT NULL ;
 
 

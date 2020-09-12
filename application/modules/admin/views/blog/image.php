@@ -95,6 +95,7 @@ $(document).ready(function() {
                     <thead>
                         <tr>
                             <th>Image </th>
+                            <th>Image Path</th>
                             <th>Default</th>
                             <th>Created Date</th>
                             <th>Action</th>
@@ -115,6 +116,11 @@ $(document).ready(function() {
                                     <img width="150" height="150"
                                         src="<?php echo base_url();?>uploads/<?php echo $controller;?>/thumb/<?php echo $value->image_path;?>"
                                         alt="" /></div>
+                            </td>
+                            <td>Full Image :
+                                <?php echo base_url();?>uploads/<?php echo $controller;?>/<?php echo $value->image_path;?><br>
+                                Thumbnail Image :
+                                <?php echo base_url();?>uploads/<?php echo $controller;?>/thumb/<?php echo $value->image_path;?>
                             </td>
                             <td>
                                 <div class="radio">

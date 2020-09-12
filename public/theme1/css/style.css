@@ -1004,7 +1004,7 @@ margin-top: -60px;
 }
 .wrap-blog-image img{
   width: 100%;
-  object-fit: cover;
+  height: 400px;
 }
 .wrap-details-blog {
   margin-bottom: 25px;

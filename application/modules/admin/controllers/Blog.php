@@ -224,8 +224,10 @@ class Blog extends MX_Controller {
         $this->data['catData'] = $this->blog_model->getAssignCat( $this->data['blog_id'] );
         $this->data['animal_cat'] = $this->blog_model->getAllAnimalParentCategory( 0 );
         $this->data['animal_sub_cat'] = [];
-        if ( count( $this->data['catData'] ) > 1 ) {
-            $this->data['animal_sub_cat'] = $this->blog_model->getAllAnimalParentCategory( $this->data['catData'][0]->acm_id );
+        if ( count( $this->data['catData'] ) > 0 ) {
+            if ( $this->data['catData'][0]->acm_id != 1 ) {
+                $this->data['animal_sub_cat'] = $this->blog_model->getAllAnimalParentCategory( $this->data['catData'][0]->acm_id );
+            }
         }
         $this->data['msg'] = $this->template->getMessage( $status, $msg );
         $this->template->setTitle( 'Admin : '.ucfirst( $this->data['page_title'] ).' '.ucfirst( $this->action ) );
