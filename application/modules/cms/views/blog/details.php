@@ -45,7 +45,7 @@
                         <a class="w-100 blog-inner-wap-slider"
                             href="<?php echo base_url('cms/blog/details/'.$value->title_url);?>">
                             <div class="w-100 img-blog-sli">
-                                <img src="<?php echo $value->image_path != '' ?base_url(UPLOAD_BLOG_PATH.$value->image_path):base_url('public/theme1/images/sectionbanner01_01.jpg');?>"
+                                <img src="<?php echo $value->image_path != '' ? base_url(UPLOAD_BLOG_PATH.'thumb/'.$value->image_path): base_url('public/theme1/images/sectionbanner01_01.jpg');?>"
                                     alt="<?php echo $value->title;?>"></div>
                             <div class="w-100 content-blog-sli">
                                 <h5><?php echo $value->title;?></h5>
