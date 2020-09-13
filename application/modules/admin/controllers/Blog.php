@@ -313,9 +313,9 @@ class Blog extends MX_Controller {
         $config['upload_path']          = UPLOAD_BLOG_PATH;
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         /*$config['max_size']             = 100;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
         */
+        $config['max_width']            = 1000;
+        $config['max_height']           = 500;
         $config['file_name']            = date( 'YmdHis' ).$blog_id;
         $this->load->library( 'upload', $config );
         $this->load->library( 'image_lib' );
@@ -343,7 +343,7 @@ class Blog extends MX_Controller {
         $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = TRUE;
         $config['width']         = 250;
-        $config['height']       = 250;
+        $config['height']       = 125;
         $this->load->library( 'image_lib' );
         $this->image_lib->initialize( $config );
         $this->image_lib->resize();

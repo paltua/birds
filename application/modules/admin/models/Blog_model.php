@@ -94,12 +94,13 @@ class Blog_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    public function getSingle( $am_id = 0 ) {
+    public function getSingle( $blog_id = 0 ) {
         $this->db->select( '*' );
         $this->db->from( 'blogs B' );
         $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = B.blog_revision_id', 'INNER' );
         // $this->db->join( 'blog_images BIMG', 'BIMG.blog_id=B.blog_id', 'INNER' );
         $this->db->where( 'BREV.is_status !=', 'delete' );
+        $this->db->where( 'B.blog_id', $blog_id );
         return $this->db->get()->result();
     }
 
