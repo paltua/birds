@@ -169,8 +169,8 @@ class Animal_category extends MY_Controller {
         $this->load->library( 'upload', $config );
         if ( $_FILES ) {
             if ( ! $this->upload->do_upload( 'image_name' ) ) {
-                print_r( $this->upload->display_errors() );
-                die;
+                // print_r( $this->upload->display_errors() );
+                // die;
                 $this->session->set_flashdata( 'status', 'danger' );
                 $this->session->set_flashdata( 'msg', $this->upload->display_errors() );
             } else {
