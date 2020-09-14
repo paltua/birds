@@ -84,7 +84,6 @@ var startPositionOwlCarSeven = '0';
                                 <input type="hidden" name="cat_id" id="form_cat_id"
                                     value="<?php echo $category[0]->acm_id; ?>">
                                 <div class="search-group">
-                                    <p class="what-looking float-left">What are you looking for?</p>
                                     <!-- <input type="text" name="keyWord" placeholder="What are you looking for?"> -->
                                     <div class="dropdown show">
                                         <div class="select-box w-100 text-left">
