@@ -170,12 +170,14 @@ class Blog extends MX_Controller {
             );
         }
         if ( $p_acr !== 1 ) {
-            if ( count( $data ) > 0 ) {
-                foreach ( $data as $key => $value ) {
-                    $inData[] = array(
-                        'blog_revision_id' => $blog_revision_id,
-                        'acm_id' => $value
-                    );
+            if ( is_array( $data ) ) {
+                if ( count( $data ) > 0 ) {
+                    foreach ( $data as $key => $value ) {
+                        $inData[] = array(
+                            'blog_revision_id' => $blog_revision_id,
+                            'acm_id' => $value
+                        );
+                    }
                 }
             }
         }
@@ -273,15 +275,17 @@ class Blog extends MX_Controller {
             $this->tbl_generic_model->edit( 'blogs', $upData, $where );
             if ( $action != 'delete' ) {
                 $catData = $this->blog_model->getAssignCatForStatus( $editData[0]->blog_revision_id );
-                $inData = array();
-                foreach ( $catData as $key => $value ) {
-                    $inData[] = array(
-                        'blog_revision_id' => $blog_revision_id,
-                        'acm_id' => $value->acm_id
-                    );
-                }
-                if ( count( $inData ) > 0 ) {
-                    $this->tbl_generic_model->add_batch( 'blog_animal_categorys', $inData );
+                if ( count( $catData ) > 0 ) {
+                    $inData = array();
+                    foreach ( $catData as $key => $value ) {
+                        $inData[] = array(
+                            'blog_revision_id' => $blog_revision_id,
+                            'acm_id' => $value->acm_id
+                        );
+                    }
+                    if ( count( $inData ) > 0 ) {
+                        $this->tbl_generic_model->add_batch( 'blog_animal_categorys', $inData );
+                    }
                 }
             }
         }
@@ -312,10 +316,8 @@ class Blog extends MX_Controller {
     private function _upload( $blog_id = 0 ) {
         $config['upload_path']          = UPLOAD_BLOG_PATH;
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
-        /*$config['max_size']             = 100;
-        */
-        $config['max_width']            = 1000;
-        $config['max_height']           = 500;
+        $config['min_width']            = 1000;
+        $config['min_height']           = 500;
         $config['file_name']            = date( 'YmdHis' ).$blog_id;
         $this->load->library( 'upload', $config );
         $this->load->library( 'image_lib' );
@@ -329,30 +331,25 @@ class Blog extends MX_Controller {
                 $inData['image_path'] = $path = $this->upload->data( 'file_name' );
                 $inData['blog_id'] = $blog_id;
                 $this->image_lib->clear();
-                $this->_resizeImage( $path );
+                $this->_resizeImage( $path, '1000', '500', '' );
+                $this->_resizeImage( $path, '250', '125', 'thumb' );
                 $this->tbl_generic_model->add( 'blog_images', $inData );
             }
             redirect( base_url().'admin/'.$this->controller.'/image/'.$blog_id );
         }
     }
 
-    private function _resizeImage( $imageName = '' ) {
+    private function _resizeImage( $imageName = '', $width = '1000', $height = '500', $folder = '' ) {
         $config['image_library'] = 'gd2';
         $config['source_image'] = UPLOAD_BLOG_PATH.$imageName;
-        $config['new_image'] = UPLOAD_BLOG_PATH.'thumb';
+        $config['new_image'] = UPLOAD_BLOG_PATH.$folder;
         $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = TRUE;
-        $config['width']         = 250;
-        $config['height']       = 125;
+        $config['width']         = $width;
+        $config['height']       = $height;
         $this->load->library( 'image_lib' );
         $this->image_lib->initialize( $config );
         $this->image_lib->resize();
-        // if ( $this->image_lib->resize() ) {
-        //     echo 'success';
-        // } else {
-        //     echo $this->image_lib->display_errors();
-        // }
-        // die;
     }
 
     public function image_delete( $blog_image_id = 0 ) {

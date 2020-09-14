@@ -44,6 +44,7 @@ class Animal_category extends MY_Controller {
             $nameCheck = $this->name_check( $nameArr['en'], $acm_id );
             if ( $nameCheck ) {
                 $shortDescArr = $this->input->post( 'acmd_short_desc' );
+                $descArr = $this->input->post( 'acmd_desc' );
                 $maData['acm_status'] = 'active';
                 $maData['acm_url_name'] = url_title( $nameArr['en'] );
                 $maData['parent_id'] = $this->input->post( 'parent_id_en' );
