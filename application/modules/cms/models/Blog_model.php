@@ -15,7 +15,7 @@ class Blog_model extends CI_Model {
         $this->db->join( 'blog_images BIMG', 'BIMG.blog_id = B.blog_id AND BIMG.orders = 1 AND BIMG.is_status != "delete"', 'LEFT' );
         $this->db->where( 'BREV.is_status', 'active' );
         $this->db->order_by( 'B.blog_id', 'DESC' );
-        $this->db->limit( 4, 0 );
+        $this->db->limit( 20, 0 );
         return $this->db->get()->result();
     }
 
