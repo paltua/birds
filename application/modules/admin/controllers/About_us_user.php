@@ -64,9 +64,9 @@ class About_us_user extends MY_Controller {
         $config['upload_path']          = UPLOAD_ABOUT_US_USER;
         $config['allowed_types']        = 'gif|jpg|png';
         /*$config['max_size']             = 100;
-        $config['max_width']            = 1024;
-        $config['max_height']           = 768;
         */
+        $config['min_width']            = 300;
+        $config['min_height']           = 150;
         $config['file_name']            = date( 'YmdHis' ).$auu_id;
         $this->load->library( 'upload', $config );
         $this->load->library( 'image_lib' );
