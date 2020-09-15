@@ -1016,9 +1016,9 @@ margin-top: -60px;
   margin: 0;
 }
 .wrap-details-blog span {
-  font-size: 14px;
+  /* font-size: 14px;
   font-weight: 700;
-  color: #666666;
+  color: #666666; */
 }
 .wrap-details-blog p {
   font-size: 15px;
@@ -1298,6 +1298,10 @@ margin-top: -60px;
     -webkit-transform: scaleY(0);
             transform: scaleY(0);
   }
+}
+.search-layout .search-group {
+  align-items: stretch;
+  min-height: 55px;
 }
 /*****sudipta****/
 @media (min-width:992px) and (max-width:1024px) {

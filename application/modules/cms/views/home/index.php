@@ -25,19 +25,6 @@ var startPositionOwlCarSeven = '0';
                                 </div>
                             </div>
                             <?php }?>
-                            <?php }else{?>
-                            <div class="item">
-                                <div class="img-wrap"><img
-                                        src="http://localhost/birds/public/theme1/images/sectionbanner01_03.jpg" alt="">
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-5 col-xl-5 wrap-text-slider-sud">
-                                    <h3>Title will come here</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus felis id
-                                        dolor
-                                        dignissim vel vulputate eros feugiat. Mauris accumsan aliquam ultrices.</p>
-                                    <a href="#">View Details</a>
-                                </div>
-                            </div>
                             <?php }?>
 
                         </div>
@@ -51,12 +38,6 @@ var startPositionOwlCarSeven = '0';
                 <div class="carousel-item active"
                     style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_01.jpg); background-repeat: no-repeat;">
                 </div>
-                <!-- <div class="carousel-item"
-                    style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_02.jpg); background-repeat: no-repeat;">
-                </div>
-                <div class="carousel-item"
-                    style="background-image: url(<?php echo base_url('public/'.THEME.'/');?>images/sectionbanner01_03.jpg); background-repeat: no-repeat;">
-                </div> -->
             </div>
         </div>
     </div>
@@ -84,9 +65,10 @@ var startPositionOwlCarSeven = '0';
                                 <input type="hidden" name="cat_id" id="form_cat_id"
                                     value="<?php echo $category[0]->acm_id; ?>">
                                 <div class="search-group">
-                                    <!-- <input type="text" name="keyWord" placeholder="What are you looking for?"> -->
+                                    <p class="what-looking">Select the Birds Category</p>
+                                    <!-- <input type="text" name="keyWord" placeholder="Select the Birds Category"> -->
                                     <div class="dropdown show">
-                                        <div class="select-box w-100 text-left">
+                                        <!-- <div class="select-box w-100 text-left">
                                             <div class="select-box__current" tabindex="1">
                                                 <?php if(count($category) > 0){
                                                         foreach ($category as $key => $value) {
@@ -116,6 +98,28 @@ var startPositionOwlCarSeven = '0';
                                                 <?php } } ?>
 
                                             </ul>
+                                        </div> -->
+                                        <div class="mm-dropdown">
+                                            <div class="textfirst">Select One </div>
+                                            <?php if(count($category) > 0){?>
+                                            <ul>
+                                                <?php foreach ($category as $key => $value) {?>
+                                                <?php 
+                                $imagePath = base_url('public/'.THEME.'/images/no-image.jpg');
+                                if($value->image_name != ''){
+                                    $imagePath = base_url(UPLOAD_CAT_PATH.$value->image_name);
+                                }?>
+                                                <li class="input-option" data-value="<?php echo $value->acm_id;?>">
+                                                    <img src="<?php echo $imagePath;?>"
+                                                        alt="<?php echo $value->acmd_name;?>" width="40" height="20" />
+                                                    <?php echo $value->acmd_name;?>
+                                                </li>
+
+                                                <?php } ?>
+                                            </ul>
+                                            <?php } ?>
+                                            <input type="hidden" class="option" id="catSelectedId" name="namesubmit"
+                                                value="" />
                                         </div>
 
 
@@ -183,3 +187,4 @@ var startPositionOwlCarSeven = '0';
 
     <!-- GET IN TOUCH SECTION -->
 </section>
+<link href="<?php echo base_url('public/'.THEME.'/');?>css/select-dd.css" rel="stylesheet" type="text/css">

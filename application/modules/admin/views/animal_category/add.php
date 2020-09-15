@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Product Types</h1>
+        <h1 class="page-header">Birds Category</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>

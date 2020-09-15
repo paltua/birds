@@ -29,12 +29,13 @@
                                 }else{
                                     $image = base_url(UPLOAD_ABOUT_US_USER.'thumb/'.$value->img);
                                 }
+                                if($key < 4){
                         ?>
-                    <div class="col-md-2">
+                    <div class="col-6 col-md-3 col-lg-3 col-xl-3">
                         <img src="<?php echo $image;?>" alt="">
                         <h6><?php echo  $value->name;?></h6>
                     </div>
-                    <?php } } ?>
+                    <?php } }} ?>
                 </div>
             </div>
         </div>

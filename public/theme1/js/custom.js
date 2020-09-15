@@ -268,6 +268,28 @@ jQuery(document).ready(function ($) {
 		slectedHomeCatId = $(this).attr('data');
 		$('#form_cat_id').val(slectedHomeCatId);
 	})
+
+	// Set
+	var main = $('div.mm-dropdown .textfirst')
+	var li = $('div.mm-dropdown > ul > li.input-option')
+	var inputoption = $("div.mm-dropdown .option")
+	var default_text = 'Select One';
+
+	// Animation
+	main.click(function () {
+		main.html(default_text);
+		li.toggle('fast');
+	});
+
+	// Insert Data
+	li.click(function () {
+		// hide
+		li.toggle('fast');
+		var livalue = $(this).data('value');
+		var lihtml = $(this).html();
+		main.html(lihtml);
+		inputoption.val(livalue);
+	});
 });
 
 $(window).scroll(function () {
@@ -299,7 +321,7 @@ $(window).bind("load resize", function () {
 
 function submitForm() {
 	var form = $('#searchFormId');
-	var cat_id = $('#form_cat_id').val();
+	var cat_id = $('#catSelectedId').val();
 	if (cat_id != '' && cat_id > 0) {
 		cat_id = '/' + cat_id;
 		form.attr('action', form.attr('action') + cat_id).trigger('submit');

@@ -316,8 +316,8 @@ class Blog extends MX_Controller {
     private function _upload( $blog_id = 0 ) {
         $config['upload_path']          = UPLOAD_BLOG_PATH;
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
-        $config['min_width']            = 1000;
-        $config['min_height']           = 500;
+        $config['min_width']            = 500;
+        $config['min_height']           = 250;
         $config['file_name']            = date( 'YmdHis' ).$blog_id;
         $this->load->library( 'upload', $config );
         $this->load->library( 'image_lib' );
@@ -344,7 +344,7 @@ class Blog extends MX_Controller {
         $config['source_image'] = UPLOAD_BLOG_PATH.$imageName;
         $config['new_image'] = UPLOAD_BLOG_PATH.$folder;
         $config['create_thumb'] = FALSE;
-        $config['maintain_ratio'] = TRUE;
+        $config['maintain_ratio'] = FALSE;
         $config['width']         = $width;
         $config['height']       = $height;
         $this->load->library( 'image_lib' );

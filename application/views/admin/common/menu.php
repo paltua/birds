@@ -248,8 +248,8 @@
                 <a href="<?php echo base_url('admin/blog');?>"><i class="fa fa-android"></i> Blogs</a>
             </li> -->
             <li>
-                <a href="<?php echo base_url('admin/animal_category');?>"><i class="fa fa-table fa-fw"></i> Product
-                    Types
+                <a href="<?php echo base_url('admin/animal_category');?>">
+                    <i class="fa fa-table fa-fw"></i> Birds Category
                     <!-- Animal Category --></a>
             </li>
             <li>

@@ -119,6 +119,7 @@ class Cms_model extends CI_Model {
     public function getAboutUsUser() {
         $this->db->select( '*' );
         $this->db->from( 'about_us_user' );
+        $this->db->where( 'name != ', '' );
         return $this->db->get()->result();
     }
 
