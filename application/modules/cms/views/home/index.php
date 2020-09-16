@@ -21,7 +21,7 @@ var startPositionOwlCarSeven = '0';
                                     <p><?php echo  (strlen($value->short_desc) > 480) ? substr($value->short_desc, 0, 480) . '...' : $value->short_desc;?>
                                     </p>
                                     <a href="<?php echo base_url('cms/blog/details/'.$value->title_url);?>">View
-                                        Details</a>
+                                        More</a>
                                 </div>
                             </div>
                             <?php }?>

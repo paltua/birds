@@ -31,26 +31,29 @@ $(document).ready(function() {
     });
 
     $(".statusChange").click(function() {
-        var url = '<?php echo base_url('
-        admin / animal_category / changeStatus ');?>';
-        var am_id = $(this).attr('name');
-        var am_status = $(this).attr('value');
-        $.post(url, {
-            am_id: am_id
-        }, function(data) {
-            if (am_status == 'lock') {
-                $("#status_" + am_id).attr('value', 'unlock').removeClass('btn-warning')
-                    .addClass('btn-info');
-                $("#i_status_" + am_id).removeClass('fa-lock').addClass('fa-unlock');
-                $("#span_status_" + am_id).text('Active');
-            } else {
-                $("#status_" + am_id).attr('value', 'lock').removeClass('btn-info').addClass(
-                    'btn-warning');
-                $("#i_status_" + am_id).removeClass('fa-unlock').addClass('fa-lock');
-                $("#span_status_" + am_id).text('Inactive');
-            }
-            $("#msgShow").html(data.msg);
-        }, "json");
+        var confirmStatus = confirm('Are you sure to change the status of this Birds Category?');
+        if (confirmStatus) {
+            var url = '<?php echo base_url("admin/animal_category/changeStatus");?>';
+            var am_id = $(this).attr('name');
+            var am_status = $(this).attr('value');
+            $.post(url, {
+                am_id: am_id
+            }, function(data) {
+                if (am_status == 'lock') {
+                    $("#status_" + am_id).attr('value', 'unlock').removeClass('btn-warning')
+                        .addClass('btn-info');
+                    $("#i_status_" + am_id).removeClass('fa-lock').addClass('fa-unlock');
+                    $("#span_status_" + am_id).text('Active');
+                } else {
+                    $("#status_" + am_id).attr('value', 'lock').removeClass('btn-info')
+                        .addClass(
+                            'btn-warning');
+                    $("#i_status_" + am_id).removeClass('fa-unlock').addClass('fa-lock');
+                    $("#span_status_" + am_id).text('Inactive');
+                }
+                $("#msgShow").html(data.msg);
+            }, "json");
+        }
     });
 });
 </script>
@@ -118,7 +121,8 @@ $(document).ready(function() {
                     <td class="center">
                         <a href="<?php echo base_url();?>admin/animal_category/edit/<?php echo $value->acm_id;?>"
                             class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>
-                        <a href="<?php echo base_url();?>admin/animal_category/delete/<?php echo $value->acm_id;?>"
+                        <a onclick="return confirm('Are you sure to delete this Birds Category?')"
+                            href="<?php echo base_url();?>admin/animal_category/delete/<?php echo $value->acm_id;?>"
                             class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                     </td>
                 </tr>

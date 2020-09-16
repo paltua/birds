@@ -254,5 +254,11 @@
 	    width: 86px;
 	    height: 86px;
 	}
+	.innerbanner .banner-cont {
+		top: 104px;
+	}
+	.innerbanner {
+		height: 160px;
+	}
 }
 
