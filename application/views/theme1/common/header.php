@@ -13,8 +13,8 @@
                 <ul>
                     <li><a href='<?php echo base_url();?>'>Home</a></li>
                     <li><a href="<?php echo base_url('cms/about-us');?>">About US</a></li>
-                    <!-- <li><a href = "<?php echo base_url('user/product/sell');?>">Sale</a></li>
-<li><a href = "<?php echo base_url('user/product/buy');?>">Buy</a></li> -->
+                    <li><a href="<?php echo base_url('cms/blog');?>">Blog</a></li>
+                    <!-- <li><a href = "<?php echo base_url('user/product/buy');?>">Buy</a></li> -->
                     <li><a href="<?php echo base_url('cms/contact-us');?>">Contact Us</a></li>
                 </ul>
             </nav>

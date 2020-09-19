@@ -13,7 +13,12 @@ class Blog extends MY_Controller {
     }
 
     public function index( $title_url = '' ) {
-
+        $data = array();
+        $status = '';
+        $msg = '';
+        $this->template->setTitle( 'Blog' );
+        $this->template->setLayout( 'cms' );
+        $this->template->homeRender( 'cms/'.$this->controller.'/index', $data );
     }
 
     public function details( $title_url = '' ) {
