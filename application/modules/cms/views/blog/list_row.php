@@ -26,10 +26,11 @@
                         <a href="<?php echo base_url('cms/blog/details/'.$value->title_url);?>"><?php echo $value->title;
         ?> </a>
                     </h3>
-                    <span>14 aug 2020</span>
+                    <span><?php echo date_format( date_create( $value->created_date ),  'l, jS F, Y' );
+        ?></span>
                     <p><?php //echo $value->amd_short_desc;
-        if ( strlen( $value->short_desc ) >= 280 ) {
-            echo substr( $value->short_desc, 0, 275 ).'...';
+        if ( strlen( $value->short_desc ) >= 340 ) {
+            echo substr( $value->short_desc, 0, 337 ).'...';
         } else {
             echo $value->short_desc;
         }
