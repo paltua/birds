@@ -1303,6 +1303,56 @@ margin-top: -60px;
   align-items: stretch;
   min-height: 55px;
 }
+.blog-s-new .pd-item-box {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 10px;
+    margin: 0;
+}
+.blog-s-new .pd-item-box .img-box{
+  display: inherit;
+  height: auto !important;
+  width: 250px !important;
+}
+.blog-s-new .pd-item-box  .img-inner {
+    display: block !important;
+    height: auto !important;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100% !important
+}
+.blog-s-new .pd-item-box  .img-inner img{
+  max-height: inherit !important;
+  max-width: inherit !important;
+}
+.blog-s-new .pd-item-box figcaption {
+  padding: 0 15px !important;
+}
+.blog-s-new .pd-item-box .item-left {
+  width: auto !important;
+  flex-direction: column;
+}
+.blog-s-new .pd-item-box .item-left h3{
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.blog-s-new .pd-item-box .item-left p{
+  font-size: 14px;
+  margin-top: 8px
+}
+.blog-s-new .pd-item-box .item-left span{
+  font-size: 12px;
+  color: #999999;
+}
+.buttonLoadMoreClass {
+  border-radius: 25px;
+  text-align: center;
+  padding: 10px 31px;
+}
+.buttonLoadMoreClass:after {
+  display: none;
+}
 /*****sudipta****/
 @media (min-width:992px) and (max-width:1024px) {
 
@@ -1414,6 +1464,16 @@ margin-top: -60px;
   padding-left: 15px !important;
   width: auto;
   margin-top: 10px;
+}
+.blog-s-new .pd-item-box .img-box {
+  width: 100% !important;
+  margin-bottom: 15px;
+} 
+.blog-s-new .pd-item-box  .img-inner img{
+  width: 100%;
+}
+.blog-s-new .pd-item-box figcaption {
+  padding: 15px 0 !important;
 }
 }
 /*//////////////////////////////////////////////

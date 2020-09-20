@@ -24,10 +24,10 @@ class Comment_model extends CI_Model {
         $this->db->join( 'user_master UM', 'UM.user_id=BC.user_id' );
         $this->db->join( 'blog_revisions BR', 'BR.blog_revision_id = BC.blog_revision_id' );
         $this->db->where( $where );
-        /*$this->db->get();
-        echo $this->db->last_query();
-        exit;
-        */
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
+
         return $this->db->count_all_results();
     }
 

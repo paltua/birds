@@ -11,22 +11,24 @@ class Comment extends MX_Controller {
         $this->_user_id = trim( $this->session->userdata( 'aum_id' ) );
         $this->controller = $this->router->fetch_class();
         $this->load->model( $this->controller.'_model' );
+        $this->load->model( 'blog_model' );
     }
 
-    public function index() {
+    public function index( $blog_id = 0 ) {
         $data = array();
-        $data['page_title'] = 'Blog Comments';
+        $data['blogDaetails'] = $this->blog_model->getSingleData( $blog_id );
+        $data['page_title'] = 'Blog Comments of <a "'.base_url( 'cms/blog/details/'.$data['blogDaetails'][0]->title_url ).'" target="_blank">#'.$data['blogDaetails'][0]->title.'</a>';
         $status = $this->session->userdata( 'status' );
         $msg = $this->session->userdata( 'msg' );
         $data['msg'] = $this->template->getMessage( $status, $msg );
-        $data['dataTableUrl'] = base_url( 'admin/comment/viewListDataTable' );
+        $data['dataTableUrl'] = base_url( 'admin/comment/viewListDataTable/'.$blog_id );
         $data['controller'] = $this->controller;
         $this->template->setTitle( 'Admin :Blog Comments' );
         $this->template->setLayout( 'dashboard' );
         $this->template->homeAdminRender( 'admin/'.$this->controller.'/index', $data );
     }
 
-    public function viewListDataTable() {
+    public function viewListDataTable( $blog_id = 0 ) {
         $requestData = $this->input->post();
         $columns = array(
             0 => 'UM.name',
@@ -44,7 +46,7 @@ class Comment extends MX_Controller {
 
         $limit = array( 'start' => $requestData['start'], 'perpage' => $requestData['length'] );
         $searchData = trim( $requestData['search']['value'] );
-        $where = array( 'is_deleted'=>'0' );
+        $where = array( 'BC.is_deleted'=>'0', 'BR.blog_id'=>$blog_id );
 
         $recordsTotal = $this->comment_model->getDataTableTotalCount( $where );
         $recordsFiltered = $this->comment_model->getDataTableFilteredCount( $searchData, $where );
@@ -81,7 +83,7 @@ class Comment extends MX_Controller {
                 $nestedData[] = $val->name;
                 $nestedData[] = $val->comments;
 
-                $nestedData[] = '<a href="'.base_url( 'cms/blog/details/'.$val->title_url ).'" target="_blank">#'.$val->title.'</a>';
+                // $nestedData[] = '<a href="'.base_url( 'cms/blog/details/'.$val->title_url ).'" target="_blank">#'.$val->title.'</a>';
                 // $nestedData[] = $statusStr;
                 $nestedData[] = date( 'F j, Y, g:i a', strtotime( $val->created_date ) );
                 $nestedData[] = $actionStr;

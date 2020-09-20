@@ -80,6 +80,7 @@ class Blog extends MX_Controller {
         if ( count( $data ) > 0 ) {
             foreach ( $data as $value ) {
                 $actionStr = '';
+                $actionStr .= '<a href="'.base_url().'admin/comment/index/'.$value->blog_id.'" class="btn btn-success btn-xs"><i class="fa fa-comments"></i> Comments</a>';
                 $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/image/'.$value->blog_id.'" class="btn btn-warning btn-xs"><i class="fa fa-picture-o"></i> Image</a>';
                 $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/edit/'.$value->blog_id.'" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</a>';
                 $actionStr .= '<a href="'.base_url().'admin/'.$this->controller.'/delete/'.$value->blog_id.'" class="deleteChange btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';

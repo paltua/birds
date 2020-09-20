@@ -32,7 +32,7 @@ $(document).ready(function() {
             error: function() { // error handling
                 //$(".employee-grid-error").html("");
                 $("#dataTableId").append(
-                    '<tbody class="employee-grid-error"><tr><th colspan="13">No record found.</th></tr></tbody>'
+                    '<tbody class="employee-grid-error"><tr><th colspan="4">No record found.</th></tr></tbody>'
                 );
                 $("#data-table_processing").css("display", "none");
             }
@@ -86,8 +86,9 @@ $(document).ready(function() {
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header"><?php echo $page_title;?>
-            <!-- <a href="<?php echo base_url('admin/'.$controller.'/add');?>" class="btn btn-info">
-        <i class="fa fa-plus-circle"></i> Add</a> -->
+            <div class="pull-right"> <a href="<?php echo base_url('admin/blog');?>" class="btn btn-info">
+                    <i class="fa fa-undo"></i> Back</a>
+            </div>
         </h1>
 
     </div>
@@ -104,9 +105,9 @@ $(document).ready(function() {
         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>User Name</th>
                     <th>Comment</th>
-                    <th>Blog Title</th>
+                    <!-- <th>Blog Title</th> -->
                     <!-- <th>Status</th> -->
                     <th>Created Date</th>
                     <th class="no-sort">Action</th>

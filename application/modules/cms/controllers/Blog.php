@@ -4,6 +4,7 @@ defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 class Blog extends MY_Controller {
     public $controller;
     public $data;
+    public $perPage = 10;
 
     public function __construct() {
         parent::__construct();
@@ -16,6 +17,11 @@ class Blog extends MY_Controller {
         $data = array();
         $status = '';
         $msg = '';
+        $limit = array( 'start' => 0, 'perPage' => $this->perPage );
+        $data['list'] = $this->blog_model->getList( $limit );
+        $data['prodListCount'] = $this->blog_model->geTotalCount();
+        $data['perPage'] = $this->perPage;
+        $data['limit'] = $limit;
         $this->template->setTitle( 'Blog' );
         $this->template->setLayout( 'cms' );
         $this->template->homeRender( 'cms/'.$this->controller.'/index', $data );
@@ -122,6 +128,25 @@ class Blog extends MY_Controller {
             }
         }
         return $text;
+    }
+
+    public function getAjaxData() {
+        $postLimit = $this->input->post( 'startPage' );
+        $sendLim = $retData['startPage'] = $postLimit + 1;
+        $dbLim = $sendLim * $this->perPage;
+        $limit = array( 'start' => $dbLim, 'perPage' => $this->perPage );
+        $prodListCount = $this->blog_model->geTotalCount();
+        if ( $prodListCount > ( $dbLim + $this->perPage ) ) {
+            $retData['loaderStatus'] = 'show';
+        } else {
+            $retData['loaderStatus'] = 'hide';
+        }
+        $data['list'] = $this->blog_model->getList( $limit );
+        $html = $this->load->view( 'cms/blog/list_row', $data, true );
+        $retData['html'] = $html;
+        $retData['status'] = 'success';
+        echo json_encode( $retData ) ;
+
     }
 
 }

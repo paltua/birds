@@ -1,73 +1,45 @@
 <?php if ( count( $list ) > 0 ) {
+    // print_r( $list );
+    // die;
     foreach ( $list as $key => $value ) {
         ?>
-<div class='col-md-12 col-sm-6 col-xs-12'>
+<div class='col-md-12 col-sm-6 col-xs-12 blog-s-new'>
     <div class='pd-item-box'>
         <figure>
             <span class='img-box'>
                 <span class='img-inner'>
                     <?php
         $imagePath = base_url( 'public/'.THEME.'/images/cockatiel_01_img.jpg' );
-        if ( $value->ami_path != '' ) {
-            $imagePath = base_url( UPLOAD_PROD_PATH.'thumb/'.$value->ami_path );
+        if ( $value->image_path != '' ) {
+            $imagePath = base_url( UPLOAD_BLOG_PATH.'thumb/'.$value->image_path );
         }
         ?>
-                    <a href="<?php echo base_url('user/product/details/'.$value->am_id);?>">
+                    <a href="<?php echo base_url('cms/blog/details/'.$value->title_url);?>">
                         <img src="<?php echo $imagePath;?>" />
                     </a>
                 </span>
             </span>
             <figcaption>
                 <div class='content-item item-left'>
-                    <div>
-                        <h3><a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"><?php echo $value->amd_name;
-        ?> : <?php echo $value->acmd_name;
-        ?></a></h3>
-                        <h4><?php //echo $value->amd_short_desc;
-        if ( strlen( $value->amd_short_desc ) >= 280 ) {
-            echo substr( $value->amd_short_desc, 0, 275 ).'...';
+
+                    <h3>
+                        <a href="<?php echo base_url('cms/blog/details/'.$value->title_url);?>"><?php echo $value->title;
+        ?> </a>
+                    </h3>
+                    <span>14 aug 2020</span>
+                    <p><?php //echo $value->amd_short_desc;
+        if ( strlen( $value->short_desc ) >= 280 ) {
+            echo substr( $value->short_desc, 0, 275 ).'...';
         } else {
-            echo $value->amd_short_desc;
+            echo $value->short_desc;
         }
-        ?></h4>
-                        <h5><span class='location'><?php echo showLocation( $value->country_name, $value->state_name, $value->city_name );
-        ?></span>
-                            <span class='publshby'>Published by <b><?php echo ( $value->am_user_type == 'admin' )?'Company': $value->user_name;
-        ?></b></span>
+        ?></p>
 
-                        </h5>
-                        <?php if ( $value->buy_or_sell != '' ) {
-            ?>
-                        <span class='badge badge-pill badge-warning'>
-                            <i class='fa fa-tag'></i><?php echo ( $value->buy_or_sell == 'buy'?'To ':'For ' ).ucfirst( $value->buy_or_sell );
-            ?>
-                        </span>
-                        <?php }
-            ?>
-
-                    </div>
-                </div>
-                <div class='content-item item-right'>
-                    <div>
-                        <h2>Rs. <?php echo $value->amd_price;
-            ?></h2>
-                        <a href="<?php echo base_url('user/product/details/'.$value->am_id);?>"
-                            class='btn btn-danger'>View</a>
-                        <h6><?php echo $value->acmd_name;
-            ?></h6>
-                        <span class='publsh-date'>published
-                            <span><?php echo getViewDate( $value->am_created_date );
-            ?></span>
-                        </span>
-                        <span class='viewed'>viewed
-                            <span><?php echo $value->am_viewed_count;
-            ?>+</span>
-                        </span>
-                    </div>
                 </div>
             </figcaption>
         </figure>
     </div>
 </div>
 <?php }
-        } ?>
+    }
+    ?>

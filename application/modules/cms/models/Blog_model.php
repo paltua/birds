@@ -19,10 +19,6 @@ class Blog_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    function getBlogList() {
-
-    }
-
     function getDetails( $title_url = '' ) {
         $this->db->select( 'B.*, BREV.*' );
         $this->db->from( 'blogs B' );
@@ -77,6 +73,26 @@ class Blog_model extends CI_Model {
         $this->db->group_by( 'BREV.blog_id, BREV.title,BREV.title_url, BIMG.image_path' );
         $this->db->order_by( 'BREV.created_date', 'DESC' );
         return $this->db->get()->result();
+    }
+
+    function getList( $limit = [] ) {
+        $this->db->select( 'B.*, BREV.title,BREV.title_url, BREV.short_desc, BREV.is_status, BREV.created_date,
+        BIMG.image_path, BIMG.image_alt' );
+        $this->db->from( 'blogs B' );
+        $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = B.blog_revision_id', 'INNER' );
+        $this->db->join( 'blog_images BIMG', 'BIMG.blog_id = B.blog_id AND BIMG.orders = 1 AND BIMG.is_status != "delete"', 'LEFT' );
+        $this->db->where( 'BREV.is_status', 'active' );
+        $this->db->order_by( 'B.blog_id', 'DESC' );
+        // $this->db->limit( $limit, $startPage );
+        $this->db->limit( $limit['perPage'], $limit['start'] );
+        return $this->db->get()->result();
+    }
+
+    function geTotalCount() {
+        $this->db->from( 'blogs B' );
+        $this->db->join( 'blog_revisions BREV', 'BREV.blog_revision_id = B.blog_revision_id', 'INNER' );
+        $this->db->where( 'BREV.is_status', 'active' );
+        return $this->db->get()->num_rows();
     }
 
     public function sql_print() {

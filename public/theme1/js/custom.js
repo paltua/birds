@@ -267,7 +267,7 @@ jQuery(document).ready(function ($) {
 	$(".homeDd").click(function () {
 		slectedHomeCatId = $(this).attr('data');
 		$('#form_cat_id').val(slectedHomeCatId);
-	})
+	});
 
 	// Set
 	var main = $('div.mm-dropdown .textfirst')
@@ -290,6 +290,7 @@ jQuery(document).ready(function ($) {
 		main.html(lihtml);
 		inputoption.val(livalue);
 	});
+
 });
 
 $(window).scroll(function () {

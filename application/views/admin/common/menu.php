@@ -253,6 +253,11 @@
                     <!-- Animal Category --></a>
             </li>
             <li>
+                <a href="<?php echo base_url('admin/blog');?>">
+                    <i class="fa fa-table fa-fw"></i> Blogs
+                    <!-- Animal Category --></a>
+            </li>
+            <!-- <li>
                 <a href="javascript:void(0)"><i class="fa fa-android"></i> Blog Management<span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -263,7 +268,7 @@
                         <a href="<?php echo base_url('admin/comment');?>">Comments</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <!-- <li>
                 <a href="<?php echo base_url('admin/animal_master');?>"><i class="fa fa-android"></i> Pets and Pet Accessories</a>
             </li> -->
