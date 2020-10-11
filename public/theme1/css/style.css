@@ -1021,7 +1021,7 @@ margin-top: -60px;
   color: #666666; */
 }
 .wrap-details-blog p {
-  font-size: 15px;
+  font-size: 15px !important;
   font-weight: 600;
   margin: 12px 0 ;
   color: #333333;
@@ -1353,6 +1353,47 @@ margin-top: -60px;
 .buttonLoadMoreClass:after {
   display: none;
 }
+.pd-charit-content {
+  min-height: inherit;
+  position: absolute;
+  bottom: 0;
+}
+.pd-charit-content p{
+  min-height: inherit;
+  margin: 0;
+}
+.owl-slider-pd-ch a {
+  background: transparent;
+  color: #fff;
+  padding: 0;
+  font-size: 700;
+  margin: 0;
+}
+.f-unit-birds h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333333;
+    text-transform: uppercase;
+}
+.inner-wrap-pd-block {
+  border-radius: 10px;
+  box-shadow: 0px 3px 12px rgba(0,0,0,0.12);
+  margin: 20px 0;
+  overflow: hidden;
+}
+.inner-wrap-pd-block h4{
+  font-size: 16px;
+  margin: 15px 0 5px 0;
+  font-weight: 700;
+}
+.inner-wrap-pd-block p{
+  font-size: 13px !important;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.owl-slider-pd-ch-list .item{
+  padding: 0 15px;
+}
 /*****sudipta****/
 @media (min-width:992px) and (max-width:1024px) {
 
@@ -1363,12 +1404,12 @@ margin-top: -60px;
     z-index: 2;
     top: 44px;
 }
-.slider-top-sud .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
+/* .slider-top-sud .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
   left: 10px !important;
 }
 .slider-top-sud .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {
   right: 10px !important;
-}
+} */
 .topban-sud-home {
 
     padding-bottom: 100px;
@@ -1436,12 +1477,12 @@ margin-top: -60px;
 .wrap-text-slider-sud {
 	position: relative;
 }
-.slider-top-sud .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
+/* .slider-top-sud .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
   left: 10px !important;
 }
 .slider-top-sud .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {
   right: 10px !important;
-}
+} */
 .flex-wrap-sud {
   flex-direction: column;
 }

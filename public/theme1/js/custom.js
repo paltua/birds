@@ -99,6 +99,60 @@ jQuery(document).ready(function ($) {
 			}
 		}
 	})
+	$('.owl-slider-pd-ch').owlCarousel({
+		loop: true,
+		autoplay: 1000,
+		autoplayHoverPause: true,
+		responsiveClass: true,
+		dots: false,
+		nav: true,
+		responsive: {
+			0: {
+				items: 1,
+				margin: 0,
+				nav: true,
+			},
+			600: {
+				items: 1,
+				margin: 0,
+			},
+			1000: {
+				items: 1,
+				margin: 0,
+			},
+			1200: {
+				items: 1,
+				margin: 0,
+			}
+		}
+	})
+	$('.owl-slider-pd-ch-list').owlCarousel({
+		loop: true,
+		autoplay: 1000,
+		autoplayHoverPause: true,
+		responsiveClass: true,
+		dots: false,
+		nav: true,
+		responsive: {
+			0: {
+				items: 1,
+				margin: 10,
+				nav: true,
+			},
+			600: {
+				items: 3,
+				margin: 10,
+			},
+			1000: {
+				items: 4,
+				margin: 10,
+			},
+			1200: {
+				items: 4,
+				margin: 10,
+			}
+		}
+	})
 	$('.owl-slider-top-sud').owlCarousel({
 		loop: true,
 		autoplay: 1000,
