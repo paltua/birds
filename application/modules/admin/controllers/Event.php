@@ -88,7 +88,7 @@ class Event extends MX_Controller
                 $actionStr .= '<a href="' . base_url() . 'admin/' . $this->controller . '/delete/' . $value->em_id . '" class="deleteChange btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
                 $statusStr = '<a class="statusChange btn btn-' . ($value->event_status == 'active' ? 'info' : 'warning') . ' btn-xs" href="javascript:void(0);" title="Click to change Status" value="' . ($value->event_status == 'active' ? 'unlock' : 'lock') . '" id="status_' . $value->em_id . '" name="' . $value->em_id . '"><i id="i_status_' . $value->em_id . '" class="fa fa-' . ($value->event_status == 'active' ? 'unlock' : 'lock') . '"></i><span id="span_status_' . $value->em_id . '">' . ucfirst($value->event_status) . '</span>';
 
-                $img = '<img height="100" width="200" alt="' . $value->event_title . '" src="' . base_url('uploads/programme/thumb/' . $value->image_path) . '">';
+                $img = '<img height="100" width="200" alt="' . $value->event_title . '" src="' . base_url(UPLOAD_EVENT_PATH . 'thumb/' . $value->image_path) . '">';
                 $nestedData[] = $value->event_title;
                 $nestedData[] = $img;
                 $nestedData[] = $value->event_short_desc;

@@ -1,5 +1,5 @@
 <?php
-defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -76,15 +76,15 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'hostname' => 'localhost',
     'username' => 'root',
-    'password' => '',
-    'database' => 'birds',
+    'password' => 'Abcd@1234',
+    'database' => 'parrotdi_birds',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => ( ENVIRONMENT !== 'production' ),
+    'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',
@@ -98,7 +98,7 @@ $db['default'] = array(
 );
 
 $db['welspun_fm'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
@@ -106,7 +106,7 @@ $db['welspun_fm'] = array(
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => ( ENVIRONMENT !== 'production' ),
+    'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',
@@ -120,7 +120,7 @@ $db['welspun_fm'] = array(
 );
 
 $db['welspun_air'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
@@ -128,7 +128,7 @@ $db['welspun_air'] = array(
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => ( ENVIRONMENT !== 'production' ),
+    'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',
@@ -142,7 +142,7 @@ $db['welspun_air'] = array(
 );
 
 $db['welspun_ems_cpp'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
@@ -150,7 +150,7 @@ $db['welspun_ems_cpp'] = array(
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => ( ENVIRONMENT !== 'production' ),
+    'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',
@@ -164,7 +164,7 @@ $db['welspun_ems_cpp'] = array(
 );
 
 $db['welspun_datalog'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
@@ -172,7 +172,7 @@ $db['welspun_datalog'] = array(
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => ( ENVIRONMENT !== 'production' ),
+    'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',
@@ -186,7 +186,7 @@ $db['welspun_datalog'] = array(
 );
 
 $db['welspun_weaving'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
@@ -194,7 +194,7 @@ $db['welspun_weaving'] = array(
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => ( ENVIRONMENT !== 'production' ),
+    'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',
@@ -208,7 +208,7 @@ $db['welspun_weaving'] = array(
 );
 
 $db['ems_db'] = array(
-    'dsn'	=> '',
+    'dsn'    => '',
     'database' => 'WELSPUN_EMS',
     'hostname' => 'DRIVER={SQL Server};SERVER=10.0.1.64;DATABASE=WELSPUN_EMS',
     'username' => 'sa',
@@ -216,7 +216,7 @@ $db['ems_db'] = array(
     'dbdriver' => 'odbc',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => ( ENVIRONMENT !== 'production' ),
+    'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',

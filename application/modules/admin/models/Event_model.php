@@ -44,7 +44,7 @@ class Event_model extends CI_Model
         $this->db->join('countries CN', 'CN.id = EL.country_id', 'LEFT');
         $this->db->join('states ST', 'ST.id = EL.state_id', 'LEFT');
         $this->db->join('cities CT', 'CT.id = EL.city_id', 'LEFT');
-        $this->db->join('event_images EI', 'EI.em_id = EM.em_id AND EI.is_default = 1', 'LEFT');
+        $this->db->join('event_images EI', 'EI.em_id = EM.em_id AND EI.is_default = "1"', 'LEFT');
         $this->_setSearchCond($searchData);
         $this->db->order_by($orderBy['col'], $orderBy['val']);
         $this->db->limit($limit['perpage'], $limit['start']);

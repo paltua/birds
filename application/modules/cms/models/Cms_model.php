@@ -1,14 +1,17 @@
 <?php
-if ( !defined( 'BASEPATH' ) )
-exit( 'No direct script access allowed' );
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
-class Cms_model extends CI_Model {
+class Cms_model extends CI_Model
+{
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
     }
 
-    public function getLevelOneCategory() {
+    public function getLevelOneCategory()
+    {
         $sql = "SELECT
                     `ACM`.`parent_id`,
                     `ACM`.`image_name`,
@@ -26,10 +29,11 @@ class Cms_model extends CI_Model {
                     AND `ACMD`.`language` = 'en'
                     AND ACM.parent_id IN (SELECT acm_id FROM animal_category_master WHERE 1 AND parent_id = 0 AND `acm_is_deleted` = '0' AND `acm_status` = 'active')";
 
-        return $this->db->query( $sql )->result();
+        return $this->db->query($sql)->result();
     }
 
-    public function getLetestProduct() {
+    public function getLetestProduct()
+    {
         $sql = "SELECT AM.`am_id`, AMD.`amd_name`, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.`ami_path` 
                 FROM `animal_master` AM 
                 JOIN `animal_master_details` AMD ON AMD.am_id=AM.am_id AND AMD.language='en' 
@@ -40,11 +44,11 @@ class Cms_model extends CI_Model {
                     AND AM.`am_pet_choice` = 'yes'
                 ORDER BY AM.`am_id` DESC
                 LIMIT 35";
-        return $this->db->query( $sql )->result();
-
+        return $this->db->query($sql)->result();
     }
 
-    public function getDipChoicesProduct() {
+    public function getDipChoicesProduct()
+    {
         $sql = "SELECT AM.`am_id`, AMD.`amd_name`, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.`ami_path` 
                 FROM `animal_master` AM 
                 JOIN `animal_master_details` AMD ON AMD.am_id=AM.am_id AND AMD.language='en' 
@@ -54,11 +58,11 @@ class Cms_model extends CI_Model {
                     AND AM.`am_deleted` = '0'
                     AND AM.`am_dip_choice` = 'yes'
                 ORDER BY AM.`am_id` DESC ";
-        return $this->db->query( $sql )->result();
-
+        return $this->db->query($sql)->result();
     }
 
-    public function getPremiumProduct() {
+    public function getPremiumProduct()
+    {
         $sql = "SELECT AM.`am_id`, AMD.`amd_name`, CAST(AMD.`amd_price` AS DECIMAL(10,2)) amd_price, AMI.`ami_path`
                 FROM `animal_master` AM 
                 JOIN `animal_master_details` AMD ON AMD.am_id=AM.am_id AND AMD.language='en' 
@@ -69,10 +73,11 @@ class Cms_model extends CI_Model {
                     AND AM.`am_food_choice` = 'yes'
                 ORDER BY AMD.`amd_price` DESC
                 LIMIT 35";
-        return $this->db->query( $sql )->result();
+        return $this->db->query($sql)->result();
     }
 
-    public function getSelectedCategory( $cat_id = 0 ) {
+    public function getSelectedCategory($cat_id = 0)
+    {
         $sql = "SELECT
                     `ACM`.`parent_id`,
                     `ACM`.`image_name`,
@@ -87,14 +92,15 @@ class Cms_model extends CI_Model {
                 WHERE 1
                     AND `ACM`.`acm_is_deleted` = '0' 
                     AND `ACM`.`acm_status` = 'active' 
-                    AND `ACM`.`acm_id` = ".$cat_id."
+                    AND `ACM`.`acm_id` = " . $cat_id . "
                     AND ACM.parent_id IN (SELECT acm_id FROM animal_category_master WHERE 1 AND parent_id = 0 AND `acm_is_deleted` = '0' AND `acm_status` = 'active') 
                 ORDER BY `LANG`.`lang_name` ASC ";
 
-        return $this->db->query( $sql )->result();
+        return $this->db->query($sql)->result();
     }
 
-    public function getBestChoices() {
+    public function getBestChoices()
+    {
         $selectedCat = '33,34,43';
         $sql = "SELECT
                     `ACM`.`parent_id`,
@@ -111,32 +117,63 @@ class Cms_model extends CI_Model {
                     AND `ACM`.`acm_is_deleted` = '0' 
                     AND `ACM`.`acm_status` = 'active' 
                     AND `ACMD`.`language` = 'en'
-                    AND ACM.acm_id IN (".$selectedCat.')';
+                    AND ACM.acm_id IN (" . $selectedCat . ')';
 
-        return $this->db->query( $sql )->result();
+        return $this->db->query($sql)->result();
     }
 
-    public function getAboutUsUser() {
-        $this->db->select( '*' );
-        $this->db->from( 'about_us_user' );
-        $this->db->where( 'name != ', '' );
+    public function getAboutUsUser()
+    {
+        $this->db->select('*');
+        $this->db->from('about_us_user');
+        $this->db->where('name != ', '');
         return $this->db->get()->result();
     }
 
-    public function getGalleryList( $limit = 10 ) {
-        $this->db->select( '*' );
-        $this->db->from( 'gallery' );
-        $this->db->order_by( 'created_date', 'DESC' );
-        $this->db->limit( '8' );
+    public function getGalleryList($limit = 10)
+    {
+        $this->db->select('*');
+        $this->db->from('gallery');
+        $this->db->order_by('created_date', 'DESC');
+        $this->db->limit('8');
         return $this->db->get()->result();
     }
 
-    public function getPageContent( $name = '' ) {
-        $this->db->select( '*' );
-        $this->db->from( 'settings' );
-        $this->db->where( 'name', $name );
-        $this->db->limit( '8' );
+    public function getPageContent($name = '')
+    {
+        $this->db->select('*');
+        $this->db->from('settings');
+        $this->db->where('name', $name);
+        $this->db->limit('8');
         return $this->db->get()->result();
     }
 
+    public function getMainEvents()
+    {
+        $this->db->select('EM.*, EML.*,CONCAT(EL.address,",",CT.name,",",ST.name,",",EL.pin,",",CN.name) location, EI.ei_image_name image_path');
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('event_location EL', 'EL.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('countries CN', 'CN.id = EL.country_id', 'LEFT');
+        $this->db->join('states ST', 'ST.id = EL.state_id', 'LEFT');
+        $this->db->join('cities CT', 'CT.id = EL.city_id', 'LEFT');
+        $this->db->join('event_images EI', 'EI.em_id = EM.em_id AND EI.is_default = "1"', 'LEFT');
+        $this->db->where('EML.event_status !=', 'delete');
+        $this->db->limit('8');
+        return $this->db->get()->result();
+    }
+
+    public function getOthersEvent($name = '')
+    {
+        $this->db->select('EM.*, EML.*,CONCAT(EL.address,",",CT.name,",",ST.name,",",EL.pin,",",CN.name) location, EI.ei_image_name image_path');
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('event_location EL', 'EL.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('countries CN', 'CN.id = EL.country_id', 'LEFT');
+        $this->db->join('states ST', 'ST.id = EL.state_id', 'LEFT');
+        $this->db->join('cities CT', 'CT.id = EL.city_id', 'LEFT');
+        $this->db->join('event_images EI', 'EI.em_id = EM.em_id AND EI.is_default = "1"', 'LEFT');
+        $this->db->where('EML.event_status !=', 'delete');
+        return $this->db->get()->result();
+    }
 }

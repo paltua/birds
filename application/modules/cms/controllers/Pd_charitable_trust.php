@@ -9,7 +9,7 @@ class Pd_charitable_trust extends MY_Controller
     {
         parent::__construct();
         $this->load->library('Template');
-        // $this->load->model('cms_model');
+        $this->load->model('cms_model');
         $this->controller = $this->router->fetch_class();
     }
 
@@ -18,8 +18,9 @@ class Pd_charitable_trust extends MY_Controller
         $data = array();
         $status = '';
         $msg = '';
-        // $data['category'] = $this->cms_model->getLevelOneCategory();
-        // $data['content'] = $this->cms_model->getPageContent('pd_charitable_trust');
+        $data['content'] = $this->cms_model->getPageContent('pd_charitable_trust');
+        $data['mainEvents'] = $this->cms_model->getMainEvents();
+        $data['othersEvents'] = $this->cms_model->getOthersEvent();
         $data['msg'] = $this->template->getMessage($status, $msg);
         $this->template->setTitle('Charity');
         $this->template->setLayout('cms');
