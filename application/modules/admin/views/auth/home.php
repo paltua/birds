@@ -14,14 +14,14 @@
                         <i class="fa fa-tasks fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo $totalProd;?></div>
+                        <div class="huge"><?php echo $totalProd; ?></div>
                         <div>Total Blogs!</div>
                     </div>
                 </div>
             </div>
-            <a href="<?php echo base_url('admin/blog');?>">
+            <a href="<?php echo base_url('admin/blog'); ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">View All Blogs</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -33,17 +33,39 @@
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
-                        <i class="fa fa-comments fa-5x"></i>
+                        <i class="fa fa-american-sign-language-interpreting fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo $totalComment;?></div>
-                        <div>Total Comments!</div>
+                        <div class="huge"><?php echo $totalProgramme; ?></div>
+                        <div>Total Programmes!</div>
                     </div>
                 </div>
             </div>
-            <a href="<?php echo base_url('admin/comment');?>">
+            <a href="<?php echo base_url('admin/event'); ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">View All Programmes</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-calendar fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><?php echo $totalEvent; ?></div>
+                        <div>Total Events!</div>
+                    </div>
+                </div>
+            </div>
+            <a href="<?php echo base_url('admin/event'); ?>">
+                <div class="panel-footer">
+                    <span class="pull-left">View All Events</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -59,14 +81,14 @@
                         <i class="fa fa-shopping-cart fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo $totalContact;?></div>
+                        <div class="huge"><?php echo $totalContact; ?></div>
                         <div>Total Contact Us Request!</div>
                     </div>
                 </div>
             </div>
-            <a href="<?php echo base_url('admin/contact_us');?>">
+            <a href="<?php echo base_url('admin/contact_us'); ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">View All Contact Us Request</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -81,14 +103,14 @@
                         <i class="fa fa-users fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge"><?php echo $totalUser;?></div>
+                        <div class="huge"><?php echo $totalUser; ?></div>
                         <div>Total Users!</div>
                     </div>
                 </div>
             </div>
-            <a href="<?php echo base_url('admin/user');?>">
+            <a href="<?php echo base_url('admin/user'); ?>">
                 <div class="panel-footer">
-                    <span class="pull-left">View Details</span>
+                    <span class="pull-left">View All Users</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>

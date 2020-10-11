@@ -1,5 +1,5 @@
 <?php
-defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ defined( 'BASEPATH' ) OR exit( 'No direct script access allowed' );
 | of this setting
 |
 */
-defined( 'SHOW_DEBUG_BACKTRACE' ) OR define( 'SHOW_DEBUG_BACKTRACE', TRUE );
+defined('SHOW_DEBUG_BACKTRACE') or define('SHOW_DEBUG_BACKTRACE', TRUE);
 /*
 |--------------------------------------------------------------------------
 | Check AJAX
@@ -20,8 +20,8 @@ defined( 'SHOW_DEBUG_BACKTRACE' ) OR define( 'SHOW_DEBUG_BACKTRACE', TRUE );
 | Set the server request for ajax calling
 |
 */
-defined( 'IS_AJAX' ) OR define( 'IS_AJAX', isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && strtolower( $_SERVER['HTTP_X_REQUESTED_WITH'] ) == 'xmlhttprequest' );
-defined( 'DIRECT_ACCESS_MSG' ) OR define( 'DIRECT_ACCESS_MSG', 'No direct script access allowed.' );
+defined('IS_AJAX') or define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+defined('DIRECT_ACCESS_MSG') or define('DIRECT_ACCESS_MSG', 'No direct script access allowed.');
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes
@@ -35,10 +35,10 @@ defined( 'DIRECT_ACCESS_MSG' ) OR define( 'DIRECT_ACCESS_MSG', 'No direct script
 | always be used to set the mode correctly.
 |
 */
-defined( 'FILE_READ_MODE' )  OR define( 'FILE_READ_MODE', 0644 );
-defined( 'FILE_WRITE_MODE' ) OR define( 'FILE_WRITE_MODE', 0666 );
-defined( 'DIR_READ_MODE' )   OR define( 'DIR_READ_MODE', 0755 );
-defined( 'DIR_WRITE_MODE' )  OR define( 'DIR_WRITE_MODE', 0755 );
+defined('FILE_READ_MODE')  or define('FILE_READ_MODE', 0644);
+defined('FILE_WRITE_MODE') or define('FILE_WRITE_MODE', 0666);
+defined('DIR_READ_MODE')   or define('DIR_READ_MODE', 0755);
+defined('DIR_WRITE_MODE')  or define('DIR_WRITE_MODE', 0755);
 
 /*
 |--------------------------------------------------------------------------
@@ -48,16 +48,16 @@ defined( 'DIR_WRITE_MODE' )  OR define( 'DIR_WRITE_MODE', 0755 );
 | These modes are used when working with fopen()/popen()
 |
 */
-defined( 'FOPEN_READ' )                           OR define( 'FOPEN_READ', 'rb' );
-defined( 'FOPEN_READ_WRITE' )                     OR define( 'FOPEN_READ_WRITE', 'r+b' );
-defined( 'FOPEN_WRITE_CREATE_DESTRUCTIVE' )       OR define( 'FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb' );
+defined('FOPEN_READ')                           or define('FOPEN_READ', 'rb');
+defined('FOPEN_READ_WRITE')                     or define('FOPEN_READ_WRITE', 'r+b');
+defined('FOPEN_WRITE_CREATE_DESTRUCTIVE')       or define('FOPEN_WRITE_CREATE_DESTRUCTIVE', 'wb');
 // truncates existing file data, use with care
-defined( 'FOPEN_READ_WRITE_CREATE_DESTRUCTIVE' )  OR define( 'FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 'w+b' );
+defined('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE')  or define('FOPEN_READ_WRITE_CREATE_DESTRUCTIVE', 'w+b');
 // truncates existing file data, use with care
-defined( 'FOPEN_WRITE_CREATE' )                   OR define( 'FOPEN_WRITE_CREATE', 'ab' );
-defined( 'FOPEN_READ_WRITE_CREATE' )              OR define( 'FOPEN_READ_WRITE_CREATE', 'a+b' );
-defined( 'FOPEN_WRITE_CREATE_STRICT' )            OR define( 'FOPEN_WRITE_CREATE_STRICT', 'xb' );
-defined( 'FOPEN_READ_WRITE_CREATE_STRICT' )       OR define( 'FOPEN_READ_WRITE_CREATE_STRICT', 'x+b' );
+defined('FOPEN_WRITE_CREATE')                   or define('FOPEN_WRITE_CREATE', 'ab');
+defined('FOPEN_READ_WRITE_CREATE')              or define('FOPEN_READ_WRITE_CREATE', 'a+b');
+defined('FOPEN_WRITE_CREATE_STRICT')            or define('FOPEN_WRITE_CREATE_STRICT', 'xb');
+defined('FOPEN_READ_WRITE_CREATE_STRICT')       or define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
 /*
 |--------------------------------------------------------------------------
@@ -85,16 +85,18 @@ defined( 'FOPEN_READ_WRITE_CREATE_STRICT' )       OR define( 'FOPEN_READ_WRITE_C
 |
 */
 
-defined( 'ADMIN_NAME' )      OR define( 'ADMIN_NAME', 'admin' );
+defined('ADMIN_NAME')      or define('ADMIN_NAME', 'admin');
 // highest automatically-assigned error code
-defined( 'ADMIN_EMAIL' )     OR define( 'ADMIN_EMAIL', 'parrotdipankarweb@gmail.com' );
+defined('ADMIN_EMAIL')     or define('ADMIN_EMAIL', 'parrotdipankarweb@gmail.com');
 //srvbera@gmail.com
-defined( 'SUPPORTEMAIL' )    OR define( 'SUPPORTEMAIL', 'info@parrotdipankar.com' );
+defined('SUPPORTEMAIL')    or define('SUPPORTEMAIL', 'info@parrotdipankar.com');
 //defined( 'SITEMOBILE' )    OR define( 'SITEMOBILE', '9903638848' );
-defined( 'SITEMOBILE' )    OR define( 'SITEMOBILE', '9635928755' );
-defined( 'THEME' ) OR define( 'THEME', 'theme1' );
-defined( 'SITENAME' ) OR define( 'SITENAME', 'parrotdipankar.com' );
-defined( 'UPLOAD_CAT_PATH' ) OR define( 'UPLOAD_CAT_PATH', 'uploads/category/' );
-defined( 'UPLOAD_PROD_PATH' ) OR define( 'UPLOAD_PROD_PATH', 'uploads/animal/' );
-defined( 'UPLOAD_ABOUT_US_USER' ) OR define( 'UPLOAD_ABOUT_US_USER', 'uploads/about_us_user/' );
-defined( 'UPLOAD_BLOG_PATH' ) OR define( 'UPLOAD_BLOG_PATH', 'uploads/blog/' );
+defined('SITEMOBILE')    or define('SITEMOBILE', '9635928755');
+defined('THEME') or define('THEME', 'theme1');
+defined('SITENAME') or define('SITENAME', 'parrotdipankar.com');
+defined('UPLOAD_CAT_PATH') or define('UPLOAD_CAT_PATH', 'uploads/category/');
+defined('UPLOAD_PROD_PATH') or define('UPLOAD_PROD_PATH', 'uploads/animal/');
+defined('UPLOAD_ABOUT_US_USER') or define('UPLOAD_ABOUT_US_USER', 'uploads/about_us_user/');
+defined('UPLOAD_BLOG_PATH') or define('UPLOAD_BLOG_PATH', 'uploads/blog/');
+defined('UPLOAD_PROG_PATH') or define('UPLOAD_PROG_PATH', 'uploads/programme/');
+defined('UPLOAD_EVENT_PATH') or define('UPLOAD_EVENT_PATH', 'uploads/event/');
