@@ -234,6 +234,33 @@ jQuery(document).ready(function ($) {
 			}
 		}
 	})
+	$('.owl-slider-event-details-sud').owlCarousel({
+		loop: true,
+		autoplay: 1000,
+		autoplayHoverPause: true,
+		responsiveClass: true,
+		dots: false,
+		nav: true,
+		responsive: {
+			0: {
+				items: 1,
+				margin: 10,
+				nav: true,
+			},
+			600: {
+				items: 2,
+				margin: 10,
+			},
+			1000: {
+				items: 3,
+				margin: 10,
+			},
+			1200: {
+				items: 3,
+				margin: 10,
+			}
+		}
+	})
 	$('.carousel-7').owlCarousel({
 		loop: true,
 		// autoplay: 1000,
