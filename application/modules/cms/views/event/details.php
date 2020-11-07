@@ -43,14 +43,18 @@
                                 <div class="w-100 wrap-details-blog">
                                     <?php echo  $details[0]->event_short_desc; ?>
                                 </div>
+                                <?php if ($details[0]->event_objectives != '') { ?>
                                 <h4>Objective</h4>
                                 <div class="w-100 wrap-details-blog">
                                     <?php echo  $details[0]->event_objectives; ?>
                                 </div>
+                                <?php } ?>
+                                <?php if ($details[0]->event_about != '') { ?>
                                 <h4>About</h4>
                                 <div class="w-100 wrap-details-blog">
                                     <?php echo  $details[0]->event_about; ?>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

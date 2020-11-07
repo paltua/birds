@@ -33,18 +33,24 @@
                                 <div class="w-100 wrap-details-blog">
                                     <?php echo  $details[0]->program_short_desc; ?>
                                 </div>
+                                <?php if ($details[0]->program_objectives != '') { ?>
                                 <h4>Objective</h4>
                                 <div class="w-100 wrap-details-blog">
                                     <?php echo  $details[0]->program_objectives; ?>
                                 </div>
+                                <?php } ?>
+                                <?php if ($details[0]->program_about != '') { ?>
                                 <h4>About</h4>
                                 <div class="w-100 wrap-details-blog">
                                     <?php echo  $details[0]->program_about; ?>
                                 </div>
+                                <?php } ?>
+                                <?php if ($details[0]->program_desc != '') { ?>
                                 <h4>Description</h4>
                                 <div class="w-100 wrap-details-blog">
                                     <?php echo  $details[0]->program_desc; ?>
                                 </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
