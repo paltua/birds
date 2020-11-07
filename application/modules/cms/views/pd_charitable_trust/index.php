@@ -57,7 +57,7 @@
                         <?php foreach ($mainEvents as $key => $value) { ?>
                         <div class="item">
                             <div class="inner-wrap-pd-block w-100 float-left">
-                                <a href="">
+                                <a href="<?php echo base_url('cms/event/details/' . $value->event_title_url); ?>">
                                     <div class="image-pd-block w-100 float-left"><img
                                             src="<?php echo base_url(UPLOAD_EVENT_PATH . 'thumb/' . $value->image_path); ?>">
                                     </div>
