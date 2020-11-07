@@ -18,7 +18,7 @@
             <?php foreach ($mainEvents as $key => $value) { ?>
 
             <div class="item">
-                <a href="#">
+                <a href="<?php echo base_url('cms/event/details/' . $value->event_title_url); ?>">
                     <div class="img-wrap"><img src="<?php echo base_url(UPLOAD_EVENT_PATH . $value->image_path); ?>">
                     </div>
                     <div class="col-12 wrap-text-slider-sud pd-charit-content">
