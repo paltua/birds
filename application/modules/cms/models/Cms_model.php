@@ -158,7 +158,7 @@ class Cms_model extends CI_Model
         $this->db->join('states ST', 'ST.id = EL.state_id', 'LEFT');
         $this->db->join('cities CT', 'CT.id = EL.city_id', 'LEFT');
         $this->db->join('event_images EI', 'EI.em_id = EM.em_id AND EI.is_default = "1"', 'LEFT');
-        $this->db->where('EML.event_status !=', 'delete');
+        $this->db->where('EML.event_status', 'active');
         $this->db->limit('8');
         return $this->db->get()->result();
     }
@@ -173,7 +173,124 @@ class Cms_model extends CI_Model
         $this->db->join('states ST', 'ST.id = EL.state_id', 'LEFT');
         $this->db->join('cities CT', 'CT.id = EL.city_id', 'LEFT');
         $this->db->join('event_images EI', 'EI.em_id = EM.em_id AND EI.is_default = "1"', 'LEFT');
-        $this->db->where('EML.event_status !=', 'delete');
+        $this->db->where('EML.event_status', 'active');
+        return $this->db->get()->result();
+    }
+
+    public function getEventList($limit = array())
+    {
+        $this->db->select('EM.*, EML.*,CONCAT(EL.address,",",CT.name,",",ST.name,",",EL.pin,",",CN.name) location, EI.ei_image_name image_path');
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('event_location EL', 'EL.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('countries CN', 'CN.id = EL.country_id', 'LEFT');
+        $this->db->join('states ST', 'ST.id = EL.state_id', 'LEFT');
+        $this->db->join('cities CT', 'CT.id = EL.city_id', 'LEFT');
+        $this->db->join('event_images EI', 'EI.em_id = EM.em_id AND EI.is_default = "1"', 'LEFT');
+        $this->db->where('EML.event_status', 'active');
+        $this->db->order_by('EML.event_start_date_time', 'DESC');
+        $this->db->limit($limit['perPage'], $limit['start']);
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
+        return $this->db->get()->result();
+    }
+
+    public function getEventCount()
+    {
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->where('EML.event_status', 'active');
+        $query = $this->db->get();
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
+        return $query->num_rows();
+    }
+
+    public function getSingleEvent($title_url = '')
+    {
+        $this->db->select('EM.*, EML.*,CONCAT(EL.address,",",CT.name,",",ST.name,",",EL.pin,",",CN.name) location');
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('event_location EL', 'EL.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('countries CN', 'CN.id = EL.country_id', 'LEFT');
+        $this->db->join('states ST', 'ST.id = EL.state_id', 'LEFT');
+        $this->db->join('cities CT', 'CT.id = EL.city_id', 'LEFT');
+        $this->db->where('EML.event_status', 'active');
+        $this->db->where('EML.event_title_url', $title_url);
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
+        return $this->db->get()->result();
+    }
+
+    public function getSingleEventImages($em_id = 0)
+    {
+        $this->db->select('EI.*');
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->join('event_images EI', 'EI.em_id = EM.em_id', 'LEFT');
+        $this->db->where('EM.em_id', $em_id);
+        $this->db->order_by('EI.is_default', 'DESC');
+        return $this->db->get()->result();
+    }
+
+    public function getCompleted($em_id = 0)
+    {
+        $this->db->select('EM.*, EML.*');
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->where('EML.event_status', 'active');
+        $this->db->where('EML.event_end_date_time < NOW()');
+        $this->db->where('EML.event_status', 'active');
+        $this->db->where('EM.em_id != ', $em_id);
+        $this->db->limit(10);
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
+        return $this->db->get()->result();
+    }
+
+    public function getUpcoming($em_id = 0)
+    {
+        $this->db->select('EM.*, EML.*');
+        $this->db->from('event_master EM');
+        $this->db->join('event_master_log EML', 'EML.eml_id = EM.eml_id', 'INNER');
+        $this->db->where('EML.event_status', 'active');
+        $this->db->where('EML.event_end_date_time > NOW()');
+        $this->db->where('EML.event_status', 'active');
+        $this->db->where('EM.em_id != ', $em_id);
+        $this->db->limit(10);
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
+        return $this->db->get()->result();
+    }
+
+    public function getProgrammes()
+    {
+        $this->db->select('PR.*,PRI.prog_img_name');
+        $this->db->from('programs PR');
+        $this->db->join('programs_images PRI', 'PRI.program_id = PR.program_id AND PRI.is_default="1"', 'LEFT');
+        $this->db->where('PR.is_status', 'active');
+        $this->db->order_by('PR.program_title', 'ASC');
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
+        return $this->db->get()->result();
+    }
+
+    public function getProgrammesDetails($title_url = '')
+    {
+        $this->db->select('PR.*,PRI.prog_img_name');
+        $this->db->from('programs PR');
+        $this->db->join('programs_images PRI', 'PRI.program_id = PR.program_id', 'LEFT');
+        $this->db->where('PR.is_status', 'active');
+        $this->db->where('PR.pro_title_url', $title_url);
+        // $this->db->get();
+        // echo $this->db->last_query();
+        // exit;
         return $this->db->get()->result();
     }
 }

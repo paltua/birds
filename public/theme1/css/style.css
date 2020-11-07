@@ -1440,6 +1440,10 @@ margin-top: -60px;
   padding: 15px;
   margin: 15px 0;
 }
+.ev-content h4{
+  font-size: 19px;
+  font-weight: 700;
+}
 .recent-events h4{
   font-size: 14px;
   margin: 0 0 15px 0;
@@ -1489,7 +1493,12 @@ margin-top: -60px;
   font-size: 18px;
   font-weight: 700;
 }
-
+.et-det-slider .owl-carousel .owl-nav button.owl-next, .et-det-slider .owl-carousel .owl-nav button.owl-next:hover {
+  right: 0;
+}
+.et-det-slider .owl-carousel .owl-nav button.owl-prev, .et-det-slider .owl-carousel .owl-nav button.owl-prev:hover {
+  left: 0;
+}
 /*****sudipta****/
 @media (min-width:992px) and (max-width:1024px) {
 

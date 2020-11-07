@@ -186,7 +186,7 @@ jQuery(document).ready(function ($) {
 		autoplayHoverPause: false,
 		responsiveClass: true,
 		dots: false,
-		nav: false,
+		nav: true,
 		responsive: {
 			0: {
 				items: 1,
