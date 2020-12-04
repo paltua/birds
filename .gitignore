@@ -4,6 +4,7 @@
 */cache/*
 !*/cache/index.html
 !*/cache/.htaccess
+.htaccess
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
@@ -23,4 +24,3 @@ uploads/gallery/*
 uploads/user/*
 uploads/programme/*
 uploads/event/*
-.htaccess
