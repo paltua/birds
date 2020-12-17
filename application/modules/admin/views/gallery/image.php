@@ -1,13 +1,15 @@
 <!-- DataTables CSS -->
-<link href="<?php echo base_url().$resourceNameAdmin;?>vendor/datatables-plugins/dataTables.bootstrap.css"
+<link href="<?php echo base_url() . $resourceNameAdmin; ?>vendor/datatables-plugins/dataTables.bootstrap.css"
     rel="stylesheet">
 <!-- DataTables Responsive CSS -->
-<link href="<?php echo base_url().$resourceNameAdmin;?>vendor/datatables-responsive/dataTables.responsive.css"
+<link href="<?php echo base_url() . $resourceNameAdmin; ?>vendor/datatables-responsive/dataTables.responsive.css"
     rel="stylesheet">
 <!-- DataTables JavaScript -->
-<script src="<?php echo base_url().$resourceNameAdmin;?>vendor/datatables/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url().$resourceNameAdmin;?>vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url().$resourceNameAdmin;?>vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script src="<?php echo base_url() . $resourceNameAdmin; ?>vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() . $resourceNameAdmin; ?>vendor/datatables-plugins/dataTables.bootstrap.min.js">
+</script>
+<script src="<?php echo base_url() . $resourceNameAdmin; ?>vendor/datatables-responsive/dataTables.responsive.js">
+</script>
 
 <script type="text/javascript">
 function readURL(input) {
@@ -38,13 +40,69 @@ $(document).ready(function() {
 
     $('#dataTables-example').DataTable({
         responsive: true,
-        order: [
-            [1, "desc"]
-        ],
+        serverSide: true,
+        ajax: {
+            url: "<?php echo $dataTableUrl; ?>", // json datasource
+            type: "post", // method  , by default get
+            dataType: "json",
+            error: function() { // error handling
+                //$(".employee-grid-error").html("");
+                $("#dataTableId").append(
+                    '<tbody class="employee-grid-error"><tr><th colspan="6">No record found.</th></tr></tbody>'
+                );
+                $("#data-table_processing").css("display", "none");
+            }
+        },
+
+        deferRender: true,
+        bProcessing: true,
+        iDisplayLength: 10,
+        bPaginate: true,
+        scroller: {
+            loadingIndicator: true,
+        },
         columnDefs: [{
-            targets: 'no-sort',
-            orderable: false
+            "targets": 'no-sort',
+            "orderable": false,
         }],
+        aaSorting: [],
+    });
+
+    $('#dataTables-example').on('click', '.deleteChange', function() {
+        var confirmStat = confirm(
+            "Are you sure to delete this <?php echo $controller; ?>?");
+        if (confirmStat) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    $('#dataTables-example').on('click', '.statusChange', function() {
+        var confirmStat = confirm(
+            "Are you sure to change the status of this <?php echo $controller; ?>?");
+        if (confirmStat) {
+            var url = '<?php echo $statusUrl; ?>';
+            var am_id = $(this).attr('name');
+            var am_status = $(this).attr('value');
+            $.post(url, {
+                am_id: am_id
+            }, function(data) {
+                if (am_status == 'lock') {
+                    $("#status_" + am_id).attr('value', 'unlock').removeClass('btn-warning')
+                        .addClass('btn-info');
+                    $("#i_status_" + am_id).removeClass('fa-lock').addClass('fa-unlock');
+                    $("#span_status_" + am_id).text('Active');
+                } else {
+                    $("#status_" + am_id).attr('value', 'lock').removeClass('btn-info')
+                        .addClass(
+                            'btn-warning');
+                    $("#i_status_" + am_id).removeClass('fa-unlock').addClass('fa-lock');
+                    $("#span_status_" + am_id).text('Inactive');
+                }
+                $("#msgShow").html(data.msg);
+            }, "json");
+        }
     });
 
 
@@ -58,11 +116,11 @@ $(document).ready(function() {
 </div>
 <div class="row">
     <div id="msgShow"></div>
-    <?php if($msg != ''):?>
+    <?php if ($msg != '') : ?>
     <div class="col-lg-12">
-        <?php echo $msg ;?>
+        <?php echo $msg; ?>
     </div>
-    <?php endif;?>
+    <?php endif; ?>
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -80,7 +138,8 @@ $(document).ready(function() {
                                 <label>File input</label>
                                 <input type="file" name="myFile" onchange="readURL(this);"
                                     accept="image/gif, image/jpeg, image/png">
-                                <?php //echo form_error('filename', '<p class="text-danger">', '</p>'); ?>
+                                <?php //echo form_error('filename', '<p class="text-danger">', '</p>'); 
+                                ?>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -103,38 +162,53 @@ $(document).ready(function() {
                 Image Gallery
             </div>
             <div class="panel-body">
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <!-- <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
                             <th class="no-sort">Image</th>
-                            <th>Image URL</th>
+                            <th class="no-sort">Image URL</th>
+                            <th>Status</th>
                             <th>Created Date</th>
                             <th class="no-sort">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(count($list) > 0){
+                        <?php if (count($list) > 0) {
                             foreach ($list as $key => $value) {
-                                if($key%2 == 0){
+                                if ($key % 2 == 0) {
                                     $listClass = 'gradeC';
-                                }else{
+                                } else {
                                     $listClass = 'gradeU';
                                 }
                         ?>
-                        <tr class="<?php echo $listClass;?> ">
-                            <td><?php if($value->g_path != ''){?>
-                                <img src="<?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?>">
-                                <?php }?>
+                        <tr class="<?php echo $listClass; ?> ">
+                            <td><?php if ($value->g_path != '') { ?>
+                                <img src="<?php echo base_url('uploads/gallery/thumb/' . $value->g_path); ?>">
+                                <?php } ?>
                             </td>
-                            <td><?php echo base_url('uploads/gallery/thumb/'.$value->g_path);?></td>
-                            <td><?php echo date("F j, Y, g:i a", strtotime($value->created_date));?></td>
+                            <td><?php echo base_url('uploads/gallery/thumb/' . $value->g_path); ?></td>
+                            <td></td>
+                            <td><?php echo date("F j, Y, g:i a", strtotime($value->created_date)); ?></td>
                             <td class="center">
-                                <a href="<?php echo base_url();?>admin/<?php echo $controller;?>/delete/<?php echo $value->g_id;?>"
+                                <a onclick="return confirm('Are you sure to delete this image from gallery?')"
+                                    href="<?php echo base_url(); ?>admin/<?php echo $controller; ?>/delete/<?php echo $value->g_id; ?>"
                                     class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                             </td>
                         </tr>
-                        <?php } } ?>
+                        <?php }
+                        } ?>
                     </tbody>
+                </table> -->
+                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                        <tr>
+                            <th class="no-sort">Image</th>
+                            <th>Image URL</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                            <th class="no-sort">Action</th>
+                        </tr>
+                    </thead>
                 </table>
             </div>
         </div>
