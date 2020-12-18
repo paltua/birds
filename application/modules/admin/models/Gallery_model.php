@@ -56,4 +56,11 @@ class Gallery_model extends CI_Model
         $data['recordsFiltered'] = $this->getDataTableFilteredCount($searchData);
         return $data;
     }
+
+    public function updateStatus($g_id = 0)
+    {
+        $sql = 'UPDATE `gallery` SET `g_status`=IF(g_status = "active","inactive","active") WHERE 1 AND g_id=' . $g_id;
+        $this->db->query($sql);
+        return true;
+    }
 }

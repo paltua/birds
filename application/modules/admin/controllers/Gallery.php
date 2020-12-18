@@ -164,6 +164,7 @@ class Gallery extends MX_Controller
     public function changeStatus()
     {
         $g_id = $this->input->post('am_id');
+        $this->gallery_model->updateStatus($g_id);
         $data['msg'] = $this->template->getMessage('success', 'Successfully changed the status .');
         echo json_encode($data);
     }
