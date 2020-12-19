@@ -100,3 +100,4 @@ defined('UPLOAD_ABOUT_US_USER') or define('UPLOAD_ABOUT_US_USER', 'uploads/about
 defined('UPLOAD_BLOG_PATH') or define('UPLOAD_BLOG_PATH', 'uploads/blog/');
 defined('UPLOAD_PROG_PATH') or define('UPLOAD_PROG_PATH', 'uploads/programme/');
 defined('UPLOAD_EVENT_PATH') or define('UPLOAD_EVENT_PATH', 'uploads/event/');
+defined('UPLOAD_GALLERY_PATH') or define('UPLOAD_GALLERY_PATH', 'uploads/gallery/');

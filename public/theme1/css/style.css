@@ -378,7 +378,7 @@ video::-webkit-media-controls { display:none !important; }
 .inner-top-cat.category-circle.owl-carousel .owl-nav button { margin-top: -14px; margin-bottom: 0;}
 .inner-top-cat .category-circle figure figcaption button {width: 30px;height: 30px;}
 .inner-top-cat .category-circle figure:hover figcaption button i { font-size: 27px;}
-.inner-layout .inner-content {padding: 60px 0; min-height: 450px}
+.inner-layout .inner-content {padding: 30px 0; min-height: 450px}
 .inner-layout .inner-content h3 {font-size: 22px; margin: 10px 0 15px}
 .inner-layout .inner-content p {font-size: 18px; line-height: 1.7}
 .inner-layout .inner-content .addrs-block {border-bottom:1px solid #ddd; margin-bottom: 20px; padding-bottom: 15px}
@@ -1498,6 +1498,24 @@ margin-top: -60px;
 }
 .et-det-slider .owl-carousel .owl-nav button.owl-prev, .et-det-slider .owl-carousel .owl-nav button.owl-prev:hover {
   left: 0;
+}
+.gallery-home {
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery-home li {
+  float: left;
+  width: 100%;
+  margin: 0px;
+  padding: 4px;
+}
+.bottom-area-flex-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /*****sudipta****/
 @media (min-width:992px) and (max-width:1024px) {

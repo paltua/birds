@@ -28,7 +28,6 @@ class Gallery extends MX_Controller
         $this->_upload();
         $this->data['msg'] = $this->template->getMessage($status, $msg);
         // $this->data['list'] = $this->gallery_model->getAllData();
-
         $this->data['dataTableUrl'] = base_url('admin/' . $this->controller . '/viewListDataTable');
         $this->template->setTitle('Admin : ' . $this->data['page_title']);
         $this->template->setLayout('dashboard');
@@ -84,11 +83,11 @@ class Gallery extends MX_Controller
                 $actionStr .= '<a href="' . base_url() . 'admin/' . $this->controller . '/delete/' . $value->g_id . '" class="deleteChange btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>';
                 $statusStr = '<a class="statusChange btn btn-' . ($value->g_status == 'active' ? 'info' : 'warning') . ' btn-xs" href="javascript:void(0);" title="Click to change Status" value="' . ($value->g_status == 'active' ? 'unlock' : 'lock') . '" id="status_' . $value->g_id . '" name="' . $value->g_id . '"><i id="i_status_' . $value->g_id . '" class="fa fa-' . ($value->g_status == 'active' ? 'unlock' : 'lock') . '"></i><span id="span_status_' . $value->g_id . '">' . ucfirst($value->g_status) . '</span>';
 
-                $img = '<img height="200" width="200" alt="' . $value->g_alt . '" src="' . base_url(UPLOAD_EVENT_PATH . 'thumb/' . $value->g_path) . '">';
+                $img = '<img height="150" width="300" alt="' . $value->g_alt . '" src="' . base_url(UPLOAD_GALLERY_PATH . 'thumb/' . $value->g_path) . '">';
                 $nestedData[] = $img;
-                $nestedData[] = $statusStr;
-                $nestedData[] = base_url(UPLOAD_EVENT_PATH . 'thumb/' . $value->g_path);
+                $nestedData[] = base_url(UPLOAD_GALLERY_PATH . 'thumb/' . $value->g_path);
                 $nestedData[] = date('F j, Y, g:i a', strtotime($value->created_date));
+                $nestedData[] = $statusStr;
                 $nestedData[] = $actionStr;
                 $rows[] = $nestedData;
                 unset($actionStr);
@@ -102,7 +101,7 @@ class Gallery extends MX_Controller
 
     private function _upload()
     {
-        $config['upload_path']          = 'uploads/gallery/';
+        $config['upload_path']          = UPLOAD_GALLERY_PATH;
         $config['allowed_types']        = 'gif|jpg|png';
         /*$config['max_size']             = 100;
         $config['max_width']            = 1024;
@@ -129,12 +128,12 @@ class Gallery extends MX_Controller
     private function _resizeImage($imageName = '')
     {
         $config['image_library'] = 'gd2';
-        $config['source_image'] = 'uploads/gallery/' . $imageName;
-        $config['new_image'] = 'uploads/gallery/thumb';
+        $config['source_image'] = UPLOAD_GALLERY_PATH . $imageName;
+        $config['new_image'] = UPLOAD_GALLERY_PATH . 'thumb/';
         $config['create_thumb'] = FALSE;
         $config['maintain_ratio'] = TRUE;
-        $config['width']         = 250;
-        $config['height']       = 250;
+        $config['width']         = 300;
+        $config['height']       = 150;
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
     }
@@ -149,8 +148,8 @@ class Gallery extends MX_Controller
             $this->session->set_flashdata('msg', 'Successfully Deleted');
             $this->tbl_generic_model->delete('gallery', $where);
             if ($data[0]->g_path != '') {
-                @unlink('uploads/gallery/' . $data[0]->g_path);
-                @unlink('uploads/gallery/thumb/' . $data[0]->g_path);
+                @unlink(UPLOAD_GALLERY_PATH . $data[0]->g_path);
+                @unlink(UPLOAD_GALLERY_PATH . 'thumb/' . $data[0]->g_path);
             }
 
             redirect(base_url() . 'admin/' . $this->controller . '/index/');

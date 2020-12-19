@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="<?php echo base_url('public/' . THEME . '/'); ?>css/easy-responsive-tabs.css">
 <link href="<?php echo base_url('public/' . THEME . '/'); ?>css/style.css" rel="stylesheet" type="text/css">
 <link href="<?php echo base_url('public/' . THEME . '/'); ?>css/responsive-style.css" rel="stylesheet" type="text/css">
+
+<!-- <link href="<?php echo base_url('public/' . THEME . '/'); ?>lightbox/css/jquery.lightbox.css" rel="stylesheet"
+    type="text/css"> -->
 <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>

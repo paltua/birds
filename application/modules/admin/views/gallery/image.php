@@ -162,50 +162,13 @@ $(document).ready(function() {
                 Image Gallery
             </div>
             <div class="panel-body">
-                <!-- <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                        <tr>
-                            <th class="no-sort">Image</th>
-                            <th class="no-sort">Image URL</th>
-                            <th>Status</th>
-                            <th>Created Date</th>
-                            <th class="no-sort">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (count($list) > 0) {
-                            foreach ($list as $key => $value) {
-                                if ($key % 2 == 0) {
-                                    $listClass = 'gradeC';
-                                } else {
-                                    $listClass = 'gradeU';
-                                }
-                        ?>
-                        <tr class="<?php echo $listClass; ?> ">
-                            <td><?php if ($value->g_path != '') { ?>
-                                <img src="<?php echo base_url('uploads/gallery/thumb/' . $value->g_path); ?>">
-                                <?php } ?>
-                            </td>
-                            <td><?php echo base_url('uploads/gallery/thumb/' . $value->g_path); ?></td>
-                            <td></td>
-                            <td><?php echo date("F j, Y, g:i a", strtotime($value->created_date)); ?></td>
-                            <td class="center">
-                                <a onclick="return confirm('Are you sure to delete this image from gallery?')"
-                                    href="<?php echo base_url(); ?>admin/<?php echo $controller; ?>/delete/<?php echo $value->g_id; ?>"
-                                    class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-                            </td>
-                        </tr>
-                        <?php }
-                        } ?>
-                    </tbody>
-                </table> -->
                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
                             <th class="no-sort">Image</th>
                             <th>Image URL</th>
-                            <th>Status</th>
                             <th>Created Date</th>
+                            <th>Status</th>
                             <th class="no-sort">Action</th>
                         </tr>
                     </thead>

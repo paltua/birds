@@ -22,9 +22,9 @@ class Home extends MY_Controller
         $msg = '';
         $data['category'] = $this->cms_model->getLevelOneCategory();
         $data['blogs'] = $this->blog_model->getBlogDashboard();
-        $data['gallery'] = $this->tbl_generic_model->get('gellery', '*', array('g_status' => 'active'));
+        $data['gallery'] = $this->tbl_generic_model->get('gallery', '*', array('g_status' => 'active'));
         $settings = $this->tbl_generic_model->get('settings', '*', array());
-        //pr( $settings );
+        // pr($data['gallery']);
         if (count($settings) > 0) {
             foreach ($settings as $key => $value) {
                 $data['set'][$value->name] = $value->name_val;

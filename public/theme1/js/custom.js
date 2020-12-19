@@ -180,6 +180,33 @@ jQuery(document).ready(function ($) {
 			}
 		}
 	})
+	$('.owl-slider-home-gallery').owlCarousel({
+		loop: true,
+		autoplay: 1000,
+		autoplayHoverPause: true,
+		responsiveClass: true,
+		dots: false,
+		nav: true,
+		responsive: {
+			0: {
+				items: 1,
+				margin: 5,
+				nav: true,
+			},
+			600: {
+				items: 1,
+				margin: 5,
+			},
+			1000: {
+				items: 1,
+				margin: 5,
+			},
+			1200: {
+				items: 1,
+				margin: 5,
+			}
+		}
+	})
 	$('.owl-slider-single').owlCarousel({
 		loop: true,
 		autoplay: 1000,
