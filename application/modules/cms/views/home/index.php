@@ -171,50 +171,13 @@ var startPositionOwlCarSeven = '0';
                             <?php } ?>
                             <?php if (count($gallery) > 0) { ?>
                             <div class="gallery-home owl-carousel owl-theme owl-slider-home-gallery slider-top-sud">
-                                <?php foreach ($variable as $key => $value) { ?>
-                                # code...
-
+                                <?php foreach ($gallery as $key => $value) { ?>
                                 <div class="item"><a
                                         href="<?php echo base_url(UPLOAD_GALLERY_PATH . $value->g_path); ?>"><img
                                             src="<?php echo base_url(UPLOAD_GALLERY_PATH . 'thumb/' . $value->g_path); ?>"
                                             alt="Image <?php echo $value->g_alt; ?>"></a>
                                 </div>
                                 <?php } ?>
-                                <div class="item"><a
-                                        href="http://localhost/birds/uploads/blog/202009142255454.jpeg"><img
-                                            src="http://localhost/birds/uploads/blog/202009142255454.jpeg"
-                                            alt="Image"></a>
-                                </div>
-                                <div class="item"><a
-                                        href="http://localhost/birds/uploads/blog/202009142255454.jpeg"><img
-                                            src="http://localhost/birds/uploads/blog/202009142255454.jpeg"
-                                            alt="Image"></a>
-                                </div>
-                                <div class="item"><a
-                                        href="http://localhost/birds/uploads/blog/202009142255454.jpeg"><img
-                                            src="http://localhost/birds/uploads/blog/202009142255454.jpeg"
-                                            alt="Image"></a>
-                                </div>
-                                <div class="item"><a
-                                        href="http://localhost/birds/uploads/blog/202009142255454.jpeg"><img
-                                            src="http://localhost/birds/uploads/blog/202009142255454.jpeg"
-                                            alt="Image"></a>
-                                </div>
-                                <div class="item"><a
-                                        href="http://localhost/birds/uploads/blog/202009142255454.jpeg"><img
-                                            src="http://localhost/birds/uploads/blog/202009142255454.jpeg"
-                                            alt="Image"></a>
-                                </div>
-                                <div class="item"><a
-                                        href="http://localhost/birds/uploads/blog/202009142255454.jpeg"><img
-                                            src="http://localhost/birds/uploads/blog/202009142255454.jpeg"
-                                            alt="Image"></a>
-                                </div>
-                                <div class="item"><a
-                                        href="http://localhost/birds/uploads/blog/202009142255454.jpeg"><img
-                                            src="http://localhost/birds/uploads/blog/202009142255454.jpeg"
-                                            alt="Image"></a>
-                                </div>
                             </div>
                             <?php } ?>
                         </div>
