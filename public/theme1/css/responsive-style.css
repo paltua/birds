@@ -242,13 +242,13 @@
 	.left-static {left: 10px;}
 	.homeBanner h6  {padding: 0 15px}
 	.category-circle figure {
-	    width: 64px;
-	    height: 64px;
+	    width: 108px;
+	    height: 108px;
 	    padding: 4px;
 	}
 	.category-circle figure .circle-layout{
-		width: 56px;
-    	height: 56px;
+		width: 100px;
+    	height: 100px;
 	}
 	.botm-carsl .category-circle figure {
 	    width: 86px;

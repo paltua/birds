@@ -904,11 +904,11 @@ margin-top: -60px;
   padding-left: 30px;
 }
 .owl-new-sud .owl-next {
-  right: -35px !important;
+  right: -15px !important;
     top: 44% !important;
 }
 .owl-new-sud .owl-prev {
-  left: -34px !important;
+  left: -15px !important;
     top: 44% !important;
 }
 .slider-top-inner {
@@ -1542,6 +1542,12 @@ margin-top: -60px;
 	flex-direction: column;
 	height: auto;
 }
+.bottom-area-flex-box {
+  flex-direction: column;
+}
+.img-ev img{
+  width: 100%;
+}
 }
 @media screen and (max-width: 767px) {
   #header .logbtn {
@@ -1571,10 +1577,10 @@ margin-top: -60px;
     margin-bottom: 30px;
   }
   .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-next:hover {
-    right: -20px !important;
+    right: 0 !important;
 }
 .owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-prev:hover {
-  left: -20px !important;
+  left: 0 !important;
 }
 .homeGetTouch .secleft .img-grid ul li img {
   width: 100%;
@@ -1638,6 +1644,12 @@ margin-top: -60px;
 }
 .blog-s-new .pd-item-box figcaption {
   padding: 15px 0 !important;
+}
+.bottom-area-flex-box {
+  flex-direction: column;
+}
+.img-ev img{
+  width: 100%;
 }
 }
 /*//////////////////////////////////////////////

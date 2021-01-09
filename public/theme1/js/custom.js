@@ -81,12 +81,12 @@ jQuery(document).ready(function ($) {
 		nav: true,
 		responsive: {
 			0: {
-				items: 2,
+				items: 1,
 				margin: 5,
 				nav: true,
 			},
 			600: {
-				items: 2,
+				items: 3,
 				margin: 5,
 			},
 			1000: {
